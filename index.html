@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тропинка знаний</title>
+<style>
+:root{
+  --bg:#F2F2F7; --bg2:#FFFFFF;
+  --card:#FFFFFF; --line:#E5E5EA;
+  --ink:#1C1C1E; --sub:#6E6E73;
+  --blue:#007AFF; --blue-d:#0062CC;
+  --green:#34C759; --green-d:#28A745;
+  --red:#FF3B30; --red-d:#D70015;
+  --orange:#FF9500; --orange-d:#CC7A00;
+  --purple:#AF52DE; --purple-d:#8E3FB5;
+  --pink:#FF2D55; --pink-d:#D4184A;
+  --teal:#30B0C7; --teal-d:#268EA1;
+  --yellow:#FFCC00; --yellow-d:#CC9A00;
+  /* совместимость со старыми именами переменных, используемыми в компонентах */
+  --grass:var(--blue); --grass-d:var(--blue-d); --grass-l:#CDE7FF;
+  --sun:var(--yellow); --sun-d:var(--orange-d);
+  --coral:var(--red); --coral-d:var(--red-d);
+  --violet:var(--purple); --violet-d:var(--purple-d);
+  --bark:var(--sub);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{
+  margin:0; min-height:100vh; overflow-x:hidden; position:relative;
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',Roboto,sans-serif;
+  color:var(--ink); padding-bottom:80px; background:var(--bg);
+}
+h1,h2,h3,h4,.dsp{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif; font-weight:700;}
+
+header,nav,main,.topbar{position:relative;z-index:1;}
+
+/* ===== шапка ===== */
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 0;gap:10px;flex-wrap:wrap;}
+.hello{font-size:.95rem;color:var(--ink);background:var(--card);
+  padding:6px 14px;border-radius:999px;cursor:pointer;border:1px solid var(--line);}
+.toolbtns{display:flex;gap:8px;}
+.icobtn{background:var(--card);border:1px solid var(--line);border-radius:50%;width:38px;height:38px;
+  font-size:1.05rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+header{text-align:center;padding:14px 16px 4px;}
+header h1{font-size:1.9rem;margin:0;color:var(--ink);letter-spacing:-.02em;}
+header h1 .fx{display:inline-block;}
+header p{margin:2px 0 0;color:var(--sub);font-weight:500;font-size:.92rem;}
+
+/* ===== дневная цель ===== */
+.goal{max-width:700px;margin:14px auto 0;padding:0 16px;display:flex;gap:10px;align-items:stretch;justify-content:center;flex-wrap:wrap;}
+.goal-box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px 16px;
+  display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink);font-size:.86rem;}
+.goal-box.wide{min-width:230px;flex-direction:column;align-items:stretch;gap:5px;}
+.goal-box.wide .grow{display:flex;justify-content:space-between;font-size:.78rem;}
+.ring{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;font-weight:700;color:var(--ink);}
+
+/* ===== навигация ===== */
+nav{display:flex;justify-content:center;gap:9px;margin:16px auto 6px;flex-wrap:wrap;padding:0 14px;max-width:760px;}
+.tab{font-size:.95rem;font-weight:600;padding:11px 18px;border:none;border-radius:14px;
+  cursor:pointer;color:#fff;transition:opacity .15s, transform .1s;}
+.tab:active{transform:scale(.97);}
+.tab.t1{background:var(--blue)} .tab.t2{background:var(--indigo,#5856D6)} .tab.t3{background:var(--purple)}
+.tab.t4{background:var(--red)} .tab.t5{background:var(--orange)}
+.tab.t6{background:var(--pink)} .tab.t7{background:var(--teal)}
+.tab.off{opacity:.45;}
+
+main{max-width:700px;margin:0 auto;padding:8px 16px;}
+.screen{display:none;}
+.screen.on{display:block;animation:fade .25s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;
+  box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:16px;}
+.card.slim{padding:16px;}
+
+/* ===== кнопки ===== */
+.btn{font-size:1rem;font-weight:600;border:none;border-radius:12px;
+  padding:12px 20px;cursor:pointer;color:#fff;
+  transition:opacity .15s ease, transform .1s ease;}
+.btn:hover{opacity:.9;}
+.btn:active{transform:scale(.97);}
+.btn.g{background:var(--blue)} .btn.y{background:var(--orange);color:#fff}
+.btn.b{background:var(--blue)} .btn.v{background:var(--purple)} .btn.c{background:var(--red)}
+.btn.ghost{background:var(--card);color:var(--blue);border:1px solid var(--line);}
+.btn.sm{font-size:.86rem;padding:9px 14px;}
+.btn[disabled]{opacity:.4;cursor:default;}
+
+input[type=number],input[type=text]{font-size:1.3rem;width:110px;text-align:center;
+  padding:10px;border-radius:12px;border:1.5px solid var(--line);outline:none;background:#fff;}
+input[type=text]{font-size:1.05rem;width:180px;}
+input:focus{border-color:var(--blue);}
+input.mini{font-size:1.1rem;width:78px;}
+
+/* ===== тропинка (упрощённая, без персонажа) ===== */
+.trail-wrap{margin-bottom:16px;}
+.trail{position:relative;height:14px;border-radius:99px;overflow:hidden;background:var(--line);}
+.tfill{height:100%;width:0;border-radius:99px;transition:width .4s ease;background:var(--blue);}
+.tflag,.tfox{display:none;}
+.tlabel{text-align:center;font-weight:600;color:var(--sub);margin-top:8px;font-size:.88rem;}
+
+/* ===== пример ===== */
+.problem{font-size:2.6rem;text-align:center;margin:6px 0 18px;letter-spacing:-.01em;font-weight:700;}
+.problem.pop{animation:pop .32s ease;}
+@keyframes pop{0%{transform:scale(.82);opacity:.4}60%{transform:scale(1.06)}100%{transform:scale(1)}}
+.row{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;}
+.fb{text-align:center;font-weight:900;font-size:1.15rem;min-height:30px;margin-top:12px;}
+.fb.ok{color:var(--grass-d);animation:pop .3s ease;}
+.fb.no{color:var(--coral-d);animation:shake .35s ease;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.stats{display:flex;justify-content:center;gap:18px;font-weight:800;color:var(--bark);flex-wrap:wrap;font-size:.9rem;}
+.chips{display:flex;justify-content:center;gap:7px;margin-bottom:14px;flex-wrap:wrap;}
+.chip{font-weight:800;padding:7px 14px;border-radius:999px;border:2px solid var(--grass);color:var(--grass-d);
+  background:#fff;cursor:pointer;font-size:.8rem;}
+.chip.on{background:var(--grass);color:#fff;}
+.chip.bl{border-color:var(--violet);color:var(--violet-d);} .chip.bl.on{background:var(--violet);color:#fff;}
+
+/* ===== конфетти / звёзды ===== */
+#fx{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden;}
+.cf{position:absolute;width:10px;height:10px;animation:cfall .95s ease-out forwards;}
+@keyframes cfall{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(var(--dx),var(--dy)) rotate(var(--r));opacity:0}}
+.flystar{position:fixed;font-size:1.5rem;z-index:61;animation:fly 1s ease-in forwards;pointer-events:none;}
+@keyframes fly{0%{opacity:1;transform:scale(1.3)}100%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(.4)}}
+
+/* ===== уроки ===== */
+.dots{display:flex;justify-content:center;gap:6px;margin-bottom:12px;flex-wrap:wrap;}
+.dot{width:22px;height:22px;border-radius:50%;background:var(--line);cursor:pointer;font-size:.65rem;font-weight:700;
+  color:#fff;display:flex;align-items:center;justify-content:center;transition:transform .15s;}
+.dot.on{background:var(--blue);transform:scale(1.2);}
+.dot.done{background:var(--green);}
+.ltitle{text-align:center;color:var(--ink);margin:0 0 10px;font-size:1.2rem;}
+.lexp{background:#F0F6FF;border:1px solid #D6E7FF;border-radius:14px;padding:13px 15px;line-height:1.6;margin-bottom:16px;font-size:.98rem;color:var(--ink);}
+.lexp b{color:var(--blue-d);}
+.blocks{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;justify-content:center;margin:14px 0;min-height:118px;}
+.bgrp{display:flex;gap:5px;align-items:flex-end;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.tens{display:flex;flex-direction:column-reverse;width:24px;border:1.5px solid var(--orange-d);border-radius:6px;overflow:hidden;}
+.tens i{display:block;height:10px;background:var(--yellow);border-bottom:1px solid rgba(255,255,255,.7);}
+.tens i:last-child{border-bottom:none;}
+.one{width:20px;height:20px;border-radius:50%;background:var(--grass-l);border:1.5px solid var(--blue);}
+.eq{text-align:center;font-size:1.35rem;margin:10px 0;font-weight:700;}
+.lctr{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.lnav{display:flex;justify-content:space-between;gap:10px;margin-top:18px;}
+.cols{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin:10px 0;}
+.col{text-align:center;} .col h4{margin:0 0 4px;color:var(--ink);}
+.seq{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:1.25rem;font-weight:700;}
+.sq{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:7px 13px;}
+.sq.blank{border-color:var(--blue);color:var(--blue);}
+.hundred{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;max-width:420px;margin:0 auto;}
+.hc{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);
+  border-radius:5px;font-size:.68rem;font-weight:700;cursor:pointer;transition:transform .12s;}
+.hc:hover{transform:scale(1.15);}
+.hc.ten{background:#FFF6DB;}
+.hc.hit{background:var(--green);color:#fff;transform:scale(1.1);}
+.hc.miss{background:var(--red);color:#fff;}
+.split{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;font-size:1.1rem;font-weight:700;}
+
+/* ===== чтение ===== */
+.readbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:center;margin-bottom:12px;}
+.progbar{height:10px;background:var(--line);border-radius:99px;overflow:hidden;margin:0 0 6px;}
+.progbar i{display:block;height:100%;background:var(--red);transition:width .5s;}
+.progtxt{text-align:center;font-weight:600;color:var(--sub);font-size:.85rem;margin-bottom:12px;}
+.slist{display:grid;gap:9px;grid-template-columns:1fr;}
+@media(min-width:560px){.slist{grid-template-columns:1fr 1fr;}}
+.sitem{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer;
+  display:flex;align-items:center;gap:11px;transition:transform .1s;position:relative;}
+.sitem:active{transform:scale(.98);}
+.sitem.read{background:#F0FBF2;border-color:#C9EFCE;}
+.sitem .em{font-size:1.6rem;}
+.sitem h3{margin:0;font-size:.95rem;color:var(--ink);line-height:1.2;}
+.sitem .no{font-size:.7rem;color:var(--sub);font-weight:600;}
+.tick{position:absolute;top:6px;right:9px;color:var(--green);font-weight:900;font-size:.9rem;}
+.stext{font-size:1.1rem;line-height:1.75;white-space:pre-line;}
+.back{display:inline-block;margin-bottom:12px;font-weight:600;color:var(--blue);cursor:pointer;}
+.qb{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);}
+.qb .q{font-size:1.05rem;margin:0 0 7px;font-weight:600;}
+.rev{font-size:.8rem;font-weight:600;background:#EAF2FF;color:var(--blue-d);border:none;border-radius:10px;padding:6px 12px;cursor:pointer;}
+.ans{display:none;margin-top:7px;background:#FFF8E1;border:1px solid var(--yellow);border-radius:12px;padding:9px 13px;
+  font-weight:600;color:var(--ink);font-size:.93rem;}
+.ans.on{display:block;animation:fade .2s ease;}
+.note{text-align:center;font-size:.78rem;color:var(--sub);margin-top:2px;}
+
+/* ===== награды ===== */
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px;}
+.badge{text-align:center;padding:12px 6px;border-radius:14px;background:var(--bg);border:1px solid var(--line);opacity:.4;filter:grayscale(1);}
+.badge.got{opacity:1;filter:none;background:#FFF8E1;border-color:var(--yellow);}
+.badge .bi{font-size:1.8rem;display:block;}
+.badge .bn{font-size:.68rem;font-weight:600;color:var(--ink);margin-top:3px;line-height:1.2;}
+.bignum{font-size:1.9rem;color:var(--ink);font-weight:700;}
+.statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;text-align:center;}
+.statgrid > div{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px;}
+.statgrid small{display:block;color:var(--sub);font-weight:600;font-size:.72rem;}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);z-index:70;
+  background:var(--ink);color:#fff;padding:11px 20px;border-radius:999px;font-weight:600;font-size:.9rem;
+  opacity:0;transition:.35s;}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
+@media print{ nav,.topbar,header,.goal,.noprint{display:none!important;} body{background:#fff;} }
+
+/* ================= ПАНЕЛЬ РОДИТЕЛЯ ================= */
+#parentOverlay{position:fixed;inset:0;z-index:210;background:rgba(0,0,0,.4);display:flex;
+  align-items:center;justify-content:center;padding:16px;}
+#parentOverlay.hide{display:none;}
+.pcard{background:var(--card);border-radius:18px;padding:24px;max-width:440px;width:100%;
+  box-shadow:0 10px 40px rgba(0,0,0,.2);max-height:88vh;overflow-y:auto;}
+.pcard h3{margin:0 0 10px;color:var(--ink);text-align:center;}
+.gategrid{display:flex;gap:10px;justify-content:center;align-items:center;margin:14px 0;}
+.setrow{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);gap:10px;}
+.setrow:last-child{border-bottom:none;}
+.setrow label{font-weight:600;color:var(--ink);font-size:.92rem;}
+.sw{position:relative;width:46px;height:26px;background:var(--line);border-radius:99px;cursor:pointer;flex-shrink:0;transition:background .15s;}
+.sw.on{background:var(--green);}
+.sw i{position:absolute;top:2px;left:2px;width:22px;height:22px;border-radius:50%;background:#fff;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.3);}
+.sw.on i{left:22px;}
+.gradegrid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:8px 0 4px;}
+.gbtn{padding:8px 0;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:600;cursor:pointer;font-size:.85rem;}
+.gbtn.on{background:var(--blue);color:#fff;border-color:var(--blue);}
+.gbtn[disabled]{opacity:.35;cursor:not-allowed;}
+.badge-soon{font-size:.65rem;background:var(--line);color:var(--sub);border-radius:6px;padding:1px 5px;margin-left:4px;}
+
+/* ================= ТЕСТЫ (русский/английский/окр.мир/логика) ================= */
+.mcqrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+@media(min-width:460px){.mcqrow.w4{grid-template-columns:1fr 1fr 1fr 1fr;}}
+.mcqopt{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px 8px;cursor:pointer;
+  font-weight:600;font-size:1rem;text-align:center;transition:transform .1s;}
+.mcqopt:active{transform:scale(.97);}
+.mcqopt.right{background:#E9F9EC;border-color:var(--green);}
+.mcqopt.wrong{background:#FDEDEC;border-color:var(--red);}
+.mcqprompt{text-align:center;font-size:1.7rem;margin:6px 0;font-weight:700;}
+.mcqprompt .em{font-size:3rem;display:block;}
+.gradebadge{display:inline-block;background:var(--blue);color:#fff;font-weight:600;font-size:.72rem;
+  padding:3px 10px;border-radius:999px;margin-bottom:8px;}
+
+/* ================= РЕГИСТРАЦИЯ ================= */
+#authScreen{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;
+  padding:20px;overflow-y:auto;background:var(--bg);}
+#authScreen.hide{display:none;}
+.authcard{background:var(--card);border-radius:20px;padding:26px 24px;max-width:460px;width:100%;
+  box-shadow:0 10px 40px rgba(0,0,0,.12);}
+.authcard h2{margin:0 0 4px;text-align:center;color:var(--ink);}
+.authcard p.sub{text-align:center;color:var(--sub);font-weight:500;margin:0 0 18px;font-size:.88rem;}
+.afield{margin-bottom:12px;}
+.afield label{display:block;font-weight:600;color:var(--ink);font-size:.85rem;margin-bottom:4px;}
+.afield input,.afield select{width:100%;font-size:1rem;padding:10px 12px;
+  border-radius:10px;border:1.5px solid var(--line);outline:none;}
+.afield input:focus,.afield select:focus{border-color:var(--blue);}
+.childCard{background:var(--bg);border:1px dashed var(--line);border-radius:14px;padding:12px;margin-bottom:10px;
+  display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;}
+.childCard .afield{flex:1;min-width:120px;margin-bottom:0;}
+.childCard .rmv{background:var(--red);color:#fff;border:none;border-radius:10px;padding:9px 11px;
+  cursor:pointer;font-weight:600;}
+.authnote{font-size:.76rem;color:var(--sub);text-align:center;margin-top:14px;line-height:1.5;}
+
+/* ================= БОКОВОЕ МЕНЮ ================= */
+#sideBackdrop{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:98;display:none;}
+#sideBackdrop.on{display:block;}
+#sideDrawer{position:fixed;top:0;left:0;height:100%;width:260px;max-width:82vw;z-index:99;
+  background:var(--card);box-shadow:2px 0 20px rgba(0,0,0,.1);
+  transform:translateX(-105%);transition:transform .25s ease;padding:18px 14px;overflow-y:auto;}
+#sideDrawer.open{transform:translateX(0);}
+#sideDrawer h3{margin:4px 0 14px;color:var(--ink);text-align:center;}
+.sidebtn{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:none;border-radius:12px;
+  padding:13px 14px;margin-bottom:6px;font-weight:600;font-size:.95rem;
+  color:#fff;cursor:pointer;transition:transform .1s;}
+.sidebtn:active{transform:scale(.98);}
+.sidebtn .ic{font-size:1.2rem;}
+.hbtn{background:var(--card);border:1px solid var(--line);border-radius:10px;width:38px;height:38px;
+  font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+
+/* ================= ПЕРЕКЛЮЧАТЕЛЬ ДЕТЕЙ ================= */
+.childchip{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);
+  border-radius:999px;padding:5px 12px 5px 5px;cursor:pointer;font-weight:600;color:var(--ink);font-size:.9rem;}
+.childav{width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;display:flex;
+  align-items:center;justify-content:center;font-weight:700;font-size:.85rem;}
+#childMenu{position:fixed;z-index:150;background:var(--card);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.15);
+  padding:8px;min-width:200px;display:none;border:1px solid var(--line);}
+#childMenu.on{display:block;}
+.childOpt{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:10px;cursor:pointer;font-weight:600;color:var(--ink);}
+.childOpt:hover{background:var(--bg);}
+.childOpt.active{background:#EAF2FF;}
+.childOpt2{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:10px;cursor:pointer;font-weight:600;color:var(--blue);border-top:1px solid var(--line);margin-top:4px;}
+
+/* ================= ЦЕЛЬ ДОСТИГНУТА ================= */
+#goalOverlay{position:fixed;inset:0;z-index:220;background:rgba(0,0,0,.4);display:flex;
+  align-items:center;justify-content:center;padding:16px;}
+#goalOverlay.hide{display:none;}
+.goalcard{background:var(--card);border-radius:20px;padding:30px 26px;max-width:400px;width:100%;
+  text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.2);}
+.goalcard .big{font-size:3.2rem;margin-bottom:6px;}
+.goalcard h2{margin:0 0 8px;color:var(--ink);}
+.goalcard p{color:var(--sub);font-weight:500;margin:0 0 20px;}
+
+/* ================= РАЗБОР ПРОПУЩЕННЫХ ================= */
+.skipRow{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;
+  border-bottom:1px solid var(--line);font-size:.88rem;}
+.skipRow:last-child{border-bottom:none;}
+.skipRow .qtxt{font-weight:600;color:var(--ink);flex:1;}
+.skipRow .cnt{background:var(--red);color:#fff;font-weight:700;border-radius:999px;
+  padding:2px 9px;font-size:.75rem;flex-shrink:0;}
+.reviewphase{text-align:center;}
+.reviewphase .explainBox{background:#FFF8E1;border:1px solid var(--yellow);border-radius:14px;
+  padding:16px;font-weight:500;color:var(--ink);margin:14px 0;text-align:left;}
+
+/* ================= ГЛАВНЫЙ ЭКРАН (домашний) ================= */
+.homeCard{background:linear-gradient(135deg,var(--blue),#5AC8FA);border-radius:20px;padding:20px;color:#fff;margin-bottom:18px;}
+.homeCard h2{margin:0 0 4px;font-size:1.3rem;}
+.homeCard p{margin:0;opacity:.9;font-size:.9rem;font-weight:500;}
+.appgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:16px 10px;margin-top:6px;}
+.appicon{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;text-align:center;}
+.appicon .sq{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 6px rgba(0,0,0,.15);transition:transform .1s;}
+.appicon .sq svg{width:30px;height:30px;}
+.appicon:active .sq{transform:scale(.92);}
+.appicon span.lb{font-size:.74rem;font-weight:600;color:var(--ink);line-height:1.15;}
+.ringLegendItem{display:flex;align-items:center;gap:6px;font-size:.82rem;font-weight:600;color:var(--ink);}
+.ringDot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<!-- ================= РЕГИСТРАЦИЯ ================= -->
+<div id="authScreen">
+  <div class="authcard">
+    <h2>👋 Добро пожаловать!</h2>
+    <p class="sub">Заполните один раз — дальше дети смогут просто выбирать себя</p>
+    <div class="afield"><label>Имя родителя</label><input type="text" id="regParent" placeholder="Например, Ирина"></div>
+    <div class="afield"><label>Логин</label><input type="text" id="regLogin" placeholder="Придумайте логин"></div>
+    <div class="afield"><label>Пароль</label><input type="password" id="regPass" placeholder="Придумайте пароль"></div>
+    <div id="childrenWrap"></div>
+    <button class="btn ghost sm" onclick="addChildRow()">＋ Добавить ещё ребёнка</button>
+    <div class="row" style="margin-top:18px"><button class="btn g" onclick="doRegister()">Начать заниматься 🚀</button></div>
+    <div class="fb" id="regFb"></div>
+    <p class="authnote">Пароль хранится только в этом браузере, в упрощённом виде — это не настоящий сервер с шифрованием. Для публичного сайта на домене нужна отдельная серверная авторизация.</p>
+  </div>
+</div>
+
+<!-- ================= ПАНЕЛЬ РОДИТЕЛЯ ================= -->
+<div id="parentOverlay" class="hide">
+  <div class="pcard" id="pcardInner"></div>
+</div>
+
+<!-- ================= БОКОВОЕ МЕНЮ ПРЕДМЕТОВ ================= -->
+<div id="sideBackdrop" onclick="closeSide()"></div>
+<div id="sideDrawer">
+  <h3>📚 Предметы</h3>
+  <div id="sideNav"></div>
+</div>
+
+<!-- ================= ЦЕЛЬ ДОСТИГНУТА ================= -->
+<div id="goalOverlay" class="hide">
+  <div class="goalcard">
+    <div class="big">🎉</div>
+    <h2>Цель на сегодня выполнена!</h2>
+    <p id="goalCardText">Ты набрал(а) нужное количество баллов.</p>
+    <div class="row" style="justify-content:center">
+      <button class="btn g" onclick="closeGoalOverlay()">Позаниматься ещё 💪</button>
+      <button class="btn ghost" onclick="finishForToday()">Отдохнуть сегодня 🌙</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= МЕНЮ ПЕРЕКЛЮЧЕНИЯ РЕБЁНКА ================= -->
+<div id="childMenu"></div>
+
+<div id="fx"></div>
+<div class="toast" id="toast"></div>
+
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="hbtn" onclick="openSide()" title="Предметы">☰</button>
+    <div class="childchip" id="childChip" onclick="openChildMenu(event)">
+      <span class="childav" id="childAv">?</span><span id="childChipName">...</span> ▾
+    </div>
+  </div>
+  <div class="toolbtns">
+    <button class="icobtn" onclick="showScreen('home')" title="Главная">🏠</button>
+    <button class="icobtn" id="sndBtn" onclick="toggleSound()" title="Звук">🔔</button>
+    <button class="icobtn" onclick="showScreen('awards')" title="Награды">🏅</button>
+    <button class="icobtn" onclick="openParentGate()" title="Для родителей">⚙️</button>
+  </div>
+</div>
+
+<header>
+  <h1><span class="fx">🌈</span> Тропинка знаний</h1>
+</header>
+
+<div class="goal">
+  <div class="goal-box wide">
+    <div class="grow"><span>🎯 Цель на сегодня</span><span id="goalTxt">0/20</span></div>
+    <div class="progbar" style="margin:2px 0 0"><i id="goalBar" style="width:0%"></i></div>
+  </div>
+  <div class="goal-box">⭐ <span id="starCount">0</span> баллов всего</div>
+  <div class="goal-box" id="accBox">🎯 Точность: —</div>
+</div>
+
+<main>
+
+<!-- ================= ГЛАВНАЯ ================= -->
+<section id="s-home" class="screen">
+  <div class="homeCard">
+    <h2 id="homeGreeting">Привет! 👋</h2>
+    <p>Выбери, чем хочешь заняться сегодня</p>
+  </div>
+  <div class="card" style="text-align:center">
+    <div id="ringsWrap" style="display:flex;justify-content:center;"></div>
+    <div id="ringsLegend" style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:14px;"></div>
+    <button class="btn ghost sm" style="margin-top:14px" onclick="resetTodayProgress()">↻ Обнулить прогресс за сегодня</button>
+  </div>
+  <div class="card">
+    <h3 style="margin:0 0 10px;font-size:1rem;color:var(--ink);">💡 Откуда берутся баллы</h3>
+    <div style="display:grid;gap:8px;font-size:.88rem;color:var(--sub);">
+      <div>✅ Верный ответ в тесте или уроке — <b style="color:var(--ink)">+1 балл</b></div>
+      <div>🧠 Решённая задача — <b style="color:var(--ink)">+2 балла</b></div>
+      <div>📄 Прочитанный короткий рассказ — <b style="color:var(--ink)">+3 балла</b></div>
+      <div>📖 Прочитанный длинный рассказ — <b style="color:var(--ink)">+5 баллов</b></div>
+    </div>
+  </div>
+  <div class="appgrid" id="appGrid"></div>
+</section>
+
+<!-- ================= СЧЁТ ДО 20 ================= -->
+<section id="s-math" class="screen">
+  <div class="chips" style="margin-bottom:18px">
+    <button class="chip on" id="mtab-practice" onclick="switchMathTab('practice')">🔢 Тренировка</button>
+    <button class="chip" id="mtab-lessons" onclick="switchMathTab('lessons')">📘 Уроки (до 100)</button>
+  </div>
+
+  <div id="mathPracticeWrap">
+    <div class="trail-wrap">
+      <div class="trail">
+        <div class="tfill" id="tfill"></div>
+      </div>
+      <div class="tlabel" id="tlabel">Реши 10 примеров подряд</div>
+    </div>
+
+    <div class="chips">
+      <button class="chip on" data-m="all" onclick="setMode('all')">Всё вперемешку</button>
+      <button class="chip" data-m="plus" onclick="setMode('plus')">Только +</button>
+      <button class="chip" data-m="minus" onclick="setMode('minus')">Только −</button>
+      <button class="chip" data-m="gap" onclick="setMode('gap')">Найди число</button>
+      <button class="chip" data-m="cmp" onclick="setMode('cmp')">Больше / меньше</button>
+      <button class="chip" data-m="mul" onclick="setMode('mul')">×2 и ×3</button>
+      <button class="chip" data-m="chain" onclick="setMode('chain')">Цепочка (+ и −)</button>
+      <button class="chip" data-m="div" onclick="setMode('div')">÷2 и ÷3</button>
+    </div>
+
+    <div class="card">
+      <div class="problem" id="prob">5 + 3 = ?</div>
+      <div class="row" id="inputRow">
+        <input type="number" id="ans" placeholder="?" inputmode="numeric">
+        <button class="btn y" id="checkB" onclick="checkMath()">Проверить</button>
+      </div>
+      <div class="row" id="cmpRow" style="display:none">
+        <button class="btn b" onclick="checkCmp('&gt;')">&gt; больше</button>
+        <button class="btn b" onclick="checkCmp('=')">= равно</button>
+        <button class="btn b" onclick="checkCmp('&lt;')">&lt; меньше</button>
+      </div>
+      <div class="row" id="nextRow" style="display:none;margin-top:10px">
+        <button class="btn g" id="nextB" onclick="newProb()">Дальше →</button>
+      </div>
+      <div class="fb" id="mfb"></div>
+      <div class="row" style="margin-top:6px">
+        <button class="btn ghost sm" onclick="showHelp()">🙋 Подсказка</button>
+      </div>
+      <div id="helpBox" style="display:none;margin-top:12px;"></div>
+    </div>
+
+    <div class="stats">
+      <span>✅ Верно: <b id="sGood">0</b></span>
+      <span>🔁 Всего: <b id="sTot">0</b></span>
+      <span>🔥 Подряд: <b id="sStr">0</b></span>
+    </div>
+
+    <div class="card slim noprint" style="margin-top:16px;text-align:center">
+      <b style="color:var(--ink)">Для родителей:</b><br>
+      <button class="btn ghost sm" style="margin-top:8px" onclick="printSheet()">🖨️ Распечатать листок с примерами</button>
+    </div>
+    <div id="printArea" style="display:none"></div>
+  </div>
+
+  <div id="mathLessonsWrap" style="display:none">
+    <div class="dots" id="dots"></div>
+    <div class="card" id="lcard"></div>
+  </div>
+</section>
+
+<!-- ================= РУССКИЙ ЯЗЫК ================= -->
+<section id="s-rus" class="screen">
+  <span class="gradebadge" id="rusGradeBadge">2 класс</span>
+  <div class="dots" id="r-dots"></div>
+  <div class="card" id="r-lcard"></div>
+</section>
+
+<!-- ================= ENGLISH ================= -->
+<section id="s-eng" class="screen">
+  <span class="gradebadge" id="engGradeBadge">2 класс</span>
+  <div class="dots" id="e-dots"></div>
+  <div class="card" id="e-lcard"></div>
+</section>
+
+<!-- ================= ОКРУЖАЮЩИЙ МИР ================= -->
+<section id="s-world" class="screen">
+  <span class="gradebadge" id="worldGradeBadge">2 класс</span>
+  <div class="dots" id="w-dots"></div>
+  <div class="card" id="w-lcard"></div>
+</section>
+
+<!-- ================= ЛОГИКА ================= -->
+<section id="s-logic" class="screen">
+  <span class="gradebadge">2 класс</span>
+  <div class="dots" id="lg-dots"></div>
+  <div class="card" id="lg-lcard"></div>
+</section>
+
+<!-- ================= ЛИТЕРАТУРНОЕ ЧТЕНИЕ ================= -->
+<section id="s-lit" class="screen">
+  <span class="gradebadge">2 класс</span>
+  <div class="dots" id="lt-dots"></div>
+  <div class="card" id="lt-lcard"></div>
+</section>
+
+<!-- ================= ЗАДАЧИ ================= -->
+<section id="s-tasks" class="screen">
+  <div class="chips" id="taskLevelChips">
+    <button class="chip bl on" data-t="20" onclick="setTaskLevel(20)">Числа до 20</button>
+    <button class="chip bl" data-t="100" onclick="setTaskLevel(100)">Числа до 100</button>
+  </div>
+  <div class="card">
+    <div style="font-size:1.15rem;line-height:1.7" id="taskText"></div>
+    <div class="row" style="margin-top:18px">
+      <input type="number" id="taskAns" placeholder="?" inputmode="numeric">
+      <button class="btn v" id="taskCheckB" onclick="checkTask()">Проверить</button>
+      <button class="btn g" id="taskNextB" style="display:none" onclick="newTask()">Дальше →</button>
+    </div>
+    <div class="fb" id="taskFb"></div>
+    <div id="taskHelp" style="display:none;margin-top:12px"></div>
+    <div class="row" style="margin-top:6px">
+      <button class="btn ghost sm" onclick="taskHint()">🙋 Как решать?</button>
+    </div>
+  </div>
+  <div class="stats"><span>✅ Решено задач: <b id="taskDone">0</b></span></div>
+</section>
+
+<!-- ================= ЧТЕНИЕ ================= -->
+<section id="s-read" class="screen">
+  <div class="progbar"><i id="readBar"></i></div>
+  <div class="progtxt" id="readTxt"></div>
+  <div class="readbar">
+    <button class="chip bl on" data-f="all" onclick="setFilter('all')">Все</button>
+    <button class="chip bl" data-f="new" onclick="setFilter('new')">Не читали</button>
+    <button class="chip bl" data-f="done" onclick="setFilter('done')">Прочитано ✓</button>
+  </div>
+  <div class="readbar">
+    <button class="chip on" data-len="all" onclick="setLenFilter('all')">Любая длина</button>
+    <button class="chip" data-len="short" onclick="setLenFilter('short')">📄 Короткие</button>
+    <button class="chip" data-len="long" onclick="setLenFilter('long')">📖 Длинные</button>
+    <button class="btn c sm" onclick="randomStory()">🎲 Случайный</button>
+  </div>
+  <div class="slist" id="slist"></div>
+</section>
+
+<!-- ================= ОДИН РАССКАЗ ================= -->
+<section id="s-story" class="screen">
+  <span class="back" onclick="showScreen('read')">← Все рассказы</span>
+  <div class="card">
+    <h2 id="stTitle" style="margin-top:0"></h2>
+    <div class="stext" id="stBody"></div>
+    <div id="stQs"></div>
+    <div class="row" style="margin-top:18px">
+      <button class="btn g" id="markB" onclick="toggleRead()">✓ Прочитано</button>
+      <button class="btn ghost sm" onclick="nextStory()">Следующий рассказ →</button>
+    </div>
+  </div>
+  <p class="note">Ребёнок читает рассказ и вопросы, отвечает вам вслух. Ответ для проверки скрыт под кнопкой.</p>
+</section>
+
+<!-- ================= НАГРАДЫ ================= -->
+<section id="s-awards" class="screen">
+  <div class="card">
+    <h2 style="margin-top:0;text-align:center;color:var(--sun-d)">🏅 Мои успехи</h2>
+    <div class="statgrid" id="statGrid"></div>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0;text-align:center;color:var(--bark)">Медали</h3>
+    <div class="badges" id="badgeGrid"></div>
+  </div>
+  <div class="card" id="reviewLinkBox" style="text-align:center"></div>
+  <div class="card slim noprint" style="text-align:center">
+    <button class="btn ghost sm" onclick="resetAll()">🗑️ Начать всё заново</button>
+    <p class="note" style="margin-top:8px">Сбросит звёзды, медали и отметки о прочитанных рассказах.</p>
+  </div>
+</section>
+
+<!-- ================= РАЗБОР ПРОПУЩЕННЫХ ================= -->
+<section id="s-review" class="screen">
+  <span class="back" onclick="showScreen('awards')">← Назад к успехам</span>
+  <div class="card" id="reviewCard"></div>
+</section>
+
+</main>
+
+<script src="russian.js"></script>
+<script src="russian1.js"></script>
+<script src="russian3.js"></script>
+<script src="english.js"></script>
+<script src="world.js"></script>
+<script src="world1.js"></script>
+<script src="world3.js"></script>
+<script src="logic.js"></script>
+<script src="logic1.js"></script>
+<script src="lit.js"></script>
+<script src="math1.js"></script>
+<script src="math3.js"></script>
+<script>
+/* ================= СТРАХОВКА ОТ ЗАВИСАНИЯ ================= */
+window.addEventListener("error", function(e){
+  console.error("Ошибка приложения:", e.error||e.message);
+  const missing=[];
+  if(typeof RUS_MOD==="undefined") missing.push("russian.js");
+  if(typeof RUS1_MOD==="undefined") missing.push("russian1.js");
+  if(typeof RUS3_MOD==="undefined") missing.push("russian3.js");
+  if(typeof ENG_MOD==="undefined") missing.push("english.js");
+  if(typeof WORLD_MOD==="undefined") missing.push("world.js");
+  if(typeof WORLD1_MOD==="undefined") missing.push("world1.js");
+  if(typeof WORLD3_MOD==="undefined") missing.push("world3.js");
+  if(typeof LOGIC_MOD==="undefined") missing.push("logic.js");
+  if(typeof LOGIC1_MOD==="undefined") missing.push("logic1.js");
+  if(typeof LIT_MOD==="undefined") missing.push("lit.js");
+  if(typeof LESSONS_G1==="undefined") missing.push("math1.js");
+  if(typeof LESSONS_G3==="undefined") missing.push("math3.js");
+  const box=document.createElement("div");
+  box.style.cssText="position:fixed;inset:0;z-index:999;background:rgba(20,14,40,.92);color:#fff;"+
+    "display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:sans-serif;";
+  box.innerHTML = missing.length
+    ? `<div style="max-width:420px"><h2>⚠️ Не все файлы найдены</h2>
+       <p>Не загрузились: <b>${missing.join(", ")}</b>.</p>
+       <p>Проверьте, что все файлы (index.html, themes.js, stories.js, russian.js, english.js) лежат в одной папке, и откройте index.html заново.</p>
+       <button onclick="this.closest('div').parentElement.remove()" style="margin-top:10px;padding:10px 20px;border-radius:10px;border:none;font-weight:800;cursor:pointer">Закрыть и попробовать так</button></div>`
+    : `<div style="max-width:420px"><h2>⚠️ Что-то пошло не так</h2>
+       <p>Попробуйте обновить страницу (F5). Если не поможет — сообщите об ошибке.</p>
+       <button onclick="this.closest('div').parentElement.remove()" style="margin-top:10px;padding:10px 20px;border-radius:10px;border:none;font-weight:800;cursor:pointer">Закрыть</button></div>`;
+  if(!document.getElementById("__errBox")){
+    box.id="__errBox";
+    document.body.appendChild(box);
+  }
+});
+
+/* ================= ХРАНИЛИЩЕ ================= */
+const DEF={name:"",stars:0,solved:0,tasks:0,read:[],lessons:[],badges:[],days:{},best:0,
+  grade:2,dailyGoal:20,
+  totalCorrect:0,totalTries:0,skipped:{},
+  subjects:{math:true,tasks:true,rus:true,eng:true,world:true,logic:true,lit:true,read:true},
+  rusDone:[],engDone:[],worldDone:[],logicDone:[],litDone:[]};
+let D=Object.assign({},DEF);
+let canStore=true;
+let ACCOUNT=null;
+function todayKey(){const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();}
+
+function simpleHash(str){
+  let h=0; for(let i=0;i<str.length;i++){ h=((h<<5)-h+str.charCodeAt(i))|0; }
+  return "h"+Math.abs(h).toString(36)+"_"+str.length;
+}
+function loadAccount(){
+  try{ const s=localStorage.getItem("tropinkaAccount"); if(s) ACCOUNT=JSON.parse(s); }
+  catch(e){ canStore=false; }
+}
+function saveAccount(){
+  if(!canStore)return;
+  try{ localStorage.setItem("tropinkaAccount", JSON.stringify(ACCOUNT)); }
+  catch(e){ canStore=false; }
+}
+function childKey(id){ return "tropinkaChild_"+id; }
+
+function load(){
+  if(!ACCOUNT || !ACCOUNT.activeChildId){ D=Object.assign({},DEF); return; }
+  try{
+    const s=localStorage.getItem(childKey(ACCOUNT.activeChildId));
+    D = s ? Object.assign({},DEF,JSON.parse(s)) : Object.assign({},DEF);
+    const c=ACCOUNT.children.find(x=>x.id===ACCOUNT.activeChildId);
+    if(c){ if(!D.name)D.name=c.name; D.grade=c.grade; }
+  }catch(e){ canStore=false; D=Object.assign({},DEF); }
+  li=0;
+}
+function save(){
+  if(!canStore || !ACCOUNT || !ACCOUNT.activeChildId)return;
+  try{ localStorage.setItem(childKey(ACCOUNT.activeChildId), JSON.stringify(D)); }
+  catch(e){ canStore=false; }
+}
+function today(){ if(!D.days[todayKey()])D.days[todayKey()]={m:0,r:0,pts:0,goalShown:false,tries:0,correct:0,touched:[]}; const t=D.days[todayKey()]; if(t.pts===undefined)t.pts=0; if(t.goalShown===undefined)t.goalShown=false; if(t.tries===undefined)t.tries=0; if(t.correct===undefined)t.correct=0; if(!t.touched)t.touched=[]; return t; }
+function touchSubject(key){ const t=today(); if(!t.touched.includes(key)) t.touched.push(key); save(); }
+
+/* ================= РЕГИСТРАЦИЯ / ДЕТИ ================= */
+function addChildRow(){
+  const w=document.getElementById("childrenWrap");
+  const row=document.createElement("div");
+  row.className="childCard";
+  let gradeOpts=""; for(let g=1;g<=11;g++) gradeOpts+=`<option value="${g}" ${g===2?'selected':''}>${g} класс</option>`;
+  row.innerHTML=`
+    <div class="afield"><label>Имя ребёнка</label><input type="text" class="regChildName" placeholder="Например, Настя"></div>
+    <div class="afield"><label>Класс</label><select class="regChildGrade">${gradeOpts}</select></div>
+    <button class="rmv" onclick="this.parentElement.remove()">✕</button>`;
+  w.appendChild(row);
+}
+function doRegister(){
+  const parent=document.getElementById("regParent").value.trim();
+  const login=document.getElementById("regLogin").value.trim();
+  const pass=document.getElementById("regPass").value;
+  const fb=document.getElementById("regFb");
+  const rows=[...document.querySelectorAll("#childrenWrap .childCard")];
+  const children=rows.map(r=>({
+    id:"c"+Date.now()+Math.floor(Math.random()*9999),
+    name:r.querySelector(".regChildName").value.trim().slice(0,20),
+    grade:parseInt(r.querySelector(".regChildGrade").value,10)||2
+  })).filter(c=>c.name);
+  if(!parent||!login||!pass){ fb.textContent="Заполните имя, логин и пароль."; fb.className="fb no"; return; }
+  if(pass.length<3){ fb.textContent="Пароль слишком короткий (минимум 3 символа)."; fb.className="fb no"; return; }
+  if(!children.length){ fb.textContent="Добавьте хотя бы одного ребёнка с именем."; fb.className="fb no"; return; }
+  ACCOUNT={ parentName:parent, login, passHash:simpleHash(pass), children, activeChildId:children[0].id };
+  children.forEach(c=>{
+    localStorage.setItem(childKey(c.id), JSON.stringify(Object.assign({},DEF,{name:c.name,grade:c.grade})));
+  });
+  saveAccount();
+  document.getElementById("authScreen").classList.add("hide");
+  try{ startApp(); }
+  catch(err){ console.error("Ошибка запуска:", err); window.dispatchEvent(new ErrorEvent("error",{error:err,message:err.message})); }
+}
+function updateChildChip(){
+  document.getElementById("childAv").textContent=(D.name||"?").slice(0,1).toUpperCase();
+  document.getElementById("childChipName").textContent=D.name||"Ребёнок";
+}
+function openChildMenu(ev){
+  const menu=document.getElementById("childMenu");
+  if(menu.classList.contains("on")){ closeChildMenu(); return; }
+  let html="";
+  ACCOUNT.children.forEach(c=>{
+    html+=`<div class="childOpt${c.id===ACCOUNT.activeChildId?' active':''}" onclick="switchChild('${c.id}')">
+      <span class="childav" style="width:22px;height:22px;font-size:.7rem">${c.name.slice(0,1).toUpperCase()}</span>
+      ${c.name} <span style="font-weight:600;color:#a3937a;font-size:.75rem">(${c.grade} кл.)</span></div>`;
+  });
+  html+=`<div class="childOpt2" onclick="closeChildMenu();openParentGate()">⚙️ Управление детьми</div>`;
+  menu.innerHTML=html;
+  const r=document.getElementById("childChip").getBoundingClientRect();
+  menu.style.top=(r.bottom+8)+"px"; menu.style.left=r.left+"px";
+  menu.classList.add("on");
+  setTimeout(()=>document.addEventListener("click",outsideChildMenu),0);
+}
+function outsideChildMenu(e){
+  const menu=document.getElementById("childMenu"), chip=document.getElementById("childChip");
+  if(!menu.contains(e.target) && !chip.contains(e.target)) closeChildMenu();
+}
+function closeChildMenu(){ document.getElementById("childMenu").classList.remove("on"); document.removeEventListener("click",outsideChildMenu); }
+function switchChild(id){
+  if(id===ACCOUNT.activeChildId){ closeChildMenu(); return; }
+  save();
+  ACCOUNT.activeChildId=id; saveAccount();
+  load();
+  renderSideNav(); renderAppGrid(); updateChildChip(); renderTop();
+  newProb();drawStats();trail();
+  newTask();document.getElementById("taskDone").textContent=D.tasks;
+  showScreen("home");closeChildMenu();
+  toast("Профиль: "+D.name);
+}
+
+/* ================= ЗВУК ================= */
+let sound=true, actx=null;
+function beep(freq,dur,type){
+  if(!sound)return;
+  try{
+    actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+    const o=actx.createOscillator(),g=actx.createGain();
+    o.type=type||"sine";o.frequency.value=freq;o.connect(g);g.connect(actx.destination);
+    g.gain.setValueAtTime(.12,actx.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001,actx.currentTime+dur);
+    o.start();o.stop(actx.currentTime+dur);
+  }catch(e){}
+}
+function sndOk(){beep(660,.12);setTimeout(()=>beep(880,.18),110);}
+function sndNo(){beep(200,.22,"triangle");}
+function toggleSound(){sound=!sound;document.getElementById("sndBtn").textContent=sound?"🔔":"🔕";toast(sound?"Звук включён":"Звук выключен");}
+
+/* ================= ЛЕНИВАЯ ЗАГРУЗКА РАССКАЗОВ ================= */
+let storiesLoading=false;
+function ensureStoriesLoaded(cb){
+  if(typeof STORIES!=="undefined"){ cb(); return; }
+  if(storiesLoading){ setTimeout(()=>ensureStoriesLoaded(cb),150); return; }
+  storiesLoading=true;
+  const s=document.createElement("script");
+  s.src="stories.js";
+  s.onload=()=>{ storiesLoading=false; cb(); };
+  s.onerror=()=>{ storiesLoading=false; toast("Не удалось загрузить рассказы — проверь, что файл stories.js рядом с index.html"); };
+  document.body.appendChild(s);
+}
+
+/* ================= ЭФФЕКТЫ ================= */
+function confetti(n){
+  const L=document.getElementById("fx"),C=["#ffc93c","#3fa34d","#ff6b5f","#3fa9d8","#8a6fd6","#e0a300"];
+  const cx=innerWidth/2,cy=innerHeight*.34;
+  for(let i=0;i<(n||24);i++){
+    const p=document.createElement("div");p.className="cf";
+    const a=Math.random()*Math.PI*2,d=90+Math.random()*160;
+    p.style.setProperty("--dx",Math.cos(a)*d+"px");
+    p.style.setProperty("--dy",(Math.sin(a)*d-70)+"px");
+    p.style.setProperty("--r",Math.random()*540+"deg");
+    p.style.left=cx+"px";p.style.top=cy+"px";
+    p.style.background=C[i%C.length];p.style.borderRadius=Math.random()<.5?"50%":"2px";
+    L.appendChild(p);setTimeout(()=>p.remove(),1000);
+  }
+}
+function flyStar(){
+  const s=document.createElement("div");s.className="flystar";s.textContent="⭐";
+  s.style.left=(innerWidth/2-12)+"px";s.style.top=(innerHeight*.4)+"px";
+  const t=document.getElementById("starCount").getBoundingClientRect();
+  s.style.setProperty("--sx",(t.left-innerWidth/2)+"px");
+  s.style.setProperty("--sy",(t.top-innerHeight*.4)+"px");
+  document.body.appendChild(s);setTimeout(()=>s.remove(),1000);
+}
+function toast(msg){
+  const t=document.getElementById("toast");t.textContent=msg;t.classList.add("on");
+  clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("on"),2200);
+}
+function addStar(n){
+  D.stars+=(n||1); today().pts+=(n||1);
+  flyStar(); save(); renderTop();
+  const t=today();
+  if(!t.goalShown && t.pts>=(D.dailyGoal||20)){
+    t.goalShown=true; save();
+    setTimeout(openGoalOverlay,600);
+  }
+}
+function openGoalOverlay(){
+  document.getElementById("goalCardText").textContent=
+    "Ты набрал(а) "+today().pts+" баллов из цели "+(D.dailyGoal||20)+"! ";
+  document.getElementById("goalOverlay").classList.remove("hide");
+}
+function closeGoalOverlay(){ document.getElementById("goalOverlay").classList.add("hide"); }
+function resetTodayProgress(){
+  if(!confirm("Обнулить прогресс за сегодня (баллы дня, точность дня, кольца)? Общий счёт баллов и медали не пострадают."))return;
+  D.days[todayKey()]={m:0,r:0,pts:0,goalShown:false,tries:0,correct:0,touched:[]};
+  save();
+  renderTop();
+  toast("Прогресс за сегодня обнулён");
+}
+function finishForToday(){
+  document.getElementById("goalOverlay").innerHTML=`<div class="goalcard">
+    <div class="big">🌙</div><h2>До завтра!</h2>
+    <p>Ты хорошо позанимался(ась) сегодня. Отдохни — и возвращайся завтра за новыми баллами.</p>
+    <button class="btn ghost" onclick="closeGoalOverlay()">Всё же позаниматься ещё</button>
+  </div>`;
+}
+function recordAttempt(ok,subj){
+  D.totalTries=(D.totalTries||0)+1;
+  if(ok) D.totalCorrect=(D.totalCorrect||0)+1;
+  const t=today();
+  t.tries=(t.tries||0)+1;
+  if(ok) t.correct=(t.correct||0)+1;
+  if(subj) touchSubject(subj);
+  save();
+  const acc=D.totalTries>0 ? Math.round(D.totalCorrect/D.totalTries*100) : null;
+  const box=document.getElementById("accBox");
+  if(box) box.textContent = acc===null ? "🎯 Точность: —" : "🎯 Точность: "+acc+"%";
+}
+let autoNextTimer=null;
+function scheduleAutoNext(fn){ clearTimeout(autoNextTimer); autoNextTimer=setTimeout(fn,1500); }
+function clearAutoNext(){ clearTimeout(autoNextTimer); }
+
+/* ================= МЕДАЛИ ================= */
+const BADGES=[
+ {id:"first",i:"🌱",n:"Первый шаг",c:d=>d.solved>=1},
+ {id:"m10",i:"⭐",n:"10 примеров",c:d=>d.solved>=10},
+ {id:"m50",i:"🌟",n:"50 примеров",c:d=>d.solved>=50},
+ {id:"m100",i:"🏆",n:"100 примеров",c:d=>d.solved>=100},
+ {id:"m300",i:"👑",n:"300 примеров",c:d=>d.solved>=300},
+ {id:"str5",i:"🔥",n:"5 подряд",c:d=>d.best>=5},
+ {id:"str10",i:"💎",n:"10 подряд",c:d=>d.best>=10},
+ {id:"t10",i:"🧠",n:"10 задач",c:d=>d.tasks>=10},
+ {id:"t40",i:"🎓",n:"40 задач",c:d=>d.tasks>=40},
+ {id:"r1",i:"📖",n:"Первый рассказ",c:d=>d.read.length>=1},
+ {id:"r10",i:"📚",n:"10 рассказов",c:d=>d.read.length>=10},
+ {id:"r25",i:"🦉",n:"25 рассказов",c:d=>d.read.length>=25},
+ {id:"r50",i:"🌍",n:"50 рассказов",c:d=>d.read.length>=50},
+ {id:"r100",i:"🎖️",n:"Все 100!",c:d=>d.read.length>=100},
+ {id:"les",i:"🧮",n:"Все уроки",c:d=>d.lessons.length>=LESSONS.length},
+ {id:"d3",i:"🗓️",n:"3 дня подряд",c:d=>Object.keys(d.days).length>=3},
+ {id:"d7",i:"🏵️",n:"7 дней",c:d=>Object.keys(d.days).length>=7},
+ {id:"rus",i:"📝",n:"Знаток русского",c:d=>d.rusDone&&d.rusDone.length>=RUS_MOD.length},
+ {id:"eng",i:"🇬🇧",n:"English Star",c:d=>d.engDone&&d.engDone.length>=ENG_MOD.length},
+ {id:"world",i:"🌍",n:"Знаток мира",c:d=>d.worldDone&&d.worldDone.length>=WORLD_MOD.length},
+ {id:"logic",i:"🧩",n:"Мастер логики",c:d=>d.logicDone&&d.logicDone.length>=LOGIC_MOD.length},
+ {id:"lit",i:"📚",n:"Знаток книг",c:d=>d.litDone&&d.litDone.length>=LIT_MOD.length},
+];
+function checkBadges(){
+  BADGES.forEach(b=>{
+    if(!D.badges.includes(b.id)&&b.c(D)){
+      D.badges.push(b.id);save();
+      confetti(40);sndOk();toast("Новая медаль: "+b.i+" "+b.n+"!");
+    }
+  });
+}
+
+/* ================= ВЕРХНЯЯ ПАНЕЛЬ ================= */
+function renderTop(){
+  const t=today();
+  const goal=D.dailyGoal||20;
+  document.getElementById("goalTxt").textContent=Math.min(t.pts,goal)+"/"+goal;
+  document.getElementById("goalBar").style.width=Math.min(100,Math.round(t.pts/goal*100))+"%";
+  document.getElementById("starCount").textContent=D.stars;
+  const acc=D.totalTries>0 ? Math.round(D.totalCorrect/D.totalTries*100) : null;
+  document.getElementById("accBox").textContent = acc===null ? "🎯 Точность: —" : "🎯 Точность: "+acc+"%";
+  updateChildChip();
+  renderRings();
+  const gradeTxt=(D.grade||2)+" класс";
+  ["rusGradeBadge","engGradeBadge","worldGradeBadge"].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.textContent=gradeTxt;
+  });
+}
+function renderRings(){
+  const wrap=document.getElementById("ringsWrap"); if(!wrap)return;
+  const t=today();
+  const goalPct=Math.min(100, Math.round(t.pts/(D.dailyGoal||20)*100));
+  const accPct = t.tries>0 ? Math.round(t.correct/t.tries*100) : 0;
+  const totalSubj = SUBJECTS.filter(s=>s.id!=="awards" && D.subjects[s.id]!==false).length;
+  const touchedCount = t.touched?t.touched.length:0;
+  const varietyPct = totalSubj>0 ? Math.min(100,Math.round(touchedCount/totalSubj*100)) : 0;
+  const rings=[
+    {r:42,pct:goalPct,color:"var(--red)",label:"Баллы",val:Math.min(t.pts,D.dailyGoal||20)+"/"+(D.dailyGoal||20)},
+    {r:32,pct:accPct,color:"var(--green)",label:"Точность",val:accPct+"%"},
+    {r:22,pct:varietyPct,color:"var(--blue)",label:"Разделы",val:touchedCount+"/"+totalSubj},
+  ];
+  let svg=`<svg width="170" height="170" viewBox="0 0 100 100">`;
+  rings.forEach(rg=>{
+    const c=2*Math.PI*rg.r;
+    const off=c*(1-rg.pct/100);
+    svg+=`<circle cx="50" cy="50" r="${rg.r}" fill="none" stroke="var(--line)" stroke-width="9"/>`;
+    svg+=`<circle cx="50" cy="50" r="${rg.r}" fill="none" stroke="${rg.color}" stroke-width="9" stroke-linecap="round" stroke-dasharray="${c.toFixed(2)}" stroke-dashoffset="${off.toFixed(2)}" transform="rotate(-90 50 50)" style="transition:stroke-dashoffset .6s ease"/>`;
+  });
+  svg+=`</svg>`;
+  wrap.innerHTML=svg;
+  document.getElementById("ringsLegend").innerHTML=rings.map(rg=>
+    `<div class="ringLegendItem"><span class="ringDot" style="background:${rg.color}"></span>${rg.label}: ${rg.val}</div>`
+  ).join("");
+}
+/* ================= БОКОВОЕ МЕНЮ ================= */
+const SUBJECTS=[
+  {id:"math",label:"🔢 Математика",text:"Математика",color:"var(--grass)"},
+  {id:"tasks",label:"🧠 Задачи",text:"Задачи",color:"var(--violet)"},
+  {id:"rus",label:"📝 Русский язык",text:"Русский язык",color:"var(--pink)"},
+  {id:"eng",label:"🇬🇧 English",text:"English",color:"var(--teal)"},
+  {id:"world",label:"🌍 Окружающий мир",text:"Окружающий мир",color:"var(--sun)"},
+  {id:"logic",label:"🧩 Логика",text:"Логика",color:"var(--violet)"},
+  {id:"lit",label:"📚 Лит. чтение",text:"Лит. чтение",color:"var(--indigo,#5856D6)"},
+  {id:"read",label:"📖 Чтение",text:"Чтение",color:"var(--coral)"},
+  {id:"awards",label:"🏅 Награды",text:"Награды",color:"var(--sun-d)"},
+];
+
+/* Векторные иконки (SVG, рисуются кодом — чёткие на любом экране, без внешних картинок) */
+const ICON_SVGS={
+  math:`<svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2" stroke="white" stroke-width="1.6"/><rect x="7.3" y="5.3" width="9.4" height="4" rx="0.8" stroke="white" stroke-width="1.4"/><circle cx="8.3" cy="13.2" r="1" fill="white"/><circle cx="12" cy="13.2" r="1" fill="white"/><circle cx="15.7" cy="13.2" r="1" fill="white"/><circle cx="8.3" cy="17" r="1" fill="white"/><circle cx="12" cy="17" r="1" fill="white"/><circle cx="15.7" cy="17" r="1" fill="white"/></svg>`,
+  tasks:`<svg viewBox="0 0 24 24" fill="none"><path d="M9 18.5h6M10 21h4" stroke="white" stroke-width="1.6" stroke-linecap="round"/><path d="M12 3a6 6 0 0 0-3.4 10.9c.6.42 1.1 1.2 1.2 2.1h4.4c.1-.9.6-1.68 1.2-2.1A6 6 0 0 0 12 3z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/></svg>`,
+  rus:`<svg viewBox="0 0 24 24" fill="none"><path d="M4.5 19.5l1-4L15 6l3 3-9.5 9.5-4 1z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/><path d="M13 8l3 3" stroke="white" stroke-width="1.6"/></svg>`,
+  eng:`<svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v10.5H9.5l-3.2 3v-3H4V5z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/><text x="12" y="13" font-size="7.2" fill="white" text-anchor="middle" font-family="-apple-system,sans-serif" font-weight="700">Aa</text></svg>`,
+  world:`<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l3.4 5.2h-2L17 13.4h-2.6V18h-4.8v-4.6H7l3.6-5.2h-2L12 3z" stroke="white" stroke-width="1.4" stroke-linejoin="round"/></svg>`,
+  logic:`<svg viewBox="0 0 24 24" fill="none"><path d="M9 4h4v1.7a1.4 1.4 0 1 0 2.8 0V4H19v3.6h-1.7a1.4 1.4 0 1 0 0 2.8H19V14h-3.2v-1.7a1.4 1.4 0 1 0-2.8 0V14H9v-3.6h1.7a1.4 1.4 0 1 0 0-2.8H9V4z" stroke="white" stroke-width="1.4" stroke-linejoin="round"/></svg>`,
+  lit:`<svg viewBox="0 0 24 24" fill="none"><path d="M12 6c-1.9-1.3-4.2-1.6-6.3-1v12.6c2.1-.6 4.4-.3 6.3 1 1.9-1.3 4.2-1.6 6.3-1V5c-2.1-.6-4.4-.3-6.3 1z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 6v12.6" stroke="white" stroke-width="1.3"/></svg>`,
+  read:`<svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="1.6" stroke="white" stroke-width="1.6"/><path d="M9.2 3v6.2l2-1.5 2 1.5V3" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+  awards:`<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="5" stroke="white" stroke-width="1.6"/><path d="M9 13.6L7 21l5-2.6L17 21l-2-7.4" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 6.3l1 2.1 2.2.3-1.6 1.5.4 2.2-2-1.1-2 1.1.4-2.2-1.6-1.5 2.2-.3z" fill="white"/></svg>`,
+};
+
+function renderSideNav(){
+  const w=document.getElementById("sideNav");w.innerHTML="";
+  const home=document.createElement("button");
+  home.className="sidebtn";home.id="sb-home";home.style.background="var(--ink)";
+  home.textContent="🏠 Главная";
+  home.onclick=()=>{ showScreen("home"); closeSide(); };
+  w.appendChild(home);
+  SUBJECTS.forEach(s=>{
+    if(s.id!=="awards" && D.subjects[s.id]===false) return;
+    if(D.grade===1 && (s.id==="eng"||s.id==="lit")) return;
+    const b=document.createElement("button");
+    b.className="sidebtn";b.id="sb-"+s.id;b.style.background=s.color;
+    b.textContent=s.label;
+    b.onclick=()=>{ showScreen(s.id); closeSide(); };
+    w.appendChild(b);
+  });
+}
+function openSide(){ document.getElementById("sideDrawer").classList.add("open"); document.getElementById("sideBackdrop").classList.add("on"); }
+function closeSide(){ document.getElementById("sideDrawer").classList.remove("open"); document.getElementById("sideBackdrop").classList.remove("on"); }
+function applyNav(){ renderSideNav(); }
+
+function askName(){
+  const n=prompt("Как тебя зовут?",D.name||"");
+  if(n!==null){D.name=n.trim().slice(0,20);save();renderTop();}
+}
+
+/* ================= ГЛАВНАЯ (домашний экран) ================= */
+function renderAppGrid(){
+  const grid=document.getElementById("appGrid");
+  if(!grid)return;
+  grid.innerHTML="";
+  SUBJECTS.forEach(s=>{
+    if(s.id!=="awards" && D.subjects[s.id]===false) return;
+    if(D.grade===1 && (s.id==="eng"||s.id==="lit")) return;
+    const a=document.createElement("div");
+    a.className="appicon";
+    a.onclick=()=>showScreen(s.id);
+    const icon=ICON_SVGS[s.id]||"";
+    a.innerHTML=`<div class="sq" style="background:${s.color}">${icon}</div><span class="lb">${s.text}</span>`;
+    grid.appendChild(a);
+  });
+  const gh=document.getElementById("homeGreeting");
+  if(gh) gh.textContent=(D.name?("Привет, "+D.name+"! 👋"):"Привет! 👋");
+}
+
+/* ================= ПАНЕЛЬ РОДИТЕЛЯ ================= */
+const GRADES_READY=[1,2,3];
+function openParentGate(){
+  document.getElementById("pcardInner").innerHTML = `
+    <h3>👨‍👩‍👧 Вход для родителя</h3>
+    <p class="note" style="margin-bottom:10px">Введите логин и пароль, указанные при регистрации.</p>
+    <div class="afield"><label>Логин</label><input type="text" id="gateLogin"></div>
+    <div class="afield"><label>Пароль</label><input type="password" id="gatePass"></div>
+    <div class="row"><button class="btn b" onclick="checkGate()">Войти</button>
+    <button class="btn ghost" onclick="closeParent()">Отмена</button></div>
+    <div class="fb" id="gateFb"></div>`;
+  document.getElementById("parentOverlay").classList.remove("hide");
+}
+function checkGate(){
+  const l=document.getElementById("gateLogin").value.trim();
+  const p=document.getElementById("gatePass").value;
+  const fb=document.getElementById("gateFb");
+  if(l===ACCOUNT.login && simpleHash(p)===ACCOUNT.passHash){ drawParentPanel(); }
+  else{ fb.textContent="Неверный логин или пароль."; fb.className="fb no"; }
+}
+function closeParent(){ document.getElementById("parentOverlay").classList.add("hide"); }
+
+function drawParentPanel(){
+  let childRows="";
+  ACCOUNT.children.forEach(c=>{
+    let gradeOpts="";
+    for(let g=1;g<=11;g++){
+      const ready=GRADES_READY.includes(g);
+      gradeOpts+=`<option value="${g}" ${c.grade===g?'selected':''}>${g} класс${ready?'':' (скоро)'}</option>`;
+    }
+    childRows+=`<div class="childCard" data-id="${c.id}">
+      <div class="afield"><label>Имя</label><input type="text" class="pcName" value="${c.name}"></div>
+      <div class="afield"><label>Класс</label><select class="pcGrade">${gradeOpts}</select></div>
+      ${ACCOUNT.children.length>1?`<button class="rmv" onclick="removeChildRow('${c.id}')">✕</button>`:''}
+    </div>`;
+  });
+  const subjLabels={math:"🔢 Математика",tasks:"🧠 Задачи",rus:"📝 Русский язык",eng:"🇬🇧 English",world:"🌍 Окружающий мир",logic:"🧩 Логика",lit:"📚 Лит. чтение",read:"📖 Чтение"};
+  let subjRows="";
+  Object.keys(subjLabels).forEach(k=>{
+    subjRows+=`<div class="setrow"><label>${subjLabels[k]}</label>
+      <div class="sw${D.subjects[k]?' on':''}" onclick="toggleSubject('${k}')"><i></i></div></div>`;
+  });
+  const skippedList=Object.values(D.skipped||{}).sort((a,b)=>b.count-a.count).slice(0,8);
+  const skipHtml=skippedList.length
+    ? skippedList.map(s=>`<div class="skipRow"><span class="qtxt">${s.subj} · ${s.lesson}: «${s.q}»</span><span class="cnt">×${s.count}</span></div>`).join("")
+    : `<p class="note" style="text-align:left">Пока ничего не пропущено — отлично!</p>`;
+  document.getElementById("pcardInner").innerHTML=`
+    <h3>⚙️ Настройки семьи</h3>
+    <p class="note" style="text-align:left;margin:4px 0 8px"><b>Дети в аккаунте</b> (материалы готовы для 1, 2 и 3 классов, остальные — «скоро»)</p>
+    ${childRows}
+    <button class="btn ghost sm" onclick="addChildInPanel()">＋ Добавить ребёнка</button>
+    <p class="note" style="text-align:left;margin:18px 0 4px"><b>Разделы для профиля «${D.name||'?'}»</b></p>
+    ${subjRows}
+    <div class="setrow"><label>🎯 Цель баллов в день</label>
+      <input type="number" id="setGoal" value="${D.dailyGoal||20}" class="mini" style="width:70px"></div>
+    <p class="note" style="text-align:left;margin:18px 0 4px"><b>🔁 Часто пропускаемые вопросы</b> (кнопка «Другой вопрос»)</p>
+    ${skipHtml}
+    ${skippedList.length?`<button class="btn v sm" style="margin-top:8px" onclick="closeParent();showScreen('review')">Разобрать пропущенные с ребёнком</button>`:''}
+    <div class="row" style="margin-top:18px">
+      <button class="btn g" onclick="saveParentPanel()">Сохранить</button>
+      <button class="btn ghost" onclick="closeParent()">Закрыть</button>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button class="btn c sm" onclick="resetAll()">🗑️ Сбросить прогресс «${D.name||'?'}»</button>
+    </div>`;
+}
+function addChildInPanel(){
+  const name=prompt("Имя нового ребёнка:"); if(!name)return;
+  let grade=parseInt(prompt("В каком классе? (1–11)","2"),10); if(!grade||grade<1||grade>11)grade=2;
+  const id="c"+Date.now()+Math.floor(Math.random()*9999);
+  ACCOUNT.children.push({id,name:name.trim().slice(0,20),grade});
+  localStorage.setItem(childKey(id), JSON.stringify(Object.assign({},DEF,{name:name.trim().slice(0,20),grade})));
+  saveAccount(); drawParentPanel(); toast("Ребёнок добавлен!");
+}
+function removeChildRow(id){
+  if(ACCOUNT.children.length<=1){ toast("Нужен хотя бы один профиль"); return; }
+  if(!confirm("Удалить профиль ребёнка и весь его прогресс без возможности восстановления?"))return;
+  ACCOUNT.children=ACCOUNT.children.filter(c=>c.id!==id);
+  localStorage.removeItem(childKey(id));
+  if(ACCOUNT.activeChildId===id) ACCOUNT.activeChildId=ACCOUNT.children[0].id;
+  saveAccount(); drawParentPanel();
+  load(); renderSideNav(); renderAppGrid(); updateChildChip(); renderTop();
+}
+function toggleSubject(k){ D.subjects[k]=!D.subjects[k]; drawParentPanel(); }
+function saveParentPanel(){
+  document.querySelectorAll("#pcardInner .childCard").forEach(row=>{
+    const id=row.dataset.id;
+    const name=row.querySelector(".pcName").value.trim().slice(0,20)||"Ребёнок";
+    const grade=parseInt(row.querySelector(".pcGrade").value,10)||2;
+    const c=ACCOUNT.children.find(x=>x.id===id);
+    if(c){ c.name=name; c.grade=grade; }
+    if(id===ACCOUNT.activeChildId){ D.name=name; D.grade=grade; }
+    try{
+      const raw=localStorage.getItem(childKey(id));
+      const dd=raw?JSON.parse(raw):Object.assign({},DEF);
+      dd.name=name; dd.grade=grade;
+      localStorage.setItem(childKey(id), JSON.stringify(dd));
+    }catch(e){}
+  });
+  const g=parseInt(document.getElementById("setGoal").value,10);
+  if(g&&g>0) D.dailyGoal=g;
+  li=0;
+  saveAccount(); save(); renderTop(); applyNav(); renderAppGrid(); updateChildChip(); closeParent(); toast("Настройки сохранены");
+}
+
+
+/* ================= СЧЁТ ДО 20 ================= */
+let mode="all",cur=null,S={good:0,tot:0,str:0};
+const R=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+function switchMathTab(tab){
+  document.getElementById("mtab-practice").classList.toggle("on",tab==="practice");
+  document.getElementById("mtab-lessons").classList.toggle("on",tab==="lessons");
+  document.getElementById("mathPracticeWrap").style.display=tab==="practice"?"block":"none";
+  document.getElementById("mathLessonsWrap").style.display=tab==="lessons"?"block":"none";
+  if(tab==="lessons") drawLesson();
+}
+function setMode(m){
+  mode=m;
+  document.querySelectorAll('#s-math .chip').forEach(c=>c.classList.toggle("on",c.dataset.m===m));
+  newProb();
+}
+function newProb(){
+  clearAutoNext();
+  document.getElementById("helpBox").style.display="none";
+  const isCmp=(mode==="cmp");
+  document.getElementById("inputRow").style.display=isCmp?"none":"flex";
+  document.getElementById("cmpRow").style.display=isCmp?"flex":"none";
+  let t=mode;
+  if(t==="all")t=["plus","minus","gap"][R(0,2)];
+  let txt="";
+  if(t==="cmp"){
+    const a=R(1,20),b=R(1,20);
+    cur={t:"cmp",a,b,ans:a>b?">":(a<b?"<":"=")};
+    txt=a+" ? "+b;
+  } else if(t==="mul"){
+    const a=[2,3][R(0,1)],b=R(1,10);
+    cur={t:"mul",a,b,ans:a*b};
+    txt=a+" × "+b+" = ?";
+  } else if(t==="chain"){
+    const a=R(2,15),b=R(1,20-a),c=R(1,a+b);
+    cur={t:"chain",a,b,c,ans:a+b-c};
+    txt=a+" + "+b+" − "+c+" = ?";
+  } else if(t==="div"){
+    const d=[2,3][R(0,1)],ans=R(1,10),a=d*ans;
+    cur={t:"div",a,b:d,ans};
+    txt=a+" ÷ "+d+" = ?";
+  } else if(t==="gap"){
+    const a=R(1,15),s=R(a+1,20);
+    cur={t:"gap",a,b:s-a,ans:s-a};
+    txt=a+" + ? = "+s;
+  } else if(t==="plus"){
+    const a=R(1,18),b=R(1,20-a);
+    cur={t:"plus",a,b,ans:a+b};txt=a+" + "+b+" = ?";
+  } else {
+    const a=R(2,20),b=R(1,a);
+    cur={t:"minus",a,b,ans:a-b};txt=a+" − "+b+" = ?";
+  }
+  const p=document.getElementById("prob");
+  p.textContent=txt;p.classList.remove("pop");void p.offsetWidth;p.classList.add("pop");
+  const inp=document.getElementById("ans");inp.value="";inp.disabled=false;
+  document.getElementById("mfb").textContent="";document.getElementById("mfb").className="fb";
+  document.getElementById("checkB").style.display="inline-block";
+  document.getElementById("nextRow").style.display="none";
+  if(!isCmp)inp.focus();
+}
+function win(){
+  S.good++;S.str++;if(S.str>D.best)D.best=S.str;
+  D.solved++;today().m++;save();
+  confetti();sndOk();addStar(1);
+  const P=["Верно! 🎉","Отлично! 🌟","Умница! ✨","Так держать! 👏","Точно! 🎯","Здорово! 🍀","Молодец! ✨"];
+  return P[R(0,P.length-1)];
+}
+function afterAnswer(ok,msg){
+  const fb=document.getElementById("mfb");
+  fb.textContent=msg;fb.className="fb "+(ok?"ok":"no");
+  if(!ok){S.str=0;sndNo();}
+  document.getElementById("ans").disabled=true;
+  document.getElementById("checkB").style.display="none";
+  document.getElementById("cmpRow").style.display="none";
+  document.getElementById("nextRow").style.display="flex";
+  S.tot++;drawStats();trail();checkBadges();renderTop();
+  recordAttempt(ok,"math");
+  if(ok){ scheduleAutoNext(newProb); }
+  else{ showHelp(); }
+}
+function checkMath(){
+  const v=document.getElementById("ans").value;if(v==="")return;
+  const n=parseInt(v,10);
+  if(n===cur.ans)afterAnswer(true,win());
+  else afterAnswer(false,"Почти! Правильный ответ: "+cur.ans);
+}
+function checkCmp(sign){
+  const s=sign.replace("&gt;",">").replace("&lt;","<");
+  if(s===cur.ans)afterAnswer(true,win()+"  "+cur.a+" "+cur.ans+" "+cur.b);
+  else afterAnswer(false,"Смотри: "+cur.a+" "+cur.ans+" "+cur.b);
+}
+function drawStats(){
+  sGood.textContent=S.good;sTot.textContent=S.tot;sStr.textContent=S.str;
+}
+function trail(){
+  const p=Math.min(100,(S.good%10)*10||(S.good&&S.good%10===0?100:0));
+  document.getElementById("tfill").style.width=p+"%";
+  document.getElementById("tlabel").textContent=(S.good>0&&S.good%10===0)
+    ? "🎉 Серия из 10 примеров завершена! Начинаем новую."
+    : "Реши 10 примеров подряд";
+}
+function showHelp(){
+  const h=document.getElementById("helpBox");h.style.display="block";
+  if(!cur)return;
+  if(cur.t==="cmp"){
+    h.innerHTML=`<div class="lexp">Сравни по картинке — где кружочков больше, то число и больше.</div>
+      <div class="cols"><div class="col"><h4>${cur.a}</h4><div class="blocks" id="hA" style="min-height:60px"></div></div>
+      <div class="col"><h4>${cur.b}</h4><div class="blocks" id="hB" style="min-height:60px"></div></div></div>`;
+    drawBlocks(document.getElementById("hA"),0,cur.a);
+    drawBlocks(document.getElementById("hB"),0,cur.b);
+  } else if(cur.t==="gap"){
+    h.innerHTML=`<div class="lexp">Здесь спрашивают: <b>сколько не хватает</b>. Возьми большое число и отними то, что уже есть.</div>`;
+  } else if(cur.t==="plus"){
+    h.innerHTML=`<div class="lexp">Посчитай кружочки вместе. Если сумма больше 10 — сначала дополни первое число до 10, а остаток прибавь потом.</div>
+      <div class="blocks" id="hA" style="min-height:60px"></div>`;
+    drawBlocks(document.getElementById("hA"),0,cur.a);
+    const g=document.createElement("div");g.className="bgrp";
+    for(let i=0;i<cur.b;i++){const o=document.createElement("div");o.className="one";o.style.background="#ffd98a";o.style.borderColor="#e0a300";g.appendChild(o);}
+    document.getElementById("hA").appendChild(g);
+  } else if(cur.t==="mul"){
+    h.innerHTML=`<div class="lexp">Умножение — это сложение одинаковых чисел. ${cur.a} × ${cur.b} значит взять число ${cur.a} целых ${cur.b} раз(а): ${Array(cur.b).fill(cur.a).join(" + ")} = ${cur.ans}.</div>`;
+  } else if(cur.t==="chain"){
+    h.innerHTML=`<div class="lexp">Считай по шагам слева направо: сначала ${cur.a} + ${cur.b} = ${cur.a+cur.b}, потом ${cur.a+cur.b} − ${cur.c} = ${cur.ans}.</div>`;
+  } else if(cur.t==="div"){
+    h.innerHTML=`<div class="lexp">Деление — это раскладывание поровну. ${cur.a} ÷ ${cur.b} значит разложить ${cur.a} на ${cur.b} равные кучки. Проверка через умножение: ${cur.b} × ${cur.ans} = ${cur.a}.</div>`;
+  } else if(cur.t==="minus"){
+    h.innerHTML=`<div class="lexp">Вычитание — это «убрать». Начни с ${cur.a} и посчитай назад ${cur.b} шагов.</div>`;
+  } else {
+    h.innerHTML=`<div class="lexp">Подумай по шагам — с чего лучше начать?</div>`;
+  }
+}
+document.getElementById("ans").addEventListener("keydown",e=>{
+  if(e.key==="Enter"){ document.getElementById("nextRow").style.display==="none"?checkMath():newProb(); }
+});
+
+/* печать листка */
+function printSheet(){
+  let rows="";
+  for(let i=0;i<24;i++){
+    const t=R(0,1);let a,b,s;
+    if(t){a=R(1,18);b=R(1,20-a);s=a+" + "+b+" =";}else{a=R(2,20);b=R(1,a);s=a+" − "+b+" =";}
+    rows+=`<div style="display:inline-block;width:46%;font-size:20px;margin:9px 2%;font-family:sans-serif">${i+1}) ${s} ______</div>`;
+  }
+  const w=window.open("","_blank");
+  w.document.write(`<html><head><title>Примеры до 20</title></head><body style="padding:24px">
+    <h2 style="font-family:sans-serif">Примеры до 20 &nbsp;&nbsp; Имя: ______________ &nbsp; Дата: __________</h2>
+    ${rows}</body></html>`);
+  w.document.close();w.print();
+}
+
+/* ================= УРОКИ ДО 100 ================= */
+function tensEl(){const d=document.createElement("div");d.className="tens";for(let i=0;i<10;i++)d.appendChild(document.createElement("i"));return d;}
+function oneEl(){const d=document.createElement("div");d.className="one";return d;}
+function drawBlocks(c,t,o){
+  c.innerHTML="";
+  if(t>0){const g=document.createElement("div");g.className="bgrp";for(let i=0;i<t;i++)g.appendChild(tensEl());c.appendChild(g);}
+  if(o>0||t===0){const g=document.createElement("div");g.className="bgrp";for(let i=0;i<o;i++)g.appendChild(oneEl());c.appendChild(g);}
+}
+let li=0;
+const LESSONS=[
+ {n:"Что такое десяток",f:L1},{n:"Читаем число",f:L2},{n:"Таблица сотни",f:L3},
+ {n:"Соседи числа",f:L4},{n:"Сравниваем",f:L5},{n:"Круглые десятки",f:L6},
+ {n:"Разложи число",f:L7},{n:"Складываем",f:L8},{n:"Дополни до 10",f:L9},
+ {n:"Переход через десяток",f:L10},{n:"Вычитаем через десяток",f:L11},
+ {n:"Сложение с переходом",f:L12},{n:"Вычитание с переходом",f:L13},
+ {n:"Что такое умножение",f:L14},{n:"Таблица ×2 и ×3",f:L15},
+ {n:"Время на часах",f:L16},{n:"Метры и сантиметры",f:L17},
+ {n:"Килограммы и граммы",f:L18},{n:"Рубли и копейки",f:L19},
+ {n:"Периметр прямоугольника",f:L20},{n:"Что такое деление",f:L21},
+ {n:"Порядок действий",f:L22}
+];
+function curLessons(){ if(D.grade===1) return LESSONS_G1; if(D.grade===3) return LESSONS_G3; return LESSONS; }
+function drawDots(){
+  const L=curLessons();
+  const w=document.getElementById("dots");w.innerHTML="";
+  L.forEach((l,i)=>{
+    const d=document.createElement("div");
+    d.className="dot"+(i===li?" on":"")+(D.lessons.includes(i)?" done":"");
+    d.textContent=i+1;d.title=l.n;d.onclick=()=>{li=i;drawLesson();};
+    w.appendChild(d);
+  });
+}
+let teachLastOk=null;
+function drawLesson(){
+  const L=curLessons();
+  if(li>=L.length) li=0;
+  clearAutoNext();teachLastOk=null;drawDots();L[li].f();
+}
+function nav(){
+  const L=curLessons();
+  const last=li===L.length-1;
+  return `<div class="lnav" style="justify-content:center">
+    <button class="btn b" onclick="goL(1)">${last?"В начало 🔁":"Дальше →"}</button></div>`;
+}
+function goL(d){
+  const L=curLessons();
+  if(teachLastOk!==false){
+    if(!D.lessons.includes(li)){D.lessons.push(li);save();checkBadges();}
+  }
+  li=(li===L.length-1&&d===1)?0:Math.max(0,Math.min(L.length-1,li+d));
+  drawLesson();window.scrollTo({top:0,behavior:"smooth"});
+}
+function lessonOk(msg,el){const f=document.getElementById(el);f.textContent=msg;f.className="fb ok";confetti(18);sndOk();addStar(1);recordAttempt(true,"math");teachLastOk=true;scheduleAutoNext(()=>curLessons()[li].f());}
+function lessonNo(msg,el){const f=document.getElementById(el);f.textContent=msg;f.className="fb no";sndNo();recordAttempt(false,"math");teachLastOk=false;}
+
+/* Урок 1 */
+let t1=0,o1=0;
+function L1(){
+  t1=0;o1=0;
+  lcard.innerHTML=`<h2 class="ltitle">1. Что такое десяток?</h2>
+  <div class="lexp">Каждый зелёный кружок — это <b>одна единица</b>. Когда кружочков набирается <b>десять</b>, они связываются в один жёлтый столбик — это <b>десяток</b>.<br>Нажимай кнопку и смотри, что произойдёт на десятом кружочке!</div>
+  <div class="blocks" id="l1b"></div>
+  <div class="eq" id="l1e"></div>
+  <div class="lctr"><button class="btn g" onclick="l1add()">+1 кружочек 🟢</button>
+  <button class="btn ghost" onclick="L1()">Сначала</button></div>${nav()}`;
+  l1up();
+}
+function l1add(){o1++;if(o1>=10){o1=0;t1++;confetti(20);sndOk();}else beep(520,.08);l1up();}
+function l1up(){
+  drawBlocks(document.getElementById("l1b"),t1,o1);
+  document.getElementById("l1e").innerHTML=`<b>${t1}</b> дес. и <b>${o1}</b> ед. = <b style="color:var(--grass-d)">${t1*10+o1}</b>`;
+}
+/* Урок 2 */
+let a2=0;
+function L2(){
+  a2=R(11,99);
+  lcard.innerHTML=`<h2 class="ltitle">2. Читаем число</h2>
+  <div class="lexp">Жёлтые столбики — <b>десятки</b>, зелёные кружочки — <b>единицы</b>. Сначала считай столбики десятками: 10, 20, 30... потом прибавь кружочки.</div>
+  <div class="blocks" id="l2b"></div>
+  <div class="row"><input type="number" id="l2i" placeholder="?" inputmode="numeric">
+  <button class="btn b" onclick="l2c()">Проверить</button>
+  <button class="btn ghost" onclick="L2()">Другое число</button></div>
+  <div class="fb" id="l2f"></div>${nav()}`;
+  drawBlocks(document.getElementById("l2b"),Math.floor(a2/10),a2%10);
+}
+function l2c(){parseInt(l2i.value,10)===a2?lessonOk("Верно, это "+a2+"! 🎉","l2f"):lessonNo("Здесь "+Math.floor(a2/10)+" дес. и "+a2%10+" ед. = "+a2,"l2f");}
+/* Урок 3 — таблица сотни */
+let a3=0;
+function L3(){
+  a3=R(1,100);
+  let g="";
+  for(let i=1;i<=100;i++)g+=`<div class="hc${i%10===0?' ten':''}" data-n="${i}" onclick="l3c(${i},this)">${i}</div>`;
+  lcard.innerHTML=`<h2 class="ltitle">3. Таблица сотни</h2>
+  <div class="lexp">Вот все числа от 1 до 100. В каждой строчке ровно <b>10 чисел</b>. Жёлтый столбик справа — круглые десятки.<br>Найди и нажми число: <b style="font-size:1.3rem;color:var(--blue-d)">${a3}</b></div>
+  <div class="hundred">${g}</div>
+  <div class="fb" id="l3f"></div>
+  <div class="lctr"><button class="btn ghost" onclick="L3()">Другое число</button></div>${nav()}`;
+}
+function l3c(n,el){
+  if(n===a3){el.classList.add("hit");lessonOk("Нашла! 🎉","l3f");}
+  else{el.classList.add("miss");lessonNo("Это "+n+", а нужно "+a3+". Подсказка: строка — это десяток.","l3f");
+    setTimeout(()=>el.classList.remove("miss"),700);}
+}
+/* Урок 4 — соседи */
+let a4=0;
+function L4(){
+  a4=R(11,98);
+  lcard.innerHTML=`<h2 class="ltitle">4. Соседи числа</h2>
+  <div class="lexp">У каждого числа есть <b>сосед слева</b> (на 1 меньше) и <b>сосед справа</b> (на 1 больше). Впиши обоих.</div>
+  <div class="split"><input type="number" class="mini" id="l4a" placeholder="?" inputmode="numeric">
+  <span style="font-size:1.6rem;color:var(--blue-d)"> ← ${a4} → </span>
+  <input type="number" class="mini" id="l4b" placeholder="?" inputmode="numeric"></div>
+  <div class="lctr"><button class="btn b" onclick="l4c()">Проверить</button>
+  <button class="btn ghost" onclick="L4()">Другое число</button></div>
+  <div class="fb" id="l4f"></div>${nav()}`;
+}
+function l4c(){
+  const x=parseInt(l4a.value,10),y=parseInt(l4b.value,10);
+  (x===a4-1&&y===a4+1)?lessonOk("Верно! "+(a4-1)+", "+a4+", "+(a4+1)+" 🎉","l4f")
+    :lessonNo("Соседи: "+(a4-1)+" и "+(a4+1),"l4f");
+}
+/* Урок 5 — сравнение */
+let a5=0,b5=0;
+function L5(){
+  a5=R(11,89);do{b5=R(11,89);}while(b5===a5);
+  lcard.innerHTML=`<h2 class="ltitle">5. Сравниваем числа</h2>
+  <div class="lexp">Сначала сравни <b>десятки</b> (жёлтые столбики). У кого столбиков больше — то число больше. Если столбиков поровну — тогда сравнивай кружочки.</div>
+  <div class="cols">
+    <div class="col"><h4>${a5}</h4><div class="blocks" id="l5a" style="min-height:80px"></div></div>
+    <div class="col"><h4>${b5}</h4><div class="blocks" id="l5b" style="min-height:80px"></div></div></div>
+  <div class="lctr"><button class="btn b" onclick="l5c('a')">Слева больше</button>
+  <button class="btn b" onclick="l5c('b')">Справа больше</button></div>
+  <div class="fb" id="l5f"></div>
+  <div class="lctr"><button class="btn ghost" onclick="L5()">Другая пара</button></div>${nav()}`;
+  drawBlocks(document.getElementById("l5a"),Math.floor(a5/10),a5%10);
+  drawBlocks(document.getElementById("l5b"),Math.floor(b5/10),b5%10);
+}
+function l5c(p){
+  const c=a5>b5?"a":"b";
+  p===c?lessonOk("Верно! "+Math.max(a5,b5)+" > "+Math.min(a5,b5)+" 🎉","l5f")
+       :lessonNo("Больше "+Math.max(a5,b5)+", ведь "+Math.max(a5,b5)+" > "+Math.min(a5,b5),"l5f");
+}
+/* Урок 6 — круглые десятки */
+let m6=0;
+function L6(){
+  const st=R(1,5)*10,seq=[st,st+10,st+20,st+30,st+40],bp=R(1,3);
+  m6=seq[bp];
+  lcard.innerHTML=`<h2 class="ltitle">6. Круглые десятки</h2>
+  <div class="lexp">Круглые десятки — это 10, 20, 30, 40, 50, 60, 70, 80, 90, 100. Каждый раз прибавляется <b>ровно один десяток</b>, а единиц нет совсем.</div>
+  <div class="seq">${seq.map((n,i)=>i===bp?'<div class="sq blank">?</div>':'<div class="sq">'+n+'</div>').join("")}</div>
+  <div class="row"><input type="number" id="l6i" placeholder="?" inputmode="numeric">
+  <button class="btn b" onclick="l6c()">Проверить</button>
+  <button class="btn ghost" onclick="L6()">Другой ряд</button></div>
+  <div class="fb" id="l6f"></div>${nav()}`;
+}
+function l6c(){parseInt(l6i.value,10)===m6?lessonOk("Точно, "+m6+"! 🎉","l6f"):lessonNo("Пропущено число "+m6,"l6f");}
+/* Урок 7 — разложи число */
+let a7=0;
+function L7(){
+  a7=R(21,98);
+  lcard.innerHTML=`<h2 class="ltitle">7. Разложи число</h2>
+  <div class="lexp">Любое двузначное число состоит из десятков и единиц. Первая цифра — сколько <b>десятков</b>, вторая — сколько <b>единиц</b>.<br>Например, 47 = 4 десятка и 7 единиц = 40 + 7.</div>
+  <div class="eq" style="font-size:1.9rem">${a7}</div>
+  <div class="split">
+    <input type="number" class="mini" id="l7t" placeholder="дес" inputmode="numeric"> дес.
+    <input type="number" class="mini" id="l7o" placeholder="ед" inputmode="numeric"> ед.
+  </div>
+  <div class="lctr"><button class="btn b" onclick="l7c()">Проверить</button>
+  <button class="btn ghost" onclick="L7()">Другое число</button></div>
+  <div class="fb" id="l7f"></div>${nav()}`;
+}
+function l7c(){
+  const t=parseInt(l7t.value,10),o=parseInt(l7o.value,10);
+  (t===Math.floor(a7/10)&&o===a7%10)
+    ? lessonOk(`Верно! ${a7} = ${Math.floor(a7/10)*10} + ${a7%10} 🎉`,"l7f")
+    : lessonNo(`${a7} — это ${Math.floor(a7/10)} дес. и ${a7%10} ед.`,"l7f");
+}
+/* Урок 8 — сложение без перехода */
+let a8=0,b8=0;
+function L8(){
+  const ta=R(1,6),oa=R(0,8),tb=R(1,8-ta),ob=R(0,9-oa);
+  a8=ta*10+oa;b8=tb*10+ob;
+  lcard.innerHTML=`<h2 class="ltitle">8. Складываем двузначные</h2>
+  <div class="lexp">Складывать удобно по частям: <b>десятки с десятками</b>, <b>единицы с единицами</b>.<br>
+  Здесь: десятки ${ta} + ${tb} = <b>${ta+tb}</b>, единицы ${oa} + ${ob} = <b>${oa+ob}</b>.</div>
+  <div class="cols">
+    <div class="col"><h4>${a8}</h4><div class="blocks" id="l8a" style="min-height:80px"></div></div>
+    <div class="col"><h4>${b8}</h4><div class="blocks" id="l8b" style="min-height:80px"></div></div></div>
+  <div class="eq">${a8} + ${b8} = ?</div>
+  <div class="row"><input type="number" id="l8i" placeholder="?" inputmode="numeric">
+  <button class="btn b" onclick="l8c()">Проверить</button>
+  <button class="btn ghost" onclick="L8()">Другой пример</button></div>
+  <div class="fb" id="l8f"></div>${nav()}`;
+  drawBlocks(document.getElementById("l8a"),ta,oa);
+  drawBlocks(document.getElementById("l8b"),tb,ob);
+}
+function l8c(){parseInt(l8i.value,10)===a8+b8?lessonOk(a8+" + "+b8+" = "+(a8+b8)+" 🎉","l8f"):lessonNo("Правильный ответ: "+(a8+b8),"l8f");}
+/* Урок 9 — дополни до 10 */
+let a9=0;
+function L9(){
+  a9=R(1,9);
+  lcard.innerHTML=`<h2 class="ltitle">9. Дополни до десятка</h2>
+  <div class="lexp">Это самое важное умение для счёта! Надо быстро знать, <b>сколько не хватает до 10</b>. Посмотри на пустые места в столбике — их и нужно сосчитать.</div>
+  <div class="blocks" id="l9b" style="min-height:130px"></div>
+  <div class="eq">${a9} + ? = 10</div>
+  <div class="row"><input type="number" id="l9i" placeholder="?" inputmode="numeric">
+  <button class="btn b" onclick="l9c()">Проверить</button>
+  <button class="btn ghost" onclick="L9()">Другое число</button></div>
+  <div class="fb" id="l9f"></div>${nav()}`;
+  const c=document.getElementById("l9b");c.innerHTML="";
+  const st=document.createElement("div");st.className="tens";st.style.width="34px";
+  for(let i=0;i<10;i++){const cell=document.createElement("i");cell.style.height="14px";
+    if(i>=a9)cell.style.background="#f2ead6";st.appendChild(cell);}
+  c.appendChild(st);
+}
+function l9c(){parseInt(l9i.value,10)===10-a9?lessonOk(a9+" + "+(10-a9)+" = 10 🎉","l9f"):lessonNo("До 10 не хватает "+(10-a9),"l9f");}
+/* Урок 10 — переход через десяток */
+let a10=0,b10=0;
+function L10(){
+  a10=R(6,9);b10=R(11-a10,9);
+  const d=10-a10,rest=b10-d;
+  lcard.innerHTML=`<h2 class="ltitle">10. Переход через десяток</h2>
+  <div class="lexp">Когда сумма больше 10, считаем в два шага:<br>
+  1) дополняем первое число до 10: ${a10} + <b>${d}</b> = 10<br>
+  2) прибавляем остаток: 10 + <b>${rest}</b> = <b>${a10+b10}</b><br>
+  Второе число ${b10} мы как бы разломили на ${d} и ${rest}.</div>
+  <div class="eq">${a10} + ${b10} = ?</div>
+  <div class="row"><input type="number" id="l10i" placeholder="?" inputmode="numeric">
+  <button class="btn b" onclick="l10c()">Проверить</button>
+  <button class="btn ghost" onclick="L10()">Другой пример</button></div>
+  <div class="fb" id="l10f"></div>${nav()}`;
+}
+function l10c(){parseInt(l10i.value,10)===a10+b10?lessonOk(a10+" + "+b10+" = "+(a10+b10)+" 🎉","l10f"):lessonNo("Ответ: "+(a10+b10),"l10f");}
+/* Урок 11 — вычитание через десяток */
+let a11=0,b11=0;
+function L11(){
+  a11=R(11,18);b11=R(a11-10+1,9);
+  const d=a11-10,rest=b11-d;
+  lcard.innerHTML=`<h2 class="ltitle">11. Вычитаем через десяток</h2>
+  <div class="lexp">Вычитаем тоже в два шага:<br>
+  1) сначала убираем единицы до круглого десятка: ${a11} − <b>${d}</b> = 10<br>
+  2) потом убираем остаток: 10 − <b>${rest}</b> = <b>${a11-b11}</b><br>
+  Число ${b11} мы разломили на ${d} и ${rest}.</div>
+  <div class="eq">${a11} − ${b11} = ?</div>
+  <div class="row"><input type="number" id="l11i" placeholder="?" inputmode="numeric">
+  <button class="btn b" onclick="l11c()">Проверить</button>
+  <button class="btn ghost" onclick="L11()">Другой пример</button></div>
+  <div class="fb" id="l11f"></div>${nav()}`;
+}
+function l11c(){parseInt(l11i.value,10)===a11-b11?lessonOk(a11+" − "+b11+" = "+(a11-b11)+" 🎉","l11f"):lessonNo("Ответ: "+(a11-b11),"l11f");}
+
+/* Урок 12 — сложение двузначных с переходом через разряд */
+let a12=0,b12=0;
+function L12(){
+  const ta=R(1,7),oa=R(5,9),tb=R(1,8-ta),ob=R(10-oa,9);
+  a12=ta*10+oa;b12=tb*10+ob;
+  const sumO=oa+ob,carry=Math.floor(sumO/10),newO=sumO%10,sumT=ta+tb+carry;
+  lcard.innerHTML=`<h2 class="ltitle">12. Сложение с переходом через разряд</h2>
+  <div class="lexp">Если единицы в сумме дают 10 и больше — лишний десяток переходит к десяткам.<br>
+  Единицы: ${oa} + ${ob} = <b>${sumO}</b> → пишем <b>${newO}</b>, а один десяток переносим дальше.<br>
+  Десятки: ${ta} + ${tb} + 1 (перенесённый) = <b>${sumT}</b>.</div>
+  <div class="eq">${a12} + ${b12} = ?</div>
+  <div class="row"><input type="number" id="l12i" placeholder="?" inputmode="numeric">
+  <button class="btn b" onclick="l12c()">Проверить</button>
+  <button class="btn ghost" onclick="L12()">Другой пример</button></div>
+  <div class="fb" id="l12f"></div>${nav()}`;
+}
+function l12c(){parseInt(l12i.value,10)===a12+b12?lessonOk(a12+" + "+b12+" = "+(a12+b12)+" 🎉","l12f"):lessonNo("Ответ: "+(a12+b12),"l12f");}
+
+/* Урок 13 — вычитание двузначных с переходом через разряд */
+let a13=0,b13=0;
+function L13(){
+  const ta=R(3,9),oa=R(0,5),tb=R(1,ta-1),ob=R(oa+1,9);
+  a13=ta*10+oa;b13=tb*10+ob;
+  lcard.innerHTML=`<h2 class="ltitle">13. Вычитание с переходом через разряд</h2>
+  <div class="lexp">Если единиц не хватает для вычитания, занимаем один десяток у десятков.<br>
+  Было ${oa} единиц, не хватает — берём десяток: ${oa}+10=<b>${oa+10}</b>, теперь десятков на 1 меньше.<br>
+  Единицы: ${oa+10} − ${ob} = <b>${oa+10-ob}</b>. Десятки: ${ta-1} − ${tb} = <b>${ta-1-tb}</b>.</div>
+  <div class="eq">${a13} − ${b13} = ?</div>
+  <div class="row"><input type="number" id="l13i" placeholder="?" inputmode="numeric">
+  <button class="btn b" onclick="l13c()">Проверить</button>
+  <button class="btn ghost" onclick="L13()">Другой пример</button></div>
+  <div class="fb" id="l13f"></div>${nav()}`;
+}
+function l13c(){parseInt(l13i.value,10)===a13-b13?lessonOk(a13+" − "+b13+" = "+(a13-b13)+" 🎉","l13f"):lessonNo("Ответ: "+(a13-b13),"l13f");}
+
+/* Урок 14 — что такое умножение */
+let a14=0,b14=0;
+function L14(){
+  a14=R(2,5);b14=R(2,5);
+  const chain=Array(b14).fill(a14).join(" + ");
+  lcard.innerHTML=`<h2 class="ltitle">14. Что такое умножение</h2>
+  <div class="lexp">Умножение — это быстрое сложение одинаковых чисел. Вместо ${chain} можно написать короче: ${a14} × ${b14}.</div>
+  <div class="blocks" id="l14b" style="min-height:70px"></div>
+  <div class="eq">${a14} × ${b14} = ${a14} + ${a14}${b14>2?" + ...":""} = ?</div>
+  <div class="row"><input type="number" id="l14i" placeholder="?" inputmode="numeric">
+  <button class="btn b" onclick="l14c()">Проверить</button>
+  <button class="btn ghost" onclick="L14()">Другой пример</button></div>
+  <div class="fb" id="l14f"></div>${nav()}`;
+  const c=document.getElementById("l14b");c.innerHTML="";
+  for(let g=0;g<b14;g++){
+    const grp=document.createElement("div");grp.className="bgrp";grp.style.padding="4px 8px";
+    grp.style.border="2px dashed var(--line)";grp.style.borderRadius="10px";
+    for(let i=0;i<a14;i++) grp.appendChild(oneEl());
+    c.appendChild(grp);
+  }
+}
+function l14c(){parseInt(l14i.value,10)===a14*b14?lessonOk(a14+" × "+b14+" = "+(a14*b14)+" 🎉","l14f"):lessonNo("Ответ: "+(a14*b14),"l14f");}
+
+/* Урок 15 — таблица умножения на 2 и 3 */
+let a15=0,b15=0;
+function L15(){
+  a15=[2,3][R(0,1)];b15=R(1,10);
+  lcard.innerHTML=`<h2 class="ltitle">15. Таблица умножения на 2 и 3</h2>
+  <div class="lexp">Эту таблицу полезно выучить наизусть — она пригодится на всех следующих уроках математики.</div>
+  <div class="eq">${a15} × ${b15} = ?</div>
+  <div class="row"><input type="number" id="l15i" placeholder="?" inputmode="numeric">
+  <button class="btn b" onclick="l15c()">Проверить</button>
+  <button class="btn ghost" onclick="L15()">Другой пример</button></div>
+  <div class="fb" id="l15f"></div>${nav()}`;
+}
+function l15c(){parseInt(l15i.value,10)===a15*b15?lessonOk(a15+" × "+b15+" = "+(a15*b15)+" 🎉","l15f"):lessonNo("Ответ: "+(a15*b15),"l15f");}
+
+/* Урок 16 — время на часах */
+let h16=0,m16=0;
+function L16(){
+  h16=R(1,12); m16=[0,5,10,15,20,25,30,35,40,45,50,55][R(0,11)];
+  const hourAngle=(h16%12 + m16/60)*30, minAngle=m16*6;
+  let ticks="";
+  for(let i=0;i<12;i++){
+    const a=i*30*Math.PI/180;
+    const x1=100+80*Math.sin(a),y1=100-80*Math.cos(a),x2=100+92*Math.sin(a),y2=100-92*Math.cos(a);
+    ticks+=`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="var(--bark)" stroke-width="3"/>`;
+  }
+  lcard.innerHTML=`<h2 class="ltitle">16. Время на часах</h2>
+  <div class="lexp">Короткая зелёная стрелка показывает часы, длинная красная — минуты. Целый круг — это 60 минут (один час).</div>
+  <div style="display:flex;justify-content:center;margin:14px 0">
+    <svg width="180" height="180" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="94" fill="#fff" stroke="var(--bark)" stroke-width="4"/>
+      ${ticks}
+      <line x1="100" y1="100" x2="100" y2="55" stroke="var(--grass-d)" stroke-width="7" stroke-linecap="round" transform="rotate(${hourAngle.toFixed(1)} 100 100)"/>
+      <line x1="100" y1="100" x2="100" y2="30" stroke="var(--coral-d)" stroke-width="5" stroke-linecap="round" transform="rotate(${minAngle.toFixed(1)} 100 100)"/>
+      <circle cx="100" cy="100" r="6" fill="var(--bark)"/>
+    </svg>
+  </div>
+  <div class="split">
+    <input type="number" class="mini" id="l16h" placeholder="час" inputmode="numeric"> ч
+    <input type="number" class="mini" id="l16m" placeholder="мин" inputmode="numeric"> мин
+  </div>
+  <div class="lctr"><button class="btn b" onclick="l16c()">Проверить</button>
+  <button class="btn ghost" onclick="L16()">Другое время</button></div>
+  <div class="fb" id="l16f"></div>${nav()}`;
+}
+function l16c(){
+  const h=parseInt(l16h.value,10),m=parseInt(l16m.value,10);
+  (h===h16&&m===m16) ? lessonOk("Верно! Сейчас "+h16+":"+String(m16).padStart(2,'0')+" 🎉","l16f")
+    : lessonNo("Правильное время: "+h16+":"+String(m16).padStart(2,'0'),"l16f");
+}
+
+/* Урок 17 — метры и сантиметры */
+let ans17=0;
+function L17(){
+  const dir=R(0,1);
+  let qtext;
+  if(dir===0){ const mm=R(1,9); qtext=mm+" м = ? см"; ans17=mm*100; }
+  else{ const mm=R(1,9); qtext=(mm*100)+" см = ? м"; ans17=mm; }
+  lcard.innerHTML=`<h2 class="ltitle">17. Метры и сантиметры</h2>
+  <div class="lexp">В одном метре — 100 сантиметров. Чтобы перевести метры в сантиметры, умножь на 100. Чтобы перевести сантиметры в метры — раздели на 100.</div>
+  <div class="eq">${qtext}</div>
+  <div class="row"><input type="number" id="l17i" inputmode="numeric" placeholder="?">
+  <button class="btn b" onclick="l17c()">Проверить</button>
+  <button class="btn ghost" onclick="L17()">Другой пример</button></div>
+  <div class="fb" id="l17f"></div>${nav()}`;
+}
+function l17c(){parseInt(l17i.value,10)===ans17?lessonOk("Верно! 🎉","l17f"):lessonNo("Ответ: "+ans17,"l17f");}
+
+/* Урок 18 — килограммы и граммы */
+let ans18=0;
+function L18(){
+  const dir=R(0,1);
+  let qtext;
+  if(dir===0){ const k=R(1,9); qtext=k+" кг = ? г"; ans18=k*1000; }
+  else{ const k=R(1,9); qtext=(k*1000)+" г = ? кг"; ans18=k; }
+  lcard.innerHTML=`<h2 class="ltitle">18. Килограммы и граммы</h2>
+  <div class="lexp">В одном килограмме — 1000 граммов. Килограммы в граммы — умножаем на 1000. Граммы в килограммы — делим на 1000.</div>
+  <div class="eq">${qtext}</div>
+  <div class="row"><input type="number" id="l18i" inputmode="numeric" placeholder="?">
+  <button class="btn b" onclick="l18c()">Проверить</button>
+  <button class="btn ghost" onclick="L18()">Другой пример</button></div>
+  <div class="fb" id="l18f"></div>${nav()}`;
+}
+function l18c(){parseInt(l18i.value,10)===ans18?lessonOk("Верно! 🎉","l18f"):lessonNo("Ответ: "+ans18,"l18f");}
+
+/* Урок 19 — рубли и копейки */
+let ans19=0;
+function L19(){
+  const dir=R(0,1);
+  let qtext;
+  if(dir===0){ const r=R(1,9); qtext=r+" рубль(ей) = ? копеек"; ans19=r*100; }
+  else{ const r=R(1,9); qtext=(r*100)+" копеек = ? рублей"; ans19=r; }
+  lcard.innerHTML=`<h2 class="ltitle">19. Рубли и копейки</h2>
+  <div class="lexp">В одном рубле — 100 копеек. Это работает так же, как метры и сантиметры, только для денег.</div>
+  <div class="eq">${qtext}</div>
+  <div class="row"><input type="number" id="l19i" inputmode="numeric" placeholder="?">
+  <button class="btn b" onclick="l19c()">Проверить</button>
+  <button class="btn ghost" onclick="L19()">Другой пример</button></div>
+  <div class="fb" id="l19f"></div>${nav()}`;
+}
+function l19c(){parseInt(l19i.value,10)===ans19?lessonOk("Верно! 🎉","l19f"):lessonNo("Ответ: "+ans19,"l19f");}
+
+/* Урок 20 — периметр прямоугольника */
+let a20=0,b20=0;
+function L20(){
+  a20=R(2,9); b20=R(2,9);
+  lcard.innerHTML=`<h2 class="ltitle">20. Периметр прямоугольника</h2>
+  <div class="lexp">Периметр — это сумма длин всех сторон фигуры. У прямоугольника две пары одинаковых сторон, поэтому периметр = (сторона1 + сторона2) × 2.</div>
+  <div style="display:flex;justify-content:center;margin:14px 0">
+    <svg width="200" height="130" viewBox="0 0 200 130">
+      <rect x="30" y="20" width="140" height="80" fill="none" stroke="var(--blue-d)" stroke-width="4"/>
+      <text x="100" y="14" text-anchor="middle" font-size="16" fill="var(--bark)">${a20} см</text>
+      <text x="100" y="118" text-anchor="middle" font-size="16" fill="var(--bark)">${a20} см</text>
+      <text x="14" y="64" text-anchor="middle" font-size="16" fill="var(--bark)">${b20}</text>
+      <text x="186" y="64" text-anchor="middle" font-size="16" fill="var(--bark)">${b20}</text>
+    </svg>
+  </div>
+  <div class="eq">Периметр = ?</div>
+  <div class="row"><input type="number" id="l20i" inputmode="numeric" placeholder="?">
+  <button class="btn b" onclick="l20c()">Проверить</button>
+  <button class="btn ghost" onclick="L20()">Другой прямоугольник</button></div>
+  <div class="fb" id="l20f"></div>${nav()}`;
+}
+function l20c(){
+  const correct=2*(a20+b20);
+  parseInt(l20i.value,10)===correct
+    ? lessonOk("Верно! Периметр = "+correct+" см 🎉","l20f")
+    : lessonNo("Периметр = ("+a20+" + "+b20+") × 2 = "+correct+" см","l20f");
+}
+
+/* Урок 21 — что такое деление */
+let a21=0,b21=0;
+function L21(){
+  b21=[2,3][R(0,1)];
+  const ans=R(1,10); a21=b21*ans;
+  lcard.innerHTML=`<h2 class="ltitle">21. Что такое деление</h2>
+  <div class="lexp">Деление — это раскладывание поровну. ${a21} ÷ ${b21} значит разложить ${a21} предметов на ${b21} равные кучки. Деление — действие, обратное умножению.</div>
+  <div class="blocks" id="l21b" style="min-height:70px"></div>
+  <div class="eq">${a21} ÷ ${b21} = ?</div>
+  <div class="row"><input type="number" id="l21i" placeholder="?" inputmode="numeric">
+  <button class="btn b" onclick="l21c()">Проверить</button>
+  <button class="btn ghost" onclick="L21()">Другой пример</button></div>
+  <div class="fb" id="l21f"></div>${nav()}`;
+  const c=document.getElementById("l21b");c.innerHTML="";
+  const per=a21/b21;
+  for(let g=0;g<b21;g++){
+    const grp=document.createElement("div");grp.className="bgrp";grp.style.padding="4px 8px";
+    grp.style.border="2px dashed var(--line)";grp.style.borderRadius="10px";
+    for(let i=0;i<per;i++) grp.appendChild(oneEl());
+    c.appendChild(grp);
+  }
+}
+function l21c(){
+  const ans=a21/b21;
+  parseInt(l21i.value,10)===ans
+    ? lessonOk(a21+" ÷ "+b21+" = "+ans+" 🎉","l21f")
+    : lessonNo("Ответ: "+ans+". Проверка: "+b21+" × "+ans+" = "+a21,"l21f");
+}
+
+/* Урок 22 — порядок действий */
+let expr22=null;
+function L22(){
+  const type=R(0,1);
+  let a,b,c,ans,text;
+  if(type===0){
+    a=R(2,9);b=R(2,9);c=R(1,15);
+    ans=a*b+c;
+    text=a+" × "+b+" + "+c;
+  } else {
+    a=R(1,15);b=R(2,9);c=R(2,9);
+    ans=a+b*c;
+    text=a+" + "+b+" × "+c;
+  }
+  expr22={ans};
+  lcard.innerHTML=`<h2 class="ltitle">22. Порядок действий</h2>
+  <div class="lexp">Если в примере есть и умножение (или деление), и сложение (или вычитание) — сначала выполняем умножение/деление, а уже потом сложение/вычитание.</div>
+  <div class="eq">${text} = ?</div>
+  <div class="row"><input type="number" id="l22i" placeholder="?" inputmode="numeric">
+  <button class="btn b" onclick="l22c()">Проверить</button>
+  <button class="btn ghost" onclick="L22()">Другой пример</button></div>
+  <div class="fb" id="l22f"></div>${nav()}`;
+}
+function l22c(){
+  parseInt(l22i.value,10)===expr22.ans
+    ? lessonOk("Верно! Ответ: "+expr22.ans+" 🎉","l22f")
+    : lessonNo("Сначала умножение, потом сложение. Ответ: "+expr22.ans,"l22f");
+}
+
+/* ================= ЗАДАЧИ ================= */
+let taskLevel=20,curTask=null;
+const NAMES=["Настя","Миша","Катя","Егор","Полина","Тимур","Соня","Артём","Даша","Никита","Вера","Гриша"];
+const TASKS=[
+ (m)=>{const a=R(3,m-3),b=R(2,Math.min(9,m-a)),n=NAMES[R(0,NAMES.length-1)];
+   return{q:`У ${n} было ${a} наклеек. Подруга подарила ещё ${b}. Сколько наклеек стало?`,a:a+b,h:"Стало больше — значит, складываем."};},
+ (m)=>{const a=R(6,m),b=R(2,a-1),n=NAMES[R(0,NAMES.length-1)];
+   return{q:`На тарелке было ${a} печений. ${n} съел ${b}. Сколько печений осталось?`,a:a-b,h:"Съели — значит, отнимаем."};},
+ (m)=>{const a=R(4,m-4),b=R(1,4);
+   return{q:`В первой корзине ${a} яблок, а во второй на ${b} больше. Сколько яблок во второй корзине?`,a:a+b,h:"«На столько-то больше» — прибавляем."};},
+ (m)=>{const a=R(6,m),b=R(1,4);
+   return{q:`У Миши ${a} машинок, а у брата на ${b} меньше. Сколько машинок у брата?`,a:a-b,h:"«На столько-то меньше» — отнимаем."};},
+ (m)=>{const a=R(5,m-2),b=R(2,Math.min(8,m-a));
+   return{q:`На ветке сидело ${a} птиц. Прилетело ещё ${b}, потом улетело 2. Сколько птиц на ветке?`,a:a+b-2,h:"Действуем по порядку: сначала прилетели, потом улетели."};},
+ (m)=>{const b=R(2,8),s=R(b+2,m);
+   return{q:`В вазе стояло несколько цветов. Добавили ${b} цветов, и стало ${s}. Сколько цветов было сначала?`,a:s-b,h:"Чтобы узнать, что было, из результата вычитаем добавленное."};},
+ (m)=>{const b=R(1,3),a=R(4,Math.floor((m-b)/2));
+   return{q:`В классе ${a} мальчиков и ${a+b} девочек. Сколько всего детей?`,a:a+a+b,h:"«Всего» — складываем обе группы."};},
+ (m)=>{const a=R(8,m),b=R(2,a-3);
+   return{q:`Было ${a} конфет. Раздали ${b}. На сколько конфет стало меньше?`,a:b,h:"Хитрая задача: сколько раздали — на столько и стало меньше."};},
+ (m)=>{const a=R(5,m-3),b=R(2,Math.min(9,m-a));
+   return{q:`Утром выпало ${a} см снега, вечером ещё ${b} см. Сколько снега выпало за день?`,a:a+b,h:"За весь день — складываем утро и вечер."};},
+ (m)=>{const a=R(10,m),b=R(3,a-2);
+   return{q:`Книга состоит из ${a} страниц. Прочитано ${b}. Сколько страниц осталось прочитать?`,a:a-b,h:"Из всего вычитаем прочитанное."};},
+ (m)=>{const f1=R(2,Math.min(9,Math.max(2,Math.floor(Math.sqrt(m))))),f2=R(2,Math.max(2,Math.floor(m/f1))),n=NAMES[R(0,NAMES.length-1)];
+   return{q:`У ${n} есть ${f1} коробки, в каждой по ${f2} карандашей. Сколько всего карандашей?`,a:f1*f2,h:"Одинаковые группы — значит, умножаем: число групп × число в группе."};},
+ (m)=>{const n=R(2,5),per=R(2,Math.max(2,Math.floor(m/n))),k=n*per;
+   return{q:`${k} конфет разделили поровну между ${n} детьми. По сколько конфет досталось каждому?`,a:per,h:"Дели поровну — это деление: общее количество ÷ число детей."};},
+ (m)=>{const a=R(5,m),b=R(1,a-1),n1=NAMES[R(0,NAMES.length-1)],n2=NAMES[R(0,NAMES.length-1)];
+   return{q:`У ${n1} ${a} монет, а у ${n2} ${b} монет. На сколько монет у ${n1} больше, чем у ${n2}?`,a:a-b,h:"«На сколько больше» — вычти меньшее число из большего."};},
+ (m)=>{const a=R(10,m),b=R(2,Math.min(a-1,9)),c=R(1,Math.max(1,Math.min(9,m-(a-b))));
+   return{q:`У тебя было ${a} рублей. Ты купил игрушку за ${b} рублей, а потом бабушка дала ещё ${c} рублей. Сколько рублей у тебя теперь?`,a:a-b+c,h:"Считай по порядку: сначала вычти покупку, потом прибавь подарок."};},
+ (m)=>{const M=(m<=20)?R(40,55):R(5,55);
+   return{q:`Часы показывают ${R(1,12)}:${String(M).padStart(2,'0')}. Сколько минут осталось до следующего целого часа?`,a:60-M,h:"До следующего часа не хватает: 60 минус текущие минуты."};},
+ (m)=>{const c5=R(1,Math.max(1,Math.floor(m/5)-1)),remain=m-c5*5,c2=R(1,Math.max(1,Math.floor(remain/2)));
+   return{q:`В кошельке ${c5} монет по 5 рублей и ${c2} монет по 2 рубля. Сколько рублей всего?`,a:c5*5+c2*2,h:"Посчитай отдельно пятирублёвые и двухрублёвые монеты, потом сложи."};},
+ (m)=>{const maxSum=Math.floor(m/2),a=R(2,Math.min(9,Math.max(2,maxSum-2))),b=R(2,Math.min(9,Math.max(2,maxSum-a)));
+   return{q:`Стороны прямоугольника ${a} см и ${b} см. Чему равен периметр?`,a:2*(a+b),h:"Периметр прямоугольника = (сторона1 + сторона2) × 2."};},
+ (m)=>{const per=R(2,9),n=R(2,5),k=per*n,names=NAMES[R(0,NAMES.length-1)];
+   return{q:`${k} орехов разложили поровну в ${n} мешочка. Сколько орехов в каждом мешочке?`,a:per,h:"Раскладываем поровну — это деление: всего ÷ число мешочков."};},
+ (m)=>{const per=R(2,9),n=R(2,5),k=per*n;
+   return{q:`${k} учеников разделили на команды по ${per} человек. Сколько получилось команд?`,a:n,h:`Сколько раз по ${per} помещается в общем числе — это деление.`};},
+ (m)=>{const a=R(2,9),b=R(2,9),c=R(1,15);
+   return{q:`Вычисли: ${a} × ${b} + ${c}`,a:a*b+c,h:"Сначала умножение, потом сложение — таков порядок действий."};},
+];
+function setTaskLevel(l){
+  taskLevel=l;
+  document.querySelectorAll('#s-tasks .chip').forEach(c=>c.classList.toggle("on",+c.dataset.t===l));
+  newTask();
+}
+function newTask(){
+  clearAutoNext();
+  if(D.grade===1) curTask=TASKS1[R(0,TASKS1.length-1)]();
+  else if(D.grade===3) curTask=TASKS3[R(0,TASKS3.length-1)]();
+  else curTask=TASKS[R(0,TASKS.length-1)](taskLevel);
+  taskText.textContent=curTask.q;
+  taskAns.value="";taskAns.disabled=false;
+  taskFb.textContent="";taskFb.className="fb";
+  taskHelp.style.display="none";
+  taskCheckB.style.display="inline-block";taskNextB.style.display="none";
+}
+function checkTask(){
+  const v=taskAns.value;if(v==="")return;
+  const ok=parseInt(v,10)===curTask.a;
+  taskFb.textContent=ok?("Верно! 🎉 Ответ: "+curTask.a):("Правильный ответ: "+curTask.a);
+  recordAttempt(ok,"tasks");
+  if(ok){D.tasks++;save();confetti();sndOk();addStar(2);scheduleAutoNext(newTask);}
+  else{sndNo();taskHint();}
+  taskAns.disabled=true;taskCheckB.style.display="none";taskNextB.style.display="inline-block";
+  taskDone.textContent=D.tasks;checkBadges();
+}
+function taskHint(){taskHelp.style.display="block";taskHelp.innerHTML=`<div class="lexp">${curTask.h}</div>`;}
+taskAns.addEventListener("keydown",e=>{if(e.key==="Enter"){taskCheckB.style.display!=="none"?checkTask():newTask();}});
+
+/* ================= ЧТЕНИЕ ================= */
+let filter="all",lenFilter="all",curStory=0;
+function setFilter(f){
+  filter=f;
+  document.querySelectorAll('#s-read .chip[data-f]').forEach(c=>c.classList.toggle("on",c.dataset.f===f));
+  drawList();
+}
+function setLenFilter(f){
+  lenFilter=f;
+  document.querySelectorAll('#s-read .chip[data-len]').forEach(c=>c.classList.toggle("on",c.dataset.len===f));
+  drawList();
+}
+function drawList(){
+  const w=document.getElementById("slist");w.innerHTML="";
+  STORIES.forEach((s,i)=>{
+    const isRead=D.read.includes(i);
+    if(filter==="new"&&isRead)return;
+    if(filter==="done"&&!isRead)return;
+    if(lenFilter!=="all"&&s.len!==lenFilter)return;
+    const d=document.createElement("div");
+    d.className="sitem"+(isRead?" read":"");
+    d.onclick=()=>openStory(i);
+    const lenTag=s.len==="long"?'<span class="no">📖 длинный</span>':'<span class="no">📄 короткий</span>';
+    d.innerHTML=`<span class="em">${s.e}</span><div><span class="no">№${i+1}</span> ${lenTag}<h3>${s.t}</h3></div>${isRead?'<span class="tick">✓</span>':''}`;
+    w.appendChild(d);
+  });
+  if(!w.children.length)w.innerHTML='<p class="note" style="grid-column:1/-1">Здесь пока пусто 🙂</p>';
+  const p=Math.round(D.read.length/STORIES.length*100);
+  document.getElementById("readBar").style.width=p+"%";
+  document.getElementById("readTxt").textContent=`Прочитано ${D.read.length} из ${STORIES.length} рассказов (${p}%)`;
+}
+function openStory(i){
+  curStory=i;const s=STORIES[i];
+  const words=s.x.trim().split(/\s+/).length;
+  const mins=Math.max(1,Math.round(words/110));
+  stTitle.innerHTML=s.e+" "+s.t+` <span class="gradebadge" style="background:${s.len==='long'?'var(--coral)':'var(--blue)'}">${s.len==='long'?'📖 длинный':'📄 короткий'} · ~${mins} мин</span>`;
+  stBody.textContent=s.x;
+  stQs.innerHTML="";
+  s.q.forEach((qa,k)=>{
+    const b=document.createElement("div");b.className="qb";
+    b.innerHTML=`<p class="q">${k+1}. ${qa[0]}</p>
+      <button class="rev" onclick="this.nextElementSibling.classList.toggle('on')">Показать ответ (для родителя)</button>
+      <div class="ans">${qa[1]}</div>`;
+    stQs.appendChild(b);
+  });
+  updMark();showScreen("story");window.scrollTo({top:0});
+}
+function updMark(){
+  const r=D.read.includes(curStory);
+  markB.textContent=r?"✓ Прочитано":"Отметить как прочитанное";
+  markB.className="btn "+(r?"ghost":"g");
+}
+function toggleRead(){
+  const k=D.read.indexOf(curStory);
+  if(k>=0){D.read.splice(k,1);}
+  else{
+    D.read.push(curStory);today().r++;confetti(30);sndOk();
+    addStar(STORIES[curStory].len==="long"?5:3);
+    touchSubject("read");
+    toast("Рассказ прочитан! +"+(STORIES[curStory].len==="long"?5:3)+" ⭐");
+  }
+  save();updMark();drawList();checkBadges();renderTop();
+}
+function nextStory(){openStory((curStory+1)%STORIES.length);}
+function randomStory(){
+  let pool=STORIES.map((s,i)=>i);
+  if(lenFilter!=="all") pool=pool.filter(i=>STORIES[i].len===lenFilter);
+  const unread=pool.filter(i=>!D.read.includes(i));
+  const finalPool=unread.length?unread:pool;
+  openStory(finalPool[R(0,finalPool.length-1)]);
+}
+
+/* ================= НАГРАДЫ ================= */
+function drawAwards(){
+  const acc=D.totalTries>0 ? Math.round(D.totalCorrect/D.totalTries*100) : 0;
+  const skippedCount=Object.keys(D.skipped||{}).length;
+  document.getElementById("statGrid").innerHTML=`
+    <div><div class="bignum">${D.stars}</div><small>баллов всего</small></div>
+    <div><div class="bignum">${acc}%</div><small>точность ответов</small></div>
+    <div><div class="bignum">${D.solved}</div><small>примеров</small></div>
+    <div><div class="bignum">${D.tasks}</div><small>задач</small></div>
+    <div><div class="bignum">${(D.rusDone||[]).length+(D.engDone||[]).length+(D.worldDone||[]).length+(D.logicDone||[]).length+(D.litDone||[]).length}</div><small>уроков пройдено</small></div>
+    <div><div class="bignum">${D.read.length}</div><small>рассказов</small></div>
+    <div><div class="bignum">${D.best}</div><small>лучшая серия</small></div>
+    <div><div class="bignum">${Object.keys(D.days).length}</div><small>дней занятий</small></div>`;
+  document.getElementById("badgeGrid").innerHTML=BADGES.map(b=>
+    `<div class="badge${D.badges.includes(b.id)?" got":""}"><span class="bi">${b.i}</span><span class="bn">${b.n}</span></div>`
+  ).join("");
+  const revBtn=document.getElementById("reviewLinkBox");
+  if(revBtn) revBtn.innerHTML = skippedCount>0
+    ? `<button class="btn v sm" onclick="showScreen('review')">🔁 Разобрать пропущенные (${skippedCount})</button>`
+    : `<p class="note">Пропущенных вопросов пока нет 🙂</p>`;
+}
+function resetAll(){
+  if(!confirm("Точно всё сбросить? Звёзды, медали и отметки о прочитанном будут удалены."))return;
+  D=Object.assign({},DEF,{name:D.name,dailyGoal:D.dailyGoal,
+    grade:D.grade,subjects:D.subjects,read:[],lessons:[],badges:[],days:{},rusDone:[],engDone:[],worldDone:[],logicDone:[],litDone:[],skipped:{}});
+  save();renderTop();if(typeof STORIES!=="undefined")drawList();drawAwards();applyNav();toast("Всё сброшено");
+}
+
+/* ================= РАЗБОР ПРОПУЩЕННЫХ ================= */
+let reviewQueue=[],reviewIdx=0,reviewPhase="explain";
+function drawReview(){
+  reviewQueue=Object.entries(D.skipped||{});
+  reviewIdx=0; reviewPhase="explain";
+  reviewStep();
+}
+function reviewStep(){
+  const card=document.getElementById("reviewCard");
+  if(!reviewQueue.length){
+    card.innerHTML=`<div class="reviewphase"><div style="font-size:2.6rem">🎉</div>
+      <h2>Пропущенных вопросов нет!</h2><p class="note">Все вопросы, которые пропускались кнопкой «Другой вопрос», разобраны.</p></div>`;
+    return;
+  }
+  if(reviewIdx>=reviewQueue.length){
+    card.innerHTML=`<div class="reviewphase"><div style="font-size:2.6rem">🏁</div>
+      <h2>Разбор завершён!</h2><p class="note">Молодец, что повторил(а) все пропущенные вопросы.</p>
+      <button class="btn g" onclick="showScreen('awards')">Готово</button></div>`;
+    return;
+  }
+  const [key,item]=reviewQueue[reviewIdx];
+  if(reviewPhase==="explain"){
+    card.innerHTML=`<div class="reviewphase">
+      <span class="gradebadge">${item.subj} · ${item.lesson}</span>
+      <div class="mcqprompt" style="font-size:1.4rem">${item.q}</div>
+      <div class="explainBox">💡 ${item.explain}<br><br>Правильный ответ: <b>${item.opts[item.correct]}</b></div>
+      <button class="btn b" onclick="reviewAsk()">Спросить ещё раз →</button>
+    </div>`;
+  } else {
+    const wide=item.opts.length>2;
+    card.innerHTML=`<div class="reviewphase">
+      <span class="gradebadge">${item.subj} · ${item.lesson}</span>
+      <div class="mcqprompt" style="font-size:1.4rem">${item.q}</div>
+      <div class="mcqrow${wide?' w4':''}" id="review-opts">
+        ${item.opts.map((o,i)=>`<div class="mcqopt" data-i="${i}" onclick="reviewPick(${i},this)">${o}</div>`).join("")}
+      </div>
+      <div class="fb" id="review-fb"></div>
+    </div>`;
+  }
+}
+function reviewAsk(){ reviewPhase="ask"; reviewStep(); }
+function reviewPick(i,el){
+  const [key,item]=reviewQueue[reviewIdx];
+  const opts=document.getElementById("review-opts").children;
+  const ok=(i===item.correct);
+  el.classList.add(ok?"right":"wrong");
+  if(!ok) opts[item.correct].classList.add("right");
+  for(const o of opts) o.onclick=null;
+  recordAttempt(ok,"review");
+  if(ok){
+    fb.textContent="Верно! 🎉 Этот вопрос убран из списка пропущенных."; fb.className="fb ok";
+    confetti(16); sndOk(); addStar(1);
+    delete D.skipped[key];
+  } else {
+    fb.textContent="Ещё раз потренируемся позже. Ответ: "+item.opts[item.correct]; fb.className="fb no"; sndNo();
+  }
+  save();
+  scheduleAutoNext(()=>{ reviewIdx++; reviewPhase="explain"; reviewStep(); });
+}
+
+/* ================= РУССКИЙ / АНГЛИЙСКИЙ (общий движок тестов) ================= */
+function makeQuiz(getMOD, doneArrKey, dotsId, cardId, subjLabel, subjKey){
+  let li=0, cur=null;
+  function dots(){
+    const MOD=getMOD();
+    const w=document.getElementById(dotsId);w.innerHTML="";
+    MOD.forEach((l,i)=>{
+      const d=document.createElement("div");
+      d.className="dot"+(i===li?" on":"")+(D[doneArrKey].includes(i)?" done":"");
+      d.textContent=i+1;d.title=l.n;d.onclick=()=>{li=i;draw();};
+      w.appendChild(d);
+    });
+  }
+  function draw(){
+    clearAutoNext();
+    const MOD=getMOD();
+    if(li>=MOD.length) li=0;
+    dots();
+    const l=MOD[li];
+    cur=l.bank[R(0,l.bank.length-1)];
+    const isLast=li===MOD.length-1;
+    const wide=cur.opts.length>2;
+    const skipKey=subjLabel+"|"+li+"|"+cur.p;
+    const skipCount=(D.skipped[skipKey]&&D.skipped[skipKey].count)||0;
+    document.getElementById(cardId).innerHTML=`
+      <h2 class="ltitle">${li+1}. ${l.n}</h2>
+      <div class="lexp">${l.explain}</div>
+      <div class="mcqprompt">${cur.em?('<span class="em">'+cur.p+'</span>'):cur.p}</div>
+      <div class="mcqrow${wide?' w4':''}" id="${cardId}-opts">
+        ${cur.opts.map((o,i)=>`<div class="mcqopt" data-i="${i}" onclick="window['${cardId}QPick'](${i},this)">${o}</div>`).join("")}
+      </div>
+      <div class="fb" id="${cardId}-fb"></div>
+      <div class="lctr"><button class="btn ghost sm" onclick="window['${cardId}QSkip']()">Другой вопрос${skipCount>0?' (пропущено ×'+skipCount+')':''}</button></div>
+      <div class="lnav">
+        <button class="btn b" onclick="window['${cardId}QGo'](1)">${isLast?"В начало 🔁":"Дальше →"}</button>
+      </div>`;
+  }
+  function pick(i,el){
+    clearAutoNext();
+    const MOD=getMOD();
+    const opts=document.getElementById(cardId+"-opts").children;
+    const ok=(i===cur.correct);
+    el.classList.add(ok?"right":"wrong");
+    if(!ok) opts[cur.correct].classList.add("right");
+    for(const o of opts) o.onclick=null;
+    const fb=document.getElementById(cardId+"-fb");
+    recordAttempt(ok,subjKey);
+    if(ok){
+      fb.textContent="Верно! 🎉"; fb.className="fb ok"; confetti(18); sndOk(); addStar(1); D.solved++;
+      if(!D[doneArrKey].includes(li)) D[doneArrKey].push(li);
+      scheduleAutoNext(draw);
+    } else {
+      fb.innerHTML="Правильный ответ: <b>"+cur.opts[cur.correct]+"</b>. "+MOD[li].explain; fb.className="fb no"; sndNo();
+    }
+    save(); checkBadges(); dots();
+  }
+  function skip(){
+    const MOD=getMOD();
+    if(cur){
+      const key=subjLabel+"|"+li+"|"+cur.p;
+      if(!D.skipped[key]) D.skipped[key]={subj:subjLabel,lesson:MOD[li].n,q:cur.p,opts:cur.opts,correct:cur.correct,explain:MOD[li].explain,count:0};
+      D.skipped[key].count++;
+      save();
+    }
+    draw();
+  }
+  function go(d){
+    const MOD=getMOD();
+    li=(li===MOD.length-1&&d===1)?0:Math.max(0,Math.min(MOD.length-1,li+d));
+    draw(); window.scrollTo({top:0,behavior:"smooth"});
+  }
+  window[cardId+"QPick"]=pick;
+  window[cardId+"QSkip"]=skip;
+  window[cardId+"QGo"]=go;
+  return {draw};
+}
+const rusEngine = makeQuiz(()=>D.grade===1?RUS1_MOD:(D.grade===3?RUS3_MOD:RUS_MOD),"rusDone","r-dots","r-lcard","Русский язык","rus");
+const engEngine = makeQuiz(()=>ENG_MOD,"engDone","e-dots","e-lcard","English","eng");
+const worldEngine = makeQuiz(()=>D.grade===1?WORLD1_MOD:(D.grade===3?WORLD3_MOD:WORLD_MOD),"worldDone","w-dots","w-lcard","Окружающий мир","world");
+const logicEngine = makeQuiz(()=>D.grade===1?LOGIC1_MOD:LOGIC_MOD,"logicDone","lg-dots","lg-lcard","Логика","logic");
+const litEngine = makeQuiz(()=>LIT_MOD,"litDone","lt-dots","lt-lcard","Лит. чтение","lit");
+
+
+/* ================= НАВИГАЦИЯ ================= */
+function showScreen(n){
+  clearAutoNext();
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));
+  document.querySelectorAll(".sidebtn").forEach(t=>t.style.opacity="1");
+  const map={home:"sb-home",math:"sb-math",tasks:"sb-tasks",rus:"sb-rus",eng:"sb-eng",world:"sb-world",logic:"sb-logic",lit:"sb-lit",
+    read:"sb-read",story:"sb-read",awards:"sb-awards",review:"sb-awards"};
+  const b=document.getElementById(map[n]);if(b)b.style.opacity=".55";
+  document.getElementById("s-"+n).classList.add("on");
+  if(n==="read"){
+    const w=document.getElementById("slist");
+    if(w) w.innerHTML='<p class="note" style="grid-column:1/-1">Загружаем рассказы…</p>';
+    ensureStoriesLoaded(drawList);
+  }
+  if(n==="awards")drawAwards();
+  if(n==="math")switchMathTab("practice");
+  if(n==="tasks"){
+    const chips=document.getElementById("taskLevelChips");
+    if(chips) chips.style.display = (D.grade===1||D.grade===3) ? "none" : "flex";
+    newTask();
+  }
+  if(n==="rus")rusEngine.draw();
+  if(n==="eng")engEngine.draw();
+  if(n==="world")worldEngine.draw();
+  if(n==="logic")logicEngine.draw();
+  if(n==="lit")litEngine.draw();
+  if(n==="review")drawReview();
+}
+
+/* ================= СТАРТ ================= */
+function startApp(){
+  load();
+  if(!canStore)setTimeout(()=>toast("Прогресс не сохранится в этом окне — открой файл в браузере"),900);
+  renderSideNav();
+  renderAppGrid();
+  updateChildChip();
+  renderTop();
+  newProb();drawStats();trail();
+  newTask();taskDone.textContent=D.tasks;
+  showScreen("home");
+}
+function boot(){
+  try{
+    loadAccount();
+    if(!ACCOUNT){
+      addChildRow();
+      document.getElementById("authScreen").classList.remove("hide");
+      return;
+    }
+    document.getElementById("authScreen").classList.add("hide");
+    startApp();
+  }catch(err){
+    console.error("Ошибка запуска:", err);
+    window.dispatchEvent(new ErrorEvent("error",{error:err,message:err.message}));
+  }
+}
+boot();
+</script>
+</body>
+</html>
