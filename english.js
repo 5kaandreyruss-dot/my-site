@@ -152,7 +152,7 @@ const ENG_MOD = [
     {p:"яблоко",opts:["Apple","Orange","Banana"],correct:0},
     {p:"сыр",opts:["Cheese","Chicken","Cake"],correct:0},
     {p:"суп",opts:["Soup","Soap","Salad"],correct:0},
-    {p:"вода",opts:["Water","Water","Wine"],correct:0},
+    {p:"вода",opts:["Water","Wine","Milk"],correct:0},
     {p:"яйцо",opts:["Egg","Ear","Eye"],correct:0},
     {p:"рыба",opts:["Fish","Fresh","Fork"],correct:0},
     {p:"мясо",opts:["Meat","Meal","Milk"],correct:0}
@@ -228,6 +228,49 @@ const ENG_MOD = [
     {p:"солнце",opts:["Sun","Snow","Cloud"],correct:0},
     {p:"дождь",opts:["Rain","Snow","Wind"],correct:0},
     {p:"Какое время года идёт после winter?",opts:["Spring","Summer","Autumn"],correct:0}
+  ]},
+
+{ n:"Clothes — одежда",
+  explain:"Названия предметов одежды по-английски.",
+  bank:[
+    {p:"футболка",opts:["T-shirt","Shoes","Hat"],correct:0},
+    {p:"брюки",opts:["Trousers","Dress","Sock"],correct:0},
+    {p:"платье",opts:["Dress","Shirt","Coat"],correct:0},
+    {p:"шапка",opts:["Hat","Shoe","Belt"],correct:0},
+    {p:"обувь (ботинки)",opts:["Shoes","Gloves","Skirt"],correct:0},
+    {p:"перчатки",opts:["Gloves","Shoes","Socks"],correct:0},
+    {p:"куртка",opts:["Jacket","Skirt","Tie"],correct:0}
+  ]},
+
+{ n:"House — дом и комнаты",
+  explain:"Названия комнат дома и мебели по-английски.",
+  bank:[
+    {p:"кухня",opts:["Kitchen","Bedroom","Bathroom"],correct:0},
+    {p:"спальня",opts:["Bedroom","Kitchen","Garden"],correct:0},
+    {p:"ванная",opts:["Bathroom","Living room","Hall"],correct:0},
+    {p:"гостиная",opts:["Living room","Kitchen","Bathroom"],correct:0},
+    {p:"кровать",opts:["Bed","Table","Chair"],correct:0},
+    {p:"диван",opts:["Sofa","Bed","Shelf"],correct:0}
+  ]},
+
+{ n:"Weather — погода",
+  explain:"Как рассказать о погоде по-английски.",
+  bank:[
+    {p:"«Сегодня солнечно» — как сказать?",opts:["It's sunny today","It's rainy today","It's cold today"],correct:0},
+    {p:"«Сегодня идёт дождь» — как сказать?",opts:["It's rainy today","It's sunny today","It's windy today"],correct:0},
+    {p:"«Сегодня холодно» — как сказать?",opts:["It's cold today","It's hot today","It's warm today"],correct:0},
+    {p:"«Сегодня жарко» — как сказать?",opts:["It's hot today","It's cold today","It's snowy today"],correct:0},
+    {p:"ветрено",opts:["Windy","Sunny","Cloudy"],correct:0},
+    {p:"облачно",opts:["Cloudy","Windy","Snowy"],correct:0}
+  ]},
+
+{ n:"Have got — у меня есть",
+  explain:"«I have got» (или просто «I have») используют, чтобы сказать, что у тебя что-то есть.",
+  bank:[
+    {p:"«У меня есть кот» — как сказать?",opts:["I have got a cat","I has got a cat","I got have a cat"],correct:0},
+    {p:"«У неё есть книга» — как сказать (she)?",opts:["She has got a book","She have got a book","She got has a book"],correct:0},
+    {p:"«У меня нет собаки» — как сказать?",opts:["I haven't got a dog","I not have got a dog","I got haven't a dog"],correct:0},
+    {p:"«У тебя есть велосипед?» — как спросить?",opts:["Have you got a bike?","You have got a bike?","Got you have a bike?"],correct:0}
   ]}
 
 ];
