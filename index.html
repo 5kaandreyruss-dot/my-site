@@ -131,6 +131,9 @@ input.mini{font-size:1.1rem;width:78px;}
 .dot.done{background:var(--green);}
 .ltitle{text-align:center;color:var(--ink);margin:0 0 10px;font-size:1.2rem;}
 .lexp{background:#F0F6FF;border:1px solid #D6E7FF;border-radius:14px;padding:13px 15px;line-height:1.6;margin-bottom:16px;font-size:.98rem;color:var(--ink);}
+.lillus{display:flex;justify-content:center;align-items:center;background:linear-gradient(180deg,#FAFAFF,#F2F2FA);
+  border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:14px;min-height:110px;}
+.lillus svg{max-width:100%;height:auto;}
 .lexp b{color:var(--blue-d);}
 .blocks{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;justify-content:center;margin:14px 0;min-height:118px;}
 .bgrp{display:flex;gap:5px;align-items:flex-end;flex-wrap:wrap;justify-content:center;max-width:260px;}
@@ -166,7 +169,8 @@ input.mini{font-size:1.1rem;width:78px;}
   display:flex;align-items:center;gap:11px;transition:transform .1s;position:relative;}
 .sitem:active{transform:scale(.98);}
 .sitem.read{background:#F0FBF2;border-color:#C9EFCE;}
-.sitem .em{font-size:1.6rem;}
+.sitem .em{font-size:1.35rem;width:44px;height:44px;min-width:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .sitem h3{margin:0;font-size:.95rem;color:var(--ink);line-height:1.2;}
 .sitem .no{font-size:.7rem;color:var(--sub);font-weight:600;}
 .tick{position:absolute;top:6px;right:9px;color:var(--green);font-weight:900;font-size:.9rem;}
@@ -302,9 +306,12 @@ input.mini{font-size:1.1rem;width:78px;}
   padding:16px;font-weight:500;color:var(--ink);margin:14px 0;text-align:left;}
 
 /* ================= ГЛАВНЫЙ ЭКРАН (домашний) ================= */
-.homeCard{background:linear-gradient(135deg,var(--blue),#5AC8FA);border-radius:20px;padding:20px;color:#fff;margin-bottom:18px;}
+.homeCard{background:linear-gradient(135deg,var(--blue),#5AC8FA);border-radius:20px;padding:20px;color:#fff;margin-bottom:18px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;}
 .homeCard h2{margin:0 0 4px;font-size:1.3rem;}
 .homeCard p{margin:0;opacity:.9;font-size:.9rem;font-weight:500;}
+.homeCard .heroSvg{flex-shrink:0;display:none;}
+@media(min-width:400px){.homeCard .heroSvg{display:block;}}
 .appgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:16px 10px;margin-top:6px;}
 .appicon{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;text-align:center;}
 .appicon .sq{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;
@@ -399,8 +406,22 @@ input.mini{font-size:1.1rem;width:78px;}
 <!-- ================= ГЛАВНАЯ ================= -->
 <section id="s-home" class="screen">
   <div class="homeCard">
-    <h2 id="homeGreeting">Привет! 👋</h2>
-    <p>Выбери, чем хочешь заняться сегодня</p>
+    <div>
+      <h2 id="homeGreeting">Привет! 👋</h2>
+      <p>Выбери, чем хочешь заняться сегодня</p>
+    </div>
+    <svg class="heroSvg" width="96" height="86" viewBox="0 0 96 86" aria-hidden="true">
+      <path d="M6 78 C 20 60, 10 45, 28 34 C 46 23, 40 10, 60 6" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-dasharray="1 9" opacity="0.85"/>
+      <circle cx="6" cy="78" r="4.5" fill="white" opacity="0.9"/>
+      <circle cx="28" cy="34" r="3.5" fill="white" opacity="0.7"/>
+      <g transform="translate(52,-2)">
+        <path d="M8 12l2.4 5.6 6.1.6-4.6 4.1 1.4 6-5.3-3.2-5.3 3.2 1.4-6-4.6-4.1 6.1-.6z" fill="#FFCC00"/>
+      </g>
+      <g transform="translate(4,4)">
+        <path d="M0 6c4-3 8-3 11 0v14c-3-3-7-3-11 0z" fill="white" opacity="0.95"/>
+        <path d="M22 6c-4-3-8-3-11 0v14c3-3 7-3 11 0z" fill="white" opacity="0.95"/>
+      </g>
+    </svg>
   </div>
   <div class="card" id="levelCard"></div>
   <div class="card" style="text-align:center">
@@ -1974,6 +1995,7 @@ function setLenFilter(f){
   document.querySelectorAll('#s-read .chip[data-len]').forEach(c=>c.classList.toggle("on",c.dataset.len===f));
   drawList();
 }
+const STORY_BADGE_COLORS=["#CDE7FF","#FFE1B0","#D6F5DC","#FFD3DD","#E6D6FF","#C7F0F5","#FFF0B3"];
 let storyOrder=null;
 function shuffledStoryOrder(){
   if(!storyOrder || storyOrder.length!==STORIES.length){
@@ -1997,7 +2019,8 @@ function drawList(){
     d.className="sitem"+(isRead?" read":"");
     d.onclick=()=>openStory(i);
     const lenTag=s.len==="long"?'<span class="no">📖 длинный</span>':'<span class="no">📄 короткий</span>';
-    d.innerHTML=`<span class="em">${s.e}</span><div><span class="no">№${i+1}</span> ${lenTag}<h3>${s.t}</h3></div>${isRead?'<span class="tick">✓</span>':''}`;
+    const badgeColor=STORY_BADGE_COLORS[i%STORY_BADGE_COLORS.length];
+    d.innerHTML=`<span class="em" style="background:${badgeColor}">${s.e}</span><div><span class="no">№${i+1}</span> ${lenTag}<h3>${s.t}</h3></div>${isRead?'<span class="tick">✓</span>':''}`;
     w.appendChild(d);
   });
   if(!w.children.length)w.innerHTML='<p class="note" style="grid-column:1/-1">Здесь пока пусто 🙂</p>';
@@ -2178,6 +2201,7 @@ function makeQuiz(getMOD, doneArrKey, dotsId, cardId, subjLabel, subjKey){
     const skipCount=(D.skipped[skipKey]&&D.skipped[skipKey].count)||0;
     document.getElementById(cardId).innerHTML=`
       <h2 class="ltitle">${li+1}. ${l.n}</h2>
+      ${l.svg?'<div class="lillus">'+l.svg+'</div>':''}
       <div class="lexp">${l.explain}</div>
       <div class="mcqprompt">${cur.em?('<span class="em">'+cur.p+'</span>'):cur.p}</div>
       <div class="mcqrow${wide?' w4':''}" id="${cardId}-opts">
