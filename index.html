@@ -2005,8 +2005,10 @@ function drawList(){
   document.getElementById("readBar").style.width=p+"%";
   document.getElementById("readTxt").textContent=`Прочитано ${D.read.length} из ${STORIES.length} рассказов (${p}%)`;
 }
+let storyAnsUnlocked=false;
 function openStory(i){
   curStory=i;const s=STORIES[i];
+  storyAnsUnlocked=false;
   const words=s.x.trim().split(/\s+/).length;
   const mins=Math.max(1,Math.round(words/110));
   stTitle.innerHTML=s.e+" "+s.t+` <span class="gradebadge" style="background:${s.len==='long'?'var(--coral)':'var(--blue)'}">${s.len==='long'?'📖 длинный':'📄 короткий'} · ~${mins} мин</span>`;
@@ -2015,17 +2017,27 @@ function openStory(i){
   s.q.forEach((qa,k)=>{
     const b=document.createElement("div");b.className="qb";
     b.innerHTML=`<p class="q">${k+1}. ${qa[0]}</p>
-      <button class="rev" onclick="revealStoryAnswer(this)">🔒 Показать ответ (для родителя)</button>
       <div class="ans">${qa[1]}</div>`;
     stQs.appendChild(b);
   });
+  stQs.insertAdjacentHTML("beforeend",
+    `<button class="rev" id="revStoryBtn" onclick="revealStoryAnswers()" style="margin-top:10px">🔒 Показать ответы (для родителя)</button>`);
   updMark();showScreen("story");window.scrollTo({top:0});
 }
-function revealStoryAnswer(btn){
-  const ansDiv=btn.nextElementSibling;
-  if(ansDiv.classList.contains("on")){ ansDiv.classList.remove("on"); return; }
-  askParentPassword(()=>{ ansDiv.classList.add("on"); },
-    "Чтобы увидеть ответ, введите родительский пароль — так ребёнок не сможет подсмотреть его сам.");
+function revealStoryAnswers(){
+  const btn=document.getElementById("revStoryBtn");
+  const anss=document.querySelectorAll("#stQs .ans");
+  if(storyAnsUnlocked){
+    const shown=anss.length && anss[0].classList.contains("on");
+    anss.forEach(a=>a.classList.toggle("on",!shown));
+    if(btn) btn.textContent=shown?"Показать ответы":"Скрыть ответы";
+    return;
+  }
+  askParentPassword(()=>{
+    storyAnsUnlocked=true;
+    anss.forEach(a=>a.classList.add("on"));
+    if(btn) btn.textContent="Скрыть ответы";
+  }, "Чтобы увидеть ответы на вопросы к этому рассказу, введите родительский пароль — так ребёнок не сможет подсмотреть их сам.");
 }
 function updMark(){
   const r=D.read.includes(curStory);
