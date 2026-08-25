@@ -1974,9 +1974,21 @@ function setLenFilter(f){
   document.querySelectorAll('#s-read .chip[data-len]').forEach(c=>c.classList.toggle("on",c.dataset.len===f));
   drawList();
 }
+let storyOrder=null;
+function shuffledStoryOrder(){
+  if(!storyOrder || storyOrder.length!==STORIES.length){
+    storyOrder=STORIES.map((s,i)=>i);
+    for(let i=storyOrder.length-1;i>0;i--){
+      const j=R(0,i);
+      [storyOrder[i],storyOrder[j]]=[storyOrder[j],storyOrder[i]];
+    }
+  }
+  return storyOrder;
+}
 function drawList(){
   const w=document.getElementById("slist");w.innerHTML="";
-  STORIES.forEach((s,i)=>{
+  shuffledStoryOrder().forEach(i=>{
+    const s=STORIES[i];
     const isRead=D.read.includes(i);
     if(filter==="new"&&isRead)return;
     if(filter==="done"&&!isRead)return;
@@ -1993,10 +2005,8 @@ function drawList(){
   document.getElementById("readBar").style.width=p+"%";
   document.getElementById("readTxt").textContent=`Прочитано ${D.read.length} из ${STORIES.length} рассказов (${p}%)`;
 }
-let storyAnsUnlocked=false;
 function openStory(i){
   curStory=i;const s=STORIES[i];
-  storyAnsUnlocked=false;
   const words=s.x.trim().split(/\s+/).length;
   const mins=Math.max(1,Math.round(words/110));
   stTitle.innerHTML=s.e+" "+s.t+` <span class="gradebadge" style="background:${s.len==='long'?'var(--coral)':'var(--blue)'}">${s.len==='long'?'📖 длинный':'📄 короткий'} · ~${mins} мин</span>`;
@@ -2013,8 +2023,8 @@ function openStory(i){
 }
 function revealStoryAnswer(btn){
   const ansDiv=btn.nextElementSibling;
-  if(storyAnsUnlocked){ ansDiv.classList.toggle("on"); return; }
-  askParentPassword(()=>{ storyAnsUnlocked=true; ansDiv.classList.add("on"); },
+  if(ansDiv.classList.contains("on")){ ansDiv.classList.remove("on"); return; }
+  askParentPassword(()=>{ ansDiv.classList.add("on"); },
     "Чтобы увидеть ответ, введите родительский пароль — так ребёнок не сможет подсмотреть его сам.");
 }
 function updMark(){
