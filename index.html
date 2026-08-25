@@ -557,9 +557,30 @@ input.mini{font-size:1.1rem;width:78px;}
 
 <!-- ================= ОБЩЕСТВОЗНАНИЕ ================= -->
 <section id="s-social" class="screen">
-  <span class="gradebadge">6 класс</span>
+  <span class="gradebadge">6+ класс</span>
   <div class="dots" id="so-dots"></div>
   <div class="card" id="so-lcard"></div>
+</section>
+
+<!-- ================= АЛГЕБРА ================= -->
+<section id="s-algebra" class="screen">
+  <span class="gradebadge">7 класс</span>
+  <div class="dots" id="al-dots"></div>
+  <div class="card" id="al-lcard"></div>
+</section>
+
+<!-- ================= ГЕОМЕТРИЯ ================= -->
+<section id="s-geometry" class="screen">
+  <span class="gradebadge">7 класс</span>
+  <div class="dots" id="ge2-dots"></div>
+  <div class="card" id="ge2-lcard"></div>
+</section>
+
+<!-- ================= ФИЗИКА ================= -->
+<section id="s-physics" class="screen">
+  <span class="gradebadge">7 класс</span>
+  <div class="dots" id="ph-dots"></div>
+  <div class="card" id="ph-lcard"></div>
 </section>
 
 <!-- ================= ЛОГИКА ================= -->
@@ -668,6 +689,7 @@ input.mini{font-size:1.1rem;width:78px;}
 <script src="russian4.js"></script>
 <script src="russian5.js"></script>
 <script src="russian6.js"></script>
+<script src="russian7.js"></script>
 <script src="english.js"></script>
 <script src="world.js"></script>
 <script src="world1.js"></script>
@@ -675,23 +697,32 @@ input.mini{font-size:1.1rem;width:78px;}
 <script src="world4.js"></script>
 <script src="history5.js"></script>
 <script src="history6.js"></script>
+<script src="history7.js"></script>
 <script src="geography5.js"></script>
 <script src="geography6.js"></script>
+<script src="geography7.js"></script>
 <script src="biology5.js"></script>
 <script src="biology6.js"></script>
+<script src="biology7.js"></script>
 <script src="social6.js"></script>
+<script src="social7.js"></script>
+<script src="algebra7.js"></script>
+<script src="geometry7.js"></script>
+<script src="physics7.js"></script>
 <script src="logic.js"></script>
 <script src="logic1.js"></script>
 <script src="lit.js"></script>
 <script src="lit4.js"></script>
 <script src="lit5.js"></script>
 <script src="lit6.js"></script>
+<script src="lit7.js"></script>
 <script src="music.js"></script>
 <script src="math1.js"></script>
 <script src="math3.js"></script>
 <script src="math4.js"></script>
 <script src="math5.js"></script>
 <script src="math6.js"></script>
+<script src="math7.js"></script>
 <script>
 /* ================= СТРАХОВКА ОТ ЗАВИСАНИЯ ================= */
 window.addEventListener("error", function(e){
@@ -703,6 +734,7 @@ window.addEventListener("error", function(e){
   if(typeof RUS4_MOD==="undefined") missing.push("russian4.js");
   if(typeof RUS5_MOD==="undefined") missing.push("russian5.js");
   if(typeof RUS6_MOD==="undefined") missing.push("russian6.js");
+  if(typeof RUS7_MOD==="undefined") missing.push("russian7.js");
   if(typeof ENG_MOD==="undefined") missing.push("english.js");
   if(typeof WORLD_MOD==="undefined") missing.push("world.js");
   if(typeof WORLD1_MOD==="undefined") missing.push("world1.js");
@@ -710,23 +742,32 @@ window.addEventListener("error", function(e){
   if(typeof WORLD4_MOD==="undefined") missing.push("world4.js");
   if(typeof HISTORY5_MOD==="undefined") missing.push("history5.js");
   if(typeof HISTORY6_MOD==="undefined") missing.push("history6.js");
+  if(typeof HISTORY7_MOD==="undefined") missing.push("history7.js");
   if(typeof GEOGRAPHY5_MOD==="undefined") missing.push("geography5.js");
   if(typeof GEOGRAPHY6_MOD==="undefined") missing.push("geography6.js");
+  if(typeof GEOGRAPHY7_MOD==="undefined") missing.push("geography7.js");
   if(typeof BIOLOGY5_MOD==="undefined") missing.push("biology5.js");
   if(typeof BIOLOGY6_MOD==="undefined") missing.push("biology6.js");
+  if(typeof BIOLOGY7_MOD==="undefined") missing.push("biology7.js");
   if(typeof SOCIAL6_MOD==="undefined") missing.push("social6.js");
+  if(typeof SOCIAL7_MOD==="undefined") missing.push("social7.js");
+  if(typeof ALGEBRA7_MOD==="undefined") missing.push("algebra7.js");
+  if(typeof GEOMETRY7_MOD==="undefined") missing.push("geometry7.js");
+  if(typeof PHYSICS7_MOD==="undefined") missing.push("physics7.js");
   if(typeof LOGIC_MOD==="undefined") missing.push("logic.js");
   if(typeof LOGIC1_MOD==="undefined") missing.push("logic1.js");
   if(typeof LIT_MOD==="undefined") missing.push("lit.js");
   if(typeof LIT4_MOD==="undefined") missing.push("lit4.js");
   if(typeof LIT5_MOD==="undefined") missing.push("lit5.js");
   if(typeof LIT6_MOD==="undefined") missing.push("lit6.js");
+  if(typeof LIT7_MOD==="undefined") missing.push("lit7.js");
   if(typeof MUSIC_MOD==="undefined") missing.push("music.js");
   if(typeof LESSONS_G1==="undefined") missing.push("math1.js");
   if(typeof LESSONS_G3==="undefined") missing.push("math3.js");
   if(typeof TASKS4==="undefined") missing.push("math4.js");
   if(typeof TASKS5==="undefined") missing.push("math5.js");
   if(typeof TASKS6==="undefined") missing.push("math6.js");
+  if(typeof TASKS7==="undefined") missing.push("math7.js");
   const box=document.createElement("div");
   box.style.cssText="position:fixed;inset:0;z-index:999;background:rgba(20,14,40,.92);color:#fff;"+
     "display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:sans-serif;";
@@ -748,8 +789,8 @@ window.addEventListener("error", function(e){
 const DEF={name:"",stars:0,solved:0,tasks:0,read:[],lessons:[],badges:[],days:{},best:0,
   grade:2,dailyGoal:20,mathDiff:"normal",
   totalCorrect:0,totalTries:0,skipped:{},subjStats:{},
-  subjects:{math:true,tasks:true,rus:true,eng:true,world:true,history:true,geography:true,biology:true,social:true,logic:true,lit:true,read:true,music:true},
-  rusDone:[],engDone:[],worldDone:[],historyDone:[],geographyDone:[],biologyDone:[],socialDone:[],logicDone:[],litDone:[],musicDone:[]};
+  subjects:{math:true,tasks:true,rus:true,eng:true,world:true,history:true,geography:true,biology:true,social:true,algebra:true,geometry:true,physics:true,logic:true,lit:true,read:true,music:true},
+  rusDone:[],engDone:[],worldDone:[],historyDone:[],geographyDone:[],biologyDone:[],socialDone:[],algebraDone:[],geometryDone:[],physicsDone:[],logicDone:[],litDone:[],musicDone:[]};
 let D=Object.assign({},DEF);
 let canStore=true;
 let ACCOUNT=null;
@@ -990,16 +1031,19 @@ const BADGES=[
  {id:"les",i:"🧮",n:"Все уроки",c:d=>d.lessons.length>=LESSONS.length},
  {id:"d3",i:"🗓️",n:"3 дня подряд",c:d=>Object.keys(d.days).length>=3},
  {id:"d7",i:"🏵️",n:"7 дней",c:d=>Object.keys(d.days).length>=7},
- {id:"rus",i:"📝",n:"Знаток русского",c:d=>d.rusDone&&d.rusDone.length>=(d.grade===1?RUS1_MOD:d.grade===3?RUS3_MOD:d.grade===4?RUS4_MOD:d.grade===5?RUS5_MOD:d.grade>=6?RUS6_MOD:RUS_MOD).length},
+ {id:"rus",i:"📝",n:"Знаток русского",c:d=>d.rusDone&&d.rusDone.length>=(d.grade===1?RUS1_MOD:d.grade===3?RUS3_MOD:d.grade===4?RUS4_MOD:d.grade===5?RUS5_MOD:d.grade===6?RUS6_MOD:d.grade>=7?RUS7_MOD:RUS_MOD).length},
  {id:"eng",i:"🇬🇧",n:"English Star",c:d=>d.engDone&&d.engDone.length>=ENG_MOD.length},
  {id:"world",i:"🌍",n:"Знаток мира",c:d=>d.worldDone&&d.worldDone.length>=WORLD_MOD.length},
  {id:"logic",i:"🧩",n:"Мастер логики",c:d=>d.logicDone&&d.logicDone.length>=LOGIC_MOD.length},
- {id:"lit",i:"📚",n:"Знаток книг",c:d=>d.litDone&&d.litDone.length>=(d.grade===4?LIT4_MOD:d.grade===5?LIT5_MOD:d.grade>=6?LIT6_MOD:LIT_MOD).length},
+ {id:"lit",i:"📚",n:"Знаток книг",c:d=>d.litDone&&d.litDone.length>=(d.grade===4?LIT4_MOD:d.grade===5?LIT5_MOD:d.grade===6?LIT6_MOD:d.grade>=7?LIT7_MOD:LIT_MOD).length},
  {id:"music",i:"🎵",n:"Знаток музыки",c:d=>d.musicDone&&d.musicDone.length>=MUSIC_MOD.length},
- {id:"history",i:"🏛️",n:"Знаток истории",c:d=>d.historyDone&&d.historyDone.length>=(d.grade>=6?HISTORY6_MOD:HISTORY5_MOD).length},
- {id:"geography",i:"🌐",n:"Знаток географии",c:d=>d.geographyDone&&d.geographyDone.length>=(d.grade>=6?GEOGRAPHY6_MOD:GEOGRAPHY5_MOD).length},
- {id:"biology",i:"🌿",n:"Знаток биологии",c:d=>d.biologyDone&&d.biologyDone.length>=(d.grade>=6?BIOLOGY6_MOD:BIOLOGY5_MOD).length},
- {id:"social",i:"⚖️",n:"Знаток обществознания",c:d=>d.socialDone&&d.socialDone.length>=SOCIAL6_MOD.length},
+ {id:"history",i:"🏛️",n:"Знаток истории",c:d=>d.historyDone&&d.historyDone.length>=(d.grade>=7?HISTORY7_MOD:d.grade===6?HISTORY6_MOD:HISTORY5_MOD).length},
+ {id:"geography",i:"🌐",n:"Знаток географии",c:d=>d.geographyDone&&d.geographyDone.length>=(d.grade>=7?GEOGRAPHY7_MOD:d.grade===6?GEOGRAPHY6_MOD:GEOGRAPHY5_MOD).length},
+ {id:"biology",i:"🌿",n:"Знаток биологии",c:d=>d.biologyDone&&d.biologyDone.length>=(d.grade>=7?BIOLOGY7_MOD:d.grade===6?BIOLOGY6_MOD:BIOLOGY5_MOD).length},
+ {id:"social",i:"⚖️",n:"Знаток обществознания",c:d=>d.socialDone&&d.socialDone.length>=(d.grade>=7?SOCIAL7_MOD:SOCIAL6_MOD).length},
+ {id:"algebra",i:"➗",n:"Знаток алгебры",c:d=>d.algebraDone&&d.algebraDone.length>=ALGEBRA7_MOD.length},
+ {id:"geometry",i:"📐",n:"Знаток геометрии",c:d=>d.geometryDone&&d.geometryDone.length>=GEOMETRY7_MOD.length},
+ {id:"physics",i:"⚛️",n:"Знаток физики",c:d=>d.physicsDone&&d.physicsDone.length>=PHYSICS7_MOD.length},
  {id:"acc90",i:"🎯",n:"Точность 90%",c:d=>d.totalTries>=20&&Math.round(d.totalCorrect/d.totalTries*100)>=90},
  {id:"stars500",i:"💰",n:"500 баллов",c:d=>d.stars>=500},
  {id:"allSubj",i:"🗺️",n:"Все разделы за день",c:d=>{const t=d.days[todayKey()];return !!(t&&t.touched&&t.touched.length>=SUBJECTS.filter(s=>s.id!=="awards"&&d.subjects[s.id]!==false&&!hiddenForGrade(s.id)).length);}},
@@ -1105,6 +1149,9 @@ const SUBJECTS=[
   {id:"geography",label:"🌐 География",text:"География",color:"var(--teal)"},
   {id:"biology",label:"🌿 Биология",text:"Биология",color:"var(--green)"},
   {id:"social",label:"⚖️ Обществознание",text:"Обществознание",color:"var(--blue-d,#0062CC)"},
+  {id:"algebra",label:"➗ Алгебра",text:"Алгебра",color:"var(--grass)"},
+  {id:"geometry",label:"📐 Геометрия",text:"Геометрия",color:"var(--red)"},
+  {id:"physics",label:"⚛️ Физика",text:"Физика",color:"var(--indigo,#5856D6)"},
   {id:"logic",label:"🧩 Логика",text:"Логика",color:"var(--violet)"},
   {id:"lit",label:"📚 Лит. чтение",text:"Лит. чтение",color:"var(--indigo,#5856D6)"},
   {id:"music",label:"🎵 Музыка",text:"Музыка",color:"var(--pink)"},
@@ -1123,6 +1170,9 @@ const ICON_SVGS={
   geography:`<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="white" stroke-width="1.5"/><ellipse cx="12" cy="12" rx="8.5" ry="3.6" stroke="white" stroke-width="1.3"/><ellipse cx="12" cy="12" rx="3.6" ry="8.5" stroke="white" stroke-width="1.3"/></svg>`,
   biology:`<svg viewBox="0 0 24 24" fill="none"><path d="M6 18c-1-6 2-11 12-12 1 10-4 13-12 12z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 17c3-4 6-7 10-10" stroke="white" stroke-width="1.3" stroke-linecap="round"/></svg>`,
   social:`<svg viewBox="0 0 24 24" fill="none"><line x1="12" y1="3" x2="12" y2="18" stroke="white" stroke-width="1.5"/><line x1="5" y1="7" x2="19" y2="7" stroke="white" stroke-width="1.5"/><path d="M5 7l-3 6.5a3.2 3.2 0 0 0 6 0L5 7z" stroke="white" stroke-width="1.3" stroke-linejoin="round"/><path d="M19 7l-3 6.5a3.2 3.2 0 0 0 6 0L19 7z" stroke="white" stroke-width="1.3" stroke-linejoin="round"/><rect x="8" y="18" width="8" height="2.2" rx="1" fill="white"/></svg>`,
+  algebra:`<svg viewBox="0 0 24 24" fill="none"><text x="9" y="16" font-size="12" fill="white" text-anchor="middle" font-family="-apple-system,sans-serif" font-weight="700">x</text><text x="16.5" y="10" font-size="7.5" fill="white" text-anchor="middle" font-family="-apple-system,sans-serif" font-weight="700">2</text><path d="M4 19h16" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>`,
+  geometry:`<svg viewBox="0 0 24 24" fill="none"><path d="M12 4L21 19H3z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 19a4 4 0 0 1 4-6.9" stroke="white" stroke-width="1.2" stroke-dasharray="1.5 1.8"/></svg>`,
+  physics:`<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="1.8" fill="white"/><ellipse cx="12" cy="12" rx="9" ry="3.6" stroke="white" stroke-width="1.3"/><ellipse cx="12" cy="12" rx="9" ry="3.6" stroke="white" stroke-width="1.3" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" stroke="white" stroke-width="1.3" transform="rotate(120 12 12)"/></svg>`,
   logic:`<svg viewBox="0 0 24 24" fill="none"><path d="M9 4h4v1.7a1.4 1.4 0 1 0 2.8 0V4H19v3.6h-1.7a1.4 1.4 0 1 0 0 2.8H19V14h-3.2v-1.7a1.4 1.4 0 1 0-2.8 0V14H9v-3.6h1.7a1.4 1.4 0 1 0 0-2.8H9V4z" stroke="white" stroke-width="1.4" stroke-linejoin="round"/></svg>`,
   lit:`<svg viewBox="0 0 24 24" fill="none"><path d="M12 6c-1.9-1.3-4.2-1.6-6.3-1v12.6c2.1-.6 4.4-.3 6.3 1 1.9-1.3 4.2-1.6 6.3-1V5c-2.1-.6-4.4-.3-6.3 1z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 6v12.6" stroke="white" stroke-width="1.3"/></svg>`,
   read:`<svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="1.6" stroke="white" stroke-width="1.6"/><path d="M9.2 3v6.2l2-1.5 2 1.5V3" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
@@ -1152,6 +1202,7 @@ function hiddenForGrade(id){
   if(D.grade>=5 && id==="world") return true;
   if(D.grade<5 && (id==="history"||id==="geography"||id==="biology")) return true;
   if(D.grade<6 && id==="social") return true;
+  if(D.grade<7 && (id==="algebra"||id==="geometry"||id==="physics")) return true;
   return false;
 }
 function openSide(){ document.getElementById("sideDrawer").classList.add("open"); document.getElementById("sideBackdrop").classList.add("on"); }
@@ -1183,7 +1234,7 @@ function renderAppGrid(){
 }
 
 /* ================= ПАНЕЛЬ РОДИТЕЛЯ ================= */
-const GRADES_READY=[1,2,3,4,5,6];
+const GRADES_READY=[1,2,3,4,5,6,7];
 function openParentGate(){
   document.getElementById("pcardInner").innerHTML = `
     <h3>👨‍👩‍👧 Вход для родителя</h3>
@@ -1241,7 +1292,7 @@ function drawParentPanel(){
       ${ACCOUNT.children.length>1?`<button class="rmv" onclick="removeChildRow('${c.id}')">✕</button>`:''}
     </div>`;
   });
-  const subjLabels={math:"🔢 Математика",tasks:"🧠 Задачи",rus:"📝 Русский язык",eng:"🇬🇧 English",world:"🌍 Окружающий мир",history:"🏛️ История",geography:"🌐 География",biology:"🌿 Биология",social:"⚖️ Обществознание",logic:"🧩 Логика",lit:"📚 Лит. чтение",music:"🎵 Музыка",read:"📖 Чтение"};
+  const subjLabels={math:"🔢 Математика",tasks:"🧠 Задачи",rus:"📝 Русский язык",eng:"🇬🇧 English",world:"🌍 Окружающий мир",history:"🏛️ История",geography:"🌐 География",biology:"🌿 Биология",social:"⚖️ Обществознание",algebra:"➗ Алгебра",geometry:"📐 Геометрия",physics:"⚛️ Физика",logic:"🧩 Логика",lit:"📚 Лит. чтение",music:"🎵 Музыка",read:"📖 Чтение"};
   let subjRows="";
   Object.keys(subjLabels).forEach(k=>{
     subjRows+=`<div class="setrow"><label>${subjLabels[k]}</label>
@@ -1262,7 +1313,7 @@ function drawParentPanel(){
     : `<p class="note" style="text-align:left">Пока нет ответов, чтобы посчитать статистику.</p>`;
   document.getElementById("pcardInner").innerHTML=`
     <h3>⚙️ Настройки семьи</h3>
-    <p class="note" style="text-align:left;margin:4px 0 8px"><b>Дети в аккаунте</b> (материалы готовы для 1–6 классов, остальные — «скоро»)</p>
+    <p class="note" style="text-align:left;margin:4px 0 8px"><b>Дети в аккаунте</b> (материалы готовы для 1–7 классов, остальные — «скоро»)</p>
     ${childRows}
     <button class="btn ghost sm" onclick="addChildInPanel()">＋ Добавить ребёнка</button>
     <p class="note" style="text-align:left;margin:18px 0 4px"><b>Разделы для профиля «${D.name||'?'}»</b></p>
@@ -2047,6 +2098,7 @@ function newTask(){
   else if(D.grade===4) curTask=TASKS4[R(0,TASKS4.length-1)]();
   else if(D.grade===5) curTask=TASKS5[R(0,TASKS5.length-1)]();
   else if(D.grade===6) curTask=TASKS6[R(0,TASKS6.length-1)]();
+  else if(D.grade===7) curTask=TASKS7[R(0,TASKS7.length-1)]();
   else curTask=TASKS[R(0,TASKS.length-1)](taskLevel);
   taskText.textContent=curTask.q;
   taskAns.value="";taskAns.disabled=false;
@@ -2180,7 +2232,7 @@ function drawAwards(){
     <div><div class="bignum">${acc}%</div><small>точность ответов</small></div>
     <div><div class="bignum">${D.solved}</div><small>примеров</small></div>
     <div><div class="bignum">${D.tasks}</div><small>задач</small></div>
-    <div><div class="bignum">${(D.rusDone||[]).length+(D.engDone||[]).length+(D.worldDone||[]).length+(D.historyDone||[]).length+(D.geographyDone||[]).length+(D.biologyDone||[]).length+(D.socialDone||[]).length+(D.logicDone||[]).length+(D.litDone||[]).length+(D.musicDone||[]).length}</div><small>уроков пройдено</small></div>
+    <div><div class="bignum">${(D.rusDone||[]).length+(D.engDone||[]).length+(D.worldDone||[]).length+(D.historyDone||[]).length+(D.geographyDone||[]).length+(D.biologyDone||[]).length+(D.socialDone||[]).length+(D.algebraDone||[]).length+(D.geometryDone||[]).length+(D.physicsDone||[]).length+(D.logicDone||[]).length+(D.litDone||[]).length+(D.musicDone||[]).length}</div><small>уроков пройдено</small></div>
     <div><div class="bignum">${D.read.length}</div><small>рассказов</small></div>
     <div><div class="bignum">${D.best}</div><small>лучшая серия</small></div>
     <div><div class="bignum">${Object.keys(D.days).length}</div><small>дней занятий</small></div>`;
@@ -2195,7 +2247,7 @@ function drawAwards(){
 function resetAll(){
   if(!confirm("Точно всё сбросить? Звёзды, медали и отметки о прочитанном будут удалены."))return;
   D=Object.assign({},DEF,{name:D.name,dailyGoal:D.dailyGoal,
-    grade:D.grade,subjects:D.subjects,read:[],lessons:[],badges:[],days:{},rusDone:[],engDone:[],worldDone:[],historyDone:[],geographyDone:[],biologyDone:[],socialDone:[],logicDone:[],litDone:[],musicDone:[],skipped:{}});
+    grade:D.grade,subjects:D.subjects,read:[],lessons:[],badges:[],days:{},rusDone:[],engDone:[],worldDone:[],historyDone:[],geographyDone:[],biologyDone:[],socialDone:[],algebraDone:[],geometryDone:[],physicsDone:[],logicDone:[],litDone:[],musicDone:[],skipped:{}});
   save();renderTop();if(typeof STORIES!=="undefined")drawList();drawAwards();applyNav();toast("Всё сброшено");
 }
 
@@ -2336,15 +2388,18 @@ function makeQuiz(getMOD, doneArrKey, dotsId, cardId, subjLabel, subjKey){
   window[cardId+"QGo"]=go;
   return {draw};
 }
-const rusEngine = makeQuiz(()=>D.grade===1?RUS1_MOD:D.grade===3?RUS3_MOD:D.grade===4?RUS4_MOD:D.grade===5?RUS5_MOD:D.grade>=6?RUS6_MOD:RUS_MOD,"rusDone","r-dots","r-lcard","Русский язык","rus");
+const rusEngine = makeQuiz(()=>D.grade===1?RUS1_MOD:D.grade===3?RUS3_MOD:D.grade===4?RUS4_MOD:D.grade===5?RUS5_MOD:D.grade===6?RUS6_MOD:D.grade>=7?RUS7_MOD:RUS_MOD,"rusDone","r-dots","r-lcard","Русский язык","rus");
 const engEngine = makeQuiz(()=>ENG_MOD,"engDone","e-dots","e-lcard","English","eng");
 const worldEngine = makeQuiz(()=>D.grade===1?WORLD1_MOD:D.grade===3?WORLD3_MOD:D.grade===4?WORLD4_MOD:WORLD_MOD,"worldDone","w-dots","w-lcard","Окружающий мир","world");
-const historyEngine = makeQuiz(()=>D.grade>=6?HISTORY6_MOD:HISTORY5_MOD,"historyDone","hi-dots","hi-lcard","История","history");
-const geographyEngine = makeQuiz(()=>D.grade>=6?GEOGRAPHY6_MOD:GEOGRAPHY5_MOD,"geographyDone","ge-dots","ge-lcard","География","geography");
-const biologyEngine = makeQuiz(()=>D.grade>=6?BIOLOGY6_MOD:BIOLOGY5_MOD,"biologyDone","bi-dots","bi-lcard","Биология","biology");
-const socialEngine = makeQuiz(()=>SOCIAL6_MOD,"socialDone","so-dots","so-lcard","Обществознание","social");
+const historyEngine = makeQuiz(()=>D.grade>=7?HISTORY7_MOD:D.grade===6?HISTORY6_MOD:HISTORY5_MOD,"historyDone","hi-dots","hi-lcard","История","history");
+const geographyEngine = makeQuiz(()=>D.grade>=7?GEOGRAPHY7_MOD:D.grade===6?GEOGRAPHY6_MOD:GEOGRAPHY5_MOD,"geographyDone","ge-dots","ge-lcard","География","geography");
+const biologyEngine = makeQuiz(()=>D.grade>=7?BIOLOGY7_MOD:D.grade===6?BIOLOGY6_MOD:BIOLOGY5_MOD,"biologyDone","bi-dots","bi-lcard","Биология","biology");
+const socialEngine = makeQuiz(()=>D.grade>=7?SOCIAL7_MOD:SOCIAL6_MOD,"socialDone","so-dots","so-lcard","Обществознание","social");
+const algebraEngine = makeQuiz(()=>ALGEBRA7_MOD,"algebraDone","al-dots","al-lcard","Алгебра","algebra");
+const geometryEngine = makeQuiz(()=>GEOMETRY7_MOD,"geometryDone","ge2-dots","ge2-lcard","Геометрия","geometry");
+const physicsEngine = makeQuiz(()=>PHYSICS7_MOD,"physicsDone","ph-dots","ph-lcard","Физика","physics");
 const logicEngine = makeQuiz(()=>D.grade===1?LOGIC1_MOD:LOGIC_MOD,"logicDone","lg-dots","lg-lcard","Логика","logic");
-const litEngine = makeQuiz(()=>D.grade===4?LIT4_MOD:D.grade===5?LIT5_MOD:D.grade>=6?LIT6_MOD:LIT_MOD,"litDone","lt-dots","lt-lcard","Лит. чтение","lit");
+const litEngine = makeQuiz(()=>D.grade===4?LIT4_MOD:D.grade===5?LIT5_MOD:D.grade===6?LIT6_MOD:D.grade>=7?LIT7_MOD:LIT_MOD,"litDone","lt-dots","lt-lcard","Лит. чтение","lit");
 const musicEngine = makeQuiz(()=>MUSIC_MOD,"musicDone","mu-dots","mu-lcard","Музыка","music");
 
 
@@ -2354,7 +2409,8 @@ function showScreen(n){
   document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));
   document.querySelectorAll(".sidebtn").forEach(t=>t.style.opacity="1");
   const map={home:"sb-home",math:"sb-math",tasks:"sb-tasks",rus:"sb-rus",eng:"sb-eng",world:"sb-world",
-    history:"sb-history",geography:"sb-geography",biology:"sb-biology",social:"sb-social",logic:"sb-logic",lit:"sb-lit",music:"sb-music",
+    history:"sb-history",geography:"sb-geography",biology:"sb-biology",social:"sb-social",
+    algebra:"sb-algebra",geometry:"sb-geometry",physics:"sb-physics",logic:"sb-logic",lit:"sb-lit",music:"sb-music",
     read:"sb-read",story:"sb-read",awards:"sb-awards",review:"sb-awards"};
   const b=document.getElementById(map[n]);if(b)b.style.opacity=".55";
   document.getElementById("s-"+n).classList.add("on");
@@ -2367,7 +2423,7 @@ function showScreen(n){
   if(n==="math")switchMathTab("practice");
   if(n==="tasks"){
     const chips=document.getElementById("taskLevelChips");
-    if(chips) chips.style.display = (D.grade===1||D.grade===3||D.grade===4||D.grade===5||D.grade===6) ? "none" : "flex";
+    if(chips) chips.style.display = (D.grade===1||D.grade===3||D.grade===4||D.grade===5||D.grade===6||D.grade===7) ? "none" : "flex";
     newTask();
   }
   if(n==="rus")rusEngine.draw();
@@ -2377,6 +2433,9 @@ function showScreen(n){
   if(n==="geography")geographyEngine.draw();
   if(n==="biology")biologyEngine.draw();
   if(n==="social")socialEngine.draw();
+  if(n==="algebra")algebraEngine.draw();
+  if(n==="geometry")geometryEngine.draw();
+  if(n==="physics")physicsEngine.draw();
   if(n==="logic")logicEngine.draw();
   if(n==="lit")litEngine.draw();
   if(n==="music")musicEngine.draw();
