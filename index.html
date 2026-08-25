@@ -391,6 +391,7 @@ input.mini{font-size:1.1rem;width:78px;}
   </div>
   <div class="goal-box">⭐ <span id="starCount">0</span> баллов всего</div>
   <div class="goal-box" id="accBox">🎯 Точность: —</div>
+  <div class="goal-box" id="levelBox">🌱 Новичок</div>
 </div>
 
 <main>
@@ -401,6 +402,7 @@ input.mini{font-size:1.1rem;width:78px;}
     <h2 id="homeGreeting">Привет! 👋</h2>
     <p>Выбери, чем хочешь заняться сегодня</p>
   </div>
+  <div class="card" id="levelCard"></div>
   <div class="card" style="text-align:center">
     <div id="ringsWrap" style="display:flex;justify-content:center;"></div>
     <div id="ringsLegend" style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:14px;"></div>
@@ -442,6 +444,12 @@ input.mini{font-size:1.1rem;width:78px;}
       <button class="chip" data-m="mul" onclick="setMode('mul')">×2 и ×3</button>
       <button class="chip" data-m="chain" onclick="setMode('chain')">Цепочка (+ и −)</button>
       <button class="chip" data-m="div" onclick="setMode('div')">÷2 и ÷3</button>
+    </div>
+
+    <div class="chips" id="diffChips">
+      <button class="chip bl" data-d="easy" onclick="setDiff('easy')">🟢 Легко</button>
+      <button class="chip bl on" data-d="normal" onclick="setDiff('normal')">🟡 Средне</button>
+      <button class="chip bl" data-d="hard" onclick="setDiff('hard')">🔴 Сложно</button>
     </div>
 
     <div class="card">
@@ -519,6 +527,12 @@ input.mini{font-size:1.1rem;width:78px;}
   <div class="card" id="lt-lcard"></div>
 </section>
 
+<!-- ================= МУЗЫКА ================= -->
+<section id="s-music" class="screen">
+  <div class="dots" id="mu-dots"></div>
+  <div class="card" id="mu-lcard"></div>
+</section>
+
 <!-- ================= ЗАДАЧИ ================= -->
 <section id="s-tasks" class="screen">
   <div class="chips" id="taskLevelChips">
@@ -571,7 +585,7 @@ input.mini{font-size:1.1rem;width:78px;}
       <button class="btn ghost sm" onclick="nextStory()">Следующий рассказ →</button>
     </div>
   </div>
-  <p class="note">Ребёнок читает рассказ и вопросы, отвечает вам вслух. Ответ для проверки скрыт под кнопкой.</p>
+  <p class="note">Ребёнок читает рассказ и вопросы, отвечает вам вслух. Ответ открывается только после ввода родительского пароля.</p>
 </section>
 
 <!-- ================= НАГРАДЫ ================= -->
@@ -609,6 +623,7 @@ input.mini{font-size:1.1rem;width:78px;}
 <script src="logic.js"></script>
 <script src="logic1.js"></script>
 <script src="lit.js"></script>
+<script src="music.js"></script>
 <script src="math1.js"></script>
 <script src="math3.js"></script>
 <script>
@@ -626,6 +641,7 @@ window.addEventListener("error", function(e){
   if(typeof LOGIC_MOD==="undefined") missing.push("logic.js");
   if(typeof LOGIC1_MOD==="undefined") missing.push("logic1.js");
   if(typeof LIT_MOD==="undefined") missing.push("lit.js");
+  if(typeof MUSIC_MOD==="undefined") missing.push("music.js");
   if(typeof LESSONS_G1==="undefined") missing.push("math1.js");
   if(typeof LESSONS_G3==="undefined") missing.push("math3.js");
   const box=document.createElement("div");
@@ -647,13 +663,15 @@ window.addEventListener("error", function(e){
 
 /* ================= ХРАНИЛИЩЕ ================= */
 const DEF={name:"",stars:0,solved:0,tasks:0,read:[],lessons:[],badges:[],days:{},best:0,
-  grade:2,dailyGoal:20,
-  totalCorrect:0,totalTries:0,skipped:{},
-  subjects:{math:true,tasks:true,rus:true,eng:true,world:true,logic:true,lit:true,read:true},
-  rusDone:[],engDone:[],worldDone:[],logicDone:[],litDone:[]};
+  grade:2,dailyGoal:20,mathDiff:"normal",
+  totalCorrect:0,totalTries:0,skipped:{},subjStats:{},
+  subjects:{math:true,tasks:true,rus:true,eng:true,world:true,logic:true,lit:true,read:true,music:true},
+  rusDone:[],engDone:[],worldDone:[],logicDone:[],litDone:[],musicDone:[]};
 let D=Object.assign({},DEF);
 let canStore=true;
 let ACCOUNT=null;
+const PRAISE=["Верно! 🎉","Отлично! 🌟","Умница! ✨","Так держать! 👏","Точно! 🎯","Здорово! 🍀","Молодец! ✨","Супер! 🥳","Класс! 👍","Ты растёшь! 🌈"];
+const pick1=arr=>arr[Math.floor(Math.random()*arr.length)];
 function todayKey(){const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();}
 
 function simpleHash(str){
@@ -680,6 +698,7 @@ function load(){
     if(c){ if(!D.name)D.name=c.name; D.grade=c.grade; }
   }catch(e){ canStore=false; D=Object.assign({},DEF); }
   li=0;
+  lastLevelIdx=curLevelIdx();
 }
 function save(){
   if(!canStore || !ACCOUNT || !ACCOUNT.activeChildId)return;
@@ -853,7 +872,13 @@ function recordAttempt(ok,subj){
   const t=today();
   t.tries=(t.tries||0)+1;
   if(ok) t.correct=(t.correct||0)+1;
-  if(subj) touchSubject(subj);
+  if(subj){
+    touchSubject(subj);
+    if(!D.subjStats) D.subjStats={};
+    if(!D.subjStats[subj]) D.subjStats[subj]={tries:0,correct:0};
+    D.subjStats[subj].tries++;
+    if(ok) D.subjStats[subj].correct++;
+  }
   save();
   const acc=D.totalTries>0 ? Math.round(D.totalCorrect/D.totalTries*100) : null;
   const box=document.getElementById("accBox");
@@ -887,6 +912,10 @@ const BADGES=[
  {id:"world",i:"🌍",n:"Знаток мира",c:d=>d.worldDone&&d.worldDone.length>=WORLD_MOD.length},
  {id:"logic",i:"🧩",n:"Мастер логики",c:d=>d.logicDone&&d.logicDone.length>=LOGIC_MOD.length},
  {id:"lit",i:"📚",n:"Знаток книг",c:d=>d.litDone&&d.litDone.length>=LIT_MOD.length},
+ {id:"music",i:"🎵",n:"Знаток музыки",c:d=>d.musicDone&&d.musicDone.length>=MUSIC_MOD.length},
+ {id:"acc90",i:"🎯",n:"Точность 90%",c:d=>d.totalTries>=20&&Math.round(d.totalCorrect/d.totalTries*100)>=90},
+ {id:"stars500",i:"💰",n:"500 баллов",c:d=>d.stars>=500},
+ {id:"allSubj",i:"🗺️",n:"Все разделы за день",c:d=>{const t=d.days[todayKey()];return !!(t&&t.touched&&t.touched.length>=SUBJECTS.filter(s=>s.id!=="awards"&&d.subjects[s.id]!==false&&!(d.grade===1&&(s.id==="eng"||s.id==="lit"))).length);}},
 ];
 function checkBadges(){
   BADGES.forEach(b=>{
@@ -895,6 +924,44 @@ function checkBadges(){
       confetti(40);sndOk();toast("Новая медаль: "+b.i+" "+b.n+"!");
     }
   });
+  checkLevelUp();
+}
+
+/* ================= УРОВНИ ================= */
+const LEVELS=[
+ {min:0,   i:"🌱",n:"Новичок"},
+ {min:30,  i:"📘",n:"Ученик"},
+ {min:80,  i:"⭐",n:"Знаток"},
+ {min:150, i:"🧠",n:"Умник"},
+ {min:250, i:"🏆",n:"Мастер"},
+ {min:400, i:"👑",n:"Чемпион"},
+ {min:600, i:"💎",n:"Легенда"},
+ {min:900, i:"🚀",n:"Супергерой знаний"},
+];
+function curLevelIdx(){ let idx=0; for(let i=0;i<LEVELS.length;i++){ if(D.stars>=LEVELS[i].min) idx=i; } return idx; }
+let lastLevelIdx=null;
+function checkLevelUp(){
+  const idx=curLevelIdx();
+  if(lastLevelIdx===null){ lastLevelIdx=idx; return; }
+  if(idx>lastLevelIdx){ lastLevelIdx=idx; const lv=LEVELS[idx];
+    confetti(50); sndOk(); toast("Новый уровень: "+lv.i+" "+lv.n+"!");
+  }
+}
+function renderLevel(){
+  const idx=curLevelIdx(); const lv=LEVELS[idx]; const next=LEVELS[idx+1];
+  const box=document.getElementById("levelBox");
+  if(box) box.textContent=lv.i+" "+lv.n;
+  const card=document.getElementById("levelCard");
+  if(!card)return;
+  if(next){
+    const pct=Math.round((D.stars-lv.min)/(next.min-lv.min)*100);
+    card.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <span style="font-weight:800;color:var(--ink)">${lv.i} ${lv.n}</span>
+      <span class="note">до «${next.i} ${next.n}»: ${next.min-D.stars} баллов</span></div>
+      <div class="progbar"><i style="width:${pct}%"></i></div>`;
+  } else {
+    card.innerHTML=`<div style="text-align:center;font-weight:800;color:var(--ink)">${lv.i} ${lv.n} — максимальный уровень! 🎉</div>`;
+  }
 }
 
 /* ================= ВЕРХНЯЯ ПАНЕЛЬ ================= */
@@ -908,6 +975,7 @@ function renderTop(){
   document.getElementById("accBox").textContent = acc===null ? "🎯 Точность: —" : "🎯 Точность: "+acc+"%";
   updateChildChip();
   renderRings();
+  renderLevel();
   const gradeTxt=(D.grade||2)+" класс";
   ["rusGradeBadge","engGradeBadge","worldGradeBadge"].forEach(id=>{
     const el=document.getElementById(id); if(el) el.textContent=gradeTxt;
@@ -948,6 +1016,7 @@ const SUBJECTS=[
   {id:"world",label:"🌍 Окружающий мир",text:"Окружающий мир",color:"var(--sun)"},
   {id:"logic",label:"🧩 Логика",text:"Логика",color:"var(--violet)"},
   {id:"lit",label:"📚 Лит. чтение",text:"Лит. чтение",color:"var(--indigo,#5856D6)"},
+  {id:"music",label:"🎵 Музыка",text:"Музыка",color:"var(--pink)"},
   {id:"read",label:"📖 Чтение",text:"Чтение",color:"var(--coral)"},
   {id:"awards",label:"🏅 Награды",text:"Награды",color:"var(--sun-d)"},
 ];
@@ -962,6 +1031,7 @@ const ICON_SVGS={
   logic:`<svg viewBox="0 0 24 24" fill="none"><path d="M9 4h4v1.7a1.4 1.4 0 1 0 2.8 0V4H19v3.6h-1.7a1.4 1.4 0 1 0 0 2.8H19V14h-3.2v-1.7a1.4 1.4 0 1 0-2.8 0V14H9v-3.6h1.7a1.4 1.4 0 1 0 0-2.8H9V4z" stroke="white" stroke-width="1.4" stroke-linejoin="round"/></svg>`,
   lit:`<svg viewBox="0 0 24 24" fill="none"><path d="M12 6c-1.9-1.3-4.2-1.6-6.3-1v12.6c2.1-.6 4.4-.3 6.3 1 1.9-1.3 4.2-1.6 6.3-1V5c-2.1-.6-4.4-.3-6.3 1z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 6v12.6" stroke="white" stroke-width="1.3"/></svg>`,
   read:`<svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="1.6" stroke="white" stroke-width="1.6"/><path d="M9.2 3v6.2l2-1.5 2 1.5V3" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+  music:`<svg viewBox="0 0 24 24" fill="none"><path d="M9 17.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" stroke="white" stroke-width="1.5"/><path d="M18 15.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" stroke="white" stroke-width="1.5"/><path d="M11.5 12.5V5.5L20.5 4v8.5" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
   awards:`<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="5" stroke="white" stroke-width="1.6"/><path d="M9 13.6L7 21l5-2.6L17 21l-2-7.4" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 6.3l1 2.1 2.2.3-1.6 1.5.4 2.2-2-1.1-2 1.1.4-2.2-1.6-1.5 2.2-.3z" fill="white"/></svg>`,
 };
 
@@ -1030,7 +1100,30 @@ function checkGate(){
   if(l===ACCOUNT.login && simpleHash(p)===ACCOUNT.passHash){ drawParentPanel(); }
   else{ fb.textContent="Неверный логин или пароль."; fb.className="fb no"; }
 }
-function closeParent(){ document.getElementById("parentOverlay").classList.add("hide"); }
+function closeParent(){ document.getElementById("parentOverlay").classList.add("hide"); window.__pendingPassCb=null; }
+
+/* Лёгкая проверка пароля родителя (без логина) — для защиты ответов к рассказам и т.п. */
+function askParentPassword(onSuccess,msg){
+  document.getElementById("pcardInner").innerHTML = `
+    <h3>🔒 Пароль родителя</h3>
+    <p class="note" style="margin-bottom:10px">${msg||"Введите пароль, указанный при регистрации."}</p>
+    <div class="afield"><label>Пароль</label><input type="password" id="gatePass2" onkeydown="if(event.key==='Enter')submitParentPassword()"></div>
+    <div class="row"><button class="btn b" onclick="submitParentPassword()">Подтвердить</button>
+    <button class="btn ghost" onclick="closeParent()">Отмена</button></div>
+    <div class="fb" id="gateFb2"></div>`;
+  window.__pendingPassCb=onSuccess;
+  document.getElementById("parentOverlay").classList.remove("hide");
+  setTimeout(()=>{ const el=document.getElementById("gatePass2"); if(el)el.focus(); },50);
+}
+function submitParentPassword(){
+  const p=document.getElementById("gatePass2").value;
+  const fb=document.getElementById("gateFb2");
+  if(ACCOUNT && simpleHash(p)===ACCOUNT.passHash){
+    const cb=window.__pendingPassCb; window.__pendingPassCb=null;
+    closeParent();
+    if(cb) cb();
+  } else { fb.textContent="Неверный пароль."; fb.className="fb no"; }
+}
 
 function drawParentPanel(){
   let childRows="";
@@ -1046,7 +1139,7 @@ function drawParentPanel(){
       ${ACCOUNT.children.length>1?`<button class="rmv" onclick="removeChildRow('${c.id}')">✕</button>`:''}
     </div>`;
   });
-  const subjLabels={math:"🔢 Математика",tasks:"🧠 Задачи",rus:"📝 Русский язык",eng:"🇬🇧 English",world:"🌍 Окружающий мир",logic:"🧩 Логика",lit:"📚 Лит. чтение",read:"📖 Чтение"};
+  const subjLabels={math:"🔢 Математика",tasks:"🧠 Задачи",rus:"📝 Русский язык",eng:"🇬🇧 English",world:"🌍 Окружающий мир",logic:"🧩 Логика",lit:"📚 Лит. чтение",music:"🎵 Музыка",read:"📖 Чтение"};
   let subjRows="";
   Object.keys(subjLabels).forEach(k=>{
     subjRows+=`<div class="setrow"><label>${subjLabels[k]}</label>
@@ -1056,6 +1149,15 @@ function drawParentPanel(){
   const skipHtml=skippedList.length
     ? skippedList.map(s=>`<div class="skipRow"><span class="qtxt">${s.subj} · ${s.lesson}: «${s.q}»</span><span class="cnt">×${s.count}</span></div>`).join("")
     : `<p class="note" style="text-align:left">Пока ничего не пропущено — отлично!</p>`;
+  const stats=D.subjStats||{};
+  const reportRows=Object.keys(subjLabels).filter(k=>k!=="read"&&stats[k]&&stats[k].tries>0).map(k=>{
+    const s=stats[k],pct=Math.round(s.correct/s.tries*100);
+    return {k,label:subjLabels[k],pct,tries:s.tries};
+  }).sort((a,b)=>a.pct-b.pct);
+  const weakest=reportRows[0];
+  const reportHtml=reportRows.length
+    ? reportRows.map(r=>`<div class="skipRow"><span class="qtxt">${r.label}${weakest&&r.k===weakest.k&&reportRows.length>1?' ⚠️ слабое место':''}</span><span class="cnt">${r.pct}% · ${r.tries} попыт.</span></div>`).join("")
+    : `<p class="note" style="text-align:left">Пока нет ответов, чтобы посчитать статистику.</p>`;
   document.getElementById("pcardInner").innerHTML=`
     <h3>⚙️ Настройки семьи</h3>
     <p class="note" style="text-align:left;margin:4px 0 8px"><b>Дети в аккаунте</b> (материалы готовы для 1, 2 и 3 классов, остальные — «скоро»)</p>
@@ -1065,6 +1167,8 @@ function drawParentPanel(){
     ${subjRows}
     <div class="setrow"><label>🎯 Цель баллов в день</label>
       <input type="number" id="setGoal" value="${D.dailyGoal||20}" class="mini" style="width:70px"></div>
+    <p class="note" style="text-align:left;margin:18px 0 4px"><b>📊 Точность по разделам</b></p>
+    ${reportHtml}
     <p class="note" style="text-align:left;margin:18px 0 4px"><b>🔁 Часто пропускаемые вопросы</b> (кнопка «Другой вопрос»)</p>
     ${skipHtml}
     ${skippedList.length?`<button class="btn v sm" style="margin-top:8px" onclick="closeParent();showScreen('review')">Разобрать пропущенные с ребёнком</button>`:''}
@@ -1119,16 +1223,23 @@ function saveParentPanel(){
 /* ================= СЧЁТ ДО 20 ================= */
 let mode="all",cur=null,S={good:0,tot:0,str:0};
 const R=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const DIFF={easy:{n:10,mul:6},normal:{n:20,mul:10},hard:{n:50,mul:12}};
 function switchMathTab(tab){
   document.getElementById("mtab-practice").classList.toggle("on",tab==="practice");
   document.getElementById("mtab-lessons").classList.toggle("on",tab==="lessons");
   document.getElementById("mathPracticeWrap").style.display=tab==="practice"?"block":"none";
   document.getElementById("mathLessonsWrap").style.display=tab==="lessons"?"block":"none";
+  document.querySelectorAll('#diffChips .chip').forEach(c=>c.classList.toggle("on",c.dataset.d===(D.mathDiff||"normal")));
   if(tab==="lessons") drawLesson();
 }
 function setMode(m){
   mode=m;
-  document.querySelectorAll('#s-math .chip').forEach(c=>c.classList.toggle("on",c.dataset.m===m));
+  document.querySelectorAll('#s-math .chip[data-m]').forEach(c=>c.classList.toggle("on",c.dataset.m===m));
+  newProb();
+}
+function setDiff(d){
+  D.mathDiff=d; save();
+  document.querySelectorAll('#diffChips .chip').forEach(c=>c.classList.toggle("on",c.dataset.d===d));
   newProb();
 }
 function newProb(){
@@ -1139,32 +1250,33 @@ function newProb(){
   document.getElementById("cmpRow").style.display=isCmp?"flex":"none";
   let t=mode;
   if(t==="all")t=["plus","minus","gap"][R(0,2)];
+  const DF=DIFF[D.mathDiff]||DIFF.normal, N=DF.n, MUL=DF.mul;
   let txt="";
   if(t==="cmp"){
-    const a=R(1,20),b=R(1,20);
+    const a=R(1,N),b=R(1,N);
     cur={t:"cmp",a,b,ans:a>b?">":(a<b?"<":"=")};
     txt=a+" ? "+b;
   } else if(t==="mul"){
-    const a=[2,3][R(0,1)],b=R(1,10);
+    const a=[2,3][R(0,1)],b=R(1,MUL);
     cur={t:"mul",a,b,ans:a*b};
     txt=a+" × "+b+" = ?";
   } else if(t==="chain"){
-    const a=R(2,15),b=R(1,20-a),c=R(1,a+b);
+    const a=R(2,Math.max(3,Math.round(N*0.75))),b=R(1,N-a),c=R(1,a+b);
     cur={t:"chain",a,b,c,ans:a+b-c};
     txt=a+" + "+b+" − "+c+" = ?";
   } else if(t==="div"){
-    const d=[2,3][R(0,1)],ans=R(1,10),a=d*ans;
+    const d=[2,3][R(0,1)],ans=R(1,MUL),a=d*ans;
     cur={t:"div",a,b:d,ans};
     txt=a+" ÷ "+d+" = ?";
   } else if(t==="gap"){
-    const a=R(1,15),s=R(a+1,20);
+    const a=R(1,N-5),s=R(a+1,N);
     cur={t:"gap",a,b:s-a,ans:s-a};
     txt=a+" + ? = "+s;
   } else if(t==="plus"){
-    const a=R(1,18),b=R(1,20-a);
+    const a=R(1,N-2),b=R(1,N-a);
     cur={t:"plus",a,b,ans:a+b};txt=a+" + "+b+" = ?";
   } else {
-    const a=R(2,20),b=R(1,a);
+    const a=R(2,N),b=R(1,a);
     cur={t:"minus",a,b,ans:a-b};txt=a+" − "+b+" = ?";
   }
   const p=document.getElementById("prob");
@@ -1179,8 +1291,7 @@ function win(){
   S.good++;S.str++;if(S.str>D.best)D.best=S.str;
   D.solved++;today().m++;save();
   confetti();sndOk();addStar(1);
-  const P=["Верно! 🎉","Отлично! 🌟","Умница! ✨","Так держать! 👏","Точно! 🎯","Здорово! 🍀","Молодец! ✨"];
-  return P[R(0,P.length-1)];
+  return pick1(PRAISE);
 }
 function afterAnswer(ok,msg){
   const fb=document.getElementById("mfb");
@@ -1805,6 +1916,22 @@ const TASKS=[
    return{q:`${k} учеников разделили на команды по ${per} человек. Сколько получилось команд?`,a:n,h:`Сколько раз по ${per} помещается в общем числе — это деление.`};},
  (m)=>{const a=R(2,9),b=R(2,9),c=R(1,15);
    return{q:`Вычисли: ${a} × ${b} + ${c}`,a:a*b+c,h:"Сначала умножение, потом сложение — таков порядок действий."};},
+ (m)=>{const a=R(2,Math.floor(m/3)),b=R(2,Math.floor(m/3)),c=R(2,Math.max(2,m-a-b)),n=NAMES[R(0,NAMES.length-1)];
+   return{q:`${n} собрал(а) ${a} жёлудей в понедельник, ${b} во вторник и ${c} в среду. Сколько жёлудей всего?`,a:a+b+c,h:"Сложи все три числа по порядку."};},
+ (m)=>{const a=R(Math.max(10,Math.floor(m/2)),m),b=R(1,Math.floor(a/3)),c=R(1,Math.floor((a-b)/2)),n=NAMES[R(0,NAMES.length-1)];
+   return{q:`У ${n} было ${a} рублей. Он(а) купил(а) мороженое за ${b} рублей и книгу за ${c} рублей. Сколько рублей осталось?`,a:a-b-c,h:"Потратили дважды — вычти обе покупки по очереди."};},
+ (m)=>{const rows=R(2,9),seats=R(2,Math.max(2,Math.min(9,Math.floor(m/rows)))),n=NAMES[R(0,NAMES.length-1)];
+   return{q:`В автобусе ${rows} рядов сидений, в каждом ряду по ${seats} мест. Сколько всего мест в автобусе?`,a:rows*seats,h:"Одинаковые группы — умножаем: число рядов × число мест в ряду."};},
+ (m)=>{const a=R(5,m),b=R(1,a-1),n1=NAMES[R(0,NAMES.length-1)],n2=NAMES[R(0,NAMES.length-1)];
+   return{q:`В аквариуме у ${n1} ${a} рыбок, а у ${n2} ${b} рыбок. На сколько рыбок больше у ${n1}?`,a:a-b,h:"«На сколько больше» — вычитаем меньшее из большего."};},
+ (m)=>{const a=R(Math.floor(m/3),Math.floor(m/2)),b=R(1,Math.floor(m/4)),c=R(1,Math.min(a+b-1,Math.floor(m/4)));
+   return{q:`На матч пришло ${a} зрителей, потом подошло ещё ${b}. В перерыве ${c} зрителей ушли. Сколько зрителей осталось?`,a:a+b-c,h:"Считай по действиям: сначала сложи, потом вычти."};},
+ (m)=>{const groups=R(2,9),per=R(2,Math.max(2,Math.min(9,Math.floor(m/groups)))),total=groups*per;
+   return{q:`${total} тюльпанов посадили поровну на ${groups} клумбах. Сколько тюльпанов на одной клумбе?`,a:per,h:"Раскладываем поровну — делим общее число на количество клумб."};},
+ (m)=>{const price=R(Math.max(5,Math.floor(m/4)),Math.floor(m/2)),paid=R(price+1,m);
+   return{q:`Билет в кино стоит ${price} рублей. Ты заплатил(а) ${paid} рублей. Сколько рублей сдачи ты получишь?`,a:paid-price,h:"Сдача — это то, что осталось после вычитания цены из уплаченной суммы."};},
+ (m)=>{const a=R(2,Math.floor(m/4)),b=R(2,Math.floor(m/4)),c=R(2,Math.floor(m/4));
+   return{q:`В пенале ${a} карандашей, ${b} ручек и ${c} ластиков. Сколько всего школьных принадлежностей в пенале?`,a:a+b+c,h:"«Всего» — сложи все группы вместе."};},
 ];
 function setTaskLevel(l){
   taskLevel=l;
@@ -1825,7 +1952,7 @@ function newTask(){
 function checkTask(){
   const v=taskAns.value;if(v==="")return;
   const ok=parseInt(v,10)===curTask.a;
-  taskFb.textContent=ok?("Верно! 🎉 Ответ: "+curTask.a):("Правильный ответ: "+curTask.a);
+  taskFb.textContent=ok?(pick1(PRAISE)+" Ответ: "+curTask.a):("Правильный ответ: "+curTask.a);
   recordAttempt(ok,"tasks");
   if(ok){D.tasks++;save();confetti();sndOk();addStar(2);scheduleAutoNext(newTask);}
   else{sndNo();taskHint();}
@@ -1866,8 +1993,10 @@ function drawList(){
   document.getElementById("readBar").style.width=p+"%";
   document.getElementById("readTxt").textContent=`Прочитано ${D.read.length} из ${STORIES.length} рассказов (${p}%)`;
 }
+let storyAnsUnlocked=false;
 function openStory(i){
   curStory=i;const s=STORIES[i];
+  storyAnsUnlocked=false;
   const words=s.x.trim().split(/\s+/).length;
   const mins=Math.max(1,Math.round(words/110));
   stTitle.innerHTML=s.e+" "+s.t+` <span class="gradebadge" style="background:${s.len==='long'?'var(--coral)':'var(--blue)'}">${s.len==='long'?'📖 длинный':'📄 короткий'} · ~${mins} мин</span>`;
@@ -1876,11 +2005,17 @@ function openStory(i){
   s.q.forEach((qa,k)=>{
     const b=document.createElement("div");b.className="qb";
     b.innerHTML=`<p class="q">${k+1}. ${qa[0]}</p>
-      <button class="rev" onclick="this.nextElementSibling.classList.toggle('on')">Показать ответ (для родителя)</button>
+      <button class="rev" onclick="revealStoryAnswer(this)">🔒 Показать ответ (для родителя)</button>
       <div class="ans">${qa[1]}</div>`;
     stQs.appendChild(b);
   });
   updMark();showScreen("story");window.scrollTo({top:0});
+}
+function revealStoryAnswer(btn){
+  const ansDiv=btn.nextElementSibling;
+  if(storyAnsUnlocked){ ansDiv.classList.toggle("on"); return; }
+  askParentPassword(()=>{ storyAnsUnlocked=true; ansDiv.classList.add("on"); },
+    "Чтобы увидеть ответ, введите родительский пароль — так ребёнок не сможет подсмотреть его сам.");
 }
 function updMark(){
   const r=D.read.includes(curStory);
@@ -2043,7 +2178,7 @@ function makeQuiz(getMOD, doneArrKey, dotsId, cardId, subjLabel, subjKey){
     const fb=document.getElementById(cardId+"-fb");
     recordAttempt(ok,subjKey);
     if(ok){
-      fb.textContent="Верно! 🎉"; fb.className="fb ok"; confetti(18); sndOk(); addStar(1); D.solved++;
+      fb.textContent=pick1(PRAISE); fb.className="fb ok"; confetti(18); sndOk(); addStar(1); D.solved++;
       if(!D[doneArrKey].includes(li)) D[doneArrKey].push(li);
       scheduleAutoNext(draw);
     } else {
@@ -2076,6 +2211,7 @@ const engEngine = makeQuiz(()=>ENG_MOD,"engDone","e-dots","e-lcard","English","e
 const worldEngine = makeQuiz(()=>D.grade===1?WORLD1_MOD:(D.grade===3?WORLD3_MOD:WORLD_MOD),"worldDone","w-dots","w-lcard","Окружающий мир","world");
 const logicEngine = makeQuiz(()=>D.grade===1?LOGIC1_MOD:LOGIC_MOD,"logicDone","lg-dots","lg-lcard","Логика","logic");
 const litEngine = makeQuiz(()=>LIT_MOD,"litDone","lt-dots","lt-lcard","Лит. чтение","lit");
+const musicEngine = makeQuiz(()=>MUSIC_MOD,"musicDone","mu-dots","mu-lcard","Музыка","music");
 
 
 /* ================= НАВИГАЦИЯ ================= */
@@ -2083,7 +2219,7 @@ function showScreen(n){
   clearAutoNext();
   document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));
   document.querySelectorAll(".sidebtn").forEach(t=>t.style.opacity="1");
-  const map={home:"sb-home",math:"sb-math",tasks:"sb-tasks",rus:"sb-rus",eng:"sb-eng",world:"sb-world",logic:"sb-logic",lit:"sb-lit",
+  const map={home:"sb-home",math:"sb-math",tasks:"sb-tasks",rus:"sb-rus",eng:"sb-eng",world:"sb-world",logic:"sb-logic",lit:"sb-lit",music:"sb-music",
     read:"sb-read",story:"sb-read",awards:"sb-awards",review:"sb-awards"};
   const b=document.getElementById(map[n]);if(b)b.style.opacity=".55";
   document.getElementById("s-"+n).classList.add("on");
@@ -2104,6 +2240,7 @@ function showScreen(n){
   if(n==="world")worldEngine.draw();
   if(n==="logic")logicEngine.draw();
   if(n==="lit")litEngine.draw();
+  if(n==="music")musicEngine.draw();
   if(n==="review")drawReview();
 }
 
