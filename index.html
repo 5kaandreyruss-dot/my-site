@@ -219,6 +219,10 @@ input.mini{font-size:1.1rem;width:78px;}
 .back{display:inline-block;margin-bottom:12px;font-weight:700;color:var(--blue-d);cursor:pointer;}
 .qb{margin-top:14px;padding-top:12px;border-top:2px dashed var(--line);}
 .qb .q{font-size:1.05rem;margin:0 0 7px;font-weight:700;}
+.q.qlock{color:var(--sub);font-weight:700;}
+.q.qlock.hidden{display:none;}
+.q.qreal{display:none;}
+.q.qreal.on{display:block;animation:fade .2s ease;}
 .rev{font-size:.8rem;font-weight:700;background:var(--grass-l);color:var(--blue-d);border:2px solid var(--blue-d);border-radius:10px;padding:6px 12px;cursor:pointer;
   box-shadow:0 3px 0 var(--press);transition:transform .15s ease,box-shadow .15s ease;}
 .rev:hover{transform:translateY(-2px);}
@@ -2380,28 +2384,35 @@ function openStory(i){
   stQs.innerHTML="";
   s.q.forEach((qa,k)=>{
     const b=document.createElement("div");b.className="qb";
-    b.innerHTML=`<p class="q">${k+1}. ${qa[0]}</p>
+    b.innerHTML=`<p class="q qlock">🔒 Вопрос ${k+1} скрыт — доступно родителю</p>
+      <p class="q qreal">${k+1}. ${qa[0]}</p>
       <div class="ans">${qa[1]}</div>`;
     stQs.appendChild(b);
   });
   stQs.insertAdjacentHTML("beforeend",
-    `<button class="rev" id="revStoryBtn" onclick="revealStoryAnswers()" style="margin-top:10px">🔒 Показать ответы (для родителя)</button>`);
+    `<button class="rev" id="revStoryBtn" onclick="revealStoryAnswers()" style="margin-top:10px">🔒 Показать вопросы и ответы (для родителя)</button>`);
   updMark();showScreen("story");window.scrollTo({top:0});
 }
 function revealStoryAnswers(){
   const btn=document.getElementById("revStoryBtn");
   const anss=document.querySelectorAll("#stQs .ans");
+  const reals=document.querySelectorAll("#stQs .qreal");
+  const locks=document.querySelectorAll("#stQs .qlock");
   if(storyAnsUnlocked){
     const shown=anss.length && anss[0].classList.contains("on");
     anss.forEach(a=>a.classList.toggle("on",!shown));
-    if(btn) btn.textContent=shown?"Показать ответы":"Скрыть ответы";
+    reals.forEach(q=>q.classList.toggle("on",!shown));
+    locks.forEach(q=>q.classList.toggle("hidden",!shown));
+    if(btn) btn.textContent=shown?"Показать вопросы и ответы":"Скрыть вопросы и ответы";
     return;
   }
   askParentPassword(()=>{
     storyAnsUnlocked=true;
     anss.forEach(a=>a.classList.add("on"));
-    if(btn) btn.textContent="Скрыть ответы";
-  }, "Чтобы увидеть ответы на вопросы к этому рассказу, введите родительский пароль — так ребёнок не сможет подсмотреть их сам.");
+    reals.forEach(q=>q.classList.add("on"));
+    locks.forEach(q=>q.classList.add("hidden"));
+    if(btn) btn.textContent="Скрыть вопросы и ответы";
+  }, "Чтобы увидеть вопросы и ответы к этому рассказу, введите родительский пароль — так ребёнок не сможет подсмотреть их заранее.");
 }
 function updMark(){
   const r=D.read.includes(curStory);
