@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Тропинка знаний</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%88%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="theme-color" content="#3B6EA5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Тропинка знаний">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Neucha&family=PT+Sans:wght@400;700&family=PT+Sans+Caption:wght@400;700&display=swap" rel="stylesheet">
@@ -252,7 +258,25 @@ input.mini{font-size:1.1rem;width:78px;}
   background:var(--ink);color:var(--card);padding:11px 20px;border-radius:999px;font-weight:700;font-size:.9rem;
   opacity:0;transition:.35s;border:2px solid var(--ink);box-shadow:0 4px 0 var(--press);}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
-@media print{ nav,.topbar,header,.goal,.noprint{display:none!important;} body{background:#fff;background-image:none;} }
+.printonly{display:none;}
+@media print{
+  nav,.topbar,header,.goal,.noprint{display:none!important;}
+  body{background:#fff;background-image:none;}
+  .printonly{display:block;text-align:center;margin-bottom:18px;}
+  .printonly h1{font-family:'Neucha',cursive;font-weight:400;font-size:2rem;margin:0;color:#000;}
+  .printonly p{color:#333;font-weight:700;margin:4px 0 0;}
+  .card{box-shadow:none!important;background-image:none!important;}
+}
+
+/* ===== график баллов по дням ===== */
+.pcWrap{padding:4px 2px 0;}
+.pcBars{display:flex;align-items:flex-end;gap:7px;height:96px;border-bottom:2px solid var(--ink);}
+.pcBar{flex:1;background:var(--blue);border:2px solid var(--ink);border-bottom:none;border-radius:6px 6px 0 0;
+  min-height:3px;box-shadow:0 -2px 0 var(--press-lt) inset;transition:height .5s cubic-bezier(.2,.8,.2,1);position:relative;}
+.pcBar.today{background:var(--red);}
+.pcBar .pcVal{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:.62rem;font-weight:800;color:var(--sub);white-space:nowrap;}
+.pcLabels{display:flex;gap:7px;margin-top:6px;}
+.pcLabels span{flex:1;text-align:center;font-size:.66rem;color:var(--sub);font-weight:700;}
 
 /* ================= ПАНЕЛЬ РОДИТЕЛЯ ================= */
 #parentOverlay{position:fixed;inset:0;z-index:210;background:rgba(43,42,38,.45);display:flex;
@@ -746,6 +770,7 @@ input.mini{font-size:1.1rem;width:78px;}
   <span class="back" onclick="showScreen('read')">← Все рассказы</span>
   <div class="card">
     <h2 id="stTitle" style="margin-top:0"></h2>
+    <div class="row noprint" style="margin-bottom:12px"><button class="btn ghost sm" id="ttsBtn" onclick="toggleStoryTTS()">🔊 Слушать рассказ</button></div>
     <div class="stext" id="stBody"></div>
     <div id="stQs"></div>
     <div class="row" style="margin-top:18px">
@@ -758,9 +783,14 @@ input.mini{font-size:1.1rem;width:78px;}
 
 <!-- ================= НАГРАДЫ ================= -->
 <section id="s-awards" class="screen">
+  <div class="printonly" id="printHead"></div>
   <div class="card">
     <h2 style="margin-top:0;text-align:center;color:var(--sun-d)">🏅 Мои успехи</h2>
     <div class="statgrid" id="statGrid"></div>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0;text-align:center;color:var(--bark)">📈 Баллы за неделю</h3>
+    <div class="pcWrap" id="progressChart"></div>
   </div>
   <div class="card">
     <h3 style="margin-top:0;text-align:center;color:var(--bark)">Медали</h3>
@@ -768,6 +798,7 @@ input.mini{font-size:1.1rem;width:78px;}
   </div>
   <div class="card" id="reviewLinkBox" style="text-align:center"></div>
   <div class="card slim noprint" style="text-align:center">
+    <button class="btn ghost sm" onclick="window.print()">🖨️ Распечатать отчёт</button>
     <button class="btn ghost sm" onclick="resetAll()">🗑️ Начать всё заново</button>
     <p class="note" style="margin-top:8px">Сбросит звёзды, медали и отметки о прочитанных рассказах.</p>
   </div>
@@ -2375,6 +2406,8 @@ function drawList(){
 }
 let storyAnsUnlocked=false;
 function openStory(i){
+  if("speechSynthesis" in window) speechSynthesis.cancel();
+  const ttsBtn=document.getElementById("ttsBtn"); if(ttsBtn) ttsBtn.textContent="🔊 Слушать рассказ";
   curStory=i;const s=STORIES[i];
   storyAnsUnlocked=false;
   const words=s.x.trim().split(/\s+/).length;
@@ -2392,6 +2425,25 @@ function openStory(i){
   stQs.insertAdjacentHTML("beforeend",
     `<button class="rev" id="revStoryBtn" onclick="revealStoryAnswers()" style="margin-top:10px">🔒 Показать вопросы и ответы (для родителя)</button>`);
   updMark();showScreen("story");window.scrollTo({top:0});
+}
+function toggleStoryTTS(){
+  const btn=document.getElementById("ttsBtn");
+  if(!("speechSynthesis" in window)){ toast("Озвучка не поддерживается в этом браузере"); return; }
+  if(speechSynthesis.speaking||speechSynthesis.pending){
+    speechSynthesis.cancel();
+    if(btn) btn.textContent="🔊 Слушать рассказ";
+    return;
+  }
+  const s=STORIES[curStory];
+  const u=new SpeechSynthesisUtterance(s.t+". "+s.x);
+  u.lang="ru-RU"; u.rate=0.95;
+  const voices=speechSynthesis.getVoices();
+  const ruVoice=voices.find(v=>v.lang && v.lang.toLowerCase().startsWith("ru"));
+  if(ruVoice) u.voice=ruVoice;
+  u.onend=()=>{ if(btn) btn.textContent="🔊 Слушать рассказ"; };
+  u.onerror=()=>{ if(btn) btn.textContent="🔊 Слушать рассказ"; };
+  speechSynthesis.speak(u);
+  if(btn) btn.textContent="⏸️ Остановить";
 }
 function revealStoryAnswers(){
   const btn=document.getElementById("revStoryBtn");
@@ -2440,9 +2492,39 @@ function randomStory(){
 }
 
 /* ================= НАГРАДЫ ================= */
+function last7Days(){
+  const days=[];
+  const now=new Date();
+  for(let i=6;i>=0;i--){
+    const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()-i);
+    days.push({key:d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate(),
+      label:d.getDate()+"."+(d.getMonth()+1),isToday:i===0});
+  }
+  return days;
+}
+function drawProgressChart(){
+  const wrap=document.getElementById("progressChart");
+  if(!wrap) return;
+  const days=last7Days();
+  const vals=days.map(d=>(D.days[d.key]&&D.days[d.key].pts)||0);
+  const max=Math.max(1,...vals);
+  wrap.innerHTML=`<div class="pcBars">${days.map((d,i)=>{
+      const h=Math.round(vals[i]/max*80);
+      return `<div class="pcBar${d.isToday?" today":""}" style="height:${Math.max(3,h)}px">${vals[i]>0?'<span class="pcVal">'+vals[i]+'</span>':''}</div>`;
+    }).join("")}</div>
+    <div class="pcLabels">${days.map(d=>`<span>${d.label}</span>`).join("")}</div>`;
+}
+function drawPrintHead(){
+  const w=document.getElementById("printHead");
+  if(!w) return;
+  const dateStr=new Date().toLocaleDateString("ru-RU",{day:"numeric",month:"long",year:"numeric"});
+  w.innerHTML=`<h1>🌈 Тропинка знаний</h1><p>Отчёт об успехах: ${D.name?D.name:"ученик"} · ${dateStr}</p>`;
+}
 function drawAwards(){
   const acc=D.totalTries>0 ? Math.round(D.totalCorrect/D.totalTries*100) : 0;
   const skippedCount=Object.keys(D.skipped||{}).length;
+  drawProgressChart();
+  drawPrintHead();
   document.getElementById("statGrid").innerHTML=`
     <div><div class="bignum">${D.stars}</div><small>баллов всего</small></div>
     <div><div class="bignum">${acc}%</div><small>точность ответов</small></div>
@@ -2625,6 +2707,7 @@ const musicEngine = makeQuiz(()=>MUSIC_MOD,"musicDone","mu-dots","mu-lcard","М�
 /* ================= НАВИГАЦИЯ ================= */
 function showScreen(n){
   clearAutoNext();
+  if("speechSynthesis" in window) speechSynthesis.cancel();
   document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));
   document.querySelectorAll(".sidebtn").forEach(t=>t.style.opacity="1");
   const map={home:"sb-home",math:"sb-math",tasks:"sb-tasks",rus:"sb-rus",eng:"sb-eng",world:"sb-world",
@@ -2692,6 +2775,11 @@ function boot(){
   }
 }
 boot();
+if("serviceWorker" in navigator){
+  window.addEventListener("load", ()=>{
+    navigator.serviceWorker.register("sw.js").catch(()=>{});
+  });
+}
 </script>
 </body>
 </html>

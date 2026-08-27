@@ -19,6 +19,18 @@ const WORLD_MOD = [
 
 { n:"Времена года",
   explain:"В году четыре времени года: зима, весна, лето, осень. Они сменяют друг друга по кругу.",
+  svg:`<svg viewBox="0 0 220 220" width="220">
+  <circle cx="110" cy="110" r="88" fill="none" stroke="#2B2A26" stroke-width="2" stroke-dasharray="3 6"/>
+  <path d="M110 22a88 88 0 0 1 88 88h-88z" fill="#FFDE59" opacity="0.85"/>
+  <path d="M198 110a88 88 0 0 1 -88 88v-88z" fill="#E3922E" opacity="0.85"/>
+  <path d="M110 198a88 88 0 0 1 -88 -88h88z" fill="#3B6EA5" opacity="0.85"/>
+  <path d="M22 110a88 88 0 0 1 88 -88v88z" fill="#5F9A5C" opacity="0.85"/>
+  <circle cx="110" cy="110" r="30" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <text x="110" y="60" font-size="20" text-anchor="middle">☀️</text>
+  <text x="160" y="120" font-size="20" text-anchor="middle">🍂</text>
+  <text x="110" y="175" font-size="20" text-anchor="middle">❄️</text>
+  <text x="60" y="120" font-size="20" text-anchor="middle">🌱</text>
+  </svg>`,
   bank:[
     {p:"Когда идёт снег и замерзают реки?",opts:["Зима","Лето","Осень"],correct:0},
     {p:"Когда тает снег и прилетают птицы?",opts:["Весна","Зима","Осень"],correct:0},
@@ -57,6 +69,22 @@ const WORLD_MOD = [
 
 { n:"Части растения",
   explain:"У большинства растений есть корень, стебель, листья, цветок и плод с семенами. Каждая часть выполняет свою работу.",
+  svg:`<svg viewBox="0 0 200 220" width="200">
+  <line x1="10" y1="150" x2="190" y2="150" stroke="#B96F16" stroke-width="2" stroke-dasharray="4 4"/>
+  <circle cx="100" cy="55" r="16" fill="#D6524F" opacity="0.9"/>
+  <circle cx="80" cy="45" r="13" fill="#E3922E" opacity="0.9"/>
+  <circle cx="120" cy="45" r="13" fill="#E3922E" opacity="0.9"/>
+  <circle cx="100" cy="40" r="10" fill="#FFDE59"/>
+  <line x1="100" y1="65" x2="100" y2="148" stroke="#3F7A3D" stroke-width="6" stroke-linecap="round"/>
+  <path d="M100 90c-22-4-34 8-38 22 18 6 32-4 38-22z" fill="#5F9A5C"/>
+  <path d="M100 115c22-4 34 8 38 22-18 6-32-4-38-22z" fill="#5F9A5C"/>
+  <path d="M100 150c-6 14-4 30 2 40M100 150c6 14 4 30-2 40M100 150c-14 8-20 22-18 36M100 150c14 8 20 22 18 36"
+    stroke="#B96F16" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="150" y="55" font-size="11" fill="#2B2A26">цветок</text>
+  <text x="140" y="105" font-size="11" fill="#2B2A26">лист</text>
+  <text x="128" y="150" font-size="11" fill="#2B2A26">стебель</text>
+  <text x="118" y="200" font-size="11" fill="#2B2A26">корень</text>
+  </svg>`,
   bank:[
     {p:"Какая часть растения держится в земле и берёт воду?",opts:["Корень","Лист","Цветок"],correct:0},
     {p:"Какая часть растения ловит солнечный свет для питания?",opts:["Лист","Корень","Стебель"],correct:0},
@@ -126,6 +154,22 @@ const WORLD_MOD = [
 
 { n:"Сутки: день и ночь",
   explain:"Земля вращается вокруг своей оси, поэтому день сменяется ночью. Полный оборот Земли — это одни сутки, 24 часа.",
+  svg:`<svg viewBox="0 0 260 140" width="260">
+  <rect x="4" y="4" width="126" height="132" rx="14" fill="#FFF3C9" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="130" y="4" width="126" height="132" rx="14" fill="#284D77" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="67" cy="68" r="26" fill="#FFDE59" stroke="#C99A00" stroke-width="2"/>
+  <g stroke="#C99A00" stroke-width="3" stroke-linecap="round">
+  <line x1="67" y1="24" x2="67" y2="12"/><line x1="67" y1="112" x2="67" y2="124"/>
+  <line x1="23" y1="68" x2="11" y2="68"/><line x1="111" y1="68" x2="123" y2="68"/>
+  <line x1="36" y1="37" x2="28" y2="29"/><line x1="98" y1="99" x2="106" y2="107"/>
+  </g>
+  <circle cx="193" cy="60" r="22" fill="#FFFEF8" opacity="0.92"/>
+  <circle cx="203" cy="54" r="20" fill="#284D77"/>
+  <circle cx="220" cy="30" r="2" fill="#fff"/><circle cx="235" cy="50" r="1.6" fill="#fff"/>
+  <circle cx="215" cy="95" r="1.8" fill="#fff"/><circle cx="240" cy="90" r="1.4" fill="#fff"/>
+  <text x="67" y="132" font-size="12" text-anchor="middle" fill="#2B2A26">день</text>
+  <text x="193" y="130" font-size="12" text-anchor="middle" fill="#fff">ночь</text>
+  </svg>`,
   bank:[
     {p:"Сколько часов в одних сутках?",opts:["24","12","60"],correct:0},
     {p:"Почему день сменяется ночью?",opts:["Земля вращается вокруг своей оси","Солнце гаснет","Луна закрывает солнце"],correct:0},
@@ -186,6 +230,17 @@ const WORLD_MOD = [
 
 { n:"Стороны света и компас",
   explain:"Есть четыре главные стороны света: север, юг, запад и восток. Компас помогает их определить — его стрелка всегда показывает на север.",
+  svg:`<svg viewBox="0 0 200 200" width="200">
+  <circle cx="100" cy="100" r="80" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="100" cy="100" r="58" fill="none" stroke="#736C5E" stroke-width="1" stroke-dasharray="2 5"/>
+  <text x="100" y="30" font-size="16" text-anchor="middle" font-weight="700" fill="#D6524F">С</text>
+  <text x="100" y="182" font-size="16" text-anchor="middle" font-weight="700" fill="#2B2A26">Ю</text>
+  <text x="24" y="106" font-size="16" text-anchor="middle" font-weight="700" fill="#2B2A26">З</text>
+  <text x="176" y="106" font-size="16" text-anchor="middle" font-weight="700" fill="#2B2A26">В</text>
+  <polygon points="100,45 110,100 100,95 90,100" fill="#D6524F"/>
+  <polygon points="100,155 110,100 100,105 90,100" fill="#2B2A26"/>
+  <circle cx="100" cy="100" r="8" fill="#FFDE59" stroke="#2B2A26" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Сколько главных сторон света?",opts:["Четыре","Три","Шесть"],correct:0},
     {p:"Куда всегда показывает стрелка компаса?",opts:["На север","На юг","На запад"],correct:0},
@@ -210,6 +265,18 @@ const WORLD_MOD = [
 
 { n:"Планеты и космос",
   explain:"Земля — одна из планет, которые вращаются вокруг Солнца. Луна — спутник Земли.",
+  svg:`<svg viewBox="0 0 280 160" width="280">
+  <circle cx="4" cy="20" r="1.4" fill="#2B2A26" opacity="0.5"/><circle cx="40" cy="8" r="1" fill="#2B2A26" opacity="0.5"/>
+  <circle cx="260" cy="14" r="1.4" fill="#2B2A26" opacity="0.5"/><circle cx="230" cy="140" r="1" fill="#2B2A26" opacity="0.5"/>
+  <circle cx="16" cy="130" r="1.2" fill="#2B2A26" opacity="0.5"/><circle cx="150" cy="10" r="1" fill="#2B2A26" opacity="0.5"/>
+  <circle cx="20" cy="80" r="16" fill="#FFDE59" stroke="#C99A00" stroke-width="2"/>
+  <ellipse cx="120" cy="80" rx="70" ry="34" fill="none" stroke="#736C5E" stroke-width="1" stroke-dasharray="2 4"/>
+  <circle cx="120" cy="46" r="9" fill="#3B6EA5" stroke="#284D77" stroke-width="1.5"/>
+  <ellipse cx="230" cy="80" rx="100" ry="48" fill="none" stroke="#736C5E" stroke-width="1" stroke-dasharray="2 4"/>
+  <circle cx="130" cy="114" r="6" fill="#D6524F" stroke="#A83836" stroke-width="1.2"/>
+  <circle cx="250" cy="55" r="12" fill="#E3922E" stroke="#B96F16" stroke-width="1.5"/>
+  <ellipse cx="250" cy="55" rx="20" ry="5" fill="none" stroke="#B96F16" stroke-width="1.5" transform="rotate(-18 250 55)"/>
+  </svg>`,
   bank:[
     {p:"Вокруг чего вращается Земля и другие планеты нашей системы?",opts:["Вокруг Солнца","Вокруг Луны","Вокруг звёзд"],correct:0},
     {p:"Как называется естественный спутник Земли?",opts:["Луна","Марс","Комета"],correct:0},
@@ -231,6 +298,15 @@ const WORLD_MOD = [
 
 { n:"Водоёмы",
   explain:"Водоёмы бывают естественные (река, озеро, море, океан) и искусственные (пруд, водохранилище, созданные человеком).",
+  svg:`<svg viewBox="0 0 260 140" width="260">
+  <rect x="0" y="0" width="260" height="90" fill="#DCE9F6"/>
+  <path d="M0 90c30-8 60 8 90 0s60-8 90 0 60 8 80 0v50H0z" fill="#3E8F86"/>
+  <path d="M0 30c40 10 80-10 120 0s80 10 140-4" fill="none" stroke="#3B6EA5" stroke-width="2" opacity="0.5"/>
+  <path d="M40 100c20-6 40 6 60 0s40-6 60 0 40 6 60 0" fill="none" stroke="#284D77" stroke-width="2" opacity="0.4"/>
+  <path d="M60 120c14-4 28 4 42 0s28-4 42 0 28 4 42 0" fill="none" stroke="#284D77" stroke-width="2" opacity="0.4"/>
+  <path d="M10 90c6-14 4-26-6-34" fill="none" stroke="#3F7A3D" stroke-width="4" stroke-linecap="round"/>
+  <path d="M250 90c-6-16-2-30 10-40" fill="none" stroke="#3F7A3D" stroke-width="4" stroke-linecap="round"/>
+  </svg>`,
   bank:[
     {p:"Какой водоём течёт и имеет начало и устье?",opts:["Река","Озеро","Пруд"],correct:0},
     {p:"Какой водоём обычно не имеет течения и окружён со всех сторон сушей?",opts:["Озеро","Река","Море"],correct:0},
