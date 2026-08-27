@@ -770,6 +770,7 @@ input.mini{font-size:1.1rem;width:78px;}
   <span class="back" onclick="showScreen('read')">← Все рассказы</span>
   <div class="card">
     <h2 id="stTitle" style="margin-top:0"></h2>
+    <div class="lillus" id="stIllus" style="display:none"></div>
     <div class="row noprint" style="margin-bottom:12px"><button class="btn ghost sm" id="ttsBtn" onclick="toggleStoryTTS()">🔊 Слушать рассказ</button></div>
     <div class="stext" id="stBody"></div>
     <div id="stQs"></div>
@@ -2407,12 +2408,16 @@ function drawList(){
 let storyAnsUnlocked=false;
 function openStory(i){
   if("speechSynthesis" in window) speechSynthesis.cancel();
+  ttsActive=false;
   const ttsBtn=document.getElementById("ttsBtn"); if(ttsBtn) ttsBtn.textContent="🔊 Слушать рассказ";
   curStory=i;const s=STORIES[i];
   storyAnsUnlocked=false;
   const words=s.x.trim().split(/\s+/).length;
   const mins=Math.max(1,Math.round(words/110));
   stTitle.innerHTML=s.e+" "+s.t+` <span class="gradebadge" style="background:${s.len==='long'?'var(--coral)':'var(--blue)'}">${s.len==='long'?'📖 длинный':'📄 короткий'} · ~${mins} мин</span>`;
+  const stIllus=document.getElementById("stIllus");
+  if(s.svg){ stIllus.innerHTML=s.svg; stIllus.style.display="flex"; }
+  else { stIllus.innerHTML=""; stIllus.style.display="none"; }
   stBody.textContent=s.x;
   stQs.innerHTML="";
   s.q.forEach((qa,k)=>{
@@ -2426,23 +2431,42 @@ function openStory(i){
     `<button class="rev" id="revStoryBtn" onclick="revealStoryAnswers()" style="margin-top:10px">🔒 Показать вопросы и ответы (для родителя)</button>`);
   updMark();showScreen("story");window.scrollTo({top:0});
 }
+function splitForTTS(text){
+  const parts=text.split(/(?<=[.!?…])\s+/);
+  const chunks=[]; let cur="";
+  parts.forEach(p=>{
+    if((cur+" "+p).trim().length>180 && cur){ chunks.push(cur.trim()); cur=p; }
+    else { cur=(cur?cur+" ":"")+p; }
+  });
+  if(cur.trim()) chunks.push(cur.trim());
+  return chunks;
+}
+let ttsActive=false;
 function toggleStoryTTS(){
   const btn=document.getElementById("ttsBtn");
   if(!("speechSynthesis" in window)){ toast("Озвучка не поддерживается в этом браузере"); return; }
-  if(speechSynthesis.speaking||speechSynthesis.pending){
+  if(ttsActive){
     speechSynthesis.cancel();
+    ttsActive=false;
     if(btn) btn.textContent="🔊 Слушать рассказ";
     return;
   }
+  speechSynthesis.cancel();
   const s=STORIES[curStory];
-  const u=new SpeechSynthesisUtterance(s.t+". "+s.x);
-  u.lang="ru-RU"; u.rate=0.95;
+  const chunks=[s.t, ...splitForTTS(s.x)];
   const voices=speechSynthesis.getVoices();
   const ruVoice=voices.find(v=>v.lang && v.lang.toLowerCase().startsWith("ru"));
-  if(ruVoice) u.voice=ruVoice;
-  u.onend=()=>{ if(btn) btn.textContent="🔊 Слушать рассказ"; };
-  u.onerror=()=>{ if(btn) btn.textContent="🔊 Слушать рассказ"; };
-  speechSynthesis.speak(u);
+  chunks.forEach((chunk,i)=>{
+    const u=new SpeechSynthesisUtterance(chunk);
+    u.lang="ru-RU"; u.rate=0.95;
+    if(ruVoice) u.voice=ruVoice;
+    if(i===chunks.length-1){
+      u.onend=()=>{ ttsActive=false; if(btn) btn.textContent="🔊 Слушать рассказ"; };
+      u.onerror=()=>{ ttsActive=false; if(btn) btn.textContent="🔊 Слушать рассказ"; };
+    }
+    speechSynthesis.speak(u);
+  });
+  ttsActive=true;
   if(btn) btn.textContent="⏸️ Остановить";
 }
 function revealStoryAnswers(){
@@ -2708,6 +2732,7 @@ const musicEngine = makeQuiz(()=>MUSIC_MOD,"musicDone","mu-dots","mu-lcard","М�
 function showScreen(n){
   clearAutoNext();
   if("speechSynthesis" in window) speechSynthesis.cancel();
+  ttsActive=false;
   document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));
   document.querySelectorAll(".sidebtn").forEach(t=>t.style.opacity="1");
   const map={home:"sb-home",math:"sb-math",tasks:"sb-tasks",rus:"sb-rus",eng:"sb-eng",world:"sb-world",
@@ -2775,6 +2800,10 @@ function boot(){
   }
 }
 boot();
+if("speechSynthesis" in window){
+  speechSynthesis.getVoices();
+  speechSynthesis.onvoiceschanged=()=>{ speechSynthesis.getVoices(); };
+}
 if("serviceWorker" in navigator){
   window.addEventListener("load", ()=>{
     navigator.serviceWorker.register("sw.js").catch(()=>{});
