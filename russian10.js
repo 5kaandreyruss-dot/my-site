@@ -5,6 +5,18 @@ const RUS10_MOD = [
 
 { n:"Функциональные стили речи",
   explain:"В русском языке выделяют несколько <b>функциональных стилей</b>: разговорный, научный, официально-деловой, публицистический и художественный. Каждый стиль используется в своей ситуации общения.",
+  svg:`<svg viewBox="0 0 260 125" width="260">
+  <rect x="8" y="8" width="115" height="30" rx="15" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="65" y="28" font-size="11" text-anchor="middle" fill="#284D77">разговорный</text>
+  <rect x="136" y="8" width="115" height="30" rx="15" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="193" y="28" font-size="11" text-anchor="middle" fill="#3F7A3D">научный</text>
+  <rect x="8" y="46" width="115" height="30" rx="15" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="65" y="66" font-size="11" text-anchor="middle" fill="#B96F16">официально-деловой</text>
+  <rect x="136" y="46" width="115" height="30" rx="15" fill="#FBE1E0" stroke="#D6524F" stroke-width="2"/>
+  <text x="193" y="66" font-size="11" text-anchor="middle" fill="#A83836">публицистический</text>
+  <rect x="72" y="84" width="115" height="30" rx="15" fill="#EEE3F5" stroke="#9973B8" stroke-width="2"/>
+  <text x="129" y="104" font-size="11" text-anchor="middle" fill="#725189">художественный</text>
+  </svg>`,
   bank:[
     {p:"Сколько основных функциональных стилей обычно выделяют?",opts:["Пять","Два"],correct:0},
     {p:"Какой стиль используют в законах и документах?",opts:["Официально-деловой","Разговорный"],correct:0}

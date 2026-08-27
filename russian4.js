@@ -70,6 +70,17 @@ const RUS4_MOD = [
 
 { n:"Однородные члены с союзами",
   explain:"Однородные члены предложения могут соединяться союзами <b>и, а, но</b>. Перед «а» и «но» всегда ставится запятая. Перед одиночным «и» запятая не нужна.",
+  svg:`<svg viewBox="0 0 260 95" width="260">
+  <rect x="10" y="25" width="60" height="34" rx="8" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="40" y="47" font-size="13" text-anchor="middle">дождь</text>
+  <text x="76" y="47" font-size="18" fill="#736C5E">,</text>
+  <rect x="90" y="25" width="50" height="34" rx="8" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="115" y="47" font-size="13" text-anchor="middle">снег</text>
+  <text x="146" y="47" font-size="13" fill="#A83836" font-weight="700">и</text>
+  <rect x="160" y="25" width="60" height="34" rx="8" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="190" y="47" font-size="13" text-anchor="middle">ветер</text>
+  <text x="10" y="80" font-size="9" fill="#736C5E">перед одиночным «и» запятая не нужна</text>
+  </svg>`,
   bank:[
     {p:"Нужна ли запятая перед одиночным союзом «и»?",opts:["Нет","Да"],correct:0},
     {p:"Нужна ли запятая перед союзом «но»?",opts:["Да","Нет"],correct:0},
@@ -81,6 +92,20 @@ const RUS4_MOD = [
 
 { n:"Разбор слова по составу",
   explain:"Слово может состоять из <b>приставки, корня, суффикса и окончания</b>. Например, в слове «подводный»: под- приставка, -вод- корень, -н- суффикс, -ый окончание.",
+  svg:`<svg viewBox="0 0 260 90" width="260">
+  <rect x="10" y="30" width="46" height="30" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="33" y="50" font-size="12" text-anchor="middle">под</text>
+  <rect x="56" y="30" width="66" height="30" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="89" y="50" font-size="12" text-anchor="middle">вод</text>
+  <rect x="122" y="30" width="40" height="30" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="142" y="50" font-size="12" text-anchor="middle">н</text>
+  <rect x="162" y="30" width="50" height="30" fill="#FBE1E0" stroke="#D6524F" stroke-width="2"/>
+  <text x="187" y="50" font-size="12" text-anchor="middle">ый</text>
+  <text x="33" y="76" font-size="9" text-anchor="middle" fill="#736C5E">приставка</text>
+  <text x="89" y="76" font-size="9" text-anchor="middle" fill="#736C5E">корень</text>
+  <text x="142" y="76" font-size="9" text-anchor="middle" fill="#736C5E">суффикс</text>
+  <text x="187" y="76" font-size="9" text-anchor="middle" fill="#736C5E">окончание</text>
+  </svg>`,
   bank:[
     {p:"В слове «побежал» приставка — это...",opts:["по-","беж-","-ал"],correct:0},
     {p:"В слове «лесник» суффикс — это...",opts:["-ник","лес-","-к"],correct:0},
@@ -92,6 +117,12 @@ const RUS4_MOD = [
 
 { n:"Прямая речь",
   explain:"<b>Прямая речь</b> — это чужие слова, переданные без изменений. Она берётся в кавычки: Мама сказала: «Пора домой». Слова автора могут стоять до или после прямой речи.",
+  svg:`<svg viewBox="0 0 220 110" width="220">
+  <rect x="20" y="15" width="180" height="55" rx="14" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <polygon points="50,70 66,70 50,90" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="110" y="52" font-size="30" text-anchor="middle" fill="#B96F16">« »</text>
+  <text x="110" y="100" font-size="10" text-anchor="middle" fill="#736C5E">Мама сказала: «Пора домой».</text>
+  </svg>`,
   bank:[
     {p:"В какие знаки берётся прямая речь?",opts:["В кавычки","В скобки","В точки"],correct:0},
     {p:"«Мама сказала: «Пора домой»» — что здесь прямая речь?",opts:["«Пора домой»","Мама сказала"],correct:0},

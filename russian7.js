@@ -102,6 +102,17 @@ const RUS7_MOD = [
 
 { n:"Служебные части речи: обобщение",
   explain:"К служебным частям речи относят предлог, союз и частицу. Они не называют предметы, признаки или действия, а лишь помогают связывать слова или добавляют оттенки смысла.",
+  svg:`<svg viewBox="0 0 260 100" width="260">
+  <rect x="8" y="15" width="76" height="34" rx="17" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="46" y="37" font-size="13" text-anchor="middle" fill="#284D77">предлог</text>
+  <text x="46" y="65" font-size="9" text-anchor="middle" fill="#736C5E">в, на, у</text>
+  <rect x="92" y="15" width="76" height="34" rx="17" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="130" y="37" font-size="13" text-anchor="middle" fill="#3F7A3D">союз</text>
+  <text x="130" y="65" font-size="9" text-anchor="middle" fill="#736C5E">и, а, но</text>
+  <rect x="176" y="15" width="76" height="34" rx="17" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="214" y="37" font-size="13" text-anchor="middle" fill="#B96F16">частица</text>
+  <text x="214" y="65" font-size="9" text-anchor="middle" fill="#736C5E">не, же, ли</text>
+  </svg>`,
   bank:[
     {p:"Что из этого — служебная часть речи?",opts:["Предлог","Существительное","Глагол"],correct:0},
     {p:"Могут ли служебные части речи быть членами предложения?",opts:["Нет, не могут","Да, всегда могут"],correct:0},

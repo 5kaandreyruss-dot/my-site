@@ -5,6 +5,11 @@ const OBZH10_MOD = [
 
 { n:"Гражданская оборона",
   explain:"<b>Гражданская оборона</b> — система мер по защите населения от опасностей военного времени и чрезвычайных ситуаций: оповещение, эвакуация, укрытия.",
+  svg:`<svg viewBox="0 0 180 160" width="180">
+  <rect x="10" y="90" width="160" height="60" fill="#736C5E" opacity="0.25"/>
+  <path d="M90 10l70 26v50c0 40-30 60-70 74-40-14-70-34-70-74V36z" fill="#3B6EA5" stroke="#284D77" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M60 90h60M90 60v60" stroke="#FFFEF8" stroke-width="6" stroke-linecap="round"/>
+  </svg>`,
   bank:[
     {p:"Для чего нужна гражданская оборона?",opts:["Для защиты населения от опасностей","Только для развлечения"],correct:0},
     {p:"Что из этого относится к мерам гражданской обороны?",opts:["Оповещение и эвакуация населения","Отключение всех средств связи навсегда"],correct:0}
@@ -12,18 +17,40 @@ const OBZH10_MOD = [
 
 { n:"Средства индивидуальной защиты",
   explain:"К <b>средствам индивидуальной защиты</b> относят противогазы, респираторы, средства защиты кожи — они защищают человека от опасных веществ в чрезвычайной ситуации.",
+  svg:`<svg viewBox="0 0 180 160" width="180">
+  <ellipse cx="90" cy="80" rx="60" ry="70" fill="#5F9A5C" stroke="#3F7A3D" stroke-width="3"/>
+  <circle cx="65" cy="65" r="16" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="115" cy="65" r="16" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="65" cy="65" r="5" fill="#2B2A26"/>
+  <circle cx="115" cy="65" r="5" fill="#2B2A26"/>
+  <circle cx="90" cy="110" r="20" fill="#3F7A3D" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="80" y="128" width="20" height="24" fill="#3F7A3D" stroke="#2B2A26" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Что из этого — средство индивидуальной защиты органов дыхания?",opts:["Противогаз","Обычные наушники"],correct:0}
   ]},
 
 { n:"Воинская обязанность",
   explain:"<b>Воинская обязанность</b> граждан России включает воинский учёт, подготовку к военной службе и саму службу по призыву или контракту, согласно закону.",
+  svg:`<svg viewBox="0 0 160 160" width="160">
+  <path d="M80 10l70 46-27 82H37L10 56z" fill="#3B6EA5" stroke="#284D77" stroke-width="3" stroke-linejoin="round"/>
+  <polygon points="80,45 90,72 119,72 96,89 105,116 80,99 55,116 64,89 41,72 70,72" fill="#FFDE59" stroke="#C99A00" stroke-width="2" stroke-linejoin="round"/>
+  </svg>`,
   bank:[
     {p:"Что включает воинская обязанность?",opts:["Воинский учёт и подготовку к службе","Только участие в спортивных соревнованиях"],correct:0}
   ]},
 
 { n:"Безопасность на воде",
   explain:"Купаться безопаснее в специально оборудованных местах, не заплывать за буйки и не купаться в состоянии усталости или сразу после еды.",
+  svg:`<svg viewBox="0 0 220 140" width="220">
+  <rect x="0" y="100" width="220" height="40" fill="#DCE9F6"/>
+  <path d="M0 100c30-8 60 8 90 0s60-8 90 0 30 4 40 0" fill="none" stroke="#3B6EA5" stroke-width="2"/>
+  <line x1="40" y1="30" x2="40" y2="100" stroke="#2B2A26" stroke-width="3"/>
+  <polygon points="40,30 80,42 40,54" fill="#D6524F"/>
+  <line x1="180" y1="30" x2="180" y2="100" stroke="#2B2A26" stroke-width="3"/>
+  <polygon points="180,30 220,42 180,54" fill="#D6524F"/>
+  <path d="M90 90c8-10 22-10 30 0s22 10 30 0" fill="none" stroke="#2B2A26" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Где безопаснее всего купаться?",opts:["В специально оборудованных местах","В любом незнакомом водоёме без разбора"],correct:0},
     {p:"Стоит ли заплывать далеко за буйки?",opts:["Нет, не стоит","Да, это всегда безопасно"],correct:0}
@@ -31,12 +58,25 @@ const OBZH10_MOD = [
 
 { n:"Безопасность в природной среде",
   explain:"Отправляясь в поход, важно сообщить маршрут родным, взять с собой воду, аптечку и средства связи, а также уметь ориентироваться на местности.",
+  svg:`<svg viewBox="0 0 160 160" width="160">
+  <rect x="45" y="55" width="70" height="85" rx="14" fill="#5F9A5C" stroke="#3F7A3D" stroke-width="3"/>
+  <rect x="60" y="35" width="40" height="30" rx="8" fill="#3F7A3D" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="80" cy="100" r="24" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <polygon points="80,86 87,100 80,114 73,100" fill="#D6524F"/>
+  <line x1="45" y1="80" x2="30" y2="60" stroke="#3F7A3D" stroke-width="4" stroke-linecap="round"/>
+  <line x1="115" y1="80" x2="130" y2="60" stroke="#3F7A3D" stroke-width="4" stroke-linecap="round"/>
+  </svg>`,
   bank:[
     {p:"Что важно сделать перед походом?",opts:["Сообщить маршрут родным","Никому ничего не говорить"],correct:0}
   ]},
 
 { n:"Оказание первой помощи при кровотечении",
   explain:"При сильном кровотечении нужно прижать рану, наложить давящую повязку и, если кровотечение не останавливается, вызвать скорую помощь.",
+  svg:`<svg viewBox="0 0 180 130" width="180">
+  <rect x="15" y="50" width="150" height="30" rx="15" fill="#FFFEF8" stroke="#2B2A26" stroke-width="3" transform="rotate(-10 90 65)"/>
+  <rect x="70" y="45" width="40" height="40" fill="#D6524F" opacity="0.8" transform="rotate(-10 90 65)"/>
+  <path d="M150 15c0 10-12 16-12 26a12 12 0 0 0 24 0c0-10-12-16-12-26z" fill="#D6524F" stroke="#A83836" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Что нужно сделать при сильном кровотечении?",opts:["Прижать рану и наложить давящую повязку","Просто подождать, пока само пройдёт"],correct:0}
   ]},
@@ -49,30 +89,73 @@ const OBZH10_MOD = [
 
 { n:"Здоровый образ жизни и профилактика заболеваний",
   explain:"Регулярная физическая активность, полноценное питание, отказ от вредных привычек и достаточный сон снижают риск многих заболеваний.",
+  svg:`<svg viewBox="0 0 200 150" width="200">
+  <rect x="20" y="80" width="40" height="55" fill="#5F9A5C" stroke="#3F7A3D" stroke-width="2"/>
+  <rect x="80" y="50" width="40" height="85" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <rect x="140" y="65" width="40" height="70" fill="#9973B8" stroke="#725189" stroke-width="2"/>
+  <path d="M40 68a8 8 0 1 1 0-16 9 9 0 0 1 8 5 9 9 0 0 1 8-5 8 8 0 1 1 0 16l-8 8z" fill="#D6524F"/>
+  <line x1="10" y1="135" x2="190" y2="135" stroke="#2B2A26" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Что снижает риск заболеваний?",opts:["Физическая активность и правильное питание","Полный отказ от любого движения"],correct:0}
   ]},
 
 { n:"Виды вооружённых сил России",
   explain:"Вооружённые силы России включают Сухопутные войска, Военно-морской флот и Воздушно-космические силы, каждый вид решает свои задачи по защите страны.",
+  svg:`<svg viewBox="0 0 260 150" width="260">
+  <rect x="90" y="8" width="80" height="30" rx="6" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <text x="130" y="28" font-size="10" text-anchor="middle" fill="#fff">ВС России</text>
+  <line x1="130" y1="38" x2="130" y2="54" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="40" y1="54" x2="220" y2="54" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="40" y1="54" x2="40" y2="70" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="130" y1="54" x2="130" y2="70" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="220" y1="54" x2="220" y2="70" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="40" cy="100" r="30" fill="#5F9A5C" stroke="#3F7A3D" stroke-width="2"/>
+  <text x="40" y="107" font-size="20" text-anchor="middle" fill="#fff">★</text>
+  <circle cx="130" cy="100" r="30" fill="#E3922E" stroke="#B96F16" stroke-width="2"/>
+  <path d="M115 105c8-14 22-14 30 0-8 6-22 6-30 0z" fill="#fff"/>
+  <circle cx="220" cy="100" r="30" fill="#D6524F" stroke="#A83836" stroke-width="2"/>
+  <path d="M205 95a15 15 0 0 0 30 0" fill="none" stroke="#fff" stroke-width="4"/>
+  <text x="40" y="140" font-size="9" text-anchor="middle" fill="#2B2A26">Сухопутные</text>
+  <text x="130" y="140" font-size="9" text-anchor="middle" fill="#2B2A26">ВКС</text>
+  <text x="220" y="140" font-size="9" text-anchor="middle" fill="#2B2A26">ВМФ</text>
+  </svg>`,
   bank:[
     {p:"Что из этого — вид вооружённых сил России?",opts:["Сухопутные войска","Только полиция"],correct:0}
   ]},
 
 { n:"Первая помощь при остановке дыхания",
   explain:"При остановке дыхания у пострадавшего немедленно вызывают скорую помощь и, если обучены, начинают искусственное дыхание и непрямой массаж сердца.",
+  svg:`<svg viewBox="0 0 180 160" width="180">
+  <path d="M90 40c-10-14-34-6-34 12 0 18 20 30 34 42 14-12 34-24 34-42 0-18-24-26-34-12z" fill="#D6524F" stroke="#A83836" stroke-width="2"/>
+  <path d="M40 120c10-14 30-14 50-4 20-10 40-10 50 4" fill="none" stroke="#2B2A26" stroke-width="4" stroke-linecap="round"/>
+  <path d="M90 100v40" stroke="#FFFEF8" stroke-width="4" stroke-dasharray="4 4"/>
+  </svg>`,
   bank:[
     {p:"Что нужно сделать в первую очередь при остановке дыхания у человека?",opts:["Вызвать скорую помощь","Оставить его в покое"],correct:0}
   ]},
 
 { n:"Опасности в общественных местах",
   explain:"В местах массового скопления людей важно знать расположение эвакуационных выходов и не поддаваться панике при возникновении чрезвычайной ситуации.",
+  svg:`<svg viewBox="0 0 180 130" width="180">
+  <rect x="10" y="10" width="160" height="110" rx="8" fill="#5F9A5C" stroke="#3F7A3D" stroke-width="3"/>
+  <circle cx="60" cy="45" r="10" fill="#FFFEF8"/>
+  <path d="M60 55l-14 20 10 4-4 26 12-18 6 18 4-30 10-4z" fill="#FFFEF8"/>
+  <path d="M100 65h50" stroke="#FFFEF8" stroke-width="5"/>
+  <polygon points="145,55 165,65 145,75" fill="#FFFEF8"/>
+  </svg>`,
   bank:[
     {p:"Что полезно знать, находясь в местах массового скопления людей?",opts:["Расположение эвакуационных выходов","Ничего специально знать не нужно"],correct:0}
   ]},
 
 { n:"Профилактика травматизма",
   explain:"Многие травмы можно предотвратить, соблюдая правила безопасности: используя защитное снаряжение при занятиях спортом, соблюдая правила при работе с инструментами.",
+  svg:`<svg viewBox="0 0 180 140" width="180">
+  <path d="M90 20a55 55 0 0 1 55 55v10H35v-10a55 55 0 0 1 55-55z" fill="#3B6EA5" stroke="#284D77" stroke-width="3"/>
+  <rect x="30" y="85" width="120" height="14" rx="6" fill="#284D77"/>
+  <ellipse cx="90" cy="120" rx="26" ry="14" fill="#E3922E" stroke="#B96F16" stroke-width="2"/>
+  <line x1="90" y1="106" x2="90" y2="134" stroke="#B96F16" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Что помогает предотвратить травмы при занятиях спортом?",opts:["Защитное снаряжение и соблюдение правил","Полное отсутствие всяких мер"],correct:0}
   ]}

@@ -60,6 +60,13 @@ const LIT6_MOD = [
 
 { n:"Зарубежная классика",
   explain:"Даниэль <b>Дефо</b> написал роман «Робинзон Крузо» — про моряка, выжившего на необитаемом острове. Марк <b>Твен</b> — американский писатель, автор «Приключений Тома Сойера».",
+  svg:`<svg viewBox="0 0 200 120" width="200">
+  <ellipse cx="100" cy="95" rx="80" ry="14" fill="#FFF3C9" stroke="#C99A00" stroke-width="2"/>
+  <path d="M100 90c0-30 4-45 4-45" stroke="#3F7A3D" stroke-width="4" fill="none"/>
+  <path d="M104 45c-14-8-24-2-28 8 14 2 22-2 28-8zM104 45c14-8 24 0 26 10-14 0-20-4-26-10zM104 45c-6-12-2-22 6-26 4 10 0 20-6 26z" fill="#5F9A5C"/>
+  <circle cx="150" cy="30" r="14" fill="#FFDE59"/>
+  <text x="100" y="115" font-size="9" text-anchor="middle" fill="#736C5E">необитаемый остров</text>
+  </svg>`,
   bank:[
     {p:"Кто написал «Робинзона Крузо»?",opts:["Даниэль Дефо","Марк Твен","Жюль Верн"],correct:0},
     {p:"О чём роман «Робинзон Крузо»?",opts:["О моряке на необитаемом острове","О войне","О школе"],correct:0},
@@ -68,6 +75,19 @@ const LIT6_MOD = [
 
 { n:"Стихотворный размер",
   explain:"Стихи имеют ритм — <b>стихотворный размер</b>. <b>Ямб</b> — ударение на второй слог (мой дЯ-дя), <b>хорей</b> — на первый (мОл-ча).",
+  svg:`<svg viewBox="0 0 220 110" width="220">
+  <text x="20" y="30" font-size="11" fill="#736C5E">ямб:</text>
+  <circle cx="70" cy="26" r="5" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="1.5"/>
+  <circle cx="95" cy="26" r="9" fill="#3B6EA5"/>
+  <circle cx="125" cy="26" r="5" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="1.5"/>
+  <circle cx="150" cy="26" r="9" fill="#3B6EA5"/>
+  <text x="20" y="75" font-size="11" fill="#736C5E">хорей:</text>
+  <circle cx="80" cy="71" r="9" fill="#E3922E"/>
+  <circle cx="105" cy="71" r="5" fill="#FBEBCF" stroke="#E3922E" stroke-width="1.5"/>
+  <circle cx="135" cy="71" r="9" fill="#E3922E"/>
+  <circle cx="160" cy="71" r="5" fill="#FBEBCF" stroke="#E3922E" stroke-width="1.5"/>
+  <text x="110" y="100" font-size="9" text-anchor="middle" fill="#736C5E">крупный кружок — ударный слог</text>
+  </svg>`,
   bank:[
     {p:"Как называется стихотворный размер с ударением на второй слог?",opts:["Ямб","Хорей"],correct:0},
     {p:"Как называется стихотворный размер с ударением на первый слог?",opts:["Хорей","Ямб"],correct:0},
@@ -98,6 +118,16 @@ const LIT6_MOD = [
 
 { n:"Портрет и пейзаж в литературе",
   explain:"<b>Портрет</b> — описание внешности героя. <b>Пейзаж</b> — описание природы в произведении, которое часто помогает передать настроение сцены.",
+  svg:`<svg viewBox="0 0 220 110" width="220">
+  <rect x="6" y="10" width="98" height="80" rx="10" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <circle cx="55" cy="38" r="14" fill="#284D77"/>
+  <path d="M35 75c0-16 9-26 20-26s20 10 20 26z" fill="#284D77"/>
+  <text x="55" y="98" font-size="9" text-anchor="middle" fill="#736C5E">портрет</text>
+  <rect x="116" y="10" width="98" height="80" rx="10" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <polygon points="128,75 150,40 165,60 180,35 202,75" fill="#3F7A3D"/>
+  <circle cx="190" cy="30" r="8" fill="#FFDE59"/>
+  <text x="165" y="98" font-size="9" text-anchor="middle" fill="#736C5E">пейзаж</text>
+  </svg>`,
   bank:[
     {p:"Что такое пейзаж в литературном произведении?",opts:["Описание природы","Описание внешности героя"],correct:0},
     {p:"Для чего автор использует пейзаж в тексте?",opts:["Чтобы передать настроение сцены","Просто для объёма текста"],correct:0}

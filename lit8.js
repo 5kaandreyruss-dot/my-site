@@ -54,6 +54,16 @@ const LIT8_MOD = [
 
 { n:"Теория литературы: комедия и трагедия",
   explain:"<b>Комедия</b> — драматическое произведение с юмористическим сюжетом. <b>Трагедия</b> — драматическое произведение с серьёзным, часто печальным исходом для героя.",
+  svg:`<svg viewBox="0 0 200 110" width="200">
+  <circle cx="65" cy="55" r="36" fill="#FFF3C9" stroke="#C99A00" stroke-width="2"/>
+  <circle cx="52" cy="45" r="5" fill="#B96F16"/><circle cx="78" cy="45" r="5" fill="#B96F16"/>
+  <path d="M46 66q19 16 38 0" fill="none" stroke="#B96F16" stroke-width="3" stroke-linecap="round"/>
+  <text x="65" y="100" font-size="9" text-anchor="middle" fill="#736C5E">комедия</text>
+  <circle cx="135" cy="55" r="36" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <circle cx="122" cy="45" r="5" fill="#284D77"/><circle cx="148" cy="45" r="5" fill="#284D77"/>
+  <path d="M118 78q17-16 34 0" fill="none" stroke="#284D77" stroke-width="3" stroke-linecap="round"/>
+  <text x="135" y="100" font-size="9" text-anchor="middle" fill="#736C5E">трагедия</text>
+  </svg>`,
   bank:[
     {p:"Что такое комедия?",opts:["Драматическое произведение с юмористическим сюжетом","Только грустный рассказ"],correct:0},
     {p:"Чем трагедия отличается от комедии?",opts:["В трагедии серьёзный, часто печальный исход","Ничем не отличается"],correct:0},
@@ -89,6 +99,13 @@ const LIT8_MOD = [
 
 { n:"Теория литературы: конфликт в произведении",
   explain:"<b>Конфликт</b> — столкновение интересов, взглядов или сил в произведении, которое движет сюжет и раскрывает характеры героев.",
+  svg:`<svg viewBox="0 0 200 100" width="200">
+  <line x1="20" y1="50" x2="85" y2="50" stroke="#3B6EA5" stroke-width="5" stroke-linecap="round"/>
+  <polygon points="85,42 100,50 85,58" fill="#3B6EA5"/>
+  <line x1="180" y1="50" x2="115" y2="50" stroke="#D6524F" stroke-width="5" stroke-linecap="round"/>
+  <polygon points="115,42 100,50 115,58" fill="#D6524F"/>
+  <text x="100" y="85" font-size="10" text-anchor="middle" fill="#736C5E">конфликт — столкновение сил</text>
+  </svg>`,
   bank:[
     {p:"Что такое конфликт в литературном произведении?",opts:["Столкновение интересов или сил","Просто описание природы"],correct:0},
     {p:"Для чего нужен конфликт в произведении?",opts:["Он движет сюжет и раскрывает характеры","Он не нужен вовсе"],correct:0}

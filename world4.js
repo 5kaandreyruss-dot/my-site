@@ -5,6 +5,18 @@ const WORLD4_MOD = [
 
 { n:"Солнечная система",
   explain:"В Солнечной системе <b>8 планет</b>, которые вращаются вокруг Солнца. Земля — третья планета от Солнца. Ближе всех к Солнцу — Меркурий, дальше всех — Нептун.",
+  svg:`<svg viewBox="0 0 280 100" width="280">
+  <circle cx="20" cy="50" r="16" fill="#FFDE59" stroke="#C99A00" stroke-width="2"/>
+  <circle cx="55" cy="50" r="4" fill="#736C5E"/>
+  <circle cx="75" cy="50" r="6" fill="#E3922E"/>
+  <circle cx="100" cy="50" r="7" fill="#3B6EA5"/>
+  <circle cx="125" cy="50" r="5" fill="#D6524F"/>
+  <circle cx="155" cy="50" r="12" fill="#E3922E" opacity="0.8"/>
+  <circle cx="190" cy="50" r="10" fill="#FFDE59" opacity="0.7"/>
+  <ellipse cx="190" cy="50" rx="16" ry="4" fill="none" stroke="#B96F16" stroke-width="1.5" transform="rotate(-18 190 50)"/>
+  <circle cx="220" cy="50" r="8" fill="#3E8F86" opacity="0.8"/>
+  <circle cx="250" cy="50" r="8" fill="#3B6EA5" opacity="0.8"/>
+  </svg>`,
   bank:[
     {p:"Сколько планет в Солнечной системе?",opts:["6","8","10"],correct:1},
     {p:"Какая планета ближе всех к Солнцу?",opts:["Меркурий","Земля","Марс"],correct:0},
@@ -18,6 +30,18 @@ const WORLD4_MOD = [
 
 { n:"Природные зоны России",
   explain:"В России несколько природных зон: <b>арктические пустыни</b> (лёд и снег), <b>тундра</b> (мхи и лишайники), <b>тайга</b> (хвойные леса), <b>степь</b> (травы), <b>пустыня</b> (песок, мало воды).",
+  svg:`<svg viewBox="0 0 260 140" width="260">
+  <rect x="0" y="0" width="260" height="28" fill="#DCE9F6" stroke="#2B2A26" stroke-width="1"/>
+  <text x="130" y="18" font-size="10" text-anchor="middle" fill="#284D77">арктика</text>
+  <rect x="0" y="28" width="260" height="28" fill="#3B6EA5" opacity="0.25" stroke="#2B2A26" stroke-width="1"/>
+  <text x="130" y="46" font-size="10" text-anchor="middle" fill="#284D77">тундра</text>
+  <rect x="0" y="56" width="260" height="28" fill="#3F7A3D" stroke="#2B2A26" stroke-width="1"/>
+  <text x="130" y="74" font-size="10" text-anchor="middle" fill="#FFFEF8">тайга</text>
+  <rect x="0" y="84" width="260" height="28" fill="#E3922E" stroke="#2B2A26" stroke-width="1"/>
+  <text x="130" y="102" font-size="10" text-anchor="middle" fill="#2B2A26">степь</text>
+  <rect x="0" y="112" width="260" height="28" fill="#FFDE59" stroke="#2B2A26" stroke-width="1"/>
+  <text x="130" y="130" font-size="10" text-anchor="middle" fill="#B96F16">пустыня</text>
+  </svg>`,
   bank:[
     {p:"В какой зоне почти круглый год снег и лёд?",opts:["Арктическая пустыня","Степь","Тайга"],correct:0},
     {p:"Тундра — это зона, где растут в основном...",opts:["Мхи и лишайники","Высокие дубы","Кактусы"],correct:0},
@@ -30,6 +54,14 @@ const WORLD4_MOD = [
 
 { n:"Организм человека: системы органов",
   explain:"Тело человека работает благодаря системам органов: <b>нервная</b> (мозг и нервы управляют телом), <b>кровеносная</b> (сердце качает кровь), <b>дыхательная</b> (лёгкие), <b>пищеварительная</b> (переработка пищи).",
+  svg:`<svg viewBox="0 0 180 220" width="180">
+  <circle cx="90" cy="45" r="34" fill="#FFDE59" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M75 35c-6-10 8-16 15-8 8-8 20-2 14 8-2 10-24 10-29 0z" fill="#D9679A" opacity="0.8"/>
+  <rect x="55" y="85" width="70" height="100" rx="18" fill="#3B6EA5" opacity="0.15" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M80 120c-8-8-20 0-14 12 4 8 14 14 14 14s10-6 14-14c6-12-6-20-14-12z" fill="#D6524F"/>
+  <ellipse cx="65" cy="115" rx="10" ry="20" fill="#3E8F86" opacity="0.6"/>
+  <ellipse cx="115" cy="115" rx="10" ry="20" fill="#3E8F86" opacity="0.6"/>
+  </svg>`,
   bank:[
     {p:"Какой орган управляет всем организмом?",opts:["Головной мозг","Желудок","Кожа"],correct:0},
     {p:"Что качает кровь по организму?",opts:["Сердце","Лёгкие","Печень"],correct:0},
@@ -42,6 +74,14 @@ const WORLD4_MOD = [
 
 { n:"Древняя Русь",
   explain:"Древнерусское государство образовалось более тысячи лет назад, столицей стал город <b>Киев</b>. В 988 году князь <b>Владимир</b> крестил Русь — принял христианство.",
+  svg:`<svg viewBox="0 0 180 180" width="180">
+  <line x1="30" y1="160" x2="150" y2="160" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="60" y="90" width="60" height="70" fill="#E3922E" stroke="#2B2A26" stroke-width="2"/>
+  <polygon points="60,90 90,55 120,90" fill="#B96F16" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M90 55c-10-15 10-30 0-45 -10 15 10 30 0 45z" fill="#FFDE59" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="90" cy="10" r="4" fill="#FFDE59" stroke="#2B2A26" stroke-width="1.5"/>
+  <rect x="78" y="120" width="24" height="40" fill="#A83836"/>
+  </svg>`,
   bank:[
     {p:"Как называлось первое древнерусское государство?",opts:["Древняя Русь (Киевская Русь)","Московское царство","Российская империя"],correct:0},
     {p:"Какой город стал столицей Древней Руси?",opts:["Киев","Москва","Новгород"],correct:0},
@@ -53,6 +93,12 @@ const WORLD4_MOD = [
 
 { n:"Родной край",
   explain:"Родной край — это место, где мы родились и живём. У каждого края есть свои <b>реки, озёра, леса и полезные ископаемые</b> (уголь, нефть, руда) — то, что добывают из земли для использования человеком.",
+  svg:`<svg viewBox="0 0 220 130" width="220">
+  <path d="M0 90c40-10 40 10 80 0s40 10 80 0 40 10 60 0v40H0z" fill="#3B6EA5" opacity="0.85"/>
+  <polygon points="40,90 65,40 90,90" fill="#3F7A3D"/>
+  <polygon points="80,90 110,30 140,90" fill="#5F9A5C"/>
+  <circle cx="180" cy="35" r="16" fill="#FFDE59" stroke="#C99A00" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Что называют «полезными ископаемыми»?",opts:["То, что добывают из земли (уголь, руда)","Только реки","Только леса"],correct:0},
     {p:"Что из этого — полезное ископаемое?",opts:["Уголь","Дождь","Трава"],correct:0},
@@ -63,6 +109,11 @@ const WORLD4_MOD = [
 
 { n:"Охрана природы",
   explain:"Многие растения и животные становятся редкими, поэтому их заносят в <b>Красную книгу</b> — список видов, которые нужно беречь. В России есть заповедники, где природа под защитой.",
+  svg:`<svg viewBox="0 0 200 150" width="200">
+  <path d="M100 20l55 20v40c0 35-25 55-55 65-30-10-55-30-55-65V40z" fill="none" stroke="#D6524F" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="100" y="90" font-size="34" text-anchor="middle">🦌</text>
+  <text x="100" y="130" font-size="11" text-anchor="middle" fill="#2B2A26">заповедник</text>
+  </svg>`,
   bank:[
     {p:"Как называется книга редких и исчезающих видов?",opts:["Красная книга","Синяя книга","Зелёная книга"],correct:0},
     {p:"Зачем заносят животных в Красную книгу?",opts:["Чтобы люди знали и берегли их","Чтобы их было легче найти охотникам","Просто для интереса"],correct:0},
@@ -73,6 +124,15 @@ const WORLD4_MOD = [
 
 { n:"Страны и народы мира",
   explain:"На Земле много разных стран, у каждой свой язык, флаг и традиции. Люди на планете говорят на <b>тысячах языков</b> и живут на разных материках.",
+  svg:`<svg viewBox="0 0 200 160" width="200">
+  <circle cx="100" cy="85" r="65" fill="#3B6EA5" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M65 50c8-10 25-8 30 2 8 4 4 16-6 18-12 4-28-8-24-20z" fill="#5F9A5C"/>
+  <path d="M115 105c14-6 32 2 30 16-2 10-20 14-30 4-8-6-6-16 0-20z" fill="#5F9A5C"/>
+  <line x1="35" y1="30" x2="35" y2="70" stroke="#2B2A26" stroke-width="2"/>
+  <polygon points="35,30 55,38 35,46" fill="#D6524F"/>
+  <line x1="165" y1="30" x2="165" y2="70" stroke="#2B2A26" stroke-width="2"/>
+  <polygon points="165,30 145,38 165,46" fill="#E3922E"/>
+  </svg>`,
   bank:[
     {p:"Сколько примерно материков на Земле?",opts:["6","3","20"],correct:0},
     {p:"Самая большая по площади страна в мире — это...",opts:["Россия","Франция","Египет"],correct:0},
@@ -83,6 +143,13 @@ const WORLD4_MOD = [
 
 { n:"Государственные символы России",
   explain:"У России есть три главных символа: <b>флаг</b> (бело-сине-красный), <b>герб</b> (двуглавый орёл) и <b>гимн</b> (торжественная песня страны). Столица России — город Москва.",
+  svg:`<svg viewBox="0 0 240 140" width="240">
+  <rect x="10" y="20" width="80" height="20" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="10" y="40" width="80" height="20" fill="#3B6EA5" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="10" y="60" width="80" height="20" fill="#D6524F" stroke="#2B2A26" stroke-width="2"/>
+  <text x="150" y="65" font-size="34" text-anchor="middle">🦅</text>
+  <text x="205" y="45" font-size="26" text-anchor="middle">🎵</text>
+  </svg>`,
   bank:[
     {p:"Из каких цветов состоит флаг России?",opts:["Белый, синий, красный","Зелёный, жёлтый, чёрный","Красный, жёлтый, синий"],correct:0},
     {p:"Кто изображён на гербе России?",opts:["Двуглавый орёл","Медведь","Лев"],correct:0},
@@ -93,6 +160,14 @@ const WORLD4_MOD = [
 
 { n:"Тела и вещества: свойства",
   explain:"Каждое вещество имеет свои свойства: цвет, запах, вкус, растворимость в воде, способность проводить тепло и электричество.",
+  svg:`<svg viewBox="0 0 220 140" width="220">
+  <path d="M40 20h30v70a15 15 0 0 1-30 0z" fill="#DCE9F6" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="50" cy="70" r="2" fill="#FFFEF8"/><circle cx="58" cy="80" r="2" fill="#FFFEF8"/><circle cx="65" cy="65" r="2" fill="#FFFEF8"/>
+  <text x="55" y="115" font-size="10" text-anchor="middle" fill="#2B2A26">соль</text>
+  <path d="M150 20h30v70a15 15 0 0 1-30 0z" fill="#DCE9F6" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="165" cy="85" r="8" fill="#E3922E"/>
+  <text x="165" y="115" font-size="10" text-anchor="middle" fill="#2B2A26">песок</text>
+  </svg>`,
   bank:[
     {p:"Растворяется ли соль в воде?",opts:["Да, растворяется","Нет"],correct:0},
     {p:"Растворяется ли песок в воде?",opts:["Нет, не растворяется","Да, полностью"],correct:0},
@@ -102,6 +177,22 @@ const WORLD4_MOD = [
 
 { n:"Смена дня и ночи, времён года",
   explain:"Земля вращается вокруг своей оси — от этого сменяются день и ночь. Земля также вращается вокруг Солнца по орбите, а её ось наклонена — от этого сменяются времена года.",
+  svg:`<svg viewBox="0 0 260 160" width="260">
+  <circle cx="130" cy="90" r="20" fill="#FFDE59" stroke="#C99A00" stroke-width="2"/>
+  <ellipse cx="130" cy="90" rx="110" ry="55" fill="none" stroke="#736C5E" stroke-width="1" stroke-dasharray="3 5"/>
+  <g transform="translate(30,60)">
+  <circle r="14" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <line x1="-4" y1="-16" x2="4" y2="16" stroke="#2B2A26" stroke-width="2"/>
+  </g>
+  <g transform="translate(230,60)">
+  <circle r="14" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <line x1="-4" y1="-16" x2="4" y2="16" stroke="#2B2A26" stroke-width="2"/>
+  </g>
+  <g transform="translate(130,140)">
+  <circle r="14" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <line x1="-4" y1="-16" x2="4" y2="16" stroke="#2B2A26" stroke-width="2"/>
+  </g>
+  </svg>`,
   bank:[
     {p:"Почему день сменяется ночью?",opts:["Земля вращается вокруг своей оси","Солнце гаснет ночью","Луна закрывает Солнце"],correct:0},
     {p:"Почему сменяются времена года?",opts:["Земля вращается вокруг Солнца с наклонённой осью","Земля останавливается","Солнце меняет цвет"],correct:0},
@@ -110,6 +201,15 @@ const WORLD4_MOD = [
 
 { n:"Города России",
   explain:"В России много крупных городов: Москва (столица), Санкт-Петербург (культурная столица), Казань, Новосибирск, Екатеринбург и другие — у каждого своя история и достопримечательности.",
+  svg:`<svg viewBox="0 0 240 120" width="240">
+  <line x1="0" y1="100" x2="240" y2="100" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="20" y="50" width="30" height="50" fill="#3B6EA5" opacity="0.8"/>
+  <rect x="60" y="30" width="26" height="70" fill="#5F9A5C" opacity="0.8"/>
+  <rect x="100" y="60" width="28" height="40" fill="#D6524F" opacity="0.8"/>
+  <polygon points="140,60 165,15 190,60" fill="#E3922E" opacity="0.85"/>
+  <circle cx="165" cy="10" r="5" fill="#FFDE59"/>
+  <rect x="195" y="45" width="26" height="55" fill="#9973B8" opacity="0.8"/>
+  </svg>`,
   bank:[
     {p:"Как называют Санкт-Петербург из-за его музеев и театров?",opts:["Культурная столица","Морской порт","Пустой город"],correct:0},
     {p:"Какой город России самый большой по населению?",opts:["Москва","Казань","Сочи"],correct:0},
@@ -118,6 +218,17 @@ const WORLD4_MOD = [
 
 { n:"Основной закон страны — Конституция",
   explain:"<b>Конституция</b> — главный закон государства. В ней записаны права и обязанности граждан России, а также устройство государства.",
+  svg:`<svg viewBox="0 0 180 140" width="180">
+  <path d="M20 20h140v100H20z" fill="#3B6EA5" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="90" y1="20" x2="90" y2="120" stroke="#284D77" stroke-width="2"/>
+  <line x1="35" y1="45" x2="75" y2="45" stroke="#FFFEF8" stroke-width="3"/>
+  <line x1="35" y1="60" x2="75" y2="60" stroke="#FFFEF8" stroke-width="3"/>
+  <line x1="35" y1="75" x2="75" y2="75" stroke="#FFFEF8" stroke-width="3"/>
+  <line x1="105" y1="45" x2="145" y2="45" stroke="#FFFEF8" stroke-width="3"/>
+  <line x1="105" y1="60" x2="145" y2="60" stroke="#FFFEF8" stroke-width="3"/>
+  <line x1="105" y1="75" x2="145" y2="75" stroke="#FFFEF8" stroke-width="3"/>
+  <text x="90" y="105" font-size="12" text-anchor="middle" fill="#FFFEF8" font-weight="700">закон</text>
+  </svg>`,
   bank:[
     {p:"Что такое Конституция?",opts:["Главный закон государства","Список городов","Календарь праздников"],correct:0},
     {p:"Что записано в Конституции?",opts:["Права и обязанности граждан","Только имена президентов","Только карта страны"],correct:0}

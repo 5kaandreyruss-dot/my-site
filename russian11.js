@@ -19,6 +19,21 @@ const RUS11_MOD = [
 
 { n:"Слитное, дефисное и раздельное написание",
   explain:"Сложные слова могут писаться слитно (пешеход), через дефис (юго-запад) или раздельно (по моему мнению) — правило зависит от типа слова и его образования.",
+  svg:`<svg viewBox="0 0 260 100" width="260">
+  <rect x="8" y="20" width="76" height="34" rx="8" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="46" y="42" font-size="12" text-anchor="middle">пешеход</text>
+  <text x="46" y="68" font-size="9" text-anchor="middle" fill="#736C5E">слитно</text>
+  <rect x="98" y="20" width="34" height="34" rx="8" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="115" y="42" font-size="11" text-anchor="middle">юго</text>
+  <rect x="140" y="20" width="42" height="34" rx="8" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="161" y="42" font-size="11" text-anchor="middle">запад</text>
+  <text x="132" y="42" font-size="16" text-anchor="middle" fill="#3F7A3D">-</text>
+  <text x="140" y="68" font-size="9" text-anchor="middle" fill="#736C5E">дефис</text>
+  <rect x="196" y="20" width="24" height="34" rx="8" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="208" y="42" font-size="11" text-anchor="middle">по</text>
+  <rect x="236" y="20" width="18" height="34" rx="8" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="221" y="68" font-size="9" text-anchor="middle" fill="#736C5E">раздельно</text>
+  </svg>`,
   bank:[
     {p:"Как пишется слово «юго-запад»?",opts:["Через дефис","Слитно"],correct:0}
   ]},

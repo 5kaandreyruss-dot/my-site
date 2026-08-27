@@ -85,6 +85,18 @@ const RUS5_MOD = [
 
 { n:"Главные и второстепенные члены предложения",
   explain:"<b>Главные члены</b> — подлежащее и сказуемое, они составляют основу предложения. <b>Второстепенные</b> — дополнение, определение, обстоятельство — поясняют главные члены.",
+  svg:`<svg viewBox="0 0 260 100" width="260">
+  <text x="20" y="40" font-size="16">Дети</text>
+  <line x1="18" y1="48" x2="60" y2="48" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="90" y="40" font-size="16">читают</text>
+  <line x1="86" y1="48" x2="152" y2="48" stroke="#5F9A5C" stroke-width="2"/>
+  <line x1="86" y1="52" x2="152" y2="52" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="175" y="40" font-size="16">книгу</text>
+  <line x1="172" y1="48" x2="216" y2="48" stroke-dasharray="3 3" stroke="#E3922E" stroke-width="2"/>
+  <text x="20" y="80" font-size="10" fill="#3B6EA5">подлежащее</text>
+  <text x="90" y="80" font-size="10" fill="#3F7A3D">сказуемое</text>
+  <text x="172" y="80" font-size="10" fill="#B96F16">дополнение</text>
+  </svg>`,
   bank:[
     {p:"Что составляет грамматическую основу предложения?",opts:["Подлежащее и сказуемое","Дополнение и определение"],correct:0},
     {p:"Какой член предложения отвечает на вопрос «какой?»",opts:["Определение","Дополнение","Обстоятельство"],correct:0},
@@ -95,6 +107,19 @@ const RUS5_MOD = [
 
 { n:"Простое и сложное предложение",
   explain:"<b>Простое предложение</b> имеет одну грамматическую основу. <b>Сложное</b> — две и более основы, части которого соединены союзами или интонацией.",
+  svg:`<svg viewBox="0 0 260 110" width="260">
+  <rect x="10" y="15" width="80" height="34" rx="8" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="50" y="37" font-size="13" text-anchor="middle">Идёт дождь</text>
+  <circle cx="50" cy="60" r="4" fill="#3B6EA5"/>
+  <text x="50" y="82" font-size="9" text-anchor="middle" fill="#736C5E">простое — 1 основа</text>
+  <rect x="120" y="15" width="60" height="34" rx="8" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="150" y="37" font-size="11" text-anchor="middle">Светит солнце</text>
+  <rect x="184" y="15" width="66" height="34" rx="8" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="217" y="37" font-size="11" text-anchor="middle">поют птицы</text>
+  <circle cx="150" cy="60" r="4" fill="#5F9A5C"/>
+  <circle cx="217" cy="60" r="4" fill="#E3922E"/>
+  <text x="184" y="82" font-size="9" text-anchor="middle" fill="#736C5E">сложное — 2 основы</text>
+  </svg>`,
   bank:[
     {p:"Сколько грамматических основ в простом предложении?",opts:["Одна","Две и больше"],correct:0},
     {p:"«Светило солнце, и пели птицы» — это предложение...",opts:["Сложное","Простое"],correct:0},

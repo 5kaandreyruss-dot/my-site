@@ -5,6 +5,13 @@ const HISTORY9_MOD = [
 
 { n:"Россия при Александре I",
   explain:"Александр I правил Россией в начале XIX века. В начале правления он провёл ряд либеральных преобразований, а самым важным событием его царствования стала Отечественная война 1812 года.",
+  svg:`<svg viewBox="0 0 300 90" width="300">
+  <line x1="15" y1="45" x2="285" y2="45" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="40" cy="45" r="5" fill="#3B6EA5"/><text x="40" y="66" font-size="10" text-anchor="middle">1801</text>
+  <circle cx="170" cy="45" r="5" fill="#A83836"/><text x="170" y="66" font-size="10" text-anchor="middle">1812</text>
+  <circle cx="260" cy="45" r="5" fill="#3B6EA5"/><text x="260" y="66" font-size="10" text-anchor="middle">1825</text>
+  <text x="150" y="28" font-size="9" text-anchor="middle">правление Александра I</text>
+  </svg>`,
   bank:[
     {p:"В каком примерно веке правил Александр I?",opts:["В начале XIX века","В XVI веке"],correct:0},
     {p:"Какое важнейшее событие произошло при Александре I?",opts:["Отечественная война 1812 года","Крещение Руси"],correct:0}
@@ -12,6 +19,17 @@ const HISTORY9_MOD = [
 
 { n:"Отечественная война 1812 года",
   explain:"В 1812 году армия Наполеона вторглась в Россию. Решающим стало <b>Бородинское сражение</b>, а после отступления и гибели французской армии в России Наполеон был окончательно разгромлен позже, в 1814–1815 годах.",
+  svg:`<svg viewBox="0 0 260 140" width="260">
+  <ellipse cx="180" cy="70" rx="70" ry="50" fill="#DCE9F6" stroke="#2B2A26" stroke-width="2"/>
+  <text x="180" y="30" font-size="10" text-anchor="middle" fill="#284D77">Россия</text>
+  <circle cx="200" cy="70" r="5" fill="#A83836"/><text x="200" y="60" font-size="9" text-anchor="middle" fill="#A83836">Москва</text>
+  <line x1="30" y1="60" x2="190" y2="68" stroke="#A83836" stroke-width="3"/>
+  <polygon points="185,62 200,68 185,74" fill="#A83836"/>
+  <text x="90" y="50" font-size="9" fill="#A83836">Наполеон →</text>
+  <line x1="190" y1="90" x2="30" y2="105" stroke="#736C5E" stroke-width="2" stroke-dasharray="5 4"/>
+  <polygon points="45,100 30,105 45,111" fill="#736C5E"/>
+  <text x="90" y="120" font-size="9" fill="#736C5E">← отступление</text>
+  </svg>`,
   bank:[
     {p:"В каком году началась Отечественная война с Наполеоном?",opts:["1812 год","1709 год"],correct:0},
     {p:"Как называлось решающее сражение этой войны?",opts:["Бородинское сражение","Куликовская битва"],correct:0},
@@ -20,6 +38,12 @@ const HISTORY9_MOD = [
 
 { n:"Восстание декабристов",
   explain:"В декабре 1825 года группа офицеров-дворян подняла восстание на Сенатской площади в Петербурге, требуя отмены самодержавия и крепостного права. Восстание было подавлено.",
+  svg:`<svg viewBox="0 0 200 100" width="200">
+  <line x1="15" y1="50" x2="185" y2="50" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="100" cy="50" r="6" fill="#A83836"/>
+  <text x="100" y="30" font-size="11" text-anchor="middle" font-weight="700">14 декабря 1825</text>
+  <text x="100" y="72" font-size="10" text-anchor="middle">Сенатская площадь</text>
+  </svg>`,
   bank:[
     {p:"В каком году произошло восстание декабристов?",opts:["1825 год","1917 год"],correct:0},
     {p:"На какой площади произошло восстание?",opts:["На Сенатской площади в Петербурге","На Красной площади в Москве"],correct:0},
@@ -28,6 +52,15 @@ const HISTORY9_MOD = [
 
 { n:"Отмена крепостного права",
   explain:"В 1861 году император <b>Александр II</b> подписал манифест об отмене крепостного права — крестьяне получили личную свободу. Это одна из важнейших реформ в истории России.",
+  svg:`<svg viewBox="0 0 180 150" width="180">
+  <rect x="50" y="20" width="80" height="90" rx="4" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="62" y1="38" x2="118" y2="38" stroke="#736C5E" stroke-width="2"/>
+  <line x1="62" y1="50" x2="118" y2="50" stroke="#736C5E" stroke-width="2"/>
+  <line x1="62" y1="62" x2="100" y2="62" stroke="#736C5E" stroke-width="2"/>
+  <circle cx="70" cy="85" r="8" fill="none" stroke="#A83836" stroke-width="3"/>
+  <circle cx="90" cy="90" r="8" fill="none" stroke="#A83836" stroke-width="3" stroke-dasharray="3 3"/>
+  <text x="90" y="135" font-size="15" text-anchor="middle" font-weight="700">1861</text>
+  </svg>`,
   bank:[
     {p:"В каком году было отменено крепостное право в России?",opts:["1861 год","1812 год"],correct:0},
     {p:"Какой император отменил крепостное право?",opts:["Александр II","Пётр I"],correct:0},
@@ -36,6 +69,18 @@ const HISTORY9_MOD = [
 
 { n:"Великие реформы Александра II",
   explain:"Кроме отмены крепостного права, Александр II провёл земскую, судебную и военную реформы, за что вошёл в историю как <b>Царь-освободитель</b>.",
+  svg:`<svg viewBox="0 0 180 150" width="180">
+  <line x1="90" y1="15" x2="90" y2="110" stroke="#2B2A26" stroke-width="3"/>
+  <line x1="40" y1="35" x2="140" y2="35" stroke="#2B2A26" stroke-width="3"/>
+  <circle cx="90" cy="30" r="6" fill="#5F9A5C" stroke="#2B2A26" stroke-width="1.5"/>
+  <line x1="40" y1="35" x2="30" y2="65" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="40" y1="35" x2="50" y2="65" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M20 65a20 14 0 0 0 40 0z" fill="none" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="140" y1="35" x2="130" y2="65" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="140" y1="35" x2="150" y2="65" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M120 65a20 14 0 0 0 40 0z" fill="none" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="70" y="120" width="40" height="14" fill="#736C5E" stroke="#2B2A26" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Как называют Александра II за его реформы?",opts:["Царь-освободитель","Грозный"],correct:0},
     {p:"Какие ещё реформы (кроме крестьянской) провёл Александр II?",opts:["Земскую, судебную, военную","Только налоговую"],correct:0}
@@ -49,12 +94,28 @@ const HISTORY9_MOD = [
 
 { n:"Наполеон Бонапарт и Европа",
   explain:"В начале XIX века французский полководец <b>Наполеон Бонапарт</b> провозгласил себя императором и завоевал большую часть континентальной Европы, прежде чем потерпел поражение, в том числе в России.",
+  svg:`<svg viewBox="0 0 220 150" width="220">
+  <path d="M40 120c-15-50 10-95 70-105s110 20 100 70-55 80-100 75-60-15-70-40z" fill="#D6524F" opacity="0.55" stroke="#A83836" stroke-width="2"/>
+  <text x="120" y="80" font-size="10" text-anchor="middle" fill="#A83836">Французская империя</text>
+  <polygon points="60,30 60,10 72,20 84,5 96,20 108,10 108,30" fill="#FFDE59" stroke="#B96F16" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Кем провозгласил себя Наполеон Бонапарт?",opts:["Императором Франции","Королём Англии"],correct:0}
   ]},
 
 { n:"Объединение Германии и Италии",
   explain:"Во второй половине XIX века разрозненные государства объединились в единые страны: Германия — под руководством Пруссии и канцлера Отто фон Бисмарка, Италия — вокруг Сардинского королевства.",
+  svg:`<svg viewBox="0 0 240 130" width="240">
+  <g fill="#3B6EA5" opacity="0.5" stroke="#284D77" stroke-width="1.5">
+    <rect x="20" y="20" width="30" height="30"/>
+    <rect x="20" y="60" width="30" height="30"/>
+    <rect x="60" y="40" width="30" height="30"/>
+  </g>
+  <line x1="95" y1="55" x2="130" y2="55" stroke="#2B2A26" stroke-width="3"/>
+  <polygon points="128,49 143,55 128,61" fill="#2B2A26"/>
+  <rect x="150" y="25" width="70" height="60" rx="6" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <text x="185" y="60" font-size="9" text-anchor="middle" fill="#FFFEF8" font-weight="700">единое государство</text>
+  </svg>`,
   bank:[
     {p:"Кто сыграл ключевую роль в объединении Германии?",opts:["Отто фон Бисмарк","Наполеон"],correct:0},
     {p:"В каком примерно веке произошло объединение Германии и Италии?",opts:["Во второй половине XIX века","В X веке"],correct:0}
@@ -62,6 +123,18 @@ const HISTORY9_MOD = [
 
 { n:"Промышленный подъём в России в конце XIX века",
   explain:"К концу XIX века в России активно строились железные дороги и заводы, росли города — страна переживала период ускоренной индустриализации, хотя оставалась преимущественно аграрной.",
+  svg:`<svg viewBox="0 0 240 130" width="240">
+  <line x1="10" y1="100" x2="230" y2="100" stroke="#736C5E" stroke-width="3"/>
+  <g stroke="#736C5E" stroke-width="2">
+    <line x1="20" y1="100" x2="20" y2="108"/><line x1="40" y1="100" x2="40" y2="108"/><line x1="60" y1="100" x2="60" y2="108"/>
+    <line x1="80" y1="100" x2="80" y2="108"/><line x1="100" y1="100" x2="100" y2="108"/><line x1="120" y1="100" x2="120" y2="108"/>
+  </g>
+  <rect x="30" y="65" width="50" height="30" rx="4" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <circle cx="40" cy="98" r="6" fill="#2B2A26"/><circle cx="70" cy="98" r="6" fill="#2B2A26"/>
+  <rect x="150" y="55" width="60" height="45" fill="#FFF3C9" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="160" y="30" width="10" height="28" fill="#736C5E"/>
+  <rect x="185" y="20" width="10" height="38" fill="#736C5E"/>
+  </svg>`,
   bank:[
     {p:"Что активно строилось в России в конце XIX века?",opts:["Железные дороги и заводы","Только храмы"],correct:0}
   ]},
@@ -75,6 +148,13 @@ const HISTORY9_MOD = [
 
 { n:"Крымская война",
   explain:"<b>Крымская война</b> (1853–1856) — конфликт России с коалицией европейских держав, закончившийся поражением России и показавший необходимость реформ в стране.",
+  svg:`<svg viewBox="0 0 260 90" width="260">
+  <line x1="15" y1="45" x2="245" y2="45" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="60" cy="45" r="5" fill="#D6524F"/><text x="60" y="66" font-size="11" text-anchor="middle">1853</text>
+  <circle cx="200" cy="45" r="5" fill="#736C5E"/><text x="200" y="66" font-size="11" text-anchor="middle">1856</text>
+  <line x1="60" y1="45" x2="200" y2="45" stroke="#A83836" stroke-width="4"/>
+  <text x="130" y="28" font-size="10" text-anchor="middle">Крымская война</text>
+  </svg>`,
   bank:[
     {p:"Чем закончилась Крымская война для России?",opts:["Поражением","Полной победой"],correct:0},
     {p:"Что показала эта война России?",opts:["Необходимость реформ","Что реформы не нужны"],correct:0}
@@ -82,6 +162,16 @@ const HISTORY9_MOD = [
 
 { n:"Народничество",
   explain:"<b>Народничество</b> — общественное движение второй половины XIX века в России, представители которого стремились улучшить жизнь крестьян, некоторые из них прибегали к революционным методам.",
+  svg:`<svg viewBox="0 0 200 140" width="200">
+  <rect x="20" y="40" width="50" height="60" rx="3" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="28" y1="55" x2="62" y2="55" stroke="#736C5E" stroke-width="1.5"/>
+  <line x1="28" y1="65" x2="62" y2="65" stroke="#736C5E" stroke-width="1.5"/>
+  <line x1="28" y1="75" x2="50" y2="75" stroke="#736C5E" stroke-width="1.5"/>
+  <line x1="80" y1="70" x2="130" y2="70" stroke="#3F7A3D" stroke-width="3"/>
+  <polygon points="128,64 143,70 128,76" fill="#3F7A3D"/>
+  <polygon points="180,100 180,65 155,90 205,90" fill="#E3922E" stroke="#B96F16" stroke-width="2"/>
+  <rect x="165" y="90" width="30" height="20" fill="#E3922E" stroke="#B96F16" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Чью жизнь стремились улучшить народники?",opts:["Жизнь крестьян","Только жизнь дворян"],correct:0},
     {p:"В каком веке действовало народническое движение?",opts:["Во второй половине XIX века","В XI веке"],correct:0}
@@ -89,6 +179,15 @@ const HISTORY9_MOD = [
 
 { n:"Русско-турецкая война 1877-1878 годов",
   explain:"Россия помогла балканским народам (например, болгарам) освободиться от османского владычества в ходе русско-турецкой войны 1877-1878 годов.",
+  svg:`<svg viewBox="0 0 240 130" width="240">
+  <ellipse cx="60" cy="60" rx="40" ry="30" fill="#DCE9F6" stroke="#2B2A26" stroke-width="2"/>
+  <text x="60" y="64" font-size="10" text-anchor="middle" fill="#284D77">Россия</text>
+  <ellipse cx="180" cy="70" rx="45" ry="32" fill="#FFF3C9" stroke="#2B2A26" stroke-width="2"/>
+  <text x="180" y="66" font-size="9" text-anchor="middle" fill="#B96F16">Балканы</text>
+  <line x1="100" y1="65" x2="140" y2="68" stroke="#3F7A3D" stroke-width="3"/>
+  <polygon points="138,62 152,68 138,74" fill="#3F7A3D"/>
+  <text x="180" y="105" font-size="9" text-anchor="middle">1877–1878</text>
+  </svg>`,
   bank:[
     {p:"Кому помогла Россия в русско-турецкой войне 1877-1878 годов?",opts:["Балканским народам","Только Франции"],correct:0}
   ]}

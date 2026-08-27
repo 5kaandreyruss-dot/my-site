@@ -66,6 +66,21 @@ const LIT9_MOD = [
 
 { n:"Классицизм, сентиментализм, романтизм",
   explain:"<b>Классицизм</b> — строгие правила и разум. <b>Сентиментализм</b> — чувства и переживания героев. <b>Романтизм</b> — исключительный герой, конфликт с обществом, мечта о свободе.",
+  svg:`<svg viewBox="0 0 260 110" width="260">
+  <rect x="6" y="10" width="76" height="70" rx="10" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <rect x="30" y="30" width="28" height="6" fill="#284D77"/>
+  <line x1="34" y1="36" x2="34" y2="58" stroke="#284D77" stroke-width="4"/>
+  <line x1="54" y1="36" x2="54" y2="58" stroke="#284D77" stroke-width="4"/>
+  <line x1="26" y1="58" x2="62" y2="58" stroke="#284D77" stroke-width="4"/>
+  <text x="44" y="95" font-size="9" text-anchor="middle" fill="#736C5E">классицизм</text>
+  <rect x="92" y="10" width="76" height="70" rx="10" fill="#FBE1EC" stroke="#D9679A" stroke-width="2"/>
+  <path d="M130 55c-12-10-19-19-12-27 5-6 13-4 12 3-1-7 7-9 12-3 7 8 0 17-12 27z" fill="#A8447A"/>
+  <text x="130" y="95" font-size="9" text-anchor="middle" fill="#736C5E">сентиментализм</text>
+  <rect x="178" y="10" width="76" height="70" rx="10" fill="#EEE3F5" stroke="#9973B8" stroke-width="2"/>
+  <path d="M198 60c6-24 20-32 36-34-6 12-4 26-16 34-8 6-16 4-20 0z" fill="#725189"/>
+  <circle cx="238" cy="24" r="5" fill="#9973B8"/>
+  <text x="216" y="95" font-size="9" text-anchor="middle" fill="#736C5E">романтизм</text>
+  </svg>`,
   bank:[
     {p:"Что ставит на первое место классицизм?",opts:["Разум и строгие правила","Чувства героя"],correct:0},
     {p:"Что ставит на первое место сентиментализм?",opts:["Чувства и переживания","Только логику"],correct:0},

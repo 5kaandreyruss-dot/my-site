@@ -5,6 +5,12 @@ const HISTORY7_MOD = [
 
 { n:"Начало Нового времени",
   explain:"<b>Новое время</b> — период истории, начавшийся примерно в конце XV — начале XVI века, после Средних веков. Его связывают с эпохой Великих географических открытий и важными переменами в жизни общества.",
+  svg:`<svg viewBox="0 0 280 90" width="280">
+  <line x1="15" y1="45" x2="265" y2="45" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="90" cy="45" r="5" fill="#D6524F"/><text x="90" y="66" font-size="10" text-anchor="middle">Средние века</text>
+  <circle cx="200" cy="45" r="5" fill="#3B6EA5"/><text x="200" y="66" font-size="10" text-anchor="middle">Новое время</text>
+  <text x="145" y="28" font-size="9" text-anchor="middle">кон. XV – нач. XVI в.</text>
+  </svg>`,
   bank:[
     {p:"После какого периода начинается Новое время?",opts:["После Средних веков","После Древнего мира"],correct:0},
     {p:"С какой эпохой часто связывают начало Нового времени?",opts:["С эпохой Великих географических открытий","С каменным веком"],correct:0}
@@ -12,6 +18,18 @@ const HISTORY7_MOD = [
 
 { n:"Великие географические открытия",
   explain:"В конце XV — начале XVI века европейцы совершили важные открытия: Колумб достиг Америки (1492), а экспедиция Магеллана обогнула весь земной шар (1519–1522).",
+  svg:`<svg viewBox="0 0 260 140" width="260">
+  <rect x="0" y="70" width="260" height="70" fill="#DCE9F6"/>
+  <path d="M40 100l8-24h24l8 24z" fill="#E3922E" stroke="#B96F16" stroke-width="2"/>
+  <line x1="60" y1="76" x2="60" y2="40" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M60 42l24 12-24 10z" fill="#FFFEF8" stroke="#2B2A26" stroke-width="1.5"/>
+  <path d="M100 90c30-10 70-10 100 0" fill="none" stroke="#A83836" stroke-width="2" stroke-dasharray="4 4"/>
+  <polygon points="195,84 210,90 195,96" fill="#A83836"/>
+  <text x="70" y="130" font-size="10" text-anchor="middle">1492</text>
+  <circle cx="230" cy="45" r="20" fill="none" stroke="#3F7A3D" stroke-width="2"/>
+  <path d="M230 25a20 20 0 0 1 20 20" fill="none" stroke="#3F7A3D" stroke-width="2" stroke-dasharray="2 3"/>
+  <polygon points="246,44 252,48 244,52" fill="#3F7A3D"/>
+  </svg>`,
   bank:[
     {p:"В каком году Колумб достиг берегов Америки?",opts:["1492","1812","988"],correct:0},
     {p:"Чья экспедиция первой обогнула земной шар?",opts:["Фернана Магеллана","Христофора Колумба"],correct:0},
@@ -20,6 +38,16 @@ const HISTORY7_MOD = [
 
 { n:"Реформация",
   explain:"<b>Реформация</b> — движение XVI века за преобразование католической церкви. Мартин Лютер выступил с критикой злоупотреблений церкви, что привело к появлению протестантизма.",
+  svg:`<svg viewBox="0 0 160 160" width="160">
+  <rect x="30" y="20" width="100" height="130" rx="4" fill="#E3922E" stroke="#B96F16" stroke-width="2"/>
+  <circle cx="120" cy="85" r="4" fill="#2B2A26"/>
+  <rect x="50" y="50" width="50" height="65" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="58" y1="62" x2="92" y2="62" stroke="#736C5E" stroke-width="1.5"/>
+  <line x1="58" y1="72" x2="92" y2="72" stroke="#736C5E" stroke-width="1.5"/>
+  <line x1="58" y1="82" x2="92" y2="82" stroke="#736C5E" stroke-width="1.5"/>
+  <line x1="58" y1="92" x2="80" y2="92" stroke="#736C5E" stroke-width="1.5"/>
+  <circle cx="75" cy="50" r="3" fill="#D6524F"/>
+  </svg>`,
   bank:[
     {p:"Что такое Реформация?",opts:["Движение за преобразование церкви","Военный поход","Географическое открытие"],correct:0},
     {p:"Кто начал Реформацию в Германии?",opts:["Мартин Лютер","Карл Великий","Колумб"],correct:0},
@@ -28,6 +56,20 @@ const HISTORY7_MOD = [
 
 { n:"Абсолютная монархия",
   explain:"В XVII веке во многих странах Европы, особенно во Франции, утвердилась <b>абсолютная монархия</b> — форма правления, при которой вся власть безраздельно принадлежит монарху.",
+  svg:`<svg viewBox="0 0 180 160" width="180">
+  <circle cx="90" cy="70" r="30" fill="#FFDE59" stroke="#C99A00" stroke-width="2"/>
+  <g stroke="#C99A00" stroke-width="3">
+   <line x1="90" y1="20" x2="90" y2="6"/>
+   <line x1="90" y1="120" x2="90" y2="134"/>
+   <line x1="40" y1="70" x2="26" y2="70"/>
+   <line x1="140" y1="70" x2="154" y2="70"/>
+   <line x1="55" y1="35" x2="45" y2="25"/>
+   <line x1="125" y1="35" x2="135" y2="25"/>
+   <line x1="55" y1="105" x2="45" y2="115"/>
+   <line x1="125" y1="105" x2="135" y2="115"/>
+  </g>
+  <polygon points="70,70 80,50 90,65 100,50 110,70" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Что такое абсолютная монархия?",opts:["Власть, безраздельно принадлежащая монарху","Власть, которую делят все жители"],correct:0},
     {p:"В какой европейской стране особенно ярко утвердился абсолютизм в XVII веке?",opts:["Во Франции","В Китае"],correct:0}
@@ -35,6 +77,20 @@ const HISTORY7_MOD = [
 
 { n:"Английская революция",
   explain:"В середине XVII века в Англии произошла революция: парламент выступил против короля, отстаивая свои права. Это событие сильно повлияло на дальнейшее развитие английского государства.",
+  svg:`<svg viewBox="0 0 220 150" width="220">
+  <line x1="110" y1="15" x2="110" y2="110" stroke="#2B2A26" stroke-width="3"/>
+  <line x1="50" y1="35" x2="170" y2="35" stroke="#2B2A26" stroke-width="3"/>
+  <circle cx="110" cy="30" r="6" fill="#E3922E" stroke="#2B2A26" stroke-width="1.5"/>
+  <line x1="50" y1="35" x2="40" y2="65" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="50" y1="35" x2="60" y2="65" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M30 65a20 14 0 0 0 40 0z" fill="none" stroke="#2B2A26" stroke-width="2"/>
+  <polygon points="42,50 50,36 58,50" fill="#FFDE59" stroke="#B96F16" stroke-width="1.5"/>
+  <line x1="170" y1="35" x2="160" y2="65" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="170" y1="35" x2="180" y2="65" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M140 65a20 14 0 0 0 40 0z" fill="none" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="163" y="42" width="14" height="12" fill="#3B6EA5" stroke="#284D77" stroke-width="1.5"/>
+  <rect x="70" y="120" width="80" height="14" fill="#736C5E" stroke="#2B2A26" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Кто выступил против короля в Английской революции?",opts:["Парламент","Другой король"],correct:0},
     {p:"В каком примерно веке произошла Английская революция?",opts:["В XVII веке","В XX веке"],correct:0}
@@ -42,6 +98,13 @@ const HISTORY7_MOD = [
 
 { n:"Россия при Иване Грозном",
   explain:"Иван IV, прозванный <b>Грозным</b>, стал первым правителем, официально принявшим титул <b>царя</b> (1547). При нём были проведены реформы и присоединены Казанское и Астраханское ханства.",
+  svg:`<svg viewBox="0 0 220 160" width="220">
+  <path d="M40 130c-10-50 20-100 90-105s95 35 80 85-60 70-100 65-60-15-70-45z" fill="#DCE9F6" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="110" cy="80" r="6" fill="#D6524F"/><text x="110" y="72" font-size="9" text-anchor="middle">Москва</text>
+  <circle cx="150" cy="110" r="6" fill="#3F7A3D"/><text x="150" y="128" font-size="9" text-anchor="middle">Казань</text>
+  <circle cx="170" cy="140" r="6" fill="#3F7A3D"/><text x="185" y="150" font-size="9" text-anchor="middle">Астрахань</text>
+  <polygon points="90,30 90,10 100,20 110,5 120,20 130,10 130,30" fill="#FFDE59" stroke="#B96F16" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Как прозвали царя Ивана IV?",opts:["Грозный","Мудрый","Освободитель"],correct:0},
     {p:"Каким титулом первым в истории России официально стал называться Иван IV?",opts:["Царь","Император","Хан"],correct:0},
@@ -50,6 +113,12 @@ const HISTORY7_MOD = [
 
 { n:"Опричнина",
   explain:"<b>Опричнина</b> — политика Ивана Грозного, при которой страна делилась на две части, а особый отряд опричников боролся с настоящими и мнимыми противниками царя, часто жестокими методами.",
+  svg:`<svg viewBox="0 0 200 140" width="200">
+  <rect x="20" y="20" width="80" height="100" fill="#A83836" opacity="0.75" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="100" y="20" width="80" height="100" fill="#3B6EA5" opacity="0.6" stroke="#2B2A26" stroke-width="2"/>
+  <text x="60" y="75" font-size="11" text-anchor="middle" fill="#FFFEF8" font-weight="700">Опричнина</text>
+  <text x="140" y="75" font-size="11" text-anchor="middle" fill="#FFFEF8" font-weight="700">Земщина</text>
+  </svg>`,
   bank:[
     {p:"Кто ввёл опричнину?",opts:["Иван Грозный","Пётр Первый"],correct:0},
     {p:"На сколько частей опричнина делила страну?",opts:["На две","На пять"],correct:0}
@@ -57,6 +126,12 @@ const HISTORY7_MOD = [
 
 { n:"Смутное время",
   explain:"После смерти Ивана Грозного и его сыновей начался кризис — <b>Смутное время</b> (начало XVII века): борьба за власть, самозванцы, голод и иностранное вмешательство.",
+  svg:`<svg viewBox="0 0 180 140" width="180">
+  <polygon points="40,90 40,50 55,65 70,40 85,65 100,50 100,90" fill="#FFDE59" stroke="#B96F16" stroke-width="2" transform="rotate(-8 70 65)"/>
+  <polygon points="100,90 100,55 115,68 130,42 145,68 160,55 160,90" fill="#FFDE59" stroke="#B96F16" stroke-width="2" opacity="0.5" transform="rotate(10 130 70)"/>
+  <line x1="20" y1="110" x2="160" y2="110" stroke="#736C5E" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="90" y="130" font-size="11" text-anchor="middle" fill="#A83836">нач. XVII века</text>
+  </svg>`,
   bank:[
     {p:"В каком примерно веке произошло Смутное время?",opts:["В начале XVII века","В XI веке"],correct:0},
     {p:"Что характерно для Смутного времени?",opts:["Борьба за власть, самозванцы, иностранное вмешательство","Спокойное развитие без проблем"],correct:0}
@@ -64,6 +139,13 @@ const HISTORY7_MOD = [
 
 { n:"Минин и Пожарский",
   explain:"В 1612 году ополчение под руководством Кузьмы <b>Минина</b> и князя Дмитрия <b>Пожарского</b> освободило Москву от иностранных захватчиков, что помогло закончить Смутное время.",
+  svg:`<svg viewBox="0 0 200 140" width="200">
+  <circle cx="100" cy="80" r="30" fill="#FFF3C9" stroke="#2B2A26" stroke-width="2"/>
+  <text x="100" y="84" font-size="10" text-anchor="middle" fill="#B96F16">Москва</text>
+  <line x1="30" y1="40" x2="75" y2="65" stroke="#3F7A3D" stroke-width="3"/><polygon points="72,58 85,68 70,73" fill="#3F7A3D"/>
+  <line x1="30" y1="120" x2="75" y2="95" stroke="#3F7A3D" stroke-width="3"/><polygon points="72,101 85,92 73,86" fill="#3F7A3D"/>
+  <text x="100" y="130" font-size="13" text-anchor="middle" font-weight="700">1612</text>
+  </svg>`,
   bank:[
     {p:"В каком году ополчение Минина и Пожарского освободило Москву?",opts:["1612 год","1812 год","988 год"],correct:0},
     {p:"Кто возглавил народное ополчение против захватчиков?",opts:["Минин и Пожарский","Иван Грозный"],correct:0},
@@ -72,6 +154,11 @@ const HISTORY7_MOD = [
 
 { n:"Начало правления Романовых",
   explain:"В 1613 году на престол был избран Михаил <b>Романов</b>, положив начало династии Романовых, которая правила Россией более 300 лет.",
+  svg:`<svg viewBox="0 0 180 140" width="180">
+  <polygon points="60,90 60,50 75,65 90,40 105,65 120,50 120,90" fill="#FFDE59" stroke="#B96F16" stroke-width="2"/>
+  <line x1="40" y1="90" x2="140" y2="90" stroke="#2B2A26" stroke-width="2"/>
+  <text x="90" y="120" font-size="15" text-anchor="middle" font-weight="700">1613</text>
+  </svg>`,
   bank:[
     {p:"В каком году к власти пришли Романовы?",opts:["1613 год","1918 год","988 год"],correct:0},
     {p:"Кто стал первым царём из династии Романовых?",opts:["Михаил Романов","Иван Грозный"],correct:0},
@@ -80,6 +167,13 @@ const HISTORY7_MOD = [
 
 { n:"Тридцатилетняя война",
   explain:"<b>Тридцатилетняя война</b> (1618–1648) — крупный военный конфликт в Европе, затронувший множество государств и во многом связанный с религиозными противоречиями между католиками и протестантами.",
+  svg:`<svg viewBox="0 0 260 90" width="260">
+  <line x1="15" y1="45" x2="245" y2="45" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="60" cy="45" r="5" fill="#D6524F"/><text x="60" y="66" font-size="11" text-anchor="middle">1618</text>
+  <circle cx="200" cy="45" r="5" fill="#3B6EA5"/><text x="200" y="66" font-size="11" text-anchor="middle">1648</text>
+  <line x1="60" y1="45" x2="200" y2="45" stroke="#A83836" stroke-width="4"/>
+  <text x="130" y="28" font-size="10" text-anchor="middle">30 лет войны</text>
+  </svg>`,
   bank:[
     {p:"Сколько примерно лет продолжалась Тридцатилетняя война?",opts:["Тридцать","Десять"],correct:0},
     {p:"С какими противоречиями во многом была связана эта война?",opts:["С религиозными (католики и протестанты)","С научными спорами"],correct:0}
@@ -87,6 +181,15 @@ const HISTORY7_MOD = [
 
 { n:"Освоение Сибири",
   explain:"В XVI–XVII веках русские землепроходцы, включая <b>Ермака</b>, начали осваивать и присоединять к России огромные territории Сибири, продвигаясь на восток вплоть до Тихого океана.",
+  svg:`<svg viewBox="0 0 280 120" width="280">
+  <ellipse cx="60" cy="60" rx="45" ry="35" fill="#DCE9F6" stroke="#2B2A26" stroke-width="2"/>
+  <text x="60" y="64" font-size="10" text-anchor="middle" fill="#284D77">Россия</text>
+  <line x1="105" y1="60" x2="230" y2="60" stroke="#3F7A3D" stroke-width="3" stroke-dasharray="6 4"/>
+  <polygon points="225,53 245,60 225,67" fill="#3F7A3D"/>
+  <text x="170" y="45" font-size="10" text-anchor="middle" fill="#3F7A3D">Сибирь →</text>
+  <path d="M240 40c10 6 10 34 0 40" fill="none" stroke="#3B6EA5" stroke-width="6" stroke-linecap="round"/>
+  <text x="255" y="65" font-size="8" text-anchor="middle" fill="#284D77">Тихий океан</text>
+  </svg>`,
   bank:[
     {p:"Кто начал поход в Сибирь в конце XVI века?",opts:["Ермак","Пётр Первый"],correct:0},
     {p:"В каком направлении продвигались русские землепроходцы, осваивая Сибирь?",opts:["На восток, до Тихого океана","На запад, в Европу"],correct:0}
@@ -94,6 +197,11 @@ const HISTORY7_MOD = [
 
 { n:"Народные восстания XVII века",
   explain:"XVII век в России называют «бунташным веком» — тогда произошло несколько крупных народных восстаний, вызванных тяжёлыми налогами и бедностью, например восстание Степана Разина.",
+  svg:`<svg viewBox="0 0 160 160" width="160">
+  <line x1="50" y1="20" x2="50" y2="140" stroke="#2B2A26" stroke-width="4"/>
+  <path d="M50 25l70 20-70 20z" fill="#A83836" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M30 150c40-10 60-10 100 0" fill="none" stroke="#736C5E" stroke-width="2" stroke-dasharray="3 4"/>
+  </svg>`,
   bank:[
     {p:"Как называют XVII век в России из-за частых восстаний?",opts:["«Бунташный век»","«Золотой век»"],correct:0},
     {p:"Кто возглавил одно из крупных восстаний XVII века?",opts:["Степан Разин","Дмитрий Донской"],correct:0}
@@ -101,6 +209,17 @@ const HISTORY7_MOD = [
 
 { n:"Культура России XVI-XVII веков",
   explain:"В этот период в России развивалось книгопечатание (Иван Фёдоров напечатал первую точно датированную русскую книгу), строились каменные храмы, например собор Василия Блаженного в Москве.",
+  svg:`<svg viewBox="0 0 220 150" width="220">
+  <rect x="20" y="100" width="180" height="35" fill="#FFF3C9" stroke="#2B2A26" stroke-width="2"/>
+  <g stroke="#2B2A26" stroke-width="2">
+    <path d="M50 100c0-20 10-30 10-30s10 10 10 30z" fill="#D6524F"/>
+    <path d="M90 100c0-26 12-38 12-38s12 12 12 38z" fill="#3B6EA5"/>
+    <path d="M130 100c0-20 10-30 10-30s10 10 10 30z" fill="#5F9A5C"/>
+    <path d="M170 100c0-24 10-34 10-34s10 10 10 34z" fill="#E3922E"/>
+  </g>
+  <circle cx="60" cy="60" r="3" fill="#2B2A26"/><circle cx="102" cy="50" r="3" fill="#2B2A26"/>
+  <circle cx="140" cy="60" r="3" fill="#2B2A26"/><circle cx="180" cy="56" r="3" fill="#2B2A26"/>
+  </svg>`,
   bank:[
     {p:"Кто напечатал одну из первых русских книг?",opts:["Иван Фёдоров","Иван Грозный"],correct:0},
     {p:"Как называется знаменитый храм на Красной площади в Москве?",opts:["Собор Василия Блаженного","Колизей"],correct:0}

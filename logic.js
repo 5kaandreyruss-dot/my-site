@@ -4,6 +4,13 @@ const LOGIC_MOD = [
 
 { n:"Найди лишнее",
   explain:"В каждой группе есть один предмет, который не подходит к остальным по смыслу. Найди его.",
+  svg:`<svg viewBox="0 0 220 90" width="220">
+  <circle cx="35" cy="45" r="18" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <circle cx="85" cy="45" r="18" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <rect x="122" y="27" width="36" height="36" fill="#E3922E" stroke="#B96F16" stroke-width="2"/>
+  <circle cx="185" cy="45" r="18" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <text x="140" y="82" font-size="10" text-anchor="middle" fill="#736C5E">какая фигура лишняя?</text>
+  </svg>`,
   bank:[
     {p:"🍎 🍌 🚗 🍊 — что здесь лишнее?",opts:["🍎","🍌","🚗","🍊"],correct:2},
     {p:"🐶 🐱 🐦 🪑 — что здесь лишнее?",opts:["🐶","🐱","🐦","🪑"],correct:3},
@@ -19,6 +26,15 @@ const LOGIC_MOD = [
 
 { n:"Числовые ряды",
   explain:"Посмотри, как меняется число от одного к другому, и найди правило — прибавляют или отнимают одно и то же число.",
+  svg:`<svg viewBox="0 0 240 90" width="240">
+  <line x1="20" y1="50" x2="220" y2="50" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="30" cy="50" r="14" fill="#5F9A5C" stroke="#3F7A3D" stroke-width="2"/><text x="30" y="54" font-size="11" text-anchor="middle" fill="#FFFEF8">2</text>
+  <circle cx="80" cy="50" r="14" fill="#5F9A5C" stroke="#3F7A3D" stroke-width="2"/><text x="80" y="54" font-size="11" text-anchor="middle" fill="#FFFEF8">4</text>
+  <circle cx="130" cy="50" r="14" fill="#5F9A5C" stroke="#3F7A3D" stroke-width="2"/><text x="130" y="54" font-size="11" text-anchor="middle" fill="#FFFEF8">6</text>
+  <circle cx="180" cy="50" r="14" fill="#5F9A5C" stroke="#3F7A3D" stroke-width="2"/><text x="180" y="54" font-size="11" text-anchor="middle" fill="#FFFEF8">8</text>
+  <circle cx="215" cy="50" r="14" fill="none" stroke="#2B2A26" stroke-width="2" stroke-dasharray="3 3"/><text x="215" y="54" font-size="13" text-anchor="middle" fill="#2B2A26">?</text>
+  <text x="120" y="80" font-size="9" text-anchor="middle" fill="#736C5E">+2 каждый раз</text>
+  </svg>`,
   bank:[
     {p:"2, 4, 6, 8, ?",opts:["9","10","12"],correct:1},
     {p:"1, 3, 5, 7, ?",opts:["8","9","11"],correct:1},
@@ -34,6 +50,13 @@ const LOGIC_MOD = [
 
 { n:"Загадки",
   explain:"Отгадай загадку — прочитай внимательно и выбери верный ответ.",
+  svg:`<svg viewBox="0 0 140 160" width="140">
+  <circle cx="70" cy="60" r="40" fill="#FFDE59" stroke="#C99A00" stroke-width="2.5"/>
+  <rect x="55" y="95" width="30" height="18" rx="4" fill="#736C5E" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="60" y1="118" x2="80" y2="118" stroke="#2B2A26" stroke-width="2"/>
+  <text x="70" y="70" font-size="34" text-anchor="middle" fill="#2B2A26" font-weight="700">?</text>
+  <text x="70" y="145" font-size="10" text-anchor="middle" fill="#736C5E">отгадай загадку</text>
+  </svg>`,
   bank:[
     {p:"Зимой белый, летом серый. Кто это?",opts:["Заяц","Медведь","Лиса"],correct:0},
     {p:"Что можно увидеть с закрытыми глазами?",opts:["Сон","Радугу","Дом"],correct:0},
@@ -49,6 +72,15 @@ const LOGIC_MOD = [
 
 { n:"Сравнение и вывод",
   explain:"Прочитай подсказки внимательно по порядку и сделай вывод — кто первый, а кто последний.",
+  svg:`<svg viewBox="0 0 200 120" width="200">
+  <rect x="30" y="70" width="30" height="35" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <rect x="85" y="45" width="30" height="60" fill="#5F9A5C" stroke="#3F7A3D" stroke-width="2"/>
+  <rect x="140" y="20" width="30" height="85" fill="#D6524F" stroke="#A83836" stroke-width="2"/>
+  <line x1="10" y1="105" x2="190" y2="105" stroke="#2B2A26" stroke-width="2"/>
+  <text x="45" y="118" font-size="9" text-anchor="middle" fill="#736C5E">?</text>
+  <text x="100" y="118" font-size="9" text-anchor="middle" fill="#736C5E">?</text>
+  <text x="155" y="118" font-size="9" text-anchor="middle" fill="#736C5E">?</text>
+  </svg>`,
   bank:[
     {p:"Маша выше Пети. Петя выше Коли. Кто самый низкий?",opts:["Маша","Петя","Коля"],correct:2},
     {p:"У Тани яблок больше, чем у Иры. У Иры больше, чем у Оли. У кого меньше всех?",opts:["У Тани","У Иры","У Оли"],correct:2},
@@ -61,6 +93,14 @@ const LOGIC_MOD = [
 
 { n:"Продолжи узор",
   explain:"Посмотри на повторяющийся узор из значков и угадай, какой значок будет следующим.",
+  svg:`<svg viewBox="0 0 240 90" width="240">
+  <circle cx="30" cy="45" r="16" fill="#D6524F" stroke="#A83836" stroke-width="2"/>
+  <circle cx="75" cy="45" r="16" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <circle cx="120" cy="45" r="16" fill="#D6524F" stroke="#A83836" stroke-width="2"/>
+  <circle cx="165" cy="45" r="16" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <circle cx="212" cy="45" r="16" fill="none" stroke="#2B2A26" stroke-width="2" stroke-dasharray="3 3"/>
+  <text x="212" y="50" font-size="16" text-anchor="middle" fill="#2B2A26">?</text>
+  </svg>`,
   bank:[
     {p:"🔴🔵🔴🔵🔴 — дальше?",opts:["🔴","🔵","🟢"],correct:1},
     {p:"⭐⭐🌙⭐⭐🌙⭐⭐ — дальше?",opts:["⭐","🌙","☀️"],correct:1},
@@ -74,6 +114,15 @@ const LOGIC_MOD = [
 
 { n:"Верно или неверно",
   explain:"Прочитай утверждение и подумай — это правда или нет.",
+  svg:`<svg viewBox="0 0 180 90" width="180">
+  <circle cx="45" cy="45" r="30" fill="#5F9A5C" opacity="0.2" stroke="#3F7A3D" stroke-width="2"/>
+  <path d="M30 45l10 10 20-20" fill="none" stroke="#3F7A3D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="135" cy="45" r="30" fill="#D6524F" opacity="0.2" stroke="#A83836" stroke-width="2"/>
+  <line x1="120" y1="30" x2="150" y2="60" stroke="#A83836" stroke-width="4" stroke-linecap="round"/>
+  <line x1="150" y1="30" x2="120" y2="60" stroke="#A83836" stroke-width="4" stroke-linecap="round"/>
+  <text x="45" y="85" font-size="10" text-anchor="middle" fill="#736C5E">верно</text>
+  <text x="135" y="85" font-size="10" text-anchor="middle" fill="#736C5E">неверно</text>
+  </svg>`,
   bank:[
     {p:"В неделе 7 дней",opts:["Верно","Неверно"],correct:0},
     {p:"Зимой обычно жарко",opts:["Верно","Неверно"],correct:1},
@@ -89,6 +138,13 @@ const LOGIC_MOD = [
 
 { n:"Логические задачки",
   explain:"Читай внимательно и думай пошагово, прежде чем ответить.",
+  svg:`<svg viewBox="0 0 220 80" width="220">
+  <circle cx="30" cy="40" r="18" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/><text x="30" y="45" font-size="13" text-anchor="middle" fill="#FFFEF8">1</text>
+  <line x1="48" y1="40" x2="80" y2="40" stroke="#2B2A26" stroke-width="2"/><polygon points="80,40 72,35 72,45" fill="#2B2A26"/>
+  <circle cx="110" cy="40" r="18" fill="#E3922E" stroke="#B96F16" stroke-width="2"/><text x="110" y="45" font-size="13" text-anchor="middle" fill="#FFFEF8">2</text>
+  <line x1="128" y1="40" x2="160" y2="40" stroke="#2B2A26" stroke-width="2"/><polygon points="160,40 152,35 152,45" fill="#2B2A26"/>
+  <circle cx="190" cy="40" r="18" fill="#5F9A5C" stroke="#3F7A3D" stroke-width="2"/><text x="190" y="45" font-size="13" text-anchor="middle" fill="#FFFEF8">3</text>
+  </svg>`,
   bank:[
     {p:"У мамы 3 дочки, и у каждой дочки один и тот же брат. Сколько всего детей у мамы?",opts:["4","6","3"],correct:0},
     {p:"Если сегодня среда, какой день будет через 3 дня?",opts:["Суббота","Пятница","Воскресенье"],correct:0},
@@ -100,6 +156,15 @@ const LOGIC_MOD = [
 
 { n:"Что было раньше?",
   explain:"Подумай, что происходит раньше, а что позже — по порядку.",
+  svg:`<svg viewBox="0 0 220 90" width="220">
+  <line x1="20" y1="45" x2="200" y2="45" stroke="#2B2A26" stroke-width="2"/>
+  <polygon points="200,45 190,39 190,51" fill="#2B2A26"/>
+  <circle cx="50" cy="45" r="10" fill="#E3922E" stroke="#B96F16" stroke-width="2"/>
+  <circle cx="150" cy="45" r="10" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <text x="50" y="75" font-size="10" text-anchor="middle" fill="#736C5E">раньше</text>
+  <text x="150" y="75" font-size="10" text-anchor="middle" fill="#736C5E">позже</text>
+  <text x="200" y="20" font-size="9" text-anchor="end" fill="#736C5E">время →</text>
+  </svg>`,
   bank:[
     {p:"Что было первым: курица снесла яйцо, или вылупился цыплёнок?",opts:["Курица снесла яйцо","Цыплёнок вылупился"],correct:0},
     {p:"Что происходит первым утром?",opts:["Просыпаешься","Ложишься спать"],correct:0},
@@ -112,6 +177,16 @@ const LOGIC_MOD = [
 
 { n:"Геометрические фигуры",
   explain:"У каждой фигуры своё число сторон и углов: у треугольника — 3, у квадрата и прямоугольника — 4, у круга сторон и углов нет совсем.",
+  svg:`<svg viewBox="0 0 260 100" width="260">
+  <polygon points="35,25 55,65 15,65" fill="none" stroke="#2B2A26" stroke-width="2.5"/>
+  <text x="35" y="85" font-size="10" text-anchor="middle" fill="#736C5E">3</text>
+  <rect x="85" y="30" width="40" height="40" fill="none" stroke="#2B2A26" stroke-width="2.5"/>
+  <text x="105" y="85" font-size="10" text-anchor="middle" fill="#736C5E">4</text>
+  <circle cx="175" cy="50" r="20" fill="none" stroke="#2B2A26" stroke-width="2.5"/>
+  <text x="175" y="85" font-size="10" text-anchor="middle" fill="#736C5E">0</text>
+  <polygon points="225,22 245,38 238,62 212,62 205,38" fill="none" stroke="#2B2A26" stroke-width="2.5"/>
+  <text x="225" y="85" font-size="10" text-anchor="middle" fill="#736C5E">5</text>
+  </svg>`,
   bank:[
     {p:"Сколько сторон у треугольника?",opts:["3","4","5"],correct:0},
     {p:"Сколько углов у квадрата?",opts:["4","3","6"],correct:0},
@@ -125,6 +200,14 @@ const LOGIC_MOD = [
 
 { n:"Классификация по двум признакам",
   explain:"Иногда предмет нужно выбрать сразу по двум признакам — например, «круглый и жёлтый».",
+  svg:`<svg viewBox="0 0 220 130" width="220">
+  <circle cx="85" cy="65" r="55" fill="#3B6EA5" opacity="0.25" stroke="#284D77" stroke-width="2"/>
+  <circle cx="140" cy="65" r="55" fill="#FFDE59" opacity="0.4" stroke="#C99A00" stroke-width="2"/>
+  <text x="55" y="35" font-size="10" text-anchor="middle" fill="#284D77">круглое</text>
+  <text x="175" y="35" font-size="10" text-anchor="middle" fill="#C99A00">жёлтое</text>
+  <text x="112" y="70" font-size="20" text-anchor="middle">●</text>
+  <text x="112" y="95" font-size="9" text-anchor="middle" fill="#2B2A26">оба признака</text>
+  </svg>`,
   bank:[
     {p:"Что одновременно круглое и жёлтое?",opts:["🍋","🍎","🍆"],correct:0},
     {p:"Что одновременно длинное и оранжевое?",opts:["🥕","🍇","🍏"],correct:0},
@@ -137,6 +220,10 @@ const LOGIC_MOD = [
 
 { n:"Смекалка",
   explain:"Здесь важно не спешить и подумать необычно — ответ не всегда очевиден сразу.",
+  svg:`<svg viewBox="0 0 140 140" width="140">
+  <path d="M30 30h30c0-8 6-14 14-14s14 6 14 14h30v30c8 0 14 6 14 14s-6 14-14 14v30H88c0 8-6 14-14 14s-14-6-14-14H30v-30c-8 0-14-6-14-14s6-14 14-14z" fill="#9973B8" opacity="0.5" stroke="#725189" stroke-width="2"/>
+  <text x="70" y="80" font-size="11" text-anchor="middle" fill="#2B2A26">смекалка</text>
+  </svg>`,
   bank:[
     {p:"Сколько месяцев в году имеют 28 дней?",opts:["Все 12","Только февраль","Ни одного"],correct:0},
     {p:"Что тяжелее: килограмм ваты или килограмм железа?",opts:["Одинаково","Вата","Железо"],correct:0},
@@ -148,6 +235,14 @@ const LOGIC_MOD = [
 
 { n:"Кто есть кто?",
   explain:"Прочитай все подсказки внимательно, прежде чем отвечать — иногда нужно учесть сразу две подсказки.",
+  svg:`<svg viewBox="0 0 200 110" width="200">
+  <circle cx="40" cy="60" r="18" fill="#D9679A" stroke="#A8447A" stroke-width="2"/>
+  <circle cx="100" cy="55" r="22" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <circle cx="165" cy="65" r="14" fill="#5F9A5C" stroke="#3F7A3D" stroke-width="2"/>
+  <text x="40" y="95" font-size="10" text-anchor="middle" fill="#736C5E">?</text>
+  <text x="100" y="95" font-size="10" text-anchor="middle" fill="#736C5E">?</text>
+  <text x="165" y="95" font-size="10" text-anchor="middle" fill="#736C5E">?</text>
+  </svg>`,
   bank:[
     {p:"У Иры волосы длиннее, чем у Кати, но короче, чем у Оли. У кого самые длинные волосы?",opts:["У Оли","У Иры","У Кати"],correct:0},
     {p:"Костя выше Севы. Сева выше Юры. Кто ниже всех?",opts:["Юра","Костя","Сева"],correct:0},
@@ -158,6 +253,14 @@ const LOGIC_MOD = [
 
 { n:"Хитрые примеры",
   explain:"Иногда за простыми словами прячется несложный подсчёт — читай вопрос до конца.",
+  svg:`<svg viewBox="0 0 180 90" width="180">
+  <circle cx="30" cy="45" r="16" fill="#D6524F" stroke="#A83836" stroke-width="2"/>
+  <circle cx="70" cy="45" r="16" fill="#D6524F" stroke="#A83836" stroke-width="2"/>
+  <circle cx="110" cy="45" r="16" fill="#D6524F" stroke="#A83836" stroke-width="2"/>
+  <line x1="95" y1="30" x2="125" y2="60" stroke="#2B2A26" stroke-width="2.5"/>
+  <line x1="125" y1="30" x2="95" y2="60" stroke="#2B2A26" stroke-width="2.5"/>
+  <text x="150" y="50" font-size="16" text-anchor="middle" fill="#2B2A26">=?</text>
+  </svg>`,
   bank:[
     {p:"У Кати было 3 яблока, она съела одно. Сколько яблок осталось у Кати?",opts:["2","3","1"],correct:0},
     {p:"В клетке 2 кролика и 3 морковки. Сколько всего лап у кроликов?",opts:["8","6","4"],correct:0},
@@ -168,6 +271,14 @@ const LOGIC_MOD = [
 
 { n:"Множества и группы",
   explain:"Множество — группа предметов с общим признаком. Иногда две группы пересекаются — в них есть общие предметы.",
+  svg:`<svg viewBox="0 0 220 130" width="220">
+  <circle cx="85" cy="65" r="55" fill="#5F9A5C" opacity="0.25" stroke="#3F7A3D" stroke-width="2"/>
+  <circle cx="140" cy="65" r="55" fill="#D6524F" opacity="0.25" stroke="#A83836" stroke-width="2"/>
+  <text x="50" y="35" font-size="10" text-anchor="middle" fill="#3F7A3D">футбол</text>
+  <text x="175" y="35" font-size="10" text-anchor="middle" fill="#A83836">рисование</text>
+  <circle cx="112" cy="70" r="6" fill="#2B2A26"/>
+  <text x="112" y="95" font-size="9" text-anchor="middle" fill="#2B2A26">оба</text>
+  </svg>`,
   bank:[
     {p:"В корзине яблоки и груши. Что объединяет их в одну группу?",opts:["Это фрукты","Это овощи","Это игрушки"],correct:0},
     {p:"Кошка и собака — какой общий признак объединяет их в группу?",opts:["Домашние животные","Насекомые","Растения"],correct:0},
@@ -179,6 +290,20 @@ const LOGIC_MOD = [
 
 { n:"Координаты на клетке",
   explain:"На клетчатом поле можно находить место по двум числам: сначала шаги вправо (по горизонтали), потом шаги вверх (по вертикали).",
+  svg:`<svg viewBox="0 0 180 160" width="180">
+  <line x1="30" y1="140" x2="170" y2="140" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="30" y1="140" x2="30" y2="10" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="58" y1="140" x2="58" y2="10" stroke="#736C5E" stroke-width="1" stroke-dasharray="2 3"/>
+  <line x1="86" y1="140" x2="86" y2="10" stroke="#736C5E" stroke-width="1" stroke-dasharray="2 3"/>
+  <line x1="114" y1="140" x2="114" y2="10" stroke="#736C5E" stroke-width="1" stroke-dasharray="2 3"/>
+  <line x1="30" y1="112" x2="170" y2="112" stroke="#736C5E" stroke-width="1" stroke-dasharray="2 3"/>
+  <line x1="30" y1="84" x2="170" y2="84" stroke="#736C5E" stroke-width="1" stroke-dasharray="2 3"/>
+  <line x1="30" y1="56" x2="170" y2="56" stroke="#736C5E" stroke-width="1" stroke-dasharray="2 3"/>
+  <circle cx="86" cy="56" r="7" fill="#D6524F" stroke="#A83836" stroke-width="2"/>
+  <text x="86" y="150" font-size="9" text-anchor="middle" fill="#736C5E">2</text>
+  <text x="20" y="60" font-size="9" text-anchor="middle" fill="#736C5E">3</text>
+  <text x="115" y="45" font-size="9" fill="#2B2A26">(2,3)</text>
+  </svg>`,
   bank:[
     {p:"Если идти от старта 3 клетки вправо и 2 клетки вверх — сколько всего шагов сделано?",opts:["5","6","3"],correct:0},
     {p:"Что обычно указывают первым при поиске клетки — движение вправо или вверх?",opts:["Вправо (по горизонтали)","Вверх (по вертикали)","Не важно, всё равно"],correct:0},
@@ -189,6 +314,17 @@ const LOGIC_MOD = [
 
 { n:"Сравнение и взвешивание",
   explain:"На весах то, что тяжелее, перевешивает и опускается вниз. Если чаши весов на одном уровне — предметы весят одинаково.",
+  svg:`<svg viewBox="0 0 220 140" width="220">
+  <line x1="110" y1="20" x2="110" y2="50" stroke="#2B2A26" stroke-width="3"/>
+  <line x1="40" y1="50" x2="180" y2="50" stroke="#2B2A26" stroke-width="3"/>
+  <line x1="40" y1="50" x2="40" y2="85" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="180" y1="50" x2="180" y2="70" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M20 85a20 8 0 0 0 40 0z" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <path d="M160 70a20 8 0 0 0 40 0z" fill="#E3922E" stroke="#B96F16" stroke-width="2"/>
+  <polygon points="110,120 95,90 125,90" fill="#736C5E" stroke="#2B2A26" stroke-width="2"/>
+  <text x="40" y="105" font-size="9" text-anchor="middle" fill="#736C5E">тяжелее</text>
+  <text x="180" y="90" font-size="9" text-anchor="middle" fill="#736C5E">легче</text>
+  </svg>`,
   bank:[
     {p:"На весах слева яблоко, справа арбуз. Какая чаша опустится ниже?",opts:["С арбузом","С яблоком","Обе останутся ровно"],correct:0},
     {p:"Если чаши весов находятся на одном уровне, что это значит?",opts:["Предметы весят одинаково","Левый предмет тяжелее","Правый предмет тяжелее"],correct:0},
@@ -199,6 +335,13 @@ const LOGIC_MOD = [
 
 { n:"Найди закономерность в фигурах",
   explain:"Посмотри, как меняются фигуры от одной к другой — размер, цвет или форма могут меняться по правилу.",
+  svg:`<svg viewBox="0 0 220 90" width="220">
+  <circle cx="30" cy="60" r="8" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <circle cx="80" cy="55" r="14" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <circle cx="140" cy="48" r="20" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <circle cx="200" cy="40" r="26" fill="none" stroke="#2B2A26" stroke-width="2" stroke-dasharray="3 3"/>
+  <text x="200" y="45" font-size="14" text-anchor="middle" fill="#2B2A26">?</text>
+  </svg>`,
   bank:[
     {p:"🔵🔵🔵 растут в размере. Какой будет следующий кружок?",opts:["Ещё больше","Ещё меньше","Такой же"],correct:0},
     {p:"🟥🟧🟨 — цвета идут по порядку радуги. Какой цвет дальше?",opts:["Зелёный","Синий","Чёрный"],correct:0},
@@ -207,6 +350,18 @@ const LOGIC_MOD = [
 
 { n:"Логика на «и», «или», «не»",
   explain:"Слово «и» значит, что верны оба условия сразу. «Или» значит, что верно хотя бы одно. «Не» означает отрицание.",
+  svg:`<svg viewBox="0 0 280 110" width="280">
+  <circle cx="35" cy="50" r="26" fill="#3B6EA5" opacity="0.3" stroke="#284D77" stroke-width="1.5"/>
+  <circle cx="60" cy="50" r="26" fill="#3B6EA5" opacity="0.3" stroke="#284D77" stroke-width="1.5"/>
+  <path d="M47 26a26 26 0 0 1 0 48 26 26 0 0 1 0-48z" fill="#284D77" opacity="0.6"/>
+  <text x="47" y="95" font-size="10" text-anchor="middle" fill="#736C5E">И</text>
+  <circle cx="140" cy="50" r="26" fill="#5F9A5C" opacity="0.55" stroke="#3F7A3D" stroke-width="1.5"/>
+  <circle cx="165" cy="50" r="26" fill="#5F9A5C" opacity="0.55" stroke="#3F7A3D" stroke-width="1.5"/>
+  <text x="152" y="95" font-size="10" text-anchor="middle" fill="#736C5E">ИЛИ</text>
+  <rect x="200" y="10" width="90" height="80" fill="#D6524F" opacity="0.35"/>
+  <circle cx="245" cy="50" r="26" fill="#FFFEF8" stroke="#A83836" stroke-width="1.5"/>
+  <text x="245" y="95" font-size="10" text-anchor="middle" fill="#736C5E">НЕ</text>
+  </svg>`,
   bank:[
     {p:"Предмет круглый И жёлтый. Подходит ли квадратный жёлтый предмет?",opts:["Нет, не подходит","Да, подходит"],correct:0},
     {p:"Хочу фрукт ИЛИ овощ. Подходит ли яблоко?",opts:["Да, подходит","Нет, не подходит"],correct:0},
@@ -215,6 +370,13 @@ const LOGIC_MOD = [
 
 { n:"Задачи на переливание и обмен",
   explain:"В таких задачах нужно продумать порядок действий, чтобы получить нужный результат.",
+  svg:`<svg viewBox="0 0 200 130" width="200">
+  <path d="M30 30v70a10 10 0 0 0 10 10h30a10 10 0 0 0 10-10V30z" fill="#DCE9F6" stroke="#2B2A26" stroke-width="2"/>
+  <text x="55" y="20" font-size="10" text-anchor="middle" fill="#736C5E">5 л</text>
+  <path d="M120 50v50a10 10 0 0 0 10 10h20a10 10 0 0 0 10-10V50z" fill="#DCE9F6" stroke="#2B2A26" stroke-width="2"/>
+  <text x="145" y="40" font-size="10" text-anchor="middle" fill="#736C5E">3 л</text>
+  <path d="M35 65h30v35a10 10 0 0 1 -10 10h-10a10 10 0 0 1 -10-10z" fill="#3B6EA5" opacity="0.6"/>
+  </svg>`,
   bank:[
     {p:"У тебя есть банка на 5 литров и банка на 3 литра. Можно ли отмерить ровно 2 литра, переливая между ними?",opts:["Да, можно","Нет, невозможно"],correct:0},
     {p:"Если поменять местами двух друзей в очереди, изменится ли общее количество людей в очереди?",opts:["Нет, не изменится","Да, станет больше","Да, станет меньше"],correct:0}
@@ -222,6 +384,13 @@ const LOGIC_MOD = [
 
 { n:"Логические цепочки",
   explain:"Если A связано с B, а B связано с C, то часто можно сделать вывод и про связь A и C.",
+  svg:`<svg viewBox="0 0 240 80" width="240">
+  <circle cx="40" cy="40" r="22" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/><text x="40" y="45" font-size="13" text-anchor="middle" fill="#FFFEF8">A</text>
+  <line x1="62" y1="40" x2="98" y2="40" stroke="#2B2A26" stroke-width="2"/><polygon points="98,40 88,34 88,46" fill="#2B2A26"/>
+  <circle cx="120" cy="40" r="22" fill="#5F9A5C" stroke="#3F7A3D" stroke-width="2"/><text x="120" y="45" font-size="13" text-anchor="middle" fill="#FFFEF8">B</text>
+  <line x1="142" y1="40" x2="178" y2="40" stroke="#2B2A26" stroke-width="2"/><polygon points="178,40 168,34 168,46" fill="#2B2A26"/>
+  <circle cx="200" cy="40" r="22" fill="#E3922E" stroke="#B96F16" stroke-width="2"/><text x="200" y="45" font-size="13" text-anchor="middle" fill="#FFFEF8">C</text>
+  </svg>`,
   bank:[
     {p:"Все кошки — животные. Барсик — кошка. Является ли Барсик животным?",opts:["Да","Нет","Неизвестно"],correct:0},
     {p:"Если идёт дождь, земля мокрая. Земля мокрая. Обязательно ли шёл дождь?",opts:["Не обязательно — могли полить из шланга","Да, обязательно","Невозможно определить никогда"],correct:0},
