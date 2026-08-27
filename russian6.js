@@ -85,6 +85,16 @@ const RUS6_MOD = [
 
 { n:"Стили речи",
   explain:"Речь бывает разных стилей: <b>разговорный</b> (в быту), <b>научный</b> (в учебниках), <b>художественный</b> (в литературе), <b>публицистический</b> (в газетах, выступлениях).",
+  svg:`<svg viewBox="0 0 260 100" width="260">
+  <rect x="8" y="8" width="115" height="34" rx="17" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="65" y="30" font-size="12" text-anchor="middle" fill="#284D77">разговорный</text>
+  <rect x="136" y="8" width="115" height="34" rx="17" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="193" y="30" font-size="12" text-anchor="middle" fill="#3F7A3D">научный</text>
+  <rect x="8" y="54" width="115" height="34" rx="17" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="65" y="76" font-size="12" text-anchor="middle" fill="#B96F16">художественный</text>
+  <rect x="136" y="54" width="115" height="34" rx="17" fill="#EEE3F5" stroke="#9973B8" stroke-width="2"/>
+  <text x="193" y="76" font-size="12" text-anchor="middle" fill="#725189">публицистический</text>
+  </svg>`,
   bank:[
     {p:"Каким стилем мы обычно разговариваем с друзьями?",opts:["Разговорным","Научным"],correct:0},
     {p:"Каким стилем написан учебник?",opts:["Научным","Художественным"],correct:0},

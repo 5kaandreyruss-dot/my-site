@@ -73,6 +73,15 @@ const LIT11_MOD = [
 
 { n:"Авторская песня и поэзия второй половины XX века",
   explain:"Во второй половине XX века получила распространение авторская песня — стихи, исполняемые под гитару собственными авторами, например у Владимира Высоцкого и Булата Окуджавы.",
+  svg:`<svg viewBox="0 0 160 130" width="160">
+  <ellipse cx="80" cy="90" rx="34" ry="26" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <ellipse cx="80" cy="55" rx="20" ry="18" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <circle cx="80" cy="90" r="10" fill="#FFFEF8" stroke="#B96F16" stroke-width="1.5"/>
+  <line x1="80" y1="20" x2="80" y2="100" stroke="#B96F16" stroke-width="4"/>
+  <line x1="70" y1="30" x2="70" y2="100" stroke="#B96F16" stroke-width="1"/>
+  <line x1="90" y1="30" x2="90" y2="100" stroke="#B96F16" stroke-width="1"/>
+  <text x="80" y="122" font-size="10" text-anchor="middle" fill="#736C5E">авторская песня</text>
+  </svg>`,
   bank:[
     {p:"Что такое авторская песня?",opts:["Стихи, исполняемые под гитару своим автором","Только классическая опера"],correct:0},
     {p:"Кто из этих поэтов известен авторской песней?",opts:["Владимир Высоцкий","Александр Пушкин"],correct:0}

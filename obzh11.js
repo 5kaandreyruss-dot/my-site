@@ -5,6 +5,14 @@ const OBZH11_MOD = [
 
 { n:"Основы военной службы",
   explain:"Военная служба в России включает призывную службу (по призыву) и службу по контракту. Призывной возраст для срочной службы начинается с 18 лет.",
+  svg:`<svg viewBox="0 0 200 130" width="200">
+  <rect x="10" y="10" width="180" height="110" rx="10" fill="#FFFEF8" stroke="#2B2A26" stroke-width="3"/>
+  <circle cx="55" cy="65" r="28" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <polygon points="55,45 61,60 77,60 64,70 69,86 55,76 41,86 46,70 33,60 49,60" fill="#FFDE59"/>
+  <line x1="100" y1="45" x2="175" y2="45" stroke="#736C5E" stroke-width="4"/>
+  <line x1="100" y1="65" x2="175" y2="65" stroke="#736C5E" stroke-width="4"/>
+  <line x1="100" y1="85" x2="150" y2="85" stroke="#736C5E" stroke-width="4"/>
+  </svg>`,
   bank:[
     {p:"С какого возраста начинается призывной возраст для срочной службы?",opts:["С 18 лет","С 10 лет"],correct:0},
     {p:"Какие два основных вида военной службы существуют?",opts:["По призыву и по контракту","Только добровольная без всяких условий"],correct:0}
@@ -12,36 +20,74 @@ const OBZH11_MOD = [
 
 { n:"Воинские звания и воинские традиции",
   explain:"В армии существует система воинских званий (от рядового до генерала), а также воинские традиции — соблюдение устава, дисциплина, взаимовыручка.",
+  svg:`<svg viewBox="0 0 160 140" width="160">
+  <rect x="10" y="10" width="140" height="120" rx="10" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <polyline points="30,100 80,55 130,100" fill="none" stroke="#FFDE59" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="30,75 80,30 130,75" fill="none" stroke="#FFDE59" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+  </svg>`,
   bank:[
     {p:"Что из этого — воинское звание?",opts:["Рядовой","Учитель"],correct:0}
   ]},
 
 { n:"Основы медицинских знаний: реанимация",
   explain:"При остановке дыхания и сердцебиения проводят сердечно-лёгочную реанимацию: непрямой массаж сердца и искусственное дыхание, до приезда скорой помощи.",
+  svg:`<svg viewBox="0 0 180 150" width="180">
+  <ellipse cx="90" cy="90" rx="55" ry="45" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <polyline points="35,90 60,90 68,70 78,110 88,90 100,90 108,75 116,90 145,90" fill="none" stroke="#D6524F" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M60 40l30 20 30-20" fill="none" stroke="#2B2A26" stroke-width="5" stroke-linecap="round"/>
+  <path d="M60 30l30 20 30-20" fill="none" stroke="#2B2A26" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+  </svg>`,
   bank:[
     {p:"Что делают при остановке дыхания и сердцебиения?",opts:["Сердечно-лёгочную реанимацию","Просто ждут без всяких действий"],correct:0}
   ]},
 
 { n:"Первая помощь при отравлениях",
   explain:"При отравлении важно не заниматься самолечением без надобности, вызвать скорую помощь, а при пищевом отравлении — дать пострадавшему больше жидкости, если он в сознании.",
+  svg:`<svg viewBox="0 0 200 150" width="200">
+  <path d="M75 20h20v20l15 15v75a8 8 0 0 1-8 8H68a8 8 0 0 1-8-8V55l15-15z" fill="#9973B8" stroke="#725189" stroke-width="2"/>
+  <rect x="65" y="70" width="40" height="45" fill="#725189" opacity="0.4"/>
+  <polygon points="75,10 90,10 90,20 75,20" fill="#736C5E"/>
+  <path d="M140 60l14-14 14 14v50a14 14 0 0 1-28 0z" fill="#DCE9F6" stroke="#284D77" stroke-width="2"/>
+  <path d="M140 90h28" stroke="#284D77" stroke-width="2" opacity="0.6"/>
+  </svg>`,
   bank:[
     {p:"Что важно сделать при серьёзном отравлении?",opts:["Вызвать скорую помощь","Проигнорировать ситуацию"],correct:0}
   ]},
 
 { n:"Терроризм и правила безопасности",
   explain:"При обнаружении подозрительного предмета нельзя его трогать — нужно немедленно сообщить об этом взрослым или в экстренные службы и отойти на безопасное расстояние.",
+  svg:`<svg viewBox="0 0 200 150" width="200">
+  <rect x="30" y="30" width="60" height="100" rx="10" fill="#2B2A26"/>
+  <rect x="36" y="42" width="48" height="72" fill="#FFFEF8"/>
+  <text x="60" y="85" font-size="20" text-anchor="middle" font-weight="700" fill="#D6524F">112</text>
+  <circle cx="60" cy="122" r="4" fill="#736C5E"/>
+  <polygon points="150,30 190,110 110,110" fill="#FFDE59" stroke="#2B2A26" stroke-width="3" stroke-linejoin="round"/>
+  <text x="150" y="98" font-size="30" text-anchor="middle" font-weight="700" fill="#2B2A26">!</text>
+  </svg>`,
   bank:[
     {p:"Что нужно делать при обнаружении подозрительного предмета?",opts:["Не трогать его и сообщить в экстренные службы","Взять его и рассмотреть поближе"],correct:0}
   ]},
 
 { n:"Экологическая безопасность",
   explain:"Экологическая безопасность включает защиту человека и природы от последствий загрязнения окружающей среды, а также разумное использование природных ресурсов.",
+  svg:`<svg viewBox="0 0 180 160" width="180">
+  <circle cx="90" cy="80" r="65" fill="#DCE9F6" stroke="#284D77" stroke-width="2"/>
+  <path d="M90 25c30 20 40 55 20 85-30-5-55-30-55-65 12-14 22-18 35-20z" fill="#5F9A5C" stroke="#3F7A3D" stroke-width="2"/>
+  <path d="M90 30c10 25 5 55-15 75" fill="none" stroke="#3F7A3D" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Что включает экологическая безопасность?",opts:["Защиту человека и природы от загрязнения","Только строительство новых заводов без ограничений"],correct:0}
   ]},
 
 { n:"Основы семейного права и подготовка к взрослой жизни",
   explain:"Взрослая жизнь требует базовых знаний о правах и обязанностях: трудовые права, основы бюджета семьи, ответственность за свои решения.",
+  svg:`<svg viewBox="0 0 160 180" width="160">
+  <rect x="20" y="10" width="120" height="160" rx="8" fill="#FFFEF8" stroke="#2B2A26" stroke-width="3"/>
+  <line x1="40" y1="45" x2="120" y2="45" stroke="#736C5E" stroke-width="3"/>
+  <line x1="40" y1="70" x2="120" y2="70" stroke="#736C5E" stroke-width="3"/>
+  <line x1="40" y1="95" x2="90" y2="95" stroke="#736C5E" stroke-width="3"/>
+  <path d="M60 140l50-50 15 15-50 50-20 5z" fill="#E3922E" stroke="#B96F16" stroke-width="2" stroke-linejoin="round"/>
+  </svg>`,
   bank:[
     {p:"Что важно понимать, готовясь к взрослой самостоятельной жизни?",opts:["Свои права, обязанности и ответственность за решения","Достаточно вообще ничего не знать"],correct:0}
   ]},
@@ -54,12 +100,26 @@ const OBZH11_MOD = [
 
 { n:"Военная подготовка и уставы",
   explain:"Военные уставы регламентируют порядок несения службы, права и обязанности военнослужащих, их взаимоотношения и поддержание дисциплины в армии.",
+  svg:`<svg viewBox="0 0 160 150" width="160">
+  <path d="M20 20h120v110a10 10 0 0 1-10 10H30a10 10 0 0 1-10-10z" fill="#3B6EA5" stroke="#284D77" stroke-width="3"/>
+  <line x1="80" y1="20" x2="80" y2="140" stroke="#284D77" stroke-width="2"/>
+  <polygon points="80,45 87,60 103,60 90,70 95,86 80,76 65,86 70,70 57,60 73,60" fill="#FFDE59"/>
+  </svg>`,
   bank:[
     {p:"Что регламентируют военные уставы?",opts:["Порядок службы и обязанности военнослужащих","Только форму одежды"],correct:0}
   ]},
 
 { n:"Первая помощь при переломах",
   explain:"При подозрении на перелом нужно обездвижить повреждённую конечность с помощью шины или подручных средств и как можно быстрее доставить пострадавшего к врачу.",
+  svg:`<svg viewBox="0 0 200 120" width="200">
+  <rect x="20" y="50" width="70" height="20" rx="10" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="110" y="50" width="70" height="20" rx="10" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M90 60l8-10 8 10-8 10z" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="30" y="30" width="10" height="60" fill="#E3922E" stroke="#B96F16" stroke-width="2"/>
+  <rect x="160" y="30" width="10" height="60" fill="#E3922E" stroke="#B96F16" stroke-width="2"/>
+  <line x1="30" y1="40" x2="170" y2="40" stroke="#B96F16" stroke-width="4"/>
+  <line x1="30" y1="80" x2="170" y2="80" stroke="#B96F16" stroke-width="4"/>
+  </svg>`,
   bank:[
     {p:"Что нужно сделать при подозрении на перелом?",opts:["Обездвижить конечность и вызвать врача","Пытаться самому вправить кость"],correct:0}
   ]},
@@ -72,6 +132,21 @@ const OBZH11_MOD = [
 
 { n:"Основы государственной системы обеспечения безопасности",
   explain:"В России действует система органов, отвечающих за безопасность населения: МЧС (чрезвычайные ситуации), полиция (правопорядок), скорая помощь (медицина).",
+  svg:`<svg viewBox="0 0 260 150" width="260">
+  <rect x="90" y="8" width="80" height="30" rx="6" fill="#2B2A26" stroke="#2B2A26" stroke-width="2"/>
+  <text x="130" y="28" font-size="10" text-anchor="middle" fill="#fff">Безопасность</text>
+  <line x1="130" y1="38" x2="130" y2="54" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="40" y1="54" x2="220" y2="54" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="40" y1="54" x2="40" y2="70" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="130" y1="54" x2="130" y2="70" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="220" y1="54" x2="220" y2="70" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="4" y="70" width="72" height="46" rx="6" fill="#E3922E" stroke="#B96F16" stroke-width="2"/>
+  <text x="40" y="97" font-size="11" text-anchor="middle" fill="#fff">МЧС</text>
+  <rect x="94" y="70" width="72" height="46" rx="6" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <text x="130" y="97" font-size="11" text-anchor="middle" fill="#fff">Полиция</text>
+  <rect x="184" y="70" width="72" height="46" rx="6" fill="#D6524F" stroke="#A83836" stroke-width="2"/>
+  <text x="220" y="97" font-size="11" text-anchor="middle" fill="#fff">Скорая</text>
+  </svg>`,
   bank:[
     {p:"Какая служба отвечает за чрезвычайные ситуации в России?",opts:["МЧС","Только пожарная охрана"],correct:0}
   ]}

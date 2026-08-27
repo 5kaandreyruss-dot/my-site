@@ -5,6 +5,12 @@ const LIT5_MOD = [
 
 { n:"Мифы Древней Греции",
   explain:"<b>Миф</b> — древнее сказание о богах и героях. Древние греки верили, что боги живут на горе <b>Олимп</b>. Известный герой мифов — <b>Геракл</b>, совершивший 12 подвигов.",
+  svg:`<svg viewBox="0 0 200 130" width="200">
+  <polygon points="30,110 80,30 130,110" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <polygon points="70,110 100,55 130,110" fill="#EEE3F5" stroke="#9973B8" stroke-width="1.5" opacity="0.8"/>
+  <polygon points="95,40 82,68 95,68 85,95 112,60 98,60" fill="#FFDE59" stroke="#C99A00" stroke-width="1.5"/>
+  <text x="100" y="122" font-size="10" text-anchor="middle" fill="#736C5E">гора Олимп</text>
+  </svg>`,
   bank:[
     {p:"Что такое миф?",opts:["Древнее сказание о богах и героях","Научная статья","Письмо другу"],correct:0},
     {p:"На какой горе, по преданию, жили греческие боги?",opts:["Олимп","Эверест","Казбек"],correct:0},
@@ -15,6 +21,20 @@ const LIT5_MOD = [
 
 { n:"Роды литературы",
   explain:"Литература делится на три рода: <b>эпос</b> (рассказ о событиях: рассказы, повести), <b>лирика</b> (чувства и переживания: стихи) и <b>драма</b> (произведение для сцены: пьесы).",
+  svg:`<svg viewBox="0 0 260 110" width="260">
+  <rect x="6" y="10" width="76" height="70" rx="10" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <path d="M28 30h32v40h-32z" fill="none" stroke="#284D77" stroke-width="2"/>
+  <path d="M28 40h32M28 48h32M28 56h24" stroke="#284D77" stroke-width="2"/>
+  <text x="44" y="95" font-size="9" text-anchor="middle" fill="#736C5E">эпос</text>
+  <rect x="92" y="10" width="76" height="70" rx="10" fill="#FBE1EC" stroke="#D9679A" stroke-width="2"/>
+  <path d="M130 55c-14-12-22-22-14-32 6-7 16-5 14 4 -2-9 8-11 14-4 8 10 0 20-14 32z" fill="#A8447A"/>
+  <text x="130" y="95" font-size="9" text-anchor="middle" fill="#736C5E">лирика</text>
+  <rect x="178" y="10" width="76" height="70" rx="10" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <circle cx="205" cy="45" r="14" fill="none" stroke="#B96F16" stroke-width="2"/>
+  <circle cx="227" cy="45" r="14" fill="none" stroke="#B96F16" stroke-width="2"/>
+  <path d="M198 42q7 6 14 0M220 50q7-6 14 0" stroke="#B96F16" stroke-width="2" fill="none"/>
+  <text x="216" y="95" font-size="9" text-anchor="middle" fill="#736C5E">драма</text>
+  </svg>`,
   bank:[
     {p:"К какому роду литературы относится рассказ?",opts:["Эпос","Лирика","Драма"],correct:0},
     {p:"К какому роду литературы относится стихотворение о чувствах?",opts:["Лирика","Эпос","Драма"],correct:0},
@@ -91,6 +111,15 @@ const LIT5_MOD = [
 
 { n:"Крылов: басни",
   explain:"Иван Андреевич <b>Крылов</b> — русский баснописец. В баснях «Волк и Ягнёнок», «Свинья под Дубом» животные-герои показывают человеческие недостатки, а в конце — мораль.",
+  svg:`<svg viewBox="0 0 200 110" width="200">
+  <ellipse cx="60" cy="70" rx="28" ry="18" fill="#FFFEF8" stroke="#736C5E" stroke-width="2"/>
+  <circle cx="35" cy="58" r="12" fill="#FFFEF8" stroke="#736C5E" stroke-width="2"/>
+  <circle cx="30" cy="50" r="2" fill="#2B2A26"/>
+  <ellipse cx="150" cy="65" rx="30" ry="16" fill="#736C5E"/>
+  <polygon points="120,55 108,42 122,52" fill="#736C5E"/>
+  <circle cx="118" cy="58" r="2" fill="#FFFEF8"/>
+  <text x="100" y="100" font-size="10" text-anchor="middle" fill="#736C5E">«Волк и Ягнёнок»</text>
+  </svg>`,
   bank:[
     {p:"Кто автор басен «Волк и Ягнёнок», «Свинья под Дубом»?",opts:["И. А. Крылов","А. С. Пушкин","М. Ю. Лермонтов"],correct:0},
     {p:"Что показывают животные-герои в баснях Крылова?",opts:["Человеческие недостатки","Только повадки зверей"],correct:0},

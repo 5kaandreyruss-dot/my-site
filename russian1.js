@@ -39,6 +39,13 @@ const RUS1_MOD = [
 
 { n:"Слог",
   explain:"Слог — это часть слова, которая произносится за один толчок воздуха. В слове столько слогов, сколько в нём гласных звуков.",
+  svg:`<svg viewBox="0 0 200 90" width="200">
+  <rect x="20" y="25" width="70" height="40" rx="8" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="55" y="52" font-size="20" text-anchor="middle">ма</text>
+  <rect x="100" y="25" width="70" height="40" rx="8" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="135" y="52" font-size="20" text-anchor="middle">ма</text>
+  <text x="100" y="80" font-size="11" text-anchor="middle" fill="#736C5E">два слога</text>
+  </svg>`,
   bank:[
     {p:"Сколько слогов в слове «мак»? (один гласный звук)",opts:["Один","Два","Три"],correct:0},
     {p:"Сколько слогов в слове «ма-ма»?",opts:["Два","Один","Четыре"],correct:0},
@@ -50,6 +57,13 @@ const RUS1_MOD = [
 
 { n:"Ударение",
   explain:"Ударение — слог, который произносится сильнее и дольше остальных.",
+  svg:`<svg viewBox="0 0 200 100" width="200">
+  <rect x="20" y="35" width="60" height="40" rx="8" fill="#FFFEF8" stroke="#736C5E" stroke-width="2"/>
+  <text x="50" y="62" font-size="18" text-anchor="middle" fill="#736C5E">ру</text>
+  <rect x="90" y="30" width="70" height="50" rx="8" fill="#FBE1E0" stroke="#D6524F" stroke-width="2.5"/>
+  <text x="125" y="63" font-size="22" text-anchor="middle" fill="#A83836">ка</text>
+  <text x="90" y="95" font-size="10" text-anchor="middle" fill="#736C5E">ударный слог</text>
+  </svg>`,
   bank:[
     {p:"ма-ма — какой слог ударный (первый)?",opts:["ма (первый)","ма (второй)"],correct:0},
     {p:"ру-ка — какой слог ударный?",opts:["ру","ка"],correct:1},
@@ -60,6 +74,16 @@ const RUS1_MOD = [
 
 { n:"Слово и предложение",
   explain:"Слово называет предмет, действие или признак. Предложение — это несколько слов, связанных по смыслу, которое выражает законченную мысль.",
+  svg:`<svg viewBox="0 0 240 100" width="240">
+  <rect x="10" y="15" width="60" height="34" rx="8" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="40" y="37" font-size="13" text-anchor="middle">Кот</text>
+  <text x="40" y="65" font-size="10" text-anchor="middle" fill="#736C5E">слово</text>
+  <rect x="100" y="15" width="40" height="34" rx="8" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="120" y="37" font-size="12" text-anchor="middle">Кот</text>
+  <rect x="144" y="15" width="46" height="34" rx="8" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="167" y="37" font-size="12" text-anchor="middle">спит.</text>
+  <text x="145" y="65" font-size="10" text-anchor="middle" fill="#736C5E">предложение</text>
+  </svg>`,
   bank:[
     {p:"«Кот» — это",opts:["Слово","Предложение"],correct:0},
     {p:"«Кот спит на диване» — это",opts:["Предложение","Просто буква"],correct:0},
@@ -120,6 +144,14 @@ const RUS1_MOD = [
 
 { n:"Знаки препинания в конце предложения",
   explain:"В конце предложения ставится точка (обычное сообщение), вопросительный знак (вопрос) или восклицательный знак (сильное чувство).",
+  svg:`<svg viewBox="0 0 220 100" width="220">
+  <rect x="6" y="10" width="62" height="80" rx="10" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="37" y="68" font-size="42" text-anchor="middle" fill="#284D77">.</text>
+  <rect x="80" y="10" width="62" height="80" rx="10" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="111" y="64" font-size="36" text-anchor="middle" fill="#B96F16">?</text>
+  <rect x="154" y="10" width="62" height="80" rx="10" fill="#FBE1E0" stroke="#D6524F" stroke-width="2"/>
+  <text x="185" y="64" font-size="36" text-anchor="middle" fill="#A83836">!</text>
+  </svg>`,
   bank:[
     {p:"«Который час?» — какой знак нужен в конце?",opts:["Вопросительный","Точка","Восклицательный"],correct:0},
     {p:"«Ура, каникулы!» — какой знак нужен в конце?",opts:["Восклицательный","Точка","Вопросительный"],correct:0},

@@ -4,6 +4,13 @@ const WORLD3_MOD = [
 
 { n:"Тела, вещества, частицы",
   explain:"Тело — любой предмет вокруг нас. Вещество — то, из чего состоит тело (например, вода, железо). Частицы — мельчайшие невидимые кусочки, из которых состоит вещество.",
+  svg:`<svg viewBox="0 0 200 160" width="200">
+  <circle cx="80" cy="70" r="50" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="118" y1="108" x2="165" y2="150" stroke="#2B2A26" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="60" cy="55" r="5" fill="#3B6EA5"/><circle cx="90" cy="50" r="5" fill="#3B6EA5"/>
+  <circle cx="70" cy="80" r="5" fill="#3B6EA5"/><circle cx="100" cy="85" r="5" fill="#3B6EA5"/>
+  <circle cx="55" cy="90" r="5" fill="#3B6EA5"/><circle cx="95" cy="60" r="5" fill="#3B6EA5"/>
+  </svg>`,
   bank:[
     {p:"Камень, стол, облако — что это?",opts:["Тела","Вещества","Частицы"],correct:0},
     {p:"Вода, железо, сахар — что это?",opts:["Вещества","Тела","Частицы"],correct:0},
@@ -14,6 +21,13 @@ const WORLD3_MOD = [
 
 { n:"Воздух и его свойства",
   explain:"Воздух — это смесь газов (в основном азот и кислород). Воздух не имеет цвета и запаха, он упругий и плохо проводит тепло.",
+  svg:`<svg viewBox="0 0 200 140" width="200">
+  <path d="M20 60c0-30 30-40 60-20" fill="none" stroke="#3B6EA5" stroke-width="3" stroke-linecap="round"/>
+  <path d="M20 90c0-25 40-35 80-15" fill="none" stroke="#3B6EA5" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <path d="M20 120c0-20 50-30 100-10" fill="none" stroke="#3B6EA5" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+  <circle cx="150" cy="70" r="30" fill="#FFDE59" opacity="0.5" stroke="#C99A00" stroke-width="2"/>
+  <line x1="150" y1="100" x2="150" y2="115" stroke="#2B2A26" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Какого цвета воздух?",opts:["Он бесцветный, без цвета","Голубой","Белый"],correct:0},
     {p:"Какой газ в воздухе нужен нам для дыхания?",opts:["Кислород","Азот","Углекислый газ"],correct:0},
@@ -24,6 +38,14 @@ const WORLD3_MOD = [
 
 { n:"Вода и три её состояния",
   explain:"Вода может быть в трёх состояниях: жидком (вода), твёрдом (лёд) и газообразном (пар). Она переходит из одного состояния в другое при нагревании или охлаждении.",
+  svg:`<svg viewBox="0 0 260 130" width="260">
+  <rect x="10" y="20" width="60" height="60" rx="6" fill="#DCE9F6" stroke="#284D77" stroke-width="2"/>
+  <text x="40" y="58" font-size="16" text-anchor="middle" fill="#284D77">лёд</text>
+  <path d="M110 80c0-30 30-30 30-55 0 25 30 25 30 55a30 30 0 0 1-60 0z" fill="#3B6EA5" stroke="#284D77" stroke-width="2"/>
+  <text x="140" y="115" font-size="12" text-anchor="middle" fill="#284D77">вода</text>
+  <path d="M210 40c8-10 -4-16 4-26M225 40c8-10 -4-16 4-26M240 40c8-10 -4-16 4-26" fill="none" stroke="#736C5E" stroke-width="3" stroke-linecap="round"/>
+  <text x="225" y="80" font-size="12" text-anchor="middle" fill="#736C5E">пар</text>
+  </svg>`,
   bank:[
     {p:"Как называется твёрдое состояние воды?",opts:["Лёд","Пар","Роса"],correct:0},
     {p:"Как называется газообразное состояние воды?",opts:["Пар","Лёд","Иней"],correct:0},
@@ -34,6 +56,16 @@ const WORLD3_MOD = [
 
 { n:"Разнообразие растений",
   explain:"Растения делятся на группы: водоросли (живут в воде, без корня), мхи, папоротники, хвойные (шишки, иголки) и цветковые (есть цветок и плод).",
+  svg:`<svg viewBox="0 0 260 130" width="260">
+  <rect x="0" y="90" width="260" height="40" fill="#DCE9F6"/>
+  <path d="M20 130c0-30 10-40 5-60M35 130c0-25 -10-35 -5-55" stroke="#3E8F86" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <polygon points="90,20 105,90 75,90" fill="#3F7A3D"/>
+  <polygon points="90,40 110,90 70,90" fill="#5F9A5C" opacity="0.8"/>
+  <circle cx="170" cy="45" r="10" fill="#D6524F"/>
+  <circle cx="170" cy="45" r="4" fill="#FFDE59"/>
+  <line x1="170" y1="55" x2="170" y2="90" stroke="#3F7A3D" stroke-width="4"/>
+  <text x="220" y="70" font-size="24" text-anchor="middle">🌿</text>
+  </svg>`,
   bank:[
     {p:"У какой группы растений есть шишки и иголки вместо листьев?",opts:["Хвойные","Мхи","Водоросли"],correct:0},
     {p:"Какая группа растений живёт в воде и не имеет корня?",opts:["Водоросли","Хвойные","Цветковые"],correct:0},
@@ -44,6 +76,16 @@ const WORLD3_MOD = [
 
 { n:"Разнообразие животных",
   explain:"Животные делятся на группы: черви, моллюски, ракообразные, паукообразные, насекомые, рыбы, земноводные, пресмыкающиеся, птицы и звери (млекопитающие).",
+  svg:`<svg viewBox="0 0 240 120" width="240">
+  <text x="30" y="45" font-size="26" text-anchor="middle">🦋</text>
+  <text x="90" y="45" font-size="26" text-anchor="middle">🐟</text>
+  <text x="150" y="45" font-size="26" text-anchor="middle">🐸</text>
+  <text x="210" y="45" font-size="26" text-anchor="middle">🦎</text>
+  <text x="30" y="95" font-size="26" text-anchor="middle">🦅</text>
+  <text x="90" y="95" font-size="26" text-anchor="middle">🐻</text>
+  <text x="150" y="95" font-size="26" text-anchor="middle">🦀</text>
+  <text x="210" y="95" font-size="26" text-anchor="middle">🐌</text>
+  </svg>`,
   bank:[
     {p:"У насекомых сколько ног?",opts:["Шесть","Четыре","Восемь"],correct:0},
     {p:"У паукообразных сколько ног?",opts:["Восемь","Шесть","Четыре"],correct:0},
@@ -56,6 +98,15 @@ const WORLD3_MOD = [
 
 { n:"Цепи питания",
   explain:"Цепь питания показывает, кто кем питается в природе: растение → травоядное животное → хищник.",
+  svg:`<svg viewBox="0 0 260 100" width="260">
+  <text x="35" y="50" font-size="30" text-anchor="middle">🌾</text>
+  <line x1="65" y1="45" x2="95" y2="45" stroke="#2B2A26" stroke-width="2"/>
+  <polygon points="95,40 105,45 95,50" fill="#2B2A26"/>
+  <text x="135" y="50" font-size="30" text-anchor="middle">🐇</text>
+  <line x1="165" y1="45" x2="195" y2="45" stroke="#2B2A26" stroke-width="2"/>
+  <polygon points="195,40 205,45 195,50" fill="#2B2A26"/>
+  <text x="230" y="50" font-size="30" text-anchor="middle">🦊</text>
+  </svg>`,
   bank:[
     {p:"Кто в цепи питания обычно находится в самом начале?",opts:["Растение","Хищник","Гриб"],correct:0},
     {p:"Заяц ест траву. Кто здесь травоядное животное?",opts:["Заяц","Трава","Никто"],correct:0},
@@ -66,6 +117,13 @@ const WORLD3_MOD = [
 
 { n:"Организм человека",
   explain:"Наш организм состоит из систем органов: пищеварительная (переваривает еду), дыхательная (лёгкие), кровеносная (сердце и сосуды разносят кровь).",
+  svg:`<svg viewBox="0 0 160 200" width="160">
+  <circle cx="80" cy="35" r="26" fill="#FFDE59" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="55" y="60" width="50" height="80" rx="16" fill="#3B6EA5" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M70 90c-8-8-20 0-14 12 4 8 14 14 14 14s10-6 14-14c6-12-6-20-14-12z" fill="#D6524F"/>
+  <ellipse cx="55" cy="85" rx="10" ry="18" fill="#3E8F86" opacity="0.7"/>
+  <ellipse cx="105" cy="85" rx="10" ry="18" fill="#3E8F86" opacity="0.7"/>
+  </svg>`,
   bank:[
     {p:"Какая система органов переваривает пищу?",opts:["Пищеварительная","Дыхательная","Кровеносная"],correct:0},
     {p:"Какой орган перекачивает кровь по всему телу?",opts:["Сердце","Желудок","Лёгкие"],correct:0},
@@ -76,6 +134,15 @@ const WORLD3_MOD = [
 
 { n:"Что такое экономика",
   explain:"Экономика — это хозяйство: как люди производят товары, продают их и зарабатывают деньги. В экономике участвуют промышленность, сельское хозяйство и торговля.",
+  svg:`<svg viewBox="0 0 240 130" width="240">
+  <rect x="10" y="60" width="60" height="50" fill="#736C5E" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="20" y="35" width="14" height="30" fill="#736C5E" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="40" y="25" width="14" height="40" fill="#736C5E" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="120" cy="65" r="24" fill="#FFDE59" stroke="#C99A00" stroke-width="2"/>
+  <text x="120" y="72" font-size="18" text-anchor="middle" fill="#B96F16" font-weight="700">₽</text>
+  <rect x="165" y="60" width="60" height="50" fill="#D9679A" opacity="0.85" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M165 60l30-20 30 20" fill="none" stroke="#2B2A26" stroke-width="2"/>
+  </svg>`,
   bank:[
     {p:"Что изучает экономика?",opts:["Как люди производят и обменивают товары","Только природу","Только историю"],correct:0},
     {p:"Как называется отрасль, которая выращивает растения и разводит животных?",opts:["Сельское хозяйство","Промышленность","Торговля"],correct:0},
@@ -86,6 +153,22 @@ const WORLD3_MOD = [
 
 { n:"Части растения",
   explain:"У растения есть корень (держит в почве и берёт воду), стебель (несёт вещества вверх), листья (дышат и ловят свет) и цветок (образует плоды и семена).",
+  svg:`<svg viewBox="0 0 200 210" width="200">
+  <line x1="10" y1="145" x2="190" y2="145" stroke="#B96F16" stroke-width="2" stroke-dasharray="4 4"/>
+  <circle cx="100" cy="50" r="15" fill="#D6524F" opacity="0.9"/>
+  <circle cx="80" cy="42" r="12" fill="#E3922E" opacity="0.9"/>
+  <circle cx="120" cy="42" r="12" fill="#E3922E" opacity="0.9"/>
+  <circle cx="100" cy="38" r="9" fill="#FFDE59"/>
+  <line x1="100" y1="58" x2="100" y2="143" stroke="#3F7A3D" stroke-width="6" stroke-linecap="round"/>
+  <path d="M100 85c-20-4-32 8-36 20 16 6 30-4 36-20z" fill="#5F9A5C"/>
+  <path d="M100 108c20-4 32 8 36 20-16 6-30-4-36-20z" fill="#5F9A5C"/>
+  <path d="M100 145c-6 12-4 26 2 36M100 145c6 12 4 26-2 36M100 145c-12 8-18 20-16 32M100 145c12 8 18 20 16 32"
+    stroke="#B96F16" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="145" y="50" font-size="10" fill="#2B2A26">цветок</text>
+  <text x="135" y="98" font-size="10" fill="#2B2A26">лист</text>
+  <text x="120" y="145" font-size="10" fill="#2B2A26">стебель</text>
+  <text x="112" y="190" font-size="10" fill="#2B2A26">корень</text>
+  </svg>`,
   bank:[
     {p:"Какая часть растения впитывает воду из почвы?",opts:["Корень","Лист","Цветок"],correct:0},
     {p:"Какая часть растения ловит солнечный свет?",opts:["Лист","Корень","Стебель"],correct:0},
@@ -95,6 +178,15 @@ const WORLD3_MOD = [
 
 { n:"Полезные ископаемые",
   explain:"Полезные ископаемые — вещества, которые добывают из земли для использования: уголь и нефть (топливо), железная руда (для металла), песок и глина (для стройки).",
+  svg:`<svg viewBox="0 0 220 120" width="220">
+  <ellipse cx="40" cy="90" rx="30" ry="14" fill="#2B2A26"/>
+  <circle cx="30" cy="80" r="10" fill="#2B2A26"/><circle cx="50" cy="78" r="9" fill="#2B2A26"/>
+  <text x="40" y="30" font-size="11" text-anchor="middle" fill="#2B2A26">уголь</text>
+  <path d="M120 40c-14 18-14 34 0 46 14-12 14-28 0-46z" fill="#736C5E" stroke="#2B2A26" stroke-width="2"/>
+  <text x="120" y="100" font-size="11" text-anchor="middle" fill="#2B2A26">нефть</text>
+  <polygon points="180,50 195,70 185,95 165,95 155,70" fill="#E3922E" stroke="#B96F16" stroke-width="2"/>
+  <text x="175" y="115" font-size="11" text-anchor="middle" fill="#2B2A26">руда</text>
+  </svg>`,
   bank:[
     {p:"Что используют как топливо для получения энергии?",opts:["Уголь и нефть","Только песок","Только глину"],correct:0},
     {p:"Из чего получают металл?",opts:["Из железной руды","Из песка","Из угля"],correct:0},
@@ -104,6 +196,14 @@ const WORLD3_MOD = [
 
 { n:"Материки и океаны",
   explain:"На Земле есть шесть материков (Евразия, Африка, Северная Америка, Южная Америка, Австралия, Антарктида) и четыре океана (Тихий, Атлантический, Индийский, Северный Ледовитый).",
+  svg:`<svg viewBox="0 0 200 200" width="200">
+  <circle cx="100" cy="100" r="85" fill="#3B6EA5" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M50 60c10-15 30-10 35 0 10 5 5 20-5 22-15 5-35-8-30-22z" fill="#5F9A5C"/>
+  <path d="M110 50c20-8 45 5 40 25-5 15-30 20-45 8-10-8-8-25 5-33z" fill="#5F9A5C"/>
+  <path d="M70 120c15-5 30 5 28 20-2 12-20 18-32 8-10-8-8-22 4-28z" fill="#5F9A5C"/>
+  <path d="M130 130c12-4 28 4 26 18-2 10-18 16-28 6-8-6-8-18 2-24z" fill="#5F9A5C"/>
+  <ellipse cx="100" cy="100" rx="85" ry="30" fill="none" stroke="#284D77" stroke-width="1" opacity="0.5"/>
+  </svg>`,
   bank:[
     {p:"Сколько материков на Земле?",opts:["Шесть","Три","Десять"],correct:0},
     {p:"На каком материке находится Россия?",opts:["Евразия","Африка","Австралия"],correct:0},
@@ -113,6 +213,16 @@ const WORLD3_MOD = [
 
 { n:"Природные зоны России",
   explain:"В России есть разные природные зоны: тундра (холод, мало растений), тайга (хвойные леса), степь (травы, мало деревьев), пустыня (жара, мало воды).",
+  svg:`<svg viewBox="0 0 260 120" width="260">
+  <rect x="0" y="0" width="260" height="30" fill="#3B6EA5" opacity="0.2" stroke="#2B2A26" stroke-width="1"/>
+  <text x="130" y="20" font-size="11" text-anchor="middle" fill="#284D77">тундра</text>
+  <rect x="0" y="30" width="260" height="30" fill="#3F7A3D" stroke="#2B2A26" stroke-width="1"/>
+  <text x="130" y="50" font-size="11" text-anchor="middle" fill="#FFFEF8">тайга</text>
+  <rect x="0" y="60" width="260" height="30" fill="#E3922E" stroke="#2B2A26" stroke-width="1"/>
+  <text x="130" y="80" font-size="11" text-anchor="middle" fill="#2B2A26">степь</text>
+  <rect x="0" y="90" width="260" height="30" fill="#FFDE59" stroke="#2B2A26" stroke-width="1"/>
+  <text x="130" y="110" font-size="11" text-anchor="middle" fill="#B96F16">пустыня</text>
+  </svg>`,
   bank:[
     {p:"Какая природная зона самая холодная, с мало растений?",opts:["Тундра","Степь","Пустыня"],correct:0},
     {p:"Какая зона покрыта хвойными лесами?",opts:["Тайга","Пустыня","Тундра"],correct:0},
@@ -122,6 +232,13 @@ const WORLD3_MOD = [
 
 { n:"Красная книга",
   explain:"В <b>Красную книгу</b> заносят редкие и исчезающие виды животных и растений, которых нужно особенно беречь и охранять.",
+  svg:`<svg viewBox="0 0 160 180" width="160">
+  <rect x="30" y="20" width="100" height="140" rx="6" fill="#D6524F" stroke="#A83836" stroke-width="2"/>
+  <rect x="30" y="20" width="14" height="140" fill="#A83836"/>
+  <text x="90" y="70" font-size="14" text-anchor="middle" fill="#FFFEF8" font-weight="700">Красная</text>
+  <text x="90" y="88" font-size="14" text-anchor="middle" fill="#FFFEF8" font-weight="700">книга</text>
+  <text x="90" y="130" font-size="30" text-anchor="middle">🦋</text>
+  </svg>`,
   bank:[
     {p:"Кого заносят в Красную книгу?",opts:["Редкие и исчезающие виды","Только домашних животных","Все виды подряд"],correct:0},
     {p:"Зачем нужна Красная книга?",opts:["Чтобы беречь редкие виды","Чтобы охотиться на животных","Просто для картинок"],correct:0}
@@ -129,6 +246,16 @@ const WORLD3_MOD = [
 
 { n:"Полезные привычки для здоровья",
   explain:"Для здоровья важно правильно питаться, заниматься спортом, достаточно спать и соблюдать гигиену — мыть руки перед едой.",
+  svg:`<svg viewBox="0 0 240 120" width="240">
+  <circle cx="40" cy="55" r="35" fill="#5F9A5C" opacity="0.15"/>
+  <text x="40" y="65" font-size="30" text-anchor="middle">🪥</text>
+  <circle cx="100" cy="55" r="35" fill="#D6524F" opacity="0.15"/>
+  <text x="100" y="65" font-size="30" text-anchor="middle">🍎</text>
+  <circle cx="160" cy="55" r="35" fill="#3B6EA5" opacity="0.15"/>
+  <text x="160" y="65" font-size="30" text-anchor="middle">🛌</text>
+  <circle cx="215" cy="55" r="30" fill="#E3922E" opacity="0.15"/>
+  <text x="215" y="65" font-size="26" text-anchor="middle">🏃</text>
+  </svg>`,
   bank:[
     {p:"Когда нужно мыть руки?",opts:["Перед едой","Только по праздникам","Никогда"],correct:0},
     {p:"Что полезно для здоровья тела?",opts:["Спорт и движение","Постоянно сидеть на месте","Есть только сладкое"],correct:0},

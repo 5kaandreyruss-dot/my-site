@@ -57,6 +57,16 @@ const LIT7_MOD = [
 
 { n:"Теория литературы: юмор и сатира",
   explain:"<b>Юмор</b> — добрая, беззлобная насмешка. <b>Сатира</b> — острая, обличающая насмешка над серьёзными недостатками общества или человека.",
+  svg:`<svg viewBox="0 0 200 110" width="200">
+  <circle cx="65" cy="55" r="36" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <circle cx="52" cy="45" r="5" fill="#3F7A3D"/><circle cx="78" cy="45" r="5" fill="#3F7A3D"/>
+  <path d="M46 68q19 14 38 0" fill="none" stroke="#3F7A3D" stroke-width="3" stroke-linecap="round"/>
+  <text x="65" y="100" font-size="9" text-anchor="middle" fill="#736C5E">юмор — добрый</text>
+  <circle cx="135" cy="55" r="36" fill="#FBE1E0" stroke="#D6524F" stroke-width="2"/>
+  <path d="M118 42l12 6M152 42l-12 6" stroke="#A83836" stroke-width="3"/>
+  <path d="M118 74q17-14 34 0" fill="none" stroke="#A83836" stroke-width="3" stroke-linecap="round"/>
+  <text x="135" y="100" font-size="9" text-anchor="middle" fill="#736C5E">сатира — острая</text>
+  </svg>`,
   bank:[
     {p:"Чем отличается юмор от сатиры?",opts:["Юмор добрый, сатира — острая и обличающая","Это одно и то же"],correct:0},
     {p:"Рассказ, добродушно высмеивающий смешную привычку героя — это пример...",opts:["Юмора","Трагедии"],correct:0},
@@ -87,6 +97,17 @@ const LIT7_MOD = [
 
 { n:"Публицистика и очерк",
   explain:"<b>Очерк</b> — небольшое произведение, основанное на реальных фактах, но написанное художественным языком. Относится к публицистическому жанру.",
+  svg:`<svg viewBox="0 0 180 110" width="180">
+  <rect x="30" y="15" width="120" height="80" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="42" y="27" width="40" height="26" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="1.5"/>
+  <line x1="90" y1="30" x2="140" y2="30" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="90" y1="40" x2="140" y2="40" stroke="#2B2A26" stroke-width="1.5"/>
+  <line x1="90" y1="49" x2="130" y2="49" stroke="#2B2A26" stroke-width="1.5"/>
+  <line x1="42" y1="64" x2="140" y2="64" stroke="#2B2A26" stroke-width="1.5"/>
+  <line x1="42" y1="72" x2="140" y2="72" stroke="#2B2A26" stroke-width="1.5"/>
+  <line x1="42" y1="80" x2="120" y2="80" stroke="#2B2A26" stroke-width="1.5"/>
+  <text x="90" y="105" font-size="9" text-anchor="middle" fill="#736C5E">очерк — публицистика</text>
+  </svg>`,
   bank:[
     {p:"На чём основан очерк?",opts:["На реальных фактах","Только на вымысле"],correct:0},
     {p:"К какому роду литературы ближе всего очерк?",opts:["К публицистике","К лирике"],correct:0}

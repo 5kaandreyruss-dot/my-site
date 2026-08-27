@@ -5,6 +5,27 @@ const LIT_MOD = [
 
 { n:"Жанры произведений",
   explain:"Сказка — история с волшебством и вымыслом. Рассказ — история о реальной жизни. Стихотворение — текст с рифмой и ритмом.",
+  svg:`<svg viewBox="0 0 260 150" width="260">
+  <rect x="10" y="10" width="120" height="60" rx="10" fill="#EEE3F5" stroke="#9973B8" stroke-width="2"/>
+  <path d="M70 24l4.5 10 11 1-8 7.5 2.5 11-10-5.5-10 5.5 2.5-11-8-7.5 11-1z" fill="#9973B8"/>
+  <text x="70" y="60" font-size="10" text-anchor="middle" fill="#736C5E">сказка</text>
+  <rect x="140" y="10" width="120" height="60" rx="10" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <path d="M172 26h56v30h-56zM200 26v30" fill="none" stroke="#284D77" stroke-width="2"/>
+  <path d="M172 26c8-4 20-4 28 0M228 26c-8-4-20-4-28 0" fill="none" stroke="#284D77" stroke-width="1.5"/>
+  <text x="200" y="60" font-size="10" text-anchor="middle" fill="#736C5E">рассказ</text>
+  <rect x="10" y="80" width="120" height="60" rx="10" fill="#FBE1EC" stroke="#D9679A" stroke-width="2"/>
+  <circle cx="58" cy="118" r="6" fill="#A8447A"/>
+  <circle cx="80" cy="108" r="6" fill="#A8447A"/>
+  <path d="M64 118v-26M86 108v-20" stroke="#A8447A" stroke-width="2"/>
+  <text x="70" y="132" font-size="10" text-anchor="middle" fill="#736C5E">стихотворение</text>
+  <rect x="140" y="80" width="120" height="60" rx="10" fill="#FFF3C9" stroke="#C99A00" stroke-width="2"/>
+  <ellipse cx="200" cy="112" rx="10" ry="14" fill="#C99A00"/>
+  <circle cx="185" cy="98" r="5" fill="#C99A00"/>
+  <circle cx="215" cy="98" r="5" fill="#C99A00"/>
+  <circle cx="178" cy="112" r="4" fill="#C99A00"/>
+  <circle cx="222" cy="112" r="4" fill="#C99A00"/>
+  <text x="200" y="132" font-size="10" text-anchor="middle" fill="#736C5E">басня (звери)</text>
+  </svg>`,
   bank:[
     {p:"История, где происходят чудеса и волшебство — это",opts:["Сказка","Рассказ","Статья"],correct:0},
     {p:"Текст, написанный в рифму — это",opts:["Стихотворение","Рассказ","Пословица"],correct:0},
@@ -43,6 +64,17 @@ const LIT_MOD = [
 
 { n:"Рифма",
   explain:"Рифма — это созвучие окончаний слов, например «кошка — ложка». Найди пару, которая рифмуется.",
+  svg:`<svg viewBox="0 0 220 90" width="220">
+  <rect x="10" y="25" width="46" height="34" rx="7" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <text x="33" y="48" font-size="13" text-anchor="middle" fill="#2B2A26">к</text>
+  <rect x="56" y="25" width="70" height="34" rx="7" fill="#FBE1E0" stroke="#D6524F" stroke-width="2"/>
+  <text x="91" y="48" font-size="13" text-anchor="middle" fill="#A83836">ошка</text>
+  <rect x="140" y="25" width="34" height="34" rx="7" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <text x="157" y="48" font-size="13" text-anchor="middle" fill="#2B2A26">л</text>
+  <rect x="174" y="25" width="46" height="34" rx="7" fill="#FBE1E0" stroke="#D6524F" stroke-width="2"/>
+  <text x="197" y="48" font-size="13" text-anchor="middle" fill="#A83836">ожка</text>
+  <text x="115" y="78" font-size="9" text-anchor="middle" fill="#736C5E">рифма: кошка — ложка</text>
+  </svg>`,
   bank:[
     {p:"Какое слово рифмуется с «кошка»?",opts:["Ложка","Стол","Дерево"],correct:0},
     {p:"Какое слово рифмуется с «свечка»?",opts:["Печка","Книга","Окно"],correct:0},
@@ -93,6 +125,16 @@ const LIT_MOD = [
 
 { n:"Басня и мораль",
   explain:"Басня — короткая история, часто про животных, которая заканчивается моралью — важным жизненным уроком.",
+  svg:`<svg viewBox="0 0 220 160" width="220">
+  <line x1="10" y1="50" x2="150" y2="35" stroke="#3F7A3D" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="120" cy="40" rx="20" ry="13" fill="#2B2A26"/>
+  <circle cx="140" cy="34" r="8" fill="#2B2A26"/>
+  <polygon points="147,32 158,34 147,37" fill="#E3922E"/>
+  <circle cx="150" cy="40" r="6" fill="#FFF3C9" stroke="#C99A00" stroke-width="1.5"/>
+  <path d="M40 150c0-30 14-50 40-55 26-5 46 10 46 32 0 24-22 30-40 26-4 10-16 8-18-3-14 4-24-3-28 0z" fill="#E3922E"/>
+  <circle cx="52" cy="108" r="3" fill="#2B2A26"/>
+  <text x="110" y="15" font-size="10" text-anchor="middle" fill="#736C5E">«Ворона и Лисица»</text>
+  </svg>`,
   bank:[
     {p:"Как называется главный вывод, урок басни?",opts:["Мораль","Рифма","Оглавление"],correct:0},
     {p:"Кто обычно является героями басен?",opts:["Животные, наделённые человеческими качествами","Только взрослые люди","Роботы"],correct:0},
@@ -178,6 +220,19 @@ const LIT_MOD = [
 
 { n:"Сказка о животных, бытовая и волшебная сказка",
   explain:"Сказки о животных — где главные герои звери. Бытовые сказки — про повседневную жизнь людей с юмором. Волшебные сказки — с чудесами и волшебными предметами.",
+  svg:`<svg viewBox="0 0 260 110" width="260">
+  <rect x="6" y="10" width="76" height="70" rx="10" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <ellipse cx="44" cy="45" rx="9" ry="12" fill="#3F7A3D"/>
+  <circle cx="32" cy="34" r="4" fill="#3F7A3D"/><circle cx="44" cy="30" r="4" fill="#3F7A3D"/><circle cx="56" cy="34" r="4" fill="#3F7A3D"/>
+  <text x="44" y="95" font-size="9" text-anchor="middle" fill="#736C5E">о животных</text>
+  <rect x="92" y="10" width="76" height="70" rx="10" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <polygon points="130,25 152,42 108,42" fill="#B96F16"/>
+  <rect x="116" y="42" width="28" height="22" fill="#FFFEF8" stroke="#B96F16" stroke-width="2"/>
+  <text x="130" y="95" font-size="9" text-anchor="middle" fill="#736C5E">бытовая</text>
+  <rect x="178" y="10" width="76" height="70" rx="10" fill="#EEE3F5" stroke="#9973B8" stroke-width="2"/>
+  <path d="M216 22l3 7 8 1-6 5 1.5 8-6.5-4-6.5 4 1.5-8-6-5 8-1z" fill="#9973B8"/>
+  <text x="216" y="95" font-size="9" text-anchor="middle" fill="#736C5E">волшебная</text>
+  </svg>`,
   bank:[
     {p:"«Теремок» — какой это вид сказки?",opts:["О животных","Волшебная","Бытовая"],correct:0},
     {p:"Сказка про Кощея Бессмертного и волшебный меч — какой это вид?",opts:["Волшебная","О животных","Бытовая"],correct:0},

@@ -5,6 +5,15 @@ const BIOLOGY8_MOD = [
 
 { n:"Организм человека как система",
   explain:"Организм человека состоит из клеток, объединённых в ткани, ткани — в органы, а органы — в системы органов, которые работают согласованно.",
+  svg:`<svg viewBox="0 0 240 100" width="240">
+  <g font-size="9" text-anchor="middle" fill="#fff">
+  <rect x="5" y="35" width="45" height="30" rx="6" fill="#9973B8"/><text x="27" y="53">клетки</text>
+  <rect x="65" y="35" width="45" height="30" rx="6" fill="#3E8F86"/><text x="87" y="53">ткани</text>
+  <rect x="125" y="35" width="45" height="30" rx="6" fill="#3B6EA5"/><text x="147" y="53">органы</text>
+  <rect x="185" y="35" width="50" height="30" rx="6" fill="#D6524F"/><text x="210" y="48">системы</text><text x="210" y="59">органов</text>
+  </g>
+  <g stroke="#2B2A26" stroke-width="1.5"><line x1="50" y1="50" x2="65" y2="50"/><line x1="110" y1="50" x2="125" y2="50"/><line x1="170" y1="50" x2="185" y2="50"/></g>
+  </svg>`,
   bank:[
     {p:"Из чего состоят ткани организма?",opts:["Из клеток","Из органов"],correct:0},
     {p:"Что объединяют в себе органы?",opts:["Разные ткани","Только один вид клеток"],correct:0},
@@ -13,6 +22,16 @@ const BIOLOGY8_MOD = [
 
 { n:"Опорно-двигательная система",
   explain:"<b>Опорно-двигательная система</b> состоит из костей (скелет) и мышц. Скелет поддерживает тело и защищает внутренние органы, а мышцы обеспечивают движение.",
+  svg:`<svg viewBox="0 0 140 220" width="140">
+  <circle cx="70" cy="26" r="16" fill="none" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="70" y1="42" x2="70" y2="130" stroke="#2B2A26" stroke-width="3"/>
+  <line x1="70" y1="60" x2="35" y2="100" stroke="#2B2A26" stroke-width="3" stroke-linecap="round"/>
+  <line x1="70" y1="60" x2="105" y2="100" stroke="#2B2A26" stroke-width="3" stroke-linecap="round"/>
+  <line x1="70" y1="130" x2="45" y2="200" stroke="#2B2A26" stroke-width="3" stroke-linecap="round"/>
+  <line x1="70" y1="130" x2="95" y2="200" stroke="#2B2A26" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="70" cy="85" rx="26" ry="35" fill="none" stroke="#D6524F" stroke-width="1.2" stroke-dasharray="2 3"/>
+  <text x="70" y="215" font-size="10" text-anchor="middle" fill="#2B2A26">скелет и мышцы</text>
+  </svg>`,
   bank:[
     {p:"Из чего состоит опорно-двигательная система?",opts:["Из костей и мышц","Только из кожи"],correct:0},
     {p:"Что обеспечивает движение тела?",opts:["Мышцы","Кости сами по себе"],correct:0},
@@ -21,6 +40,11 @@ const BIOLOGY8_MOD = [
 
 { n:"Кровеносная система",
   explain:"<b>Кровеносная система</b> состоит из сердца и сосудов. Сердце качает кровь, которая разносит кислород и питательные вещества по всему телу.",
+  svg:`<svg viewBox="0 0 140 200" width="140">
+  <path d="M70 40c-12-14-34-8-34 8 0 18 34 36 34 36s34-18 34-36c0-16-22-22-34-8z" fill="#D6524F" stroke="#A83836" stroke-width="2"/>
+  <path d="M70 84c0 30-25 40-25 70M70 84c0 30 25 40 25 70M50 100c-15 10-20 30-18 60M90 100c15 10 20 30 18 60" stroke="#D6524F" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <text x="70" y="190" font-size="10" text-anchor="middle" fill="#2B2A26">сердце и сосуды</text>
+  </svg>`,
   bank:[
     {p:"Что качает кровь по телу?",opts:["Сердце","Лёгкие"],correct:0},
     {p:"Что кровь разносит по организму?",opts:["Кислород и питательные вещества","Только воду"],correct:0},
@@ -29,6 +53,12 @@ const BIOLOGY8_MOD = [
 
 { n:"Дыхательная система",
   explain:"<b>Дыхательная система</b> включает нос, трахею и лёгкие. В лёгких кислород из воздуха попадает в кровь, а углекислый газ выводится из организма.",
+  svg:`<svg viewBox="0 0 160 180" width="160">
+  <circle cx="80" cy="20" r="10" fill="none" stroke="#2B2A26" stroke-width="2"/>
+  <line x1="80" y1="30" x2="80" y2="70" stroke="#3B6EA5" stroke-width="4"/>
+  <path d="M80 70c-20 0-35 10-40 40-4 25 10 40 30 35 10-3 12-15 10-30M80 70c20 0 35 10 40 40 4 25-10 40-30 35-10-3-12-15-10-30" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="80" y="165" font-size="10" text-anchor="middle" fill="#2B2A26">нос, трахея, лёгкие</text>
+  </svg>`,
   bank:[
     {p:"Какой орган — главный в дыхательной системе?",opts:["Лёгкие","Сердце"],correct:0},
     {p:"Что происходит в лёгких с кислородом?",opts:["Он попадает в кровь","Он превращается в воду"],correct:0},
@@ -37,6 +67,13 @@ const BIOLOGY8_MOD = [
 
 { n:"Пищеварительная система",
   explain:"<b>Пищеварительная система</b> перерабатывает пищу: рот, пищевод, желудок, кишечник. В результате пищеварения питательные вещества всасываются в кровь.",
+  svg:`<svg viewBox="0 0 160 200" width="160">
+  <circle cx="80" cy="20" r="10" fill="none" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M80 30v45" stroke="#E3922E" stroke-width="5" fill="none"/>
+  <ellipse cx="95" cy="105" rx="22" ry="18" fill="#E3922E" opacity="0.85" stroke="#B96F16" stroke-width="2"/>
+  <path d="M55 150c30 20-10 40 20 45s5-30 30-15" fill="none" stroke="#B96F16" stroke-width="5" stroke-linecap="round"/>
+  <text x="80" y="192" font-size="10" text-anchor="middle" fill="#2B2A26">рот → желудок → кишечник</text>
+  </svg>`,
   bank:[
     {p:"Где начинается процесс пищеварения?",opts:["Во рту","В желудке"],correct:0},
     {p:"Куда всасываются питательные вещества после переваривания?",opts:["В кровь","В лёгкие"],correct:0},
@@ -45,6 +82,12 @@ const BIOLOGY8_MOD = [
 
 { n:"Нервная система",
   explain:"<b>Нервная система</b> состоит из головного и спинного мозга и нервов. Она управляет работой всего организма и позволяет нам чувствовать, думать и двигаться.",
+  svg:`<svg viewBox="0 0 140 200" width="140">
+  <path d="M70 15c-18 0-24 14-20 24-8 4-8 18 2 22-2 10 8 18 18 16 10 2 20-6 18-16 10-4 10-18 2-22 4-10-2-24-20-24z" fill="#9973B8" opacity="0.85" stroke="#725189" stroke-width="2"/>
+  <line x1="70" y1="77" x2="70" y2="160" stroke="#725189" stroke-width="4"/>
+  <path d="M70 100l-25 20M70 120l25 20M70 140l-22 25" stroke="#725189" stroke-width="1.5" fill="none"/>
+  <text x="70" y="190" font-size="10" text-anchor="middle" fill="#2B2A26">мозг, спинной мозг, нервы</text>
+  </svg>`,
   bank:[
     {p:"Из чего состоит нервная система?",opts:["Из головного и спинного мозга и нервов","Только из мышц"],correct:0},
     {p:"Что позволяет нам делать нервная система?",opts:["Чувствовать, думать и двигаться","Только дышать"],correct:0},
@@ -53,6 +96,18 @@ const BIOLOGY8_MOD = [
 
 { n:"Органы чувств",
   explain:"Человек воспринимает мир через пять основных чувств: зрение (глаза), слух (уши), обоняние (нос), вкус (язык) и осязание (кожа).",
+  svg:`<svg viewBox="0 0 260 110" width="260">
+  <g stroke="#2B2A26" stroke-width="2" fill="none">
+  <ellipse cx="30" cy="45" rx="18" ry="10"/><circle cx="30" cy="45" r="5" fill="#3B6EA5" stroke="none"/>
+  <path d="M85 30c10 0 14 10 10 20s-16 8-18-2 0-18 8-18z"/>
+  <path d="M130 55c5-15 15-15 20 0-5 5-15 5-20 0z" fill="#D6524F" stroke="#A83836"/>
+  <ellipse cx="195" cy="50" rx="14" ry="9" fill="#D9679A" stroke="#A8447A"/>
+  <path d="M235 60c0-15 8-25 10-25s10 10 10 25c0 8-20 8-20 0z" fill="#E3922E" stroke="#B96F16"/>
+  </g>
+  <g font-size="9" text-anchor="middle" fill="#2B2A26">
+  <text x="30" y="75">зрение</text><text x="95" y="75">слух</text><text x="140" y="80">обоняние</text><text x="195" y="75">вкус</text><text x="245" y="80">осязание</text>
+  </g>
+  </svg>`,
   bank:[
     {p:"Сколько основных органов чувств у человека?",opts:["Пять","Три"],correct:0},
     {p:"Каким органом мы видим?",opts:["Глазами","Ушами"],correct:0},
@@ -61,6 +116,15 @@ const BIOLOGY8_MOD = [
 
 { n:"Кожа",
   explain:"<b>Кожа</b> — самый большой орган человеческого тела. Она защищает организм от повреждений и микробов, участвует в терморегуляции и чувствует прикосновения.",
+  svg:`<svg viewBox="0 0 200 120" width="200">
+  <rect x="10" y="10" width="180" height="20" fill="#FFDE59" opacity="0.5" stroke="#2B2A26" stroke-width="1.5"/>
+  <rect x="10" y="30" width="180" height="30" fill="#E3922E" opacity="0.6" stroke="#2B2A26" stroke-width="1.5"/>
+  <rect x="10" y="60" width="180" height="40" fill="#FFFEF8" stroke="#2B2A26" stroke-width="1.5"/>
+  <path d="M40 60v25M40 85c0 5 4 5 4 10M100 60v20M160 60v30" stroke="#D6524F" stroke-width="1.5" fill="none"/>
+  <text x="195" y="24" font-size="9" text-anchor="end" fill="#2B2A26">эпидермис</text>
+  <text x="195" y="48" font-size="9" text-anchor="end" fill="#2B2A26">дерма</text>
+  <text x="195" y="90" font-size="9" text-anchor="end" fill="#2B2A26">подкожная клетчатка</text>
+  </svg>`,
   bank:[
     {p:"Какой орган тела самый большой по площади?",opts:["Кожа","Печень"],correct:0},
     {p:"От чего защищает кожа?",opts:["От повреждений и микробов","Только от холода"],correct:0},
@@ -69,6 +133,15 @@ const BIOLOGY8_MOD = [
 
 { n:"Эндокринная система",
   explain:"<b>Эндокринная система</b> состоит из желёз, выделяющих гормоны — вещества, которые регулируют рост, обмен веществ и другие процессы в организме.",
+  svg:`<svg viewBox="0 0 140 200" width="140">
+  <circle cx="70" cy="26" r="16" fill="none" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="45" y="46" width="50" height="90" rx="18" fill="none" stroke="#2B2A26" stroke-width="2"/>
+  <circle cx="70" cy="30" r="5" fill="#FFDE59" stroke="#C99A00" stroke-width="1"/>
+  <circle cx="70" cy="65" r="6" fill="#FFDE59" stroke="#C99A00" stroke-width="1"/>
+  <circle cx="60" cy="95" r="5" fill="#FFDE59" stroke="#C99A00" stroke-width="1"/>
+  <path d="M70 30c10 4 20 15 25 30M70 65c14 2 25 10 32 22M60 95c-14 4-22 16-26 30" stroke="#C99A00" stroke-width="1" stroke-dasharray="2 2" fill="none"/>
+  <text x="70" y="190" font-size="10" text-anchor="middle" fill="#2B2A26">железы выделяют гормоны</text>
+  </svg>`,
   bank:[
     {p:"Что выделяют железы эндокринной системы?",opts:["Гормоны","Кровь"],correct:0},
     {p:"Что регулируют гормоны в организме?",opts:["Рост и обмен веществ","Только цвет глаз"],correct:0}
@@ -76,6 +149,15 @@ const BIOLOGY8_MOD = [
 
 { n:"Выделительная система",
   explain:"<b>Выделительная система</b> (почки, мочевой пузырь) удаляет из организма ненужные и вредные вещества, образующиеся в результате обмена веществ.",
+  svg:`<svg viewBox="0 0 140 160" width="140">
+  <path d="M50 40c-10 0-15 10-12 20s12 12 12 4-8-4-8-12 5-14 8-12z" fill="#A83836" stroke="#2B2A26" stroke-width="1.5"/>
+  <path d="M90 40c10 0 15 10 12 20s-12 12-12 4 8-4 8-12-5-14-8-12z" fill="#A83836" stroke="#2B2A26" stroke-width="1.5"/>
+  <line x1="52" y1="58" x2="65" y2="110" stroke="#D6524F" stroke-width="3"/>
+  <line x1="88" y1="58" x2="75" y2="110" stroke="#D6524F" stroke-width="3"/>
+  <ellipse cx="70" cy="120" rx="20" ry="15" fill="#FFDE59" stroke="#C99A00" stroke-width="2"/>
+  <text x="70" y="30" font-size="10" text-anchor="middle" fill="#2B2A26">почки</text>
+  <text x="70" y="150" font-size="10" text-anchor="middle" fill="#2B2A26">мочевой пузырь</text>
+  </svg>`,
   bank:[
     {p:"Какой орган — главный в выделительной системе?",opts:["Почки","Сердце"],correct:0},
     {p:"Что удаляет выделительная система из организма?",opts:["Ненужные и вредные вещества","Только воздух"],correct:0}
@@ -83,6 +165,13 @@ const BIOLOGY8_MOD = [
 
 { n:"Иммунная система",
   explain:"<b>Иммунная система</b> защищает организм от болезнетворных микробов и вирусов. Лейкоциты (белые кровяные клетки) — важная часть иммунной защиты.",
+  svg:`<svg viewBox="0 0 180 140" width="180">
+  <path d="M50 15l35 12v35c0 25-20 40-35 48-15-8-35-23-35-48V27z" fill="#3B6EA5" opacity="0.85" stroke="#284D77" stroke-width="2"/>
+  <path d="M35 60l10 10 20-22" stroke="#FFFEF8" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <circle cx="140" cy="40" r="10" fill="#A83836"/><circle cx="150" cy="70" r="8" fill="#A83836"/><circle cx="130" cy="90" r="7" fill="#A83836"/>
+  <text x="145" y="115" font-size="9" text-anchor="middle" fill="#2B2A26">микробы</text>
+  <text x="50" y="130" font-size="9" text-anchor="middle" fill="#2B2A26">защита организма</text>
+  </svg>`,
   bank:[
     {p:"От чего защищает иммунная система?",opts:["От болезнетворных микробов и вирусов","От громких звуков"],correct:0},
     {p:"Какие клетки крови участвуют в иммунной защите?",opts:["Лейкоциты","Только эритроциты"],correct:0}
@@ -90,6 +179,14 @@ const BIOLOGY8_MOD = [
 
 { n:"Витамины и здоровое питание",
   explain:"<b>Витамины</b> — вещества, необходимые организму в малых количествах для нормальной работы. Их недостаток может привести к заболеваниям, поэтому важно разнообразное питание.",
+  svg:`<svg viewBox="0 0 200 140" width="200">
+  <circle cx="100" cy="80" r="55" fill="#FFFEF8" stroke="#2B2A26" stroke-width="2"/>
+  <path d="M100 80l0-45a45 45 0 0 1 40 22z" fill="#5F9A5C" opacity="0.8"/>
+  <path d="M100 80l40-23a45 45 0 0 1 -8 46z" fill="#E3922E" opacity="0.8"/>
+  <path d="M100 80l32 40a45 45 0 0 1 -64 3z" fill="#D6524F" opacity="0.8"/>
+  <path d="M100 80l-32 43a45 45 0 0 1 -13-65z" fill="#FFDE59" opacity="0.8"/>
+  <text x="100" y="15" font-size="10" text-anchor="middle" fill="#2B2A26">разнообразное питание</text>
+  </svg>`,
   bank:[
     {p:"Зачем организму нужны витамины?",opts:["Для нормальной работы организма","Только для вкуса пищи"],correct:0},
     {p:"Что может произойти при нехватке витаминов?",opts:["Заболевания","Ничего не происходит"],correct:0}

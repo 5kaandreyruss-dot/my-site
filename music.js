@@ -281,6 +281,19 @@ const MUSIC_MOD = [
 
 { n:"Ритм",
   explain:"<b>Ритм</b> — это чередование долгих и коротких звуков во времени, как стук сердца или шаги. Ритм есть в каждой песне, даже без слов.",
+  svg:`<svg viewBox="0 0 300 110" width="300">
+  <line x1="6" y1="80" x2="294" y2="80" stroke="#2B2A26" stroke-width="2"/>
+  <rect x="10" y="46" width="18" height="34" rx="4" fill="#3B6EA5"/>
+  <rect x="36" y="46" width="18" height="34" rx="4" fill="#3E8F86"/>
+  <rect x="62" y="24" width="40" height="56" rx="4" fill="#3B6EA5"/>
+  <rect x="110" y="46" width="18" height="34" rx="4" fill="#3E8F86"/>
+  <rect x="136" y="24" width="40" height="56" rx="4" fill="#3B6EA5"/>
+  <rect x="184" y="24" width="40" height="56" rx="4" fill="#3E8F86"/>
+  <text x="19" y="98" font-size="8" text-anchor="middle" fill="#2B2A26">короткий</text>
+  <text x="82" y="98" font-size="11" text-anchor="middle" fill="#2B2A26">длинный</text>
+  <text x="255" y="55" font-size="26" text-anchor="middle">❤️</text>
+  <text x="255" y="98" font-size="11" text-anchor="middle" fill="#2B2A26">как стук сердца</text>
+  </svg>`,
   bank:[
     {p:"Что такое ритм в музыке?",opts:["Чередование долгих и коротких звуков","Только громкость","Только цвет ноты"],correct:0},
     {p:"Похож ли ритм музыки на стук сердца или шаги?",opts:["Да, похож — тоже чередование","Нет, ничего общего"],correct:0},
@@ -290,6 +303,39 @@ const MUSIC_MOD = [
 
 { n:"Русские народные инструменты",
   explain:"У русского народа есть свои традиционные инструменты: <b>балалайка</b> (треугольная, струнная), <b>гармонь</b> (с мехами и кнопками) и <b>ложки</b> (ударный инструмент — стучат друг о друга).",
+  svg:`<svg viewBox="0 0 260 100" width="260">
+  <g transform="translate(4,10)">
+    <rect width="64" height="64" rx="14" fill="#3B6EA5"/>
+    <path d="M32 14 L50 46 L14 46 Z" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
+    <line x1="24" y1="46" x2="24" y2="16" stroke="white" stroke-width="1.2"/>
+    <line x1="32" y1="46" x2="32" y2="12" stroke="white" stroke-width="1.2"/>
+    <line x1="40" y1="46" x2="40" y2="16" stroke="white" stroke-width="1.2"/>
+    <line x1="32" y1="12" x2="32" y2="4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <text x="36" y="92" font-size="10" text-anchor="middle" fill="#2B2A26">Балалайка</text>
+
+  <g transform="translate(98,10)">
+    <rect width="64" height="64" rx="14" fill="#E3922E"/>
+    <rect x="14" y="14" width="14" height="36" rx="2" fill="none" stroke="white" stroke-width="1.6"/>
+    <rect x="36" y="14" width="14" height="36" rx="2" fill="none" stroke="white" stroke-width="1.6"/>
+    <path d="M28 18h8M28 26h8M28 34h8M28 42h8" stroke="white" stroke-width="1.4"/>
+    <circle cx="18" cy="20" r="1.4" fill="white"/><circle cx="18" cy="28" r="1.4" fill="white"/><circle cx="18" cy="36" r="1.4" fill="white"/>
+  </g>
+  <text x="130" y="92" font-size="10" text-anchor="middle" fill="#2B2A26">Гармонь</text>
+
+  <g transform="translate(192,10)">
+    <rect width="64" height="64" rx="14" fill="#3E8F86"/>
+    <g transform="rotate(-25 32 32)">
+      <ellipse cx="24" cy="18" rx="8" ry="11" fill="none" stroke="white" stroke-width="1.8"/>
+      <line x1="24" y1="28" x2="24" y2="50" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    </g>
+    <g transform="rotate(25 32 32)">
+      <ellipse cx="40" cy="18" rx="8" ry="11" fill="none" stroke="white" stroke-width="1.8"/>
+      <line x1="40" y1="28" x2="40" y2="50" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    </g>
+  </g>
+  <text x="224" y="92" font-size="10" text-anchor="middle" fill="#2B2A26">Ложки</text>
+  </svg>`,
   bank:[
     {p:"Какой формы корпус у балалайки?",opts:["Треугольной","Круглой","Квадратной"],correct:0},
     {p:"К какой семье инструментов относится балалайка?",opts:["Струнные","Духовые","Ударные"],correct:0},

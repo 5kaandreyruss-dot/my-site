@@ -53,6 +53,17 @@ const RUS_MOD = [
 
 { n:"Знак в конце предложения",
   explain:"Точка (.) — обычное предложение. Вопросительный знак (?) — вопрос. Восклицательный (!) — сильное чувство.",
+  svg:`<svg viewBox="0 0 240 130" width="240">
+  <rect x="6" y="10" width="68" height="90" rx="10" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="40" y="78" font-size="52" text-anchor="middle" fill="#284D77">.</text>
+  <text x="40" y="118" font-size="11" text-anchor="middle" fill="#736C5E">точка</text>
+  <rect x="86" y="10" width="68" height="90" rx="10" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="120" y="72" font-size="44" text-anchor="middle" fill="#B96F16">?</text>
+  <text x="120" y="118" font-size="11" text-anchor="middle" fill="#736C5E">вопрос</text>
+  <rect x="166" y="10" width="68" height="90" rx="10" fill="#FBE1E0" stroke="#D6524F" stroke-width="2"/>
+  <text x="200" y="72" font-size="44" text-anchor="middle" fill="#A83836">!</text>
+  <text x="200" y="118" font-size="11" text-anchor="middle" fill="#736C5E">чувство</text>
+  </svg>`,
   bank:[
     {p:"Ты пойдёшь сегодня гулять",opts:[".","?","!"],correct:1},
     {p:"Сегодня прекрасная погода",opts:[".","?","!"],correct:0},
@@ -96,6 +107,17 @@ const RUS_MOD = [
 
 { n:"Части речи",
   explain:"Существительное отвечает на вопрос кто? что? Глагол — что делает? Прилагательное — какой? какая?",
+  svg:`<svg viewBox="0 0 260 100" width="260">
+  <rect x="8" y="15" width="72" height="34" rx="17" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="44" y="37" font-size="14" text-anchor="middle" fill="#284D77">сущ.</text>
+  <text x="44" y="65" font-size="10" text-anchor="middle" fill="#736C5E">стол</text>
+  <rect x="94" y="15" width="72" height="34" rx="17" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="130" y="37" font-size="14" text-anchor="middle" fill="#3F7A3D">гл.</text>
+  <text x="130" y="65" font-size="10" text-anchor="middle" fill="#736C5E">бежит</text>
+  <rect x="180" y="15" width="72" height="34" rx="17" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="216" y="37" font-size="14" text-anchor="middle" fill="#B96F16">прил.</text>
+  <text x="216" y="65" font-size="10" text-anchor="middle" fill="#736C5E">красивый</text>
+  </svg>`,
   bank:[
     {p:"стол",opts:["Существительное","Глагол","Прилагательное"],correct:0},
     {p:"бежит",opts:["Существительное","Глагол","Прилагательное"],correct:1},
@@ -143,6 +165,20 @@ const RUS_MOD = [
 
 { n:"Состав слова",
   explain:"Корень — главная часть слова с общим смыслом (лес → лесник, лесной). Приставка стоит перед корнем, суффикс — после, окончание — в самом конце.",
+  svg:`<svg viewBox="0 0 260 90" width="260">
+  <rect x="10" y="30" width="50" height="30" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="35" y="50" font-size="13" text-anchor="middle">по</text>
+  <rect x="60" y="30" width="70" height="30" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="95" y="50" font-size="13" text-anchor="middle">езд</text>
+  <rect x="130" y="30" width="50" height="30" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="155" y="50" font-size="13" text-anchor="middle">к</text>
+  <rect x="180" y="30" width="50" height="30" fill="#FBE1E0" stroke="#D6524F" stroke-width="2"/>
+  <text x="205" y="50" font-size="13" text-anchor="middle">а</text>
+  <text x="35" y="76" font-size="9" text-anchor="middle" fill="#736C5E">приставка</text>
+  <text x="95" y="76" font-size="9" text-anchor="middle" fill="#736C5E">корень</text>
+  <text x="155" y="76" font-size="9" text-anchor="middle" fill="#736C5E">суффикс</text>
+  <text x="205" y="76" font-size="9" text-anchor="middle" fill="#736C5E">окончание</text>
+  </svg>`,
   bank:[
     {p:"Найди корень в словах: лес, лесник, лесной",opts:["лес","ник","ной"],correct:0},
     {p:"Найди корень в словах: вода, водяной, подводный",opts:["вод","ный","под"],correct:0},
@@ -197,6 +233,14 @@ const RUS_MOD = [
 
 { n:"Один и много",
   explain:"Существительные бывают в единственном числе (один предмет) и множественном числе (несколько предметов): стол → столы.",
+  svg:`<svg viewBox="0 0 220 100" width="220">
+  <rect x="14" y="30" width="40" height="40" rx="6" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="34" y="90" font-size="10" text-anchor="middle" fill="#736C5E">один</text>
+  <rect x="120" y="30" width="30" height="30" rx="5" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <rect x="150" y="20" width="30" height="30" rx="5" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <rect x="135" y="50" width="30" height="30" rx="5" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="150" y="95" font-size="10" text-anchor="middle" fill="#736C5E">много</text>
+  </svg>`,
   bank:[
     {p:"Как будет «стол» во множественном числе?",opts:["столы","столья","столов"],correct:0},
     {p:"Как будет «окно» во множественном числе?",opts:["окны","окна","оконья"],correct:1},

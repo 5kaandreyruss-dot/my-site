@@ -12,6 +12,14 @@ const RUS9_MOD = [
 
 { n:"Сложносочинённое предложение (ССП)",
   explain:"<b>Сложносочинённое предложение</b> — части равноправны и соединяются сочинительными союзами: и, а, но, да, или, либо. Например: «Солнце село, и стало прохладно».",
+  svg:`<svg viewBox="0 0 240 90" width="240">
+  <rect x="10" y="20" width="90" height="40" rx="8" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="55" y="45" font-size="12" text-anchor="middle">Солнце село</text>
+  <text x="115" y="45" font-size="16" text-anchor="middle" fill="#A83836" font-weight="700">и</text>
+  <rect x="140" y="20" width="90" height="40" rx="8" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="185" y="45" font-size="12" text-anchor="middle">стало тихо</text>
+  <text x="115" y="78" font-size="9" text-anchor="middle" fill="#736C5E">части равноправны</text>
+  </svg>`,
   bank:[
     {p:"Какие союзы соединяют части ССП?",opts:["Сочинительные: и, а, но, или","Только придаточные союзы"],correct:0},
     {p:"Равноправны ли части сложносочинённого предложения?",opts:["Да, равноправны","Нет, одна часть главная"],correct:0},
@@ -20,6 +28,15 @@ const RUS9_MOD = [
 
 { n:"Сложноподчинённое предложение (СПП)",
   explain:"<b>Сложноподчинённое предложение</b> состоит из главной и придаточной части. Придаточная часть зависит от главной и присоединяется союзами (что, чтобы, если) или союзными словами (который, где, когда).",
+  svg:`<svg viewBox="0 0 240 90" width="240">
+  <rect x="20" y="15" width="110" height="40" rx="8" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="75" y="40" font-size="12" text-anchor="middle">Я знаю</text>
+  <path d="M130 35h20" stroke="#736C5E" stroke-width="2" fill="none"/>
+  <rect x="150" y="25" width="72" height="30" rx="7" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="186" y="45" font-size="11" text-anchor="middle">что придёшь</text>
+  <text x="75" y="78" font-size="9" text-anchor="middle" fill="#3F7A3D">главная часть</text>
+  <text x="186" y="78" font-size="9" text-anchor="middle" fill="#B96F16">придаточная (зависит)</text>
+  </svg>`,
   bank:[
     {p:"Из каких частей состоит СПП?",opts:["Главной и придаточной (зависимой)","Только из двух главных"],correct:0},
     {p:"Чем присоединяется придаточная часть к главной?",opts:["Союзами или союзными словами","Только запятой без слов"],correct:0}

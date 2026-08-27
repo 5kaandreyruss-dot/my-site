@@ -4,6 +4,16 @@ const RUS3_MOD = [
 
 { n:"Части речи",
   explain:"Имя существительное отвечает на вопрос кто? что? Имя прилагательное — какой? Глагол — что делает? Наречие — как? когда? где?",
+  svg:`<svg viewBox="0 0 260 100" width="260">
+  <rect x="8" y="8" width="112" height="34" rx="17" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="64" y="30" font-size="13" text-anchor="middle" fill="#284D77">сущ. — облако</text>
+  <rect x="140" y="8" width="112" height="34" rx="17" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="196" y="30" font-size="13" text-anchor="middle" fill="#B96F16">прил. — смелый</text>
+  <rect x="8" y="54" width="112" height="34" rx="17" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="64" y="76" font-size="13" text-anchor="middle" fill="#3F7A3D">гл. — бежит</text>
+  <rect x="140" y="54" width="112" height="34" rx="17" fill="#EEE3F5" stroke="#9973B8" stroke-width="2"/>
+  <text x="196" y="76" font-size="13" text-anchor="middle" fill="#725189">нареч. — быстро</text>
+  </svg>`,
   bank:[
     {p:"облако",opts:["Существительное","Прилагательное","Глагол","Наречие"],correct:0},
     {p:"быстро",opts:["Наречие","Существительное","Прилагательное","Глагол"],correct:0},
@@ -64,6 +74,14 @@ const RUS3_MOD = [
 
 { n:"Состав слова: основа и окончание",
   explain:"Окончание — изменяемая часть слова, которая связывает слова в предложении. Основа — всё слово без окончания.",
+  svg:`<svg viewBox="0 0 200 90" width="200">
+  <rect x="10" y="30" width="110" height="30" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="65" y="50" font-size="14" text-anchor="middle">книг</text>
+  <rect x="120" y="30" width="50" height="30" fill="#FBE1E0" stroke="#D6524F" stroke-width="2"/>
+  <text x="145" y="50" font-size="14" text-anchor="middle">а</text>
+  <text x="65" y="76" font-size="10" text-anchor="middle" fill="#736C5E">основа</text>
+  <text x="145" y="76" font-size="10" text-anchor="middle" fill="#736C5E">окончание</text>
+  </svg>`,
   bank:[
     {p:"В слове «книга» окончание — это",opts:["-а","книг-","кни-"],correct:0},
     {p:"В слове «стол» есть окончание?",opts:["Нет, оно нулевое","Да, окончание -л"],correct:0},
@@ -123,6 +141,16 @@ const RUS3_MOD = [
 
 { n:"Приставка и предлог",
   explain:"Приставка пишется слитно со словом (на письме без пробела): побежал. Предлог пишется отдельно от слова, между ними можно вставить другое слово: в лесу — в тёмном лесу.",
+  svg:`<svg viewBox="0 0 240 100" width="240">
+  <rect x="10" y="15" width="100" height="34" rx="8" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="60" y="37" font-size="14" text-anchor="middle">пришёл</text>
+  <text x="60" y="65" font-size="10" text-anchor="middle" fill="#736C5E">приставка — слитно</text>
+  <rect x="130" y="15" width="46" height="34" rx="8" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="153" y="37" font-size="14" text-anchor="middle">в</text>
+  <rect x="184" y="15" width="56" height="34" rx="8" fill="#E1EFDD" stroke="#5F9A5C" stroke-width="2"/>
+  <text x="212" y="37" font-size="14" text-anchor="middle">лесу</text>
+  <text x="185" y="65" font-size="10" text-anchor="middle" fill="#736C5E">предлог — раздельно</text>
+  </svg>`,
   bank:[
     {p:"(при)шёл — приставка или предлог?",opts:["Приставка (пишем слитно)","Предлог (пишем раздельно)"],correct:0},
     {p:"(в) лесу — приставка или предлог?",opts:["Предлог (пишем раздельно)","Приставка (пишем слитно)"],correct:0},
@@ -141,6 +169,17 @@ const RUS3_MOD = [
 
 { n:"Предложения по цели высказывания",
   explain:"По цели высказывания предложения бывают повествовательные (сообщают), вопросительные (спрашивают) и побудительные (просят или приказывают).",
+  svg:`<svg viewBox="0 0 260 110" width="260">
+  <rect x="6" y="10" width="76" height="70" rx="10" fill="#DCE9F6" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="44" y="60" font-size="30" text-anchor="middle" fill="#284D77">.</text>
+  <text x="44" y="95" font-size="10" text-anchor="middle" fill="#736C5E">сообщает</text>
+  <rect x="92" y="10" width="76" height="70" rx="10" fill="#FBEBCF" stroke="#E3922E" stroke-width="2"/>
+  <text x="130" y="58" font-size="28" text-anchor="middle" fill="#B96F16">?</text>
+  <text x="130" y="95" font-size="10" text-anchor="middle" fill="#736C5E">спрашивает</text>
+  <rect x="178" y="10" width="76" height="70" rx="10" fill="#FBE1E0" stroke="#D6524F" stroke-width="2"/>
+  <text x="216" y="58" font-size="28" text-anchor="middle" fill="#A83836">!</text>
+  <text x="216" y="95" font-size="10" text-anchor="middle" fill="#736C5E">просит/велит</text>
+  </svg>`,
   bank:[
     {p:"«Закрой окно!» — какое это предложение по цели?",opts:["Побудительное","Вопросительное","Повествовательное"],correct:0},
     {p:"«Ты закрыл окно?» — какое это предложение по цели?",opts:["Вопросительное","Побудительное","Повествовательное"],correct:0},
